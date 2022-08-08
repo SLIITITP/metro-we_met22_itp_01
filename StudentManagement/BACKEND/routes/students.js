@@ -1,7 +1,7 @@
 const router = require("express").Router();
 let Student = require("../models/Student.js");
 
-//To add data passed through front-end http://localhost:8070/student/add
+//To add data passed through front-end http://localhost:8070/student/add  // just changing
 router.route("/add").post((req, res) => {
   const name = req.body.name;
   const age = Number(req.body.age);
