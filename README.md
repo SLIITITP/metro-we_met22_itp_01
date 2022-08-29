@@ -13,7 +13,7 @@ Please go under edit and edit this file as needed for your project
 ### Member 8 - IT20261382 - Madusanka K.M.I (IT20261382)
 
 #### Brief Description of Project - Resort Management For The Blue Lagoon Resort - Kalpitiya
-#### Technologies used - React.js, Express.js, Node.js, MongoDB
+#### Technologies Used - ReactJS, ExpressJS, NodeJS, MongoDB
 
 Note - The student's github account should be given in brackets e.g. (asiriRepos), this ideally should be your student id
 
