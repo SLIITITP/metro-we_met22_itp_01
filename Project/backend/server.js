@@ -9,6 +9,7 @@ const app = express(); //used to create express appication
 app.use(cors());
 app.use(bodyParser.json());
 
+//Add here the routers and paths
 // const studentRouter = require("./routes/students.js");
 // app.use("/student", studentRouter); //https://localhost:8070:student will load student.js
 
