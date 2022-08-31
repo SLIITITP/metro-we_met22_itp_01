@@ -7,7 +7,10 @@ const cors = require("cors");
 const dotenv = require("dotenv").config();
 const app = express(); //used to create express appication
 app.use(cors());
-app.use(bodyParser.json());
+
+app.use(bodyParser.json({ limit: "30 mb", extended: true })); //sometimes we might have to send images. so here we are restricting its size
+//extended:true, makes sure that everything goes through bodyparser and not just Strings.
+app.use(bodyParser.urlencoded({ limit: "30 mb", extended: true }));
 
 //Add here the routers and paths
 // const studentRouter = require("./routes/students.js");
