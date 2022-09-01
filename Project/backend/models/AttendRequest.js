@@ -10,5 +10,5 @@ const AttendsRequestSchema = new Schema({
   action: { type: String, default: "None", require: true },
 });
 
-const Request = mongoose.model("Request", AttendsRequestSchema);
-module.exports = Request;
+const AttendRequest = mongoose.model("AttendRequest", AttendsRequestSchema);
+module.exports = AttendRequest;

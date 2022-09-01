@@ -55,7 +55,7 @@ const updateRequest = async (req, res) => {
 const getOneRequest = async (req, res) => {
   let id = req.params.id;
 
-  const req = await AttendComplaint.findById(id)
+  const request = await AttendComplaint.findById(id)
     .then((comps) => {
       let object = { status: "Fetched Complaints" };
       res.status(200).send(object.status);

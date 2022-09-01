@@ -10,5 +10,8 @@ const TransportRequestSchema = new Schema({
   noOfSeats: { type: Number, require: true },
 });
 
-const Request = mongoose.model("Request", TransportRequestSchema);
-module.exports = Request;
+const TransportRequest = mongoose.model(
+  "TransportRequest",
+  TransportRequestSchema
+);
+module.exports = TransportRequest;

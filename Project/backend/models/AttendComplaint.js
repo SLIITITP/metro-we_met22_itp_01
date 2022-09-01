@@ -11,5 +11,8 @@ const AttendComplaintSchema = new Schema({
   resolvedDate: { type: Date, default: Date() },
 });
 
-const Request = mongoose.model("Request", AttendComplaintSchema);
-module.exports = Request;
+const AttendComplaint = mongoose.model(
+  "AttendComplaint",
+  AttendComplaintSchema
+);
+module.exports = AttendComplaint;

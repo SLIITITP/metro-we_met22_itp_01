@@ -8,5 +8,8 @@ const RoomNecessitySchema = new Schema({
   notes: String,
 });
 
-const Request = mongoose.model("Request", RoomNecessitySchema);
-module.exports = Request;
+const RoomNecessityRequest = mongoose.model(
+  "RoomNecessityRequest",
+  RoomNecessitySchema
+);
+module.exports = RoomNecessityRequest;

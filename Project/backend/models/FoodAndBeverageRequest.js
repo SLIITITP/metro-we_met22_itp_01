@@ -19,5 +19,8 @@ const FoodRequest = new Schema({
   Notes: String,
 });
 
-const Request = mongoose.model("Request", FoodRequest);
-module.exports = Request;
+const FoodAndBeverageRequest = mongoose.model(
+  "FoodAndBeverageRequest",
+  FoodRequest
+);
+module.exports = FoodAndBeverageRequest;

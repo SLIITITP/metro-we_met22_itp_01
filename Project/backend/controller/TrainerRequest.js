@@ -55,7 +55,7 @@ const updateRequest = async (req, res) => {
 const getOneRequest = async (req, res) => {
   let id = req.params.id;
 
-  const req = await TrainerRequest.findById(id)
+  const request = await TrainerRequest.findById(id)
     .then((reqs) => {
       let object = { status: "Fetched Request" };
       res.status(200).send(object.status);
