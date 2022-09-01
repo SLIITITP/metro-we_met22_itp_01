@@ -13,8 +13,28 @@ app.use(bodyParser.json({ limit: "30 mb", extended: true })); //sometimes we mig
 app.use(bodyParser.urlencoded({ limit: "30 mb", extended: true }));
 
 //Add here the routers and paths
-// const studentRouter = require("./routes/students.js");
-// app.use("/student", studentRouter); //https://localhost:8070:student will load student.js
+const CustomerRouter = require("./routes/CustomerRoutes.js");
+const OrdinaryCustomerRouter = require("./routes/OrdinaryCustomerRoutes.js");
+const LoyalCustomerRouter = require("./routes/OrdinaryCustomerRoutes.js");
+const ServiceRequestRouter = require("./routes/CustomerRequestRoutes.js");
+const FoodAndBeverageRouter = require("./routes/FoodAndBeverageRequestRoutes.js");
+const TrainerRequestRouter = require("./routes/TrainerRequestRoutes.js");
+const TransportRequestRouter = require("./routes/TransportRequestRoutes.js");
+const RoomNecessityRouter = require("./routes/RoomNecessityRequestRoutes.js");
+const AttendRequestRouter = require("./routes/AttendRequestRoutes.js");
+const AttendComplaintRouter = require("./routes/AttendComplaintRoutes.js");
+
+//https://localhost:8070:customer will load CustomerRouter.js
+app.use("/customer", CustomerRouter);
+app.use("/loyalCustomer", LoyalCustomerRouter);
+app.use("/ordinaryCustomer", OrdinaryCustomerRouter);
+app.use("/customerService", ServiceRequestRouter);
+app.use("/customerService/foodAndBeverageRequest", FoodAndBeverageRouter);
+app.use("/customerService/trainerRequest", TrainerRequestRouter);
+app.use("/customerService/transportRequest", TransportRequestRouter);
+app.use("/customerService/roomNecessityRequest", RoomNecessityRouter);
+app.use("/customerService/attendRequest", AttendRequestRouter);
+app.use("/customerService/attendComplaint", AttendComplaintRouter);
 
 //pricess.env.PORT will allow us to choose the available port that is availabe once hosted
 const PORT = process.env.PORT || 8070;
