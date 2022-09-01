@@ -16,7 +16,7 @@ const FoodRequest = new Schema({
     max: "2022-09-20",
     default: Date(),
   },
-  Notes: String,
+  notes: String,
 });
 
 const FoodAndBeverageRequest = mongoose.model(
