@@ -16,19 +16,21 @@ app.use(bodyParser.urlencoded({ limit: "30 mb", extended: true }));
 const CustomerRouter = require("./routes/CustomerRoutes.js");
 const OrdinaryCustomerRouter = require("./routes/OrdinaryCustomerRoutes.js");
 const LoyalCustomerRouter = require("./routes/OrdinaryCustomerRoutes.js");
-const ServiceRequestRouter = require("./routes/CustomerRequestRoutes.js");
+const CustomerRequestRouter = require("./routes/CustomerRequestRoutes.js");
 const FoodAndBeverageRouter = require("./routes/FoodAndBeverageRequestRoutes.js");
 const TrainerRequestRouter = require("./routes/TrainerRequestRoutes.js");
 const TransportRequestRouter = require("./routes/TransportRequestRoutes.js");
 const RoomNecessityRouter = require("./routes/RoomNecessityRequestRoutes.js");
 const AttendRequestRouter = require("./routes/AttendRequestRoutes.js");
 const AttendComplaintRouter = require("./routes/AttendComplaintRoutes.js");
+const CustomerComplaintRouter = require("./routes/CustomerComplaintRoute");
 
 //https://localhost:8070:customer will load CustomerRouter.js
 app.use("/customer", CustomerRouter);
 app.use("/loyalCustomer", LoyalCustomerRouter);
 app.use("/ordinaryCustomer", OrdinaryCustomerRouter);
-app.use("/customerService", ServiceRequestRouter);
+app.use("/customerService", CustomerRequestRouter);
+app.use("/customerService/complaint", CustomerComplaintRouter);
 app.use("/customerService/foodAndBeverageRequest", FoodAndBeverageRouter);
 app.use("/customerService/trainerRequest", TrainerRequestRouter);
 app.use("/customerService/transportRequest", TransportRequestRouter);
