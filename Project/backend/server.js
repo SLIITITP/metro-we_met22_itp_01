@@ -37,7 +37,7 @@ app.use("/customerService/attendRequest", AttendRequestRouter);
 app.use("/customerService/attendComplaint", AttendComplaintRouter);
 
 //pricess.env.PORT will allow us to choose the available port that is availabe once hosted
-const PORT = process.env.PORT || 8070;
+const PORT = process.env.PORT || 8080;
 
 const URL = process.env.MONGODB_URL;
 
