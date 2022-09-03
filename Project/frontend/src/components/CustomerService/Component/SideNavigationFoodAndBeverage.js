@@ -13,10 +13,13 @@ function SideNavigationFoodAndBeverage() {
         position: "fixed",
         paddingTop: "20px",
         marginLeft: "20px",
+        marginLeft: "5px",
+        backgroundColor: "white",
         // "background-color": "#f1f1f1",
         // border: "1px solid #555",
         listStyleType: "none",
         alignItems: "center",
+        "z-index": "50",
       }}
     >
       <div className="d-flex align-items-start">
@@ -25,6 +28,7 @@ function SideNavigationFoodAndBeverage() {
           id="v-pills-tab"
           role="tablist"
           aria-orientation="vertical"
+          style={{ backgroundColor: "white" }}
         >
           <Link
             to="/customerService"

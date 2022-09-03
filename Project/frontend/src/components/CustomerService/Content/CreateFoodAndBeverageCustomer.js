@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 
 export default function CreateFoodAndBeverageCustomer() {
   //For FoodAndBeverageRequest
+  let rowNo = 1;
   const [FoodAndBeverage, setFoodAndBeverage] = useState({
     reqId: "1",
     amount: 0,
@@ -11,6 +12,7 @@ export default function CreateFoodAndBeverageCustomer() {
     requestForDate: "",
     requestForTime: "",
     notes: "",
+    status: "Ongoing",
   });
   //For Request
   // const [CustomerRequest, setCustomerRequest] = useState({
@@ -32,7 +34,7 @@ export default function CreateFoodAndBeverageCustomer() {
       )
       .then(() => {
         alert("Request Added Successfully");
-        // window.location.reload(false);
+        window.location.reload(false);
       })
       .catch((err) => {
         alert(err.message);
@@ -59,11 +61,16 @@ export default function CreateFoodAndBeverageCustomer() {
       className="container"
       style={{
         width: "40%",
-        marginTop: "100px",
+
+        "z-index": "10",
+        position: "sticky",
       }}
     >
       {/*here we pass data like we usually pass data through useState"*/}
-      <form style={{ marginTop: "100px" }} onSubmit={create}>
+      <form
+        style={{ marginTop: "100px", marginLeft: "-175px", width: "100%" }}
+        onSubmit={create}
+      >
         <h1 className="display-6" style={{ marginBottom: "20px" }}>
           Food & Beverage Request
         </h1>

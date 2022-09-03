@@ -12,7 +12,6 @@ router.get("/", getRequests.getRequests);
 router.post("/", createRequest.createRequest);
 router.delete("/:id", deleteRequest.deleteRequest);
 router.post("/update/:id", updateRequest.updateRequest);
-
 router.get("/get/:id", getOneRequest.getOneRequest);
 
 module.exports = router;

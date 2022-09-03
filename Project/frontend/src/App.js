@@ -4,6 +4,7 @@ import { SideNavigationFoodAndBeverage } from "./components/CustomerService/Comp
 import FoodAndBeverageCustomer from "./components/CustomerService/Content/CreateFoodAndBeverageCustomer";
 import { SideNavigationTrainer } from "./components/CustomerService/Component/SideNavigationTrainer";
 import TrainerCustomer from "./components/CustomerService/Content/TrainerCustomer";
+import ShowStudents from "./components/CustomerService/Content/ShowFoodAndBeverage";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 function App() {
@@ -17,6 +18,7 @@ function App() {
             element={
               <>
                 <FoodAndBeverageCustomer />
+                <ShowStudents />
                 <SideNavigationFoodAndBeverage />
               </>
             }

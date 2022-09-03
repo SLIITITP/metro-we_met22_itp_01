@@ -17,6 +17,7 @@ const FoodRequest = new Schema({
   },
   requestForTime: { type: String, required: true },
   notes: String,
+  status: { type: String, default: "Ongoing" },
 });
 
 const FoodAndBeverageRequest = mongoose.model(
