@@ -5,26 +5,18 @@ const Schema = mongoose.Schema;
 
 //Food_beverage (reqID, amount, foodItemID, description)
 const FoodRequest = new Schema({
-  reqId: { type: String, require: true, unique: true },
-  amount: { type: Number, require: true },
+  reqId: { type: String, required: true },
+  amount: { type: Number, required: true },
 
-  foodItemId: { type: String, require: true },
+  foodItemId: { type: String, required: true },
   requestForDate: {
-    type: Date,
+    type: String,
     required: true,
     min: "2022-09-10",
     max: "2022-09-20",
-    default: Date(),
   },
+  requestForTime: { type: String, required: true },
   notes: String,
-  requestForDate: {
-    type: Date,
-    required: true,
-    min: "2022-09-10",
-    max: "2022-09-20",
-    default: Date(),
-  },
-  requestedForTime: { type: String, required: true },
 });
 
 const FoodAndBeverageRequest = mongoose.model(

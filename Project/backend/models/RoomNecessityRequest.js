@@ -4,7 +4,7 @@ const Schema = mongoose.Schema;
 //Transport_request (reqID, route, seatNo, noOfSeats)
 
 const RoomNecessitySchema = new Schema({
-  reqId: { type: String, require: true, unique: true },
+  reqId: { type: String, required: true, unique: true },
   notes: String,
 });
 

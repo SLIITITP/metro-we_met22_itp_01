@@ -4,9 +4,9 @@ const Schema = mongoose.Schema;
 
 // AttendsRequest (empID, reqID, status, action)
 const AttendsRequestSchema = new Schema({
-  empId: { type: String, require: true },
-  reqId: { type: String, require: true, unique: true },
-  status: { type: String, require: true, default: "Ongoing" },
+  empId: { type: String, required: true },
+  reqId: { type: String, required: true, unique: true },
+  status: { type: String, required: true, default: "Ongoing" },
   action: { type: String, default: "None", require: true },
 });
 

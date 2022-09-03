@@ -14,7 +14,7 @@ const TrainerRequestSchema = new Schema({
     max: "2022-09-20",
     default: Date(),
   },
-  requestedForTime: { type: String, required: true },
+  requestForTime: { type: String, required: true },
 });
 
 const TrainerRequest = mongoose.model("TrainerRequest", TrainerRequestSchema);
