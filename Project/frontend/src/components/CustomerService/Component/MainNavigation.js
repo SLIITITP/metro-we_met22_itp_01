@@ -64,21 +64,27 @@ function MainNavigation() {
           role="tabpanel"
           aria-labelledby="profile-tab"
           tabIndex="0"
-        ></div>
+        >
+          {/* ... */}
+        </div>
         <div
           className="tab-pane fade"
           id="contact-tab-pane"
           role="tabpanel"
           aria-labelledby="contact-tab"
           tabIndex="0"
-        ></div>
+        >
+          {/* ... */}
+        </div>
         <div
           className="tab-pane fade"
           id="disabled-tab-pane"
           role="tabpanel"
           aria-labelledby="disabled-tab"
           tabIndex="0"
-        ></div>
+        >
+          {/* ... */}
+        </div>
       </div>
     </div>
   );
