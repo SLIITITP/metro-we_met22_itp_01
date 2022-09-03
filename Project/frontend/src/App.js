@@ -1,7 +1,7 @@
 import "./App.css";
 import { MainNavigation } from "./components/CustomerService/Component/MainNavigation";
 import { SideNavigationFoodAndBeverage } from "./components/CustomerService/Component/SideNavigationFoodAndBeverage";
-import FoodAndBeverageCustomer from "./components/CustomerService/Content/FoodAndBeverageCustomer";
+import FoodAndBeverageCustomer from "./components/CustomerService/Content/CreateFoodAndBeverageCustomer";
 import { SideNavigationTrainer } from "./components/CustomerService/Component/SideNavigationTrainer";
 import TrainerCustomer from "./components/CustomerService/Content/TrainerCustomer";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
