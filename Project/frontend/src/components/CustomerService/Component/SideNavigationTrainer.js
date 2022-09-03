@@ -13,8 +13,11 @@ function SideNavigationTrainer() {
         position: "fixed",
         paddingTop: "20px",
         marginLeft: "20px",
-        "list-style-type": "none",
-        "align-items": "center",
+        marginLeft: "5px",
+        backgroundColor: "white",
+        listStyleType: "none",
+        alignItems: "center",
+        "z-index": "50",
       }}
     >
       <div className="d-flex align-items-start">
