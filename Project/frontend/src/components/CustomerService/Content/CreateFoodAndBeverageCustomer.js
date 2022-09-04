@@ -51,26 +51,6 @@ export default function CreateFoodAndBeverageCustomer() {
         </h1>
 
         <div className="mb-3">
-          <label htmlFor="notes" className="form-label">
-            Notes
-          </label>
-          <textarea
-            className="form-control"
-            id="notes"
-            name="notes"
-            rows="4"
-            cols="50"
-            placeholder="Do you wish to make a note"
-            onChange={(event) => {
-              setFoodAndBeverage({
-                ...FoodAndBeverage,
-                notes: event.target.value,
-              });
-            }}
-          />
-        </div>
-
-        <div className="mb-3">
           <label htmlFor="requestForDate" className="form-label">
             Scheduled For
           </label>
@@ -122,7 +102,25 @@ export default function CreateFoodAndBeverageCustomer() {
             <option value="FoodAndBeverage">Food And Beverage</option>
           </select>
         </div>
-
+        <div className="mb-3">
+          <label htmlFor="notes" className="form-label">
+            Notes
+          </label>
+          <textarea
+            className="form-control"
+            id="notes"
+            name="notes"
+            rows="4"
+            cols="50"
+            placeholder="Do you wish to make a note"
+            onChange={(event) => {
+              setFoodAndBeverage({
+                ...FoodAndBeverage,
+                notes: event.target.value,
+              });
+            }}
+          />
+        </div>
         <button type="submit" className="btn btn-primary" onClick={Create}>
           Submit
         </button>

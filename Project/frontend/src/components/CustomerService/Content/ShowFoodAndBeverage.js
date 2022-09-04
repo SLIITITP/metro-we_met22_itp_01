@@ -23,6 +23,7 @@ export default function ShowFoodAndBeverage() {
         break;
       }
     }
+
     FoodAndBeverage.notes = event.target.notes.value;
     FoodAndBeverage.requestForDate = event.target.date.value;
     FoodAndBeverage.requestForTime = event.target.time.value;
@@ -58,7 +59,7 @@ export default function ShowFoodAndBeverage() {
       style={{
         width: "40%",
         float: "right",
-        marginTop: "-400px",
+        marginTop: "-422px",
         marginRight: "20px",
         position: "sticky",
       }}

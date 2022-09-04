@@ -12,17 +12,18 @@ export const Form = ({ onSubmit }) => {
           rows="4"
           cols="50"
           placeholder="Edit your note"
+          required
         />
       </div>
       <br />
       <div className="form-group">
         <label htmlFor="date">Scheduled For</label>
-        <input type="date" className="form-control" id="date" />
+        <input type="date" className="form-control" id="date" required />
       </div>
       <br />
       <div className="form-group">
         <label htmlFor="time">Time</label>
-        <input type="time" className="form-control" id="time" />
+        <input type="time" className="form-control" id="time" required />
       </div>
       <br />
       <div className="form-group">
