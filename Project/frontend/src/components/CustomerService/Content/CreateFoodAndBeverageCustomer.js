@@ -1,10 +1,9 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { Link } from "react-router-dom";
 
 export default function CreateFoodAndBeverageCustomer() {
   //For FoodAndBeverageRequest
-  let rowNo = 1;
+
   const [FoodAndBeverage, setFoodAndBeverage] = useState({
     reqId: "1",
     amount: 0,
@@ -14,17 +13,8 @@ export default function CreateFoodAndBeverageCustomer() {
     notes: "",
     status: "Ongoing",
   });
-  //For Request
-  // const [CustomerRequest, setCustomerRequest] = useState({
-  //   reqId: "",
-  //   custId: "",
-  //   roomId: "",
-  //   serviceType: "FoodAndBeverage",
-  //   requestedtime: "",
-  //   requestedOn: Date(),
-  // });
 
-  function create(e) {
+  function Create(e) {
     e.preventDefault();
 
     axios
@@ -41,15 +31,6 @@ export default function CreateFoodAndBeverageCustomer() {
         console.log(err);
       }); //here we give to what link what data should be sent
 
-    // axios
-    //   .post("http://localhost:8070/customerService/", CustomerRequest)
-    //   .then(() => {
-    //     window.location.reload(false);
-    //   })
-    //   .catch((err) => {
-    //     alert(err.message);
-    //   });
-
     // To clear out the form fields
     document.getElementById("notes").value = "";
     document.getElementById("schedule").value = "";
@@ -61,16 +42,10 @@ export default function CreateFoodAndBeverageCustomer() {
       className="container"
       style={{
         width: "40%",
-
-        "z-index": "10",
         position: "sticky",
       }}
     >
-      {/*here we pass data like we usually pass data through useState"*/}
-      <form
-        style={{ marginTop: "100px", marginLeft: "-175px", width: "100%" }}
-        onSubmit={create}
-      >
+      <form style={{ marginTop: "100px", marginLeft: "-175px", width: "100%" }}>
         <h1 className="display-6" style={{ marginBottom: "20px" }}>
           Food & Beverage Request
         </h1>
@@ -148,7 +123,7 @@ export default function CreateFoodAndBeverageCustomer() {
           </select>
         </div>
 
-        <button type="submit" className="btn btn-primary">
+        <button type="submit" className="btn btn-primary" onClick={Create}>
           Submit
         </button>
       </form>

@@ -19,9 +19,9 @@ const createRequest = async (req, res) => {
 
   try {
     await Request.save();
-    res.status(200).json(Request);
+    res.json("Request Added");
   } catch (error) {
-    res.status(500).json({ message: error.message });
+    console.log(error);
   }
 };
 

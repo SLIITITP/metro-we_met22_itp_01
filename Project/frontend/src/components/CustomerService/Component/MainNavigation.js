@@ -6,7 +6,7 @@ function MainNavigation() {
     <div
       className="container"
       style={{
-        "z-index": "100",
+        zIndex: "100",
         position: "fixed",
         float: "top",
         top: "0",

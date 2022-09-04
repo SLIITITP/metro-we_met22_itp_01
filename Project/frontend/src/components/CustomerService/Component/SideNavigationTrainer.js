@@ -17,7 +17,7 @@ function SideNavigationTrainer() {
         backgroundColor: "white",
         listStyleType: "none",
         alignItems: "center",
-        "z-index": "50",
+        zIndex: "50",
       }}
     >
       <div className="d-flex align-items-start">

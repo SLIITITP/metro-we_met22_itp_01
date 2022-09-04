@@ -19,7 +19,7 @@ function SideNavigationFoodAndBeverage() {
         // border: "1px solid #555",
         listStyleType: "none",
         alignItems: "center",
-        "z-index": "50",
+        zIndex: "50",
       }}
     >
       <div className="d-flex align-items-start">
