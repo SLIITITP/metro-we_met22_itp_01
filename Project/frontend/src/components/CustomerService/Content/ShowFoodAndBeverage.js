@@ -6,6 +6,7 @@ import "../../../index.css";
 
 export default function ShowFoodAndBeverage() {
   const fAndBList = getFoodAndBeverage();
+  const [search, setSearch] = useState("");
   const [FoodAndBeverage, setFoodAndBeverage] = useState({
     reqId: "1",
     amount: 0,
@@ -64,6 +65,32 @@ export default function ShowFoodAndBeverage() {
         position: "sticky",
       }}
     >
+      <div
+        className="container"
+        style={{ marginBottom: "12px", float: "left" }}
+      >
+        <form
+          class="form-inline my-2 my-lg-0"
+          onSubmit={(e) => {
+            setSearch(e.target.search.value);
+            e.preventDefault();
+            e.window.location.reload(false);
+          }}
+        >
+          <input
+            class="form-control mr-sm-2"
+            type="search"
+            id="search"
+            placeholder="Search"
+            aria-label="Search"
+          />
+
+          <button class="btn btn-primary my-2 my-sm-0" type="submit">
+            <i class="bi bi-search"></i>
+          </button>
+        </form>
+      </div>
+
       <table className="table" style={{ width: "100%" }}>
         <thead>
           <tr style={{ backgroundColor: "#0d6efd", color: "white" }}>
@@ -81,44 +108,54 @@ export default function ShowFoodAndBeverage() {
           </tr>
         </thead>
         <tbody>
-          {fAndBList.map((item, index) => (
-            <tr key={index}>
-              <td scope="row">{item.foodItemId}</td>
-              <td>{item.amount}</td>
-              <td>{item.requestForDate}</td>
-              <td>{item.requestForTime}</td>
-              <td>{item.notes}</td>
+          {fAndBList
+            ? fAndBList
+                .filter((val) => {
+                  if (search === "") return val;
+                  else if (
+                    val.notes.toLowerCase().includes(search.toLowerCase())
+                  ) {
+                    return val;
+                  }
+                })
+                .map((val) => (
+                  <tr key={val._id}>
+                    <td scope="row">{val.foodItemId}</td>
+                    <td>{val.amount}</td>
+                    <td>{val.requestForDate}</td>
+                    <td>{val.requestForTime}</td>
+                    <td>{val.notes}</td>
+                    <td>{val.status}</td>
+                    <td>
+                      <div
+                        className="container"
+                        style={{
+                          width: "80px",
+                        }}
+                      >
+                        <Container
+                          onSubmit={(e) => {
+                            OnSubmit(e, val._id);
+                          }}
+                        />
 
-              <td>{item.status}</td>
-              <td>
-                <div
-                  className="container"
-                  style={{
-                    width: "80px",
-                  }}
-                >
-                  <Container
-                    onSubmit={(e) => {
-                      OnSubmit(e, item._id);
-                    }}
-                  />
-
-                  <button
-                    type="button"
-                    style={{
-                      border: "none",
-                      backgroundColor: "white",
-                    }}
-                    onClick={() => {
-                      DeleteItem(item._id);
-                    }}
-                  >
-                    <i className="bi bi-trash-fill"></i>
-                  </button>
-                </div>
-              </td>
-            </tr>
-          ))}
+                        <button
+                          type="button"
+                          style={{
+                            border: "none",
+                            backgroundColor: "white",
+                          }}
+                          onClick={() => {
+                            DeleteItem(val._id);
+                          }}
+                        >
+                          <i className="bi bi-trash-fill"></i>
+                        </button>
+                      </div>
+                    </td>
+                  </tr>
+                ))
+            : fAndBList}
         </tbody>
       </table>
     </div>
