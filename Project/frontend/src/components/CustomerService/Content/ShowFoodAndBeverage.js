@@ -3,6 +3,7 @@ import axios from "axios";
 import getFoodAndBeverage from "./getFoodAndBeverage";
 import { Container } from "../js/Container";
 import "../../../index.css";
+import Trigger from "../Component/popOver";
 
 export default function ShowFoodAndBeverage() {
   const fAndBList = getFoodAndBeverage();
@@ -124,7 +125,9 @@ export default function ShowFoodAndBeverage() {
                     <td>{val.amount}</td>
                     <td>{val.requestForDate}</td>
                     <td>{val.requestForTime}</td>
-                    <td>{val.notes}</td>
+                    <td>
+                      <Trigger msg={val.notes} />
+                    </td>
                     <td>{val.status}</td>
                     <td>
                       <div
