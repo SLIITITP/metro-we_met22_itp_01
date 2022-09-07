@@ -7,7 +7,7 @@ import GetOneReq from "./getOneRequest";
 import Trigger from "../Component/popOver";
 
 export default function ShowFoodAndBeverage() {
-  var color = "black";
+  var color = "black"; //for the status field in the table
   const fAndBList = getFoodAndBeverage();
 
   //For the search button
@@ -99,6 +99,10 @@ export default function ShowFoodAndBeverage() {
       >
         <form
           class="form-inline my-2 my-lg-0"
+          style={{
+            width: "100%",
+            marginLeft: "-20px",
+          }}
           onSubmit={(e) => {
             setSearch(e.target.search.value);
             e.preventDefault();
@@ -119,18 +123,24 @@ export default function ShowFoodAndBeverage() {
         </form>
       </div>
 
-      <table className="table" style={{ width: "100%" }}>
+      <table
+        className="table"
+        style={{
+          width: "100%",
+          overflow: "scroll",
+          "white-space": "nowrap",
+          marginLeft: "-20px",
+        }}
+      >
         <thead>
           <tr style={{ backgroundColor: "#0d6efd", color: "white" }}>
             <th scope="col">ItemID</th>
             <th scope="col">Amount</th>
-            <th scope="col" style={{ width: "70%" }}>
+            <th scope="col" style={{ width: "100%" }}>
               Date
             </th>
             <th scope="col">Time</th>
-            <th scope="col" style={{ width: "100%" }}>
-              Notes
-            </th>
+            <th scope="col">Notes</th>
             <th scope="col">Status</th>
             <th scope="col">Action</th>
           </tr>
