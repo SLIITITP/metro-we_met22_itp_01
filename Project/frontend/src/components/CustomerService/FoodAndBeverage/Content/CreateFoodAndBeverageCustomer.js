@@ -1,8 +1,11 @@
 import React, { useState } from "react";
 import axios from "axios";
-
+import getFoodAndBeverage from "./getFoodAndBeverage";
+import getRequest from "./getRequest";
 export default function CreateFoodAndBeverageCustomer() {
   //For FoodAndBeverageRequest
+  let reqIdString = "1";
+  const reqList = getRequest();
 
   const [FoodAndBeverage, setFoodAndBeverage] = useState({
     reqId: "1",
@@ -13,6 +16,39 @@ export default function CreateFoodAndBeverageCustomer() {
     notes: "",
     status: "Ongoing",
   });
+
+  //Taking only the date from Date()
+  var today = new Date();
+  var year = today.getFullYear();
+  var mes = today.getMonth() + 1;
+  var dia = today.getDate();
+  var time = today
+    .toLocaleTimeString("en-US", {
+      hour12: false,
+    })
+    .replace(/(.*)\D\d+/, "$1");
+
+  const fecha = year + "-" + mes + "-" + dia;
+
+  const [Request, setRequest] = useState({
+    reqId: "1",
+    custId: "1",
+    serviceType: "FoodAndBeverage",
+    requestedOn: fecha,
+    requestedtime: time,
+    roomId: "1",
+  });
+  //To find the last id
+  let j = reqList.length;
+  j--;
+  if (j >= 0) {
+    let reqId = parseInt(reqList[j].reqId);
+    reqId++;
+    reqIdString = reqId.toString();
+    // console.log(reqIdString);
+    FoodAndBeverage.reqId = reqIdString;
+    Request.reqId = reqIdString;
+  }
 
   function Create(e) {
     e.preventDefault();
@@ -30,6 +66,17 @@ export default function CreateFoodAndBeverageCustomer() {
         alert(err.message);
         console.log(err);
       }); //here we give to what link what data should be sent
+
+    //To enter info into Customer Request Table
+    axios
+      .post("http://localhost:8070/customerService", Request)
+      .then(() => {
+        window.location.reload(false);
+      })
+      .catch((err) => {
+        alert(err.message);
+        console.log(err);
+      });
 
     // To clear out the form fields
     document.getElementById("notes").value = "";

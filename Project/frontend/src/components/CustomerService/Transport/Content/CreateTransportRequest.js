@@ -1,0 +1,179 @@
+import React, { useState } from "react";
+import axios from "axios";
+import getTransportRequest from "./getTransportRequest";
+import getRequest from "./getRequest";
+
+export default function CreateTransportRequestCustomer() {
+  //For TransportRequestRequest
+  let reqIdString = "1";
+  const reqList = getRequest();
+
+  const [TransportRequest, setTransportRequest] = useState({
+    reqId: "1",
+    route: "",
+    noOfSeats: 0,
+    requestForDate: "",
+    requestForTime: "",
+  });
+
+  //Taking only the date from Date()
+  var today = new Date();
+  var year = today.getFullYear();
+  var mes = today.getMonth() + 1;
+  var dia = today.getDate();
+
+  //Taking time without seconds
+  var time = today
+    .toLocaleTimeString("en-US", {
+      hour12: false,
+    })
+    .replace(/(.*)\D\d+/, "$1");
+
+  const fecha = year + "-" + mes + "-" + dia;
+
+  const [Request, setRequest] = useState({
+    reqId: "1",
+    custId: "1",
+    serviceType: "TransportRequest",
+    requestedOn: "",
+    requestedtime: "",
+    roomId: "1",
+  });
+  Request.requestedOn = fecha;
+  Request.requestedtime = time;
+
+  //To find the last id
+  let j = reqList.length;
+  j--;
+  if (j >= 0) {
+    let reqId = parseInt(reqList[j].reqId);
+    reqId++;
+    reqIdString = reqId.toString();
+    // console.log(reqIdString);
+    TransportRequest.reqId = reqIdString;
+    Request.reqId = reqIdString;
+  }
+
+  function Create(e) {
+    e.preventDefault();
+
+    axios
+      .post(
+        "http://localhost:8070/customerService/transportRequest",
+        TransportRequest
+      )
+      .then(() => {
+        alert("Request Added Successfully");
+        window.location.reload(false);
+      })
+      .catch((err) => {
+        alert(err);
+        console.log(err);
+      });
+
+    //To enter info into Customer Request Table
+    axios
+      .post("http://localhost:8070/customerService", Request)
+      .then(() => {
+        window.location.reload(false);
+      })
+      .catch((err) => {
+        alert(err.message);
+        console.log(err);
+      });
+
+    // To clear out the form fields
+
+    document.getElementById("schedule").value = "";
+    document.getElementById("time").value = "";
+  }
+
+  return (
+    <div
+      className="container"
+      style={{
+        width: "40%",
+        position: "sticky",
+      }}
+    >
+      <form style={{ marginTop: "100px", marginLeft: "-175px", width: "100%" }}>
+        <h1 className="display-6" style={{ marginBottom: "20px" }}>
+          Transport Request
+        </h1>
+
+        <div className="mb-3">
+          <label htmlFor="requestForDate" className="form-label">
+            Scheduled For
+          </label>
+          <input
+            type="date"
+            id="schedule"
+            name="schedule"
+            className="form-control"
+            required
+            onChange={(event) => {
+              setTransportRequest({
+                ...TransportRequest,
+                requestForDate: event.target.value,
+              });
+            }}
+          />
+        </div>
+
+        <div className="mb-3">
+          <label htmlFor="requestForTime" className="form-label">
+            Pick a time to deliver
+          </label>
+          <input
+            type="time"
+            id="time"
+            name="time"
+            className="form-control"
+            required
+            onChange={(event) => {
+              setTransportRequest({
+                ...TransportRequest,
+                requestForTime: event.target.value,
+              });
+            }}
+          />
+        </div>
+
+        <div className="mb-3">
+          <label htmlFor="routes" className="form-label">
+            Routes
+          </label>
+          <select
+            className="form-select"
+            id="routes"
+            aria-label="Default select example"
+            onChange={(event) => {
+              setTransportRequest({
+                ...TransportRequest,
+                route: event.target.value,
+              });
+            }}
+            required
+          >
+            <option value="Route1">Route 1</option>
+            <option value="Route2">Route 2</option>
+            <option value="Route3">Route 3</option>
+          </select>
+        </div>
+
+        <div className="mb-3">
+          <label htmlFor="serviceType" className="form-label">
+            Service Type
+          </label>
+          <select className="form-select" id="serviceType" required>
+            <option value="TransportRequest">Resort Transport</option>
+          </select>
+        </div>
+
+        <button type="submit" className="btn btn-primary" onClick={Create}>
+          Submit
+        </button>
+      </form>
+    </div>
+  );
+}

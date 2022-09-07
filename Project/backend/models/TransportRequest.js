@@ -4,16 +4,13 @@ const Schema = mongoose.Schema;
 //Transport_request (reqID, route, seatNo, noOfSeats)
 
 const TransportRequestSchema = new Schema({
-  reqId: { type: String, required: true, unique: true },
+  reqId: { type: String, required: true },
   route: { type: String, required: true },
-  seatNo: { type: Number, required: true },
+  // seatNo: { type: [Number], required: true },
   noOfSeats: { type: Number, required: true },
   requestForDate: {
-    type: Date,
+    type: String,
     required: true,
-    min: "2022-09-10",
-    max: "2022-09-20",
-    default: Date(),
   },
   requestForTime: { type: String, required: true },
 });

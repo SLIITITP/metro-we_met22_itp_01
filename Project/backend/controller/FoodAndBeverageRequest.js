@@ -43,7 +43,7 @@ const updateRequest = async (req, res) => {
   const body = req.body;
   try {
     await FoodAndBeverage.findByIdAndUpdate(id, body);
-    res.status(200).send("Successfully Updated");
+    res.status(200).send(body);
   } catch {
     (err) => {
       res.status(500).send(err.message);
@@ -53,12 +53,11 @@ const updateRequest = async (req, res) => {
 
 //To get a particular F&B Request based on _id
 const getOneRequest = async (req, res) => {
-  let id = req.params.id;
+  let userid = req.params.id;
 
-  const request = await FoodAndBeverage.findById(id)
+  const request = await FoodAndBeverage.findById(userid)
     .then((reqs) => {
-      let object = { status: "Fetched Request" };
-      res.status(200).send(object.status);
+      res.status(200).send(reqs);
     })
     .catch((err) => {
       console.log(err.message);

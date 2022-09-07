@@ -2,21 +2,19 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import getFoodAndBeverage from "./getFoodAndBeverage";
 import { Container } from "../js/Container";
-import "../../../index.css";
+import "../../../../index.css";
+import GetOneReq from "./getOneRequest";
 import Trigger from "../Component/popOver";
 
 export default function ShowFoodAndBeverage() {
+  var color = "black";
   const fAndBList = getFoodAndBeverage();
+
+  //For the search button
   const [search, setSearch] = useState("");
-  const [FoodAndBeverage, setFoodAndBeverage] = useState({
-    reqId: "1",
-    amount: 0,
-    foodItemId: "01",
-    requestForDate: "",
-    requestForTime: "",
-    notes: "",
-    status: "Ongoing",
-  });
+
+  //To store all details in FoodAndBeverage and update and display data
+  const [FoodAndBeverage, setFoodAndBeverage] = useState({});
 
   let i = 0;
   const OnSubmit = (event, id) => {
@@ -26,6 +24,8 @@ export default function ShowFoodAndBeverage() {
       }
     }
 
+    //Setting up FoodAndBeverage so that we can update it using the update Route
+    setFoodAndBeverage(fAndBList[i]);
     FoodAndBeverage.notes = event.target.notes.value;
     FoodAndBeverage.requestForDate = event.target.date.value;
     FoodAndBeverage.requestForTime = event.target.time.value;
@@ -55,6 +55,33 @@ export default function ShowFoodAndBeverage() {
       });
   }
 
+  const [fAndBCancel, setfAndBCancel] = useState({});
+
+  //To cancel an ongoing request
+  function CancelRequest(id) {
+    <GetOneReq id={id} />;
+    setfAndBCancel(GetOneReq);
+
+    fAndBCancel.status = "Cancelled";
+
+    axios
+      .post(
+        "http://localhost:8070/customerService/foodAndBeverageRequest/update/" +
+          id,
+        fAndBCancel
+      )
+      .then((info) => {
+        console.log(info);
+        alert("Update Successful");
+      })
+      .catch((err) => {
+        console.log(err.message);
+      });
+  }
+  function changeColor(data) {
+    if (data === "Cancelled") color = "red";
+    else if (data === "Ongoing") color = "#0d6efd";
+  }
   return (
     <div
       className="container"
@@ -82,7 +109,7 @@ export default function ShowFoodAndBeverage() {
             class="form-control mr-sm-2"
             type="search"
             id="search"
-            placeholder="Search"
+            placeholder="Search Notes"
             aria-label="Search"
           />
 
@@ -120,7 +147,7 @@ export default function ShowFoodAndBeverage() {
                   }
                 })
                 .map((val) => (
-                  <tr key={val._id}>
+                  <tr key={val._id} onChange={changeColor(val.status)}>
                     <td scope="row">{val.foodItemId}</td>
                     <td>{val.amount}</td>
                     <td>{val.requestForDate}</td>
@@ -128,20 +155,23 @@ export default function ShowFoodAndBeverage() {
                     <td>
                       <Trigger msg={val.notes} />
                     </td>
-                    <td>{val.status}</td>
+
+                    <td style={{ color: color }}>{val.status}</td>
                     <td>
                       <div
                         className="container"
                         style={{
-                          width: "80px",
+                          width: "100px",
                         }}
                       >
-                        <Container
-                          onSubmit={(e) => {
-                            OnSubmit(e, val._id);
-                          }}
-                        />
-
+                        {/* To show the edit button only if val.status==="Ongoing" */}
+                        {val.status === "Ongoing" && (
+                          <Container
+                            onSubmit={(e) => {
+                              OnSubmit(e, val._id);
+                            }}
+                          />
+                        )}
                         <button
                           type="button"
                           style={{
@@ -154,6 +184,22 @@ export default function ShowFoodAndBeverage() {
                         >
                           <i className="bi bi-trash-fill"></i>
                         </button>
+
+                        {/* To show modify button only when status is ongoing */}
+                        {(val.status === "Ongoing" ||
+                          val.status === "Completed") && (
+                          <button
+                            type="button"
+                            className="close"
+                            aria-label="Close"
+                            onClick={(e) => {
+                              CancelRequest(val._id);
+                              e.preventDefault();
+                            }}
+                          >
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                        )}
                       </div>
                     </td>
                   </tr>

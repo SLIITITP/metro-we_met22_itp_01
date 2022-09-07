@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-function SideNavigationFoodAndBeverage() {
+function SideNavigationTransport() {
   return (
     <div
       className="container"
@@ -15,8 +15,6 @@ function SideNavigationFoodAndBeverage() {
         marginLeft: "20px",
         marginLeft: "5px",
         backgroundColor: "white",
-        // "background-color": "#f1f1f1",
-        // border: "1px solid #555",
         listStyleType: "none",
         alignItems: "center",
         zIndex: "50",
@@ -28,7 +26,6 @@ function SideNavigationFoodAndBeverage() {
           id="v-pills-tab"
           role="tablist"
           aria-orientation="vertical"
-          style={{ backgroundColor: "white" }}
         >
           <Link
             to="/customerService"
@@ -39,14 +36,13 @@ function SideNavigationFoodAndBeverage() {
             }}
           >
             <button
-              className="nav-link active"
-              id="v-pills-home-tab"
+              className="nav-link"
+              id="v-pills-profile-tab"
               data-bs-toggle="pill"
-              data-bs-target="#v-pills-home"
+              data-bs-target="#v-pills-profile"
               type="button"
               role="tab"
-              aria-controls="v-pills-home"
-              aria-selected="true"
+              aria-controls="v-pills-profile"
               style={{ width: "100%" }}
             >
               Food & Beverage
@@ -76,7 +72,7 @@ function SideNavigationFoodAndBeverage() {
           </Link>
 
           <Link
-            to="/customerService"
+            to="/customerService/transport"
             style={{
               textDecoration: "none",
               color: "black",
@@ -84,14 +80,14 @@ function SideNavigationFoodAndBeverage() {
             }}
           >
             <button
-              className="nav-link"
-              id="v-pills-profile-tab"
+              className="nav-link active"
+              id="v-pills-home-tab"
               data-bs-toggle="pill"
-              data-bs-target="#v-pills-profile"
+              data-bs-target="#v-pills-home"
               type="button"
               role="tab"
-              aria-controls="v-pills-profile"
-              aria-selected="false"
+              aria-controls="v-pills-home"
+              aria-selected="true"
               style={{ width: "100%" }}
             >
               Transport
@@ -210,7 +206,7 @@ function SideNavigationFoodAndBeverage() {
             ...
           </div>
           <div className="d-flex" style={{ height: "230px" }}>
-            <div className="vr"></div>
+            <div class="vr"></div>
           </div>
         </div>
       </div>
@@ -218,4 +214,4 @@ function SideNavigationFoodAndBeverage() {
   );
 }
 
-export { SideNavigationFoodAndBeverage };
+export { SideNavigationTrainer };

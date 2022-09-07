@@ -7,11 +7,11 @@ const Schema = mongoose.Schema;
 //   today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
 
 const requestSchema = new Schema({
-  reqId: { type: String, require: true, unique: true },
-  custId: { type: String, required: true, unique: true },
+  reqId: { type: String, require: true },
+  custId: { type: String, required: true },
   serviceType: { type: String, required: true },
-  requestedOn: { type: Date, required: true, default: Date() },
-  requestedtime: { type: String, required: true, default: "00:00" },
+  requestedOn: { type: String, required: true },
+  requestedtime: { type: String, required: true },
   roomId: { type: Number, required: true },
 });
 

@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-function SideNavigationTrainer() {
+function SideNavigationFoodAndBeverage() {
   return (
     <div
       className="container"
@@ -15,6 +15,8 @@ function SideNavigationTrainer() {
         marginLeft: "20px",
         marginLeft: "5px",
         backgroundColor: "white",
+        // "background-color": "#f1f1f1",
+        // border: "1px solid #555",
         listStyleType: "none",
         alignItems: "center",
         zIndex: "50",
@@ -26,31 +28,10 @@ function SideNavigationTrainer() {
           id="v-pills-tab"
           role="tablist"
           aria-orientation="vertical"
+          style={{ backgroundColor: "white" }}
         >
           <Link
             to="/customerService"
-            style={{
-              textDecoration: "none",
-              color: "black",
-              FontFace: "bold",
-            }}
-          >
-            <button
-              className="nav-link"
-              id="v-pills-profile-tab"
-              data-bs-toggle="pill"
-              data-bs-target="#v-pills-profile"
-              type="button"
-              role="tab"
-              aria-controls="v-pills-profile"
-              style={{ width: "100%" }}
-            >
-              Food & Beverage
-            </button>
-          </Link>
-
-          <Link
-            to="/customerService/trainer"
             style={{
               textDecoration: "none",
               color: "black",
@@ -68,12 +49,34 @@ function SideNavigationTrainer() {
               aria-selected="true"
               style={{ width: "100%" }}
             >
+              Food & Beverage
+            </button>
+          </Link>
+
+          <Link
+            to="/customerService/trainer"
+            style={{
+              textDecoration: "none",
+              color: "black",
+              FontFace: "bold",
+            }}
+          >
+            <button
+              className="nav-link"
+              id="v-pills-profile-tab"
+              data-bs-toggle="pill"
+              data-bs-target="#v-pills-profile"
+              type="button"
+              role="tab"
+              aria-controls="v-pills-profile"
+              style={{ width: "100%" }}
+            >
               Trainer
             </button>
           </Link>
 
           <Link
-            to="/customerService"
+            to="/customerService/transport"
             style={{
               textDecoration: "none",
               color: "black",
@@ -207,7 +210,7 @@ function SideNavigationTrainer() {
             ...
           </div>
           <div className="d-flex" style={{ height: "230px" }}>
-            <div class="vr"></div>
+            <div className="vr"></div>
           </div>
         </div>
       </div>
@@ -215,4 +218,4 @@ function SideNavigationTrainer() {
   );
 }
 
-export { SideNavigationTrainer };
+export { SideNavigationFoodAndBeverage };
