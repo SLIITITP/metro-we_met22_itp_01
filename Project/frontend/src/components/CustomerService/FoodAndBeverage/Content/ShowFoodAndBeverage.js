@@ -99,10 +99,6 @@ export default function ShowFoodAndBeverage() {
       >
         <form
           class="form-inline my-2 my-lg-0"
-          style={{
-            width: "100%",
-            marginLeft: "-20px",
-          }}
           onSubmit={(e) => {
             setSearch(e.target.search.value);
             e.preventDefault();
@@ -123,15 +119,7 @@ export default function ShowFoodAndBeverage() {
         </form>
       </div>
 
-      <table
-        className="table"
-        style={{
-          width: "100%",
-          overflow: "scroll",
-          "white-space": "nowrap",
-          marginLeft: "-20px",
-        }}
-      >
+      <table className="table" style={{ width: "100%" }}>
         <thead>
           <tr style={{ backgroundColor: "#0d6efd", color: "white" }}>
             <th scope="col">ItemID</th>
