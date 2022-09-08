@@ -37,7 +37,7 @@ export default function ShowFoodAndBeverage() {
         FoodAndBeverage
       )
       .then(() => {
-        alert("Update Successful");
+        alert("Request Updated");
       })
       .catch((err) => {
         console.log(err.message);
@@ -72,7 +72,7 @@ export default function ShowFoodAndBeverage() {
       )
       .then((info) => {
         console.log(info);
-        alert("Update Successful");
+        alert("Request Cancelled");
       })
       .catch((err) => {
         console.log(err.message);
@@ -122,7 +122,7 @@ export default function ShowFoodAndBeverage() {
       <table className="table" style={{ width: "100%" }}>
         <thead>
           <tr style={{ backgroundColor: "#0d6efd", color: "white" }}>
-            <th scope="col">ItemID</th>
+            <th scope="col">ReqID</th>
             <th scope="col">Amount</th>
             <th scope="col" style={{ width: "100%" }}>
               Date
@@ -146,7 +146,7 @@ export default function ShowFoodAndBeverage() {
                 })
                 .map((val) => (
                   <tr key={val._id} onChange={changeColor(val.status)}>
-                    <td scope="row">{val.foodItemId}</td>
+                    <td scope="row">{val.reqId}</td>
                     <td>{val.amount}</td>
                     <td>{val.requestForDate}</td>
                     <td>{val.requestForTime}</td>
@@ -183,7 +183,7 @@ export default function ShowFoodAndBeverage() {
                           <i className="bi bi-trash-fill"></i>
                         </button>
 
-                        {/* To show modify button only when status is ongoing */}
+                        {/* To show cancel Request button only when status is ongoing */}
                         {(val.status === "Ongoing" ||
                           val.status === "Completed") && (
                           <button
@@ -192,7 +192,7 @@ export default function ShowFoodAndBeverage() {
                             aria-label="Close"
                             onClick={(e) => {
                               CancelRequest(val._id);
-                              e.preventDefault();
+                              window.location.reload(false);
                             }}
                           >
                             <span aria-hidden="true">&times;</span>

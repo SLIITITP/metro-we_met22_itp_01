@@ -92,7 +92,10 @@ export default function CreateFoodAndBeverageCustomer() {
         position: "sticky",
       }}
     >
-      <form style={{ marginTop: "100px", marginLeft: "-175px", width: "100%" }}>
+      <form
+        style={{ marginTop: "100px", marginLeft: "-175px", width: "100%" }}
+        onSubmit={Create}
+      >
         <h1 className="display-6" style={{ marginBottom: "20px" }}>
           Food & Beverage Request
         </h1>
@@ -168,7 +171,7 @@ export default function CreateFoodAndBeverageCustomer() {
             }}
           />
         </div>
-        <button type="submit" className="btn btn-primary" onClick={Create}>
+        <button type="submit" className="btn btn-primary">
           Submit
         </button>
       </form>

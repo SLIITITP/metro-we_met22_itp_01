@@ -10,10 +10,7 @@ export default function CreateTransportRequestCustomer() {
 
   const [TransportRequest, setTransportRequest] = useState({
     reqId: "1",
-    route: "",
-    noOfSeats: 0,
-    requestForDate: "",
-    requestForTime: "",
+    status: "Ongoing",
   });
 
   //Taking only the date from Date()
@@ -67,7 +64,7 @@ export default function CreateTransportRequestCustomer() {
         window.location.reload(false);
       })
       .catch((err) => {
-        alert(err);
+        alert(err.message);
         console.log(err);
       });
 
@@ -81,11 +78,6 @@ export default function CreateTransportRequestCustomer() {
         alert(err.message);
         console.log(err);
       });
-
-    // To clear out the form fields
-
-    document.getElementById("schedule").value = "";
-    document.getElementById("time").value = "";
   }
 
   return (
@@ -96,7 +88,10 @@ export default function CreateTransportRequestCustomer() {
         position: "sticky",
       }}
     >
-      <form style={{ marginTop: "100px", marginLeft: "-175px", width: "100%" }}>
+      <form
+        style={{ marginTop: "100px", marginLeft: "-175px", width: "100%" }}
+        onSubmit={Create}
+      >
         <h1 className="display-6" style={{ marginBottom: "20px" }}>
           Transport Request
         </h1>
@@ -147,18 +142,39 @@ export default function CreateTransportRequestCustomer() {
             className="form-select"
             id="routes"
             aria-label="Default select example"
+            required
             onChange={(event) => {
               setTransportRequest({
                 ...TransportRequest,
                 route: event.target.value,
               });
             }}
-            required
           >
             <option value="Route1">Route 1</option>
             <option value="Route2">Route 2</option>
             <option value="Route3">Route 3</option>
           </select>
+        </div>
+
+        <div className="mb-3">
+          <label htmlFor="noOfSeats" className="form-label">
+            Number Of Seats
+          </label>
+          <input
+            type="number"
+            min="1"
+            max="5"
+            id="seats"
+            name="seats"
+            className="form-control"
+            required
+            onChange={(event) => {
+              setTransportRequest({
+                ...TransportRequest,
+                noOfSeats: event.target.value,
+              });
+            }}
+          />
         </div>
 
         <div className="mb-3">
@@ -170,7 +186,7 @@ export default function CreateTransportRequestCustomer() {
           </select>
         </div>
 
-        <button type="submit" className="btn btn-primary" onClick={Create}>
+        <button type="submit" className="btn btn-primary">
           Submit
         </button>
       </form>
