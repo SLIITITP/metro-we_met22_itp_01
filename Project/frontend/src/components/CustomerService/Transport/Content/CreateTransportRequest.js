@@ -36,6 +36,7 @@ export default function CreateTransportRequestCustomer() {
     requestedtime: "",
     roomId: "1",
   });
+
   Request.requestedOn = fecha;
   Request.requestedtime = time;
 
@@ -51,8 +52,20 @@ export default function CreateTransportRequestCustomer() {
     Request.reqId = reqIdString;
   }
 
+  //Function to set Time based on Route
+  function setTransport(data) {
+    if (data === "Route1") TransportRequest.departureTime = "08:00";
+    else if (data === "Route2") TransportRequest.departureTime = "16:00";
+    else if (data === "Route3") TransportRequest.departureTime = "14:00";
+
+    document.getElementById("time").value = TransportRequest.departureTime;
+  }
+
+  //To create a record in the table
   function Create(e) {
     e.preventDefault();
+
+    TransportRequest.departureTime = document.getElementById("time").value;
 
     axios
       .post(
@@ -116,25 +129,6 @@ export default function CreateTransportRequestCustomer() {
         </div>
 
         <div className="mb-3">
-          <label htmlFor="requestForTime" className="form-label">
-            Pick a time to deliver
-          </label>
-          <input
-            type="time"
-            id="time"
-            name="time"
-            className="form-control"
-            required
-            onChange={(event) => {
-              setTransportRequest({
-                ...TransportRequest,
-                requestForTime: event.target.value,
-              });
-            }}
-          />
-        </div>
-
-        <div className="mb-3">
           <label htmlFor="routes" className="form-label">
             Routes
           </label>
@@ -148,12 +142,28 @@ export default function CreateTransportRequestCustomer() {
                 ...TransportRequest,
                 route: event.target.value,
               });
+              setTransport(event.target.value);
             }}
           >
+            <option value="">Choose Route</option>
             <option value="Route1">Route 1</option>
             <option value="Route2">Route 2</option>
             <option value="Route3">Route 3</option>
           </select>
+        </div>
+
+        <div className="mb-3">
+          <label htmlFor="departureTime" className="form-label">
+            Departure Time
+          </label>
+          <input
+            type="text"
+            id="time"
+            name="time"
+            className="form-control"
+            required
+            readOnly
+          />
         </div>
 
         <div className="mb-3">

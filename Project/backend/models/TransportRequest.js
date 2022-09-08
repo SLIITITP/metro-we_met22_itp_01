@@ -6,13 +6,12 @@ const Schema = mongoose.Schema;
 const TransportRequestSchema = new Schema({
   reqId: { type: String, required: true },
   route: { type: String, required: true },
-  // seatNo: { type: [Number], required: true },
   noOfSeats: { type: Number, required: true },
   requestForDate: {
     type: String,
     required: true,
   },
-  requestForTime: { type: String, required: true },
+  departureTime: { type: String, required: true },
   status: { type: String, required: true }, //Booked, Cancelled or complete
 });
 

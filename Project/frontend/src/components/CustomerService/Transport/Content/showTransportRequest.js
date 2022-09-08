@@ -26,9 +26,7 @@ export default function ShowTransportRequest() {
 
     //Setting up TransportRequest so that we can update it using the update Route
     setTransportRequest(transportList[i]);
-    TransportRequest.notes = event.target.notes.value;
-    TransportRequest.requestForDate = event.target.date.value;
-    TransportRequest.requestForTime = event.target.time.value;
+    TransportRequest.noOfSeats = event.target.numberOfSeats.value;
 
     axios
       .post(
@@ -43,6 +41,7 @@ export default function ShowTransportRequest() {
       });
   };
 
+  //To delete a transport request created
   function DeleteItem(id) {
     axios
       .delete("http://localhost:8070/customerService/transportRequest/" + id)
@@ -98,14 +97,16 @@ export default function ShowTransportRequest() {
           onSubmit={(e) => {
             setSearch(e.target.search.value);
             e.preventDefault();
-            e.window.location.reload(false);
+            // window.location.reload(false);
           }}
         >
           <input
             class="form-control mr-sm-2"
-            type="search"
+            type="text"
+            onFocus={(e) => (e.target.type = "date")}
+            onBlur={(e) => (e.target.type = "text")}
             id="search"
-            placeholder="Search Notes"
+            placeholder="Search on Booking Date"
             aria-label="Search"
           />
 
@@ -133,7 +134,9 @@ export default function ShowTransportRequest() {
                 .filter((val) => {
                   if (search === "") return val;
                   else if (
-                    val.notes.toLowerCase().includes(search.toLowerCase())
+                    val.requestForDate
+                      .toLowerCase()
+                      .includes(search.toLowerCase())
                   ) {
                     return val;
                   }
@@ -143,7 +146,7 @@ export default function ShowTransportRequest() {
                     <td scope="row">{val.reqId}</td>
                     <td>{val.route}</td>
                     <td>{val.requestForDate}</td>
-                    <td>{val.requestForTime}</td>
+                    <td>{val.departureTime}</td>
                     <td>{val.noOfSeats}</td>
                     <td style={{ color: color }}>{val.status}</td>
 
