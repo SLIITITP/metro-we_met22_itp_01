@@ -7,8 +7,12 @@ import TrainerCustomer from "./components/CustomerService/FoodAndBeverage/Conten
 import ShowFoodAndBeverage from "./components/CustomerService/FoodAndBeverage/Content/ShowFoodAndBeverage";
 import TransportCustomer from "./components/CustomerService/Transport/Content/CreateTransportRequest";
 import { SideNavigationTransport } from "./components/CustomerService/Transport/Component/SideNavigationTransport";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import ShowTransportRequest from "./components/CustomerService/Transport/Content/showTransportRequest";
+import ComplaintCustomer from "./components/CustomerService/Complaint/Content/CreateComplaint";
+import { SideNavigationComplaint } from "./components/CustomerService/Complaint/Component/SideNavigationComplaint";
+import ShowComplaintRequest from "./components/CustomerService/Complaint/Content/showComplaint";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+
 function App() {
   return (
     <Router>
@@ -45,6 +49,19 @@ function App() {
                 <TransportCustomer />
                 <ShowTransportRequest />
                 <SideNavigationTransport />
+              </>
+            }
+          />
+        </Routes>
+
+        <Routes>
+          <Route
+            path="/customerService/complaint"
+            element={
+              <>
+                <ComplaintCustomer />
+                <ShowComplaintRequest />
+                <SideNavigationComplaint />
               </>
             }
           />

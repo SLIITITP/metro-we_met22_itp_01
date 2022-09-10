@@ -17,7 +17,7 @@ function PopoverPositionedExample(props) {
             </Popover>
           }
         >
-          <Button variant="btn btn-primary btn-sm">View Notes</Button>
+          <Button variant="btn btn-primary btn-sm">View Desc</Button>
         </OverlayTrigger>
       ))}
     </>

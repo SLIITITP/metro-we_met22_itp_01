@@ -1,36 +1,39 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import getTransportRequest from "./getTransportRequest";
+import getComplaintRequest from "./getComplaint";
 import { Container } from "../js/Container";
 import "../../../../index.css";
-import GetOneTransportRequest from "./getOneTransportRequest";
+import Trigger from "../Component/popOver";
+import GetOneComplaint from "./getOneComplaint";
 
-export default function ShowTransportRequest() {
+export default function ShowComplaintRequest() {
   var color = "black"; //for the status field in the table
-  const transportList = getTransportRequest();
+  const complaintList = getComplaintRequest();
 
   //For the search button
   const [search, setSearch] = useState("");
 
-  //To store all details in TransportRequest and update and display data
-  const [TransportRequest, setTransportRequest] = useState({});
+  //To store all details in ComplaintRequest and update and display data
+  const [ComplaintRequest, setComplaintRequest] = useState({});
 
   let i = 0;
   const OnSubmit = (event, id) => {
-    for (i; i < transportList.length; i++) {
-      if (transportList[i]._id == id) {
+    for (i; i < complaintList.length; i++) {
+      if (complaintList[i]._id == id) {
         break;
       }
     }
 
-    //Setting up TransportRequest so that we can update it using the update Route
-    setTransportRequest(transportList[i]);
-    TransportRequest.noOfSeats = event.target.numberOfSeats.value;
+    //Setting up ComplaintRequest so that we can update it using the update Route
+    setComplaintRequest(complaintList[i]);
+    ComplaintRequest.description = event.target.description.value;
+    ComplaintRequest.type = event.target.type.value;
+    ComplaintRequest.for = event.target.for.value;
 
     axios
       .post(
-        "http://localhost:8070/customerService/transportRequest/update/" + id,
-        TransportRequest
+        "http://localhost:8070/customerService/complaint/update/" + id,
+        ComplaintRequest
       )
       .then(() => {
         alert("Update Successful");
@@ -43,7 +46,7 @@ export default function ShowTransportRequest() {
   //To delete a transport request created
   function DeleteItem(id) {
     axios
-      .delete("http://localhost:8070/customerService/transportRequest/" + id)
+      .delete("http://localhost:8070/customerService/complaint/" + id)
       .then(() => {
         window.location.reload(false);
         alert("Record Deleted Successfully");
@@ -54,14 +57,14 @@ export default function ShowTransportRequest() {
 
   //To cancel an ongoing request
   function CancelRequest(id) {
-    <GetOneTransportRequest id={id} />;
-    setTransportCancel(GetOneTransportRequest);
+    <GetOneComplaint id={id} />;
+    setTransportCancel(GetOneComplaint);
 
     transportCancel.status = "Cancelled";
 
     axios
       .post(
-        "http://localhost:8070/customerService/transportRequest/update/" + id,
+        "http://localhost:8070/customerService/complaint/update/" + id,
         transportCancel
       )
       .then((info) => {
@@ -92,7 +95,7 @@ export default function ShowTransportRequest() {
         style={{ marginBottom: "12px", float: "left" }}
       >
         <form
-          class="form-inline my-2 my-lg-0"
+          className="form-inline my-2 my-lg-0"
           onSubmit={(e) => {
             setSearch(e.target.search.value);
             e.preventDefault();
@@ -100,17 +103,15 @@ export default function ShowTransportRequest() {
           }}
         >
           <input
-            class="form-control mr-sm-2"
-            type="text"
-            onFocus={(e) => (e.target.type = "date")}
-            onBlur={(e) => (e.target.type = "text")}
+            className="form-control mr-sm-2"
+            type="search"
             id="search"
-            placeholder="Search on Booking Date"
+            placeholder="Search Description"
             aria-label="Search"
           />
 
-          <button class="btn btn-primary my-2 my-sm-0" type="submit">
-            <i class="bi bi-search"></i>
+          <button className="btn btn-primary my-2 my-sm-0" type="submit">
+            <i className="bi bi-search"></i>
           </button>
         </form>
       </div>
@@ -118,35 +119,35 @@ export default function ShowTransportRequest() {
       <table className="table" style={{ width: "100%" }}>
         <thead>
           <tr style={{ backgroundColor: "#0d6efd", color: "white" }}>
-            <th scope="col">ReqID</th>
-            <th scope="col">Route</th>
+            <th scope="col">ID</th>
             <th scope="col">Date</th>
             <th scope="col">Time</th>
-            <th scope="col">Seats</th>
+            <th scope="col">Complaint</th>
+            <th scope="col">Description</th>
             <th scope="col">Status</th>
             <th scope="col">Action</th>
           </tr>
         </thead>
         <tbody>
-          {transportList
-            ? transportList
+          {complaintList
+            ? complaintList
                 .filter((val) => {
                   if (search === "") return val;
                   else if (
-                    val.requestForDate
-                      .toLowerCase()
-                      .includes(search.toLowerCase())
+                    val.description.toLowerCase().includes(search.toLowerCase())
                   ) {
                     return val;
                   }
                 })
                 .map((val) => (
                   <tr key={val._id} onChange={changeColor(val.status)}>
-                    <td scope="row">{val.reqId}</td>
-                    <td>{val.route}</td>
-                    <td>{val.requestForDate}</td>
-                    <td>{val.departureTime}</td>
-                    <td>{val.noOfSeats}</td>
+                    <td scope="row">{val.complaintId}</td>
+                    <td>{val.date}</td>
+                    <td>{val.time}</td>
+                    <td>{val.for}</td>
+                    <td>
+                      <Trigger msg={val.description} />
+                    </td>
                     <td style={{ color: color }}>{val.status}</td>
 
                     <td>
@@ -177,7 +178,7 @@ export default function ShowTransportRequest() {
                           <i className="bi bi-trash-fill"></i>
                         </button>
 
-                        {/* To show modify button only when status is ongoing */}
+                        {/* To show cancel button only when status is ongoing */}
                         {(val.status === "Ongoing" ||
                           val.status === "Completed") && (
                           <button
@@ -196,7 +197,7 @@ export default function ShowTransportRequest() {
                     </td>
                   </tr>
                 ))
-            : transportList}
+            : complaintList}
         </tbody>
       </table>
     </div>
