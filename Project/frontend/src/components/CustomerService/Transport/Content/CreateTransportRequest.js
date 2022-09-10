@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import axios from "axios";
-import getTransportRequest from "./getTransportRequest";
 import getRequest from "./getRequest";
 
 export default function CreateTransportRequestCustomer() {

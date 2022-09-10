@@ -156,7 +156,7 @@ export default function CreateComplaintCustomer() {
       setOther("");
     }
   }
-  console.log(ComplaintRequest.for);
+
   return (
     <div
       className="container"

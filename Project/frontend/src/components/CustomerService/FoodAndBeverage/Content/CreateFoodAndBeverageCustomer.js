@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import axios from "axios";
-import getFoodAndBeverage from "./getFoodAndBeverage";
 import getRequest from "./getRequest";
 export default function CreateFoodAndBeverageCustomer() {
   //For FoodAndBeverageRequest
