@@ -1,5 +1,5 @@
 import "./App.css";
-import { MainNavigation } from "./components/Navigation/MainNavigation";
+import { MainNavigation } from "./components/CustomerService/FoodAndBeverage/Component/MainNavigation";
 import { SideNavigationFoodAndBeverage } from "./components/CustomerService/FoodAndBeverage/Component/SideNavigationFoodAndBeverage";
 import FoodAndBeverageCustomer from "./components/CustomerService/FoodAndBeverage/Content/CreateFoodAndBeverageCustomer";
 import { SideNavigationTrainer } from "./components/CustomerService/FoodAndBeverage/Component/SideNavigationTrainer";
