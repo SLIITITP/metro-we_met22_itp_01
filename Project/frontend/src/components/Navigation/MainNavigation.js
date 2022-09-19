@@ -51,6 +51,22 @@ function MainNavigation() {
             </button>
           </Link>
         </li>
+      <li className="nav-item" role="presentation">
+          <Link to="/Parking" style={{ textDecoration: "none" }}>
+            <button
+              className="nav-link"
+              id="profile-tab"
+              data-bs-toggle="tab"
+              data-bs-target="#profile-tab-pane"
+              type="button"
+              role="tab"
+              aria-controls="profile-tab-pane"
+              aria-selected="false"
+            >
+              Parking Management {/* <font color="grey">Create Student</font>*/}
+            </button>
+          </Link>
+        </li>
       </ul>
       <div className="tab-content" id="myTabContent">
         <div
