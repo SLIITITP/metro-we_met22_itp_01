@@ -43,7 +43,7 @@ export default function ShowComplaintRequest() {
       });
   };
 
-  //To delete a transport request created
+  //To delete a Complaint request created
   function DeleteItem(id) {
     axios
       .delete("http://localhost:8070/customerService/complaint/" + id)
@@ -53,19 +53,19 @@ export default function ShowComplaintRequest() {
       });
   }
 
-  const [transportCancel, setTransportCancel] = useState({});
+  const [ComplaintCancel, setComplaintCancel] = useState({});
 
   //To cancel an ongoing request
   function CancelRequest(id) {
     <GetOneComplaint id={id} />;
-    setTransportCancel(GetOneComplaint);
+    setComplaintCancel(GetOneComplaint);
 
-    transportCancel.status = "Cancelled";
+    ComplaintCancel.status = "Cancelled";
 
     axios
       .post(
         "http://localhost:8070/customerService/complaint/update/" + id,
-        transportCancel
+        ComplaintCancel
       )
       .then((info) => {
         console.log(info);

@@ -2,7 +2,7 @@ import Button from "react-bootstrap/Button";
 import OverlayTrigger from "react-bootstrap/OverlayTrigger";
 import Popover from "react-bootstrap/Popover";
 
-function PopoverPositionedExample(props) {
+function PopoverPosition(props) {
   return (
     <>
       {["bottom"].map((placement) => (
@@ -17,11 +17,11 @@ function PopoverPositionedExample(props) {
             </Popover>
           }
         >
-          <Button variant="btn btn-primary btn-sm">View Desc</Button>
+          <Button variant="btn btn-primary btn-sm">Expand</Button>
         </OverlayTrigger>
       ))}
     </>
   );
 }
 
-export default PopoverPositionedExample;
+export default PopoverPosition;

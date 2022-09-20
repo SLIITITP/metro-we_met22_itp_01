@@ -76,7 +76,7 @@ function App() {
             element={
               <>
                 <AmenityCustomer />
-                {/* <ShowAmenityRequest /> */}
+                <ShowAmenityRequest />
                 <SideNavigationAmenity />
               </>
             }

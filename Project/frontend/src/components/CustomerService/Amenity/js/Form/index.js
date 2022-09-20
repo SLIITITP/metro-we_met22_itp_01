@@ -1,123 +1,126 @@
 import React, { useState } from "react";
 
 export const Form = ({ onSubmit }) => {
-  const [opt1, setopt1] = useState();
-  const [opt2, setopt2] = useState();
-  const [opt3, setopt3] = useState();
-  const [opt4, setopt4] = useState();
-  const [other, setOther] = useState();
+  const [AmenityRequest1, setAmenityRequest1] = useState({
+    reqId: "1",
+    status: "Ongoing",
+    requestedItems: "",
+  });
 
-  function setOptions(serviceType) {
-    if (serviceType === "RestaurantRelated") {
-      document.getElementById("opt1").value = "Order Mixup";
-      document.getElementById("opt2").value = "Incorrect Temperature";
-      document.getElementById("opt3").value = "Rude Servers";
-      document.getElementById("opt4").value = "Poor Hygiene";
-      document.getElementById("other").value = "Other";
-      setopt1("Order Mixup");
-      setopt2("Incorrect Temperature");
-      setopt3("Rude Servers");
-      setopt4("Poor Hygiene");
-      setOther("Other");
-    } else if (serviceType === "TransportRelated") {
-      document.getElementById("opt1").value = "Unrealiable Service"; // as in dangerous driving
-      document.getElementById("opt2").value = "Overcrowded";
-      document.getElementById("opt3").value = "Rude Transport Staffs";
-      document.getElementById("opt4").value = "Poor Vehicle Maintenance";
-      document.getElementById("other").value = "Other";
-      setopt1("Unreliable Service"); // as in dangerous driving
-      setopt2("Overcrowded");
-      setopt3("Rude Transport Staffs");
-      setopt4("Poor Vehicle Maintenance");
-      setOther("Other");
-    } else if (serviceType === "GymRelated") {
-      document.getElementById("opt1").value =
-        "Lack Of Professionalism (Trainer)"; // as in inapporopraite conduct
-      document.getElementById("opt2").value = "Broken/Faulty Equipments";
-      document.getElementById("opt3").value = "Overcrowded";
-      document.getElementById("opt4").value =
-        "Poor Maintenance/Unclean Environment";
-      document.getElementById("other").value = "Other";
+  var itemList1 = "";
 
-      setopt1("Lack Of Professionalism (Trainer)"); // as in inapporopraite conduct
-      setopt2("Broken/Faulty Equipments");
-      setopt3("Overcrowded");
-      setopt4("Poor Maintenance/Unclean Environment");
-      setOther("Other");
-    } else if (serviceType === "Other") {
-      document.getElementById("opt1").value = "Unprofessional Staff";
-      document.getElementById("opt2").value = "Poor Service";
-      document.getElementById("opt3").value = "Lack of Room Amenities";
-      document.getElementById("opt4").value = "Damaged Items";
-      setopt1("Unprofessional Staff"); // as in dangerous driving
-      setopt2("Poor Service");
-      setopt3("Lack of Room Amenities");
-      setopt4("Damaged Items");
-      setOther("Other");
-    } else if (serviceType === "") {
-      //For others
-      setopt1("");
-      setopt2("");
-      setopt3("");
-      setopt4("");
-      setOther("");
-    }
+  function EnterReq() {
+    if (itemList1 === "")
+      itemList1 = document.getElementById("item1").value + ", \n";
+    else itemList1 += document.getElementById("item1").value + ", \n";
+
+    document.getElementById("requestedItem1").value = itemList1;
+
+    var a = AmenityRequest1;
+    a.requestedItems = itemList1;
+    setAmenityRequest1(a);
+  }
+
+  function ClearList() {
+    document.getElementById("requestedItem1").value = "";
+    itemList1 = "";
   }
 
   return (
     <form onSubmit={onSubmit}>
       <div className="form-group">
-        <label htmlFor="type" className="form-label">
-          Complaint Type
+        <label htmlFor="item1" className="form-label">
+          Item
         </label>
         <select
           className="form-select"
-          id="type"
-          aria-label="Default select example"
-          required
-          onChange={(e) => setOptions(e.target.value)}
-        >
-          <option value="">Choose Complaint Type</option>
-          <option value="RestaurantRelated">Restaurant Related</option>
-          <option value="TransportRelated">Transport Related</option>
-          <option value="GymRelated">Gym Related</option>
-          <option value="Other">Other</option>
-        </select>
-      </div>
-
-      <div className="form-group">
-        <label htmlFor="for" className="form-label">
-          Complaint for
-        </label>
-        <select
-          className="form-select"
-          id="for"
+          id="item1"
           aria-label="Default select example"
           required
         >
-          <option value="" selected>
-            Complaint For
+          <option value="">Select Item into List</option>
+          <option
+            value=""
+            style={{ fontWeight: "bold", fontStyle: "italic" }}
+            disabled
+          >
+            --- Furniture Items ---
           </option>
-          <option id="opt1">{opt1}</option>
-          <option id="opt2">{opt2}</option>
-          <option id="opt3">{opt3}</option>
-          <option id="opt4">{opt4}</option>
-          <option id="other">{other}</option>
+          <option value="Extra Desk">Extra Desk</option>
+          <option value="Extra Bed">Extra Bed</option>
+          <option value="Extra Table">Extra Table</option>
+          <option value="Clothes Stand">Clothes Stand</option>
+          <option
+            value=""
+            style={{ fontWeight: "bold", fontStyle: "italic" }}
+            disabled
+          >
+            --- Personal Care ---
+          </option>
+          <option value="Combs">Combs</option>
+          <option value="Shaving Cream">Shaving Cream</option>
+          <option value="Razor">Razor</option>
+          <option value="Hair Dryer">Hair Dryer</option>
+          <option
+            value=""
+            style={{ fontWeight: "bold", fontStyle: "italic" }}
+            disabled
+          >
+            --- Bath Needs ---
+          </option>
+          <option value="Bath Caps">Bath Caps</option>
+          <option value="Towels">Towels</option>
+          <option value="Bath Robe">Bath Robe</option>
+          <option value="Slipper">Slipper</option>
         </select>
       </div>
 
       <div className="form-group">
-        <label htmlFor="description" className="form-label">
-          Description
+        <button
+          type="button"
+          className="btn btn-outline-success"
+          onClick={EnterReq}
+        >
+          Add
+          <i className="bi bi-plus-circle" style={{ marginLeft: "5px" }}></i>
+        </button>
+        &emsp;
+        <button
+          type="button"
+          className="btn btn-outline-danger"
+          onClick={ClearList}
+        >
+          Clear List
+          <i className="bi bi-x-circle" style={{ marginLeft: "5px" }}></i>
+        </button>
+      </div>
+
+      <div className="form-group">
+        <label htmlFor="requestedItem" className="form-label">
+          Requested Items
         </label>
         <textarea
           className="form-control"
-          id="description"
-          name="description"
-          rows="4"
+          id="requestedItem1"
+          name="requestedItem1"
+          rows="3"
+          cols="50"
+          placeholder="No Items Selected"
+          disabled
+        />
+      </div>
+
+      <div className="form-group">
+        <label htmlFor="note" className="form-label">
+          Notes
+        </label>
+        <textarea
+          className="form-control"
+          id="note"
+          name="note"
+          rows="6"
           cols="50"
           placeholder="Let us know more so that we can help you"
-          required
         />
       </div>
 

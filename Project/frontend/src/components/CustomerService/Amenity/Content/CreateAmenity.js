@@ -89,8 +89,8 @@ export default function CreateAmenityCustomer() {
   var itemList = "";
   function EnterReq() {
     if (itemList === "")
-      itemList = document.getElementById("item").value + "\n";
-    else itemList += document.getElementById("item").value + "\n";
+      itemList = document.getElementById("item").value + ", \n";
+    else itemList += document.getElementById("item").value + ", \n";
 
     document.getElementById("requestedItem").value = itemList;
 
@@ -101,6 +101,7 @@ export default function CreateAmenityCustomer() {
 
   function ClearList() {
     document.getElementById("requestedItem").value = "";
+    itemList = "";
   }
 
   return (
@@ -120,7 +121,7 @@ export default function CreateAmenityCustomer() {
         </h1>
 
         <div className="mb-3">
-          <label htmlFor="type" className="form-label">
+          <label htmlFor="item" className="form-label">
             Item
           </label>
           <select
@@ -198,7 +199,7 @@ export default function CreateAmenityCustomer() {
             rows="3"
             cols="50"
             placeholder="No Items Selected"
-            required
+            disabled
             onChange={(event) => {
               setAmenityRequest({
                 ...AmenityRequest,

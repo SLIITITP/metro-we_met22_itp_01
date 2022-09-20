@@ -3,37 +3,37 @@ import axios from "axios";
 import getAllAmenityRequest from "./getAmenity";
 import { Container } from "../js/Container";
 import "../../../../index.css";
-import Trigger from "../Component/popOver";
+import PopOver from "../Component/popOver";
 import GetOneAmenity from "./getOneAmenity";
 
-export default function ShowComplaintRequest() {
-  var color = "black"; //for the status field in the table
-  const complaintList = getAllAmenityRequest();
+export default function ShowAmenityRequest() {
+  var color = "#0d6efd"; //for the status field in the table
+  const amenityList = getAllAmenityRequest();
 
   //For the search button
   const [search, setSearch] = useState("");
 
-  //To store all details in ComplaintRequest and update and display data
-  const [ComplaintRequest, setComplaintRequest] = useState({});
+  //To store all details in AmenityRequest and update and display data
+  const [AmenityRequest, setAmenityRequest] = useState({});
 
   let i = 0;
   const OnSubmit = (event, id) => {
-    for (i; i < complaintList.length; i++) {
-      if (complaintList[i]._id == id) {
+    for (i; i < amenityList.length; i++) {
+      if (amenityList[i]._id == id) {
         break;
       }
     }
 
-    //Setting up ComplaintRequest so that we can update it using the update Route
-    setComplaintRequest(complaintList[i]);
-    ComplaintRequest.description = event.target.description.value;
-    ComplaintRequest.type = event.target.type.value;
-    ComplaintRequest.for = event.target.for.value;
+    //Setting up AmenityRequest so that we can update it using the update Route
+    setAmenityRequest(amenityList[i]);
+    AmenityRequest.note = event.target.note.value;
+    AmenityRequest.requestedItems = event.target.requestedItem1.value;
 
     axios
       .post(
-        "http://localhost:8070/customerService/complaint/update/" + id,
-        ComplaintRequest
+        "http://localhost:8070/customerService/roomNecessityRequest/update/" +
+          id,
+        AmenityRequest
       )
       .then(() => {
         alert("Update Successful");
@@ -43,29 +43,32 @@ export default function ShowComplaintRequest() {
       });
   };
 
-  //To delete a transport request created
+  //To delete a Amenity request created
   function DeleteItem(id) {
     axios
-      .delete("http://localhost:8070/customerService/complaint/" + id)
+      .delete(
+        "http://localhost:8070/customerService/roomNecessityRequest/" + id
+      )
       .then(() => {
         window.location.reload(false);
         alert("Record Deleted Successfully");
       });
   }
 
-  const [transportCancel, setTransportCancel] = useState({});
+  const [AmenityCancel, setAmenityCancel] = useState({});
 
   //To cancel an ongoing request
   function CancelRequest(id) {
     <GetOneAmenity id={id} />;
-    setTransportCancel(GetOneAmenity);
+    setAmenityCancel(GetOneAmenity);
 
-    transportCancel.status = "Cancelled";
+    AmenityCancel.status = "Cancelled";
 
     axios
       .post(
-        "http://localhost:8070/customerService/complaint/update/" + id,
-        transportCancel
+        "http://localhost:8070/customerService/roomNecessityRequest/update/" +
+          id,
+        AmenityCancel
       )
       .then((info) => {
         console.log(info);
@@ -106,7 +109,7 @@ export default function ShowComplaintRequest() {
             className="form-control mr-sm-2"
             type="search"
             id="search"
-            placeholder="Search Description"
+            placeholder="Search Items"
             aria-label="Search"
           />
 
@@ -120,33 +123,33 @@ export default function ShowComplaintRequest() {
         <thead>
           <tr style={{ backgroundColor: "#0d6efd", color: "white" }}>
             <th scope="col">ID</th>
-            <th scope="col">Date</th>
-            <th scope="col">Time</th>
-            <th scope="col">Complaint</th>
-            <th scope="col">Description</th>
+            <th scope="col">Requested List</th>
+            <th scope="col">Notes</th>
             <th scope="col">Status</th>
             <th scope="col">Action</th>
           </tr>
         </thead>
         <tbody>
-          {complaintList
-            ? complaintList
+          {amenityList
+            ? amenityList
                 .filter((val) => {
                   if (search === "") return val;
                   else if (
-                    val.description.toLowerCase().includes(search.toLowerCase())
+                    val.requestedItems
+                      .toLowerCase()
+                      .includes(search.toLowerCase())
                   ) {
                     return val;
                   }
                 })
                 .map((val) => (
                   <tr key={val._id} onChange={changeColor(val.status)}>
-                    <td scope="row">{val.complaintId}</td>
-                    <td>{val.date}</td>
-                    <td>{val.time}</td>
-                    <td>{val.for}</td>
+                    <td scope="row">{val.reqId}</td>
                     <td>
-                      <Trigger msg={val.description} />
+                      <PopOver msg={val.requestedItems} />
+                    </td>
+                    <td>
+                      <PopOver msg={val.note} />
                     </td>
                     <td style={{ color: color }}>{val.status}</td>
 
@@ -197,7 +200,7 @@ export default function ShowComplaintRequest() {
                     </td>
                   </tr>
                 ))
-            : complaintList}
+            : amenityList}
         </tbody>
       </table>
     </div>
