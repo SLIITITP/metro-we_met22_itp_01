@@ -6,7 +6,7 @@ const Schema = mongoose.Schema;
 const RoomNecessitySchema = new Schema({
   reqId: { type: String, required: true, unique: true },
   status: String,
-  requestedItem: String,
+  requestedItems: { type: String },
   note: String,
 });
 
