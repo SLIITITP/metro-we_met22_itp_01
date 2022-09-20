@@ -119,7 +119,7 @@ export default function ShowFoodAndBeverage() {
         </form>
       </div>
 
-      <table className="table" style={{ width: "80%" }}>
+      <table className="table" style={{ width: "100%" }}>
         <thead>
           <tr style={{ backgroundColor: "#0d6efd", color: "white" }}>
             <th scope="col">ReqID</th>
@@ -154,7 +154,12 @@ export default function ShowFoodAndBeverage() {
 
                     <td style={{ color: color }}>{val.status}</td>
                     <td>
-                      <div className="container">
+                      <div
+                        className="container"
+                        style={{
+                          width: "100px",
+                        }}
+                      >
                         {/* To show the edit button only if val.status==="Ongoing" */}
                         {val.status === "Ongoing" && (
                           <Container

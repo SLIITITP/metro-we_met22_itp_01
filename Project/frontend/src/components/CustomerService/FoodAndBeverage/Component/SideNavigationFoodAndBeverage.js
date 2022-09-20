@@ -9,7 +9,7 @@ function SideNavigationFoodAndBeverage() {
         top: "180px",
         float: "left",
         width: "15%",
-        height: "35%",
+        height: "100%",
         position: "fixed",
         paddingTop: "20px",
         marginLeft: "20px",
@@ -19,7 +19,7 @@ function SideNavigationFoodAndBeverage() {
         // border: "1px solid #555",
         listStyleType: "none",
         alignItems: "center",
-        zIndex: "50",
+        zIndex: "100",
       }}
     >
       <div className="d-flex align-items-start">
