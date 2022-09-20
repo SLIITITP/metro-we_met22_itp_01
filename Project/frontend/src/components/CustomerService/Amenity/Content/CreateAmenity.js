@@ -2,23 +2,17 @@ import React, { useState } from "react";
 import axios from "axios";
 import getRequest from "./getRequest";
 
-export default function CreateComplaintCustomer() {
-  //For ComplaintRequest
-
-  let complaintId = "1";
+export default function CreateAmenityCustomer() {
   const reqList = getRequest();
 
-  // complaintId: { type: String, required: true, unique: true },
-  // custId: { type: String, required: true, unique: true },
-  // description: { type: String, required: true },
-  // type: { type: String, required: true }, //service related or restaurant related?
-  // date: { type: Date, default: Date() },
-  // time: { type: String, default: "00:00" },
-  // status: { type: String, required: true },
+  // reqId: { type: String, required: true, unique: true },
+  // status: String,
+  // requestedItem: String,
+  //note: String
+  const [requestedItem, setRequestedItem] = useState("");
 
-  const [ComplaintRequest, setComplaintRequest] = useState({
-    complaintId: "1",
-    custId: "1",
+  const [AmenityRequest, setAmenityRequest] = useState({
+    reqId: "1",
     status: "Ongoing",
   });
 
@@ -37,11 +31,11 @@ export default function CreateComplaintCustomer() {
 
   const fecha = year + "-" + mes + "-" + dia;
 
-  //To update the request table when a complaint is created
+  //To update the request table date and time when a Amenity Request is created
   const [Request, setRequest] = useState({
     reqId: "1",
     custId: "1",
-    serviceType: "ComplaintRequest",
+    serviceType: "RoomNecessityRequest",
     requestedOn: "",
     requestedtime: "",
     roomId: "1",
@@ -49,8 +43,6 @@ export default function CreateComplaintCustomer() {
 
   Request.requestedOn = fecha;
   Request.requestedtime = time;
-  ComplaintRequest.date = fecha;
-  ComplaintRequest.time = time;
 
   //To find the last id
   let j = reqList.length;
@@ -58,10 +50,10 @@ export default function CreateComplaintCustomer() {
   if (j >= 0) {
     let reqId = parseInt(reqList[j].reqId);
     reqId++;
-    complaintId = reqId.toString();
-    // console.log(complaintId);
-    ComplaintRequest.complaintId = complaintId;
-    Request.reqId = complaintId;
+    reqId = reqId.toString();
+
+    AmenityRequest.reqId = reqId;
+    Request.reqId = reqId;
   }
 
   //To create a record in the table
@@ -69,7 +61,10 @@ export default function CreateComplaintCustomer() {
     e.preventDefault();
 
     axios
-      .post("http://localhost:8070/customerService/complaint", ComplaintRequest)
+      .post(
+        "http://localhost:8070/customerService/roomNecessityRequest",
+        AmenityRequest
+      )
       .then(() => {
         alert("Request Added Successfully");
         window.location.reload(false);
@@ -97,63 +92,68 @@ export default function CreateComplaintCustomer() {
   const [opt2, setopt2] = useState();
   const [opt3, setopt3] = useState();
   const [opt4, setopt4] = useState();
-  const [other, setOther] = useState();
 
-  function setOptions(serviceType) {
-    if (serviceType === "RestaurantRelated") {
-      document.getElementById("opt1").value = "Order Mixup";
-      document.getElementById("opt2").value = "Incorrect Temperature";
-      document.getElementById("opt3").value = "Rude Servers";
-      document.getElementById("opt4").value = "Poor Hygiene";
-      document.getElementById("other").value = "Other";
-      setopt1("Order Mixup");
-      setopt2("Incorrect Temperature");
-      setopt3("Rude Servers");
-      setopt4("Poor Hygiene");
-      setOther("Other");
-    } else if (serviceType === "TransportRelated") {
-      document.getElementById("opt1").value = "Unrealiable Service"; // as in dangerous driving
-      document.getElementById("opt2").value = "Overcrowded";
-      document.getElementById("opt3").value = "Rude Transport Staffs";
-      document.getElementById("opt4").value = "Poor Vehicle Maintenance";
-      document.getElementById("other").value = "Other";
-      setopt1("Unreliable Service"); // as in dangerous driving
-      setopt2("Overcrowded");
-      setopt3("Rude Transport Staffs");
-      setopt4("Poor Vehicle Maintenance");
-      setOther("Other");
-    } else if (serviceType === "GymRelated") {
-      document.getElementById("opt1").value =
-        "Lack Of Professionalism (Trainer)"; // as in inapporopraite conduct
-      document.getElementById("opt2").value = "Broken/Faulty Equipments";
-      document.getElementById("opt3").value = "Overcrowded";
-      document.getElementById("opt4").value =
-        "Poor Maintenance/Unclean Environment";
-      document.getElementById("other").value = "Other";
+  function setOptions(type) {
+    if (type === "Furnitures") {
+      document.getElementById("opt1").value = "Extra Desk";
+      document.getElementById("opt2").value = "Extra Bed";
+      document.getElementById("opt3").value = "Extra Table";
+      document.getElementById("opt4").value = "Clothes Stand";
 
-      setopt1("Lack Of Professionalism (Trainer)"); // as in inapporopraite conduct
-      setopt2("Broken/Faulty Equipments");
-      setopt3("Overcrowded");
-      setopt4("Poor Maintenance/Unclean Environment");
-      setOther("Other");
-    } else if (serviceType === "Other") {
-      document.getElementById("opt1").value = "Unprofessional Staff";
-      document.getElementById("opt2").value = "Poor Service";
-      document.getElementById("opt3").value = "Lack of Room Amenities";
-      document.getElementById("opt4").value = "Damaged Items";
-      setopt1("Unprofessional Staff"); // as in dangerous driving
-      setopt2("Poor Service");
-      setopt3("Lack of Room Amenities");
-      setopt4("Damaged Items");
-      setOther("Other");
-    } else if (serviceType === "") {
+      setopt1("Extra Desk");
+      setopt2("Extra Bed");
+      setopt3("Extra Table");
+      setopt4("Clothes Stand");
+    } else if (type === "Personal Care") {
+      document.getElementById("opt1").value = "Combs"; // as in dangerous driving
+      document.getElementById("opt2").value = "Shaving Cream";
+      document.getElementById("opt3").value = "Razor";
+      document.getElementById("opt4").value = "Hair Dryer";
+      setopt1("Combs"); // as in dangerous driving
+      setopt2("Shaving Cream");
+      setopt3("Razor");
+      setopt4("Hair Dryer");
+    } else if (type === "Bath Needs") {
+      document.getElementById("opt1").value = "Bath Caps";
+      document.getElementById("opt2").value = "Towels";
+      document.getElementById("opt3").value = "Bath Robe";
+      document.getElementById("opt4").value = "Slipper";
+
+      setopt1("Bath Caps");
+      setopt2("Towels");
+      setopt3("Bath Robe");
+      setopt4("Slipper");
+    } else if (type === "") {
       //For others
       setopt1("");
       setopt2("");
       setopt3("");
       setopt4("");
-      setOther("");
     }
+  }
+
+  var selectedItem = "";
+  const [array, setArray] = useState([]);
+
+  function EnterReq() {
+    selectedItem = document.getElementById("item").value;
+    if (selectedItem !== "") {
+      setArray((state) => [...state, selectedItem]);
+
+      for (var i = 0; i < array.length; i++) {
+        var counter = 0;
+        if (array[i] === selectedItem) {
+          counter++;
+        }
+      }
+    }
+  }
+  var textBox = "";
+  for (var i = 0; i < array.length; i++) {
+    if (array.length === 0) array.push(selectedItem);
+
+    textBox += array[i] + "\n";
+    document.getElementById("requestedItem").value = textBox;
   }
 
   return (
@@ -164,90 +164,110 @@ export default function CreateComplaintCustomer() {
         position: "sticky",
       }}
     >
+      {/*  reqId: { type: String, required: true, unique: true },
+   status: String,
+   requestedItem: String,
+  note: String */}
+
       <form
         style={{ marginTop: "100px", marginLeft: "-175px", width: "100%" }}
         onSubmit={Create}
       >
         <h1 className="display-6" style={{ marginBottom: "20px" }}>
-          Complaints
+          Room Necessity Requests
         </h1>
 
         <div className="mb-3">
           <label htmlFor="type" className="form-label">
-            Complaint Type
+            Item Category
           </label>
           <select
             className="form-select"
             id="type"
             aria-label="Default select example"
             required
-            onChange={(event) => {
-              setComplaintRequest({
-                ...ComplaintRequest,
-                type: event.target.value,
-              });
-              setOptions(event.target.value);
-            }}
+            name="type"
+            onChange={(event) => setOptions(event.target.value)}
           >
-            <option value="">Choose Complaint Type</option>
-            <option value="RestaurantRelated">Restaurant Related</option>
-            <option value="TransportRelated">Transport Related</option>
-            <option value="GymRelated">Gym Related</option>
-            <option value="Other">Other</option>
+            <option value="">Choose Item Type</option>
+            <option value="Furnitures">Furnitures</option>
+            <option value="Personal Care">Personal Care</option>
+            <option value="Bath Needs">Bath Needs</option>
           </select>
         </div>
 
         <div className="mb-3">
           <label htmlFor="type" className="form-label">
-            Complaint for
+            Item
           </label>
           <select
             className="form-select"
-            id="type"
+            id="item"
+            name="item"
             aria-label="Default select example"
-            onChange={(event) => {
-              setComplaintRequest({
-                ...ComplaintRequest,
-                for: event.target.value,
-              });
-            }}
             required
           >
-            <option value="" selected>
-              Complaint For
-            </option>
+            <option value="">For</option>
             <option id="opt1">{opt1}</option>
             <option id="opt2">{opt2}</option>
             <option id="opt3">{opt3}</option>
             <option id="opt4">{opt4}</option>
-            <option id="other">{other}</option>
           </select>
         </div>
 
         <div className="mb-3">
-          <label htmlFor="serviceType" className="form-label">
-            Service Type
-          </label>
-          <select className="form-select" id="serviceType" required>
-            <option value="ComplaintRequest">Complaint</option>
-          </select>
+          <button
+            type="button"
+            class="btn btn-outline-success"
+            onClick={EnterReq}
+          >
+            Add
+            <i class="bi bi-plus-circle" style={{ marginLeft: "5px" }}></i>
+          </button>
+          &emsp;
+          <button type="button" class="btn btn-outline-danger">
+            Remove
+            <i class="bi bi-x-circle" style={{ marginLeft: "5px" }}></i>
+          </button>
         </div>
 
         <div className="mb-3">
-          <label htmlFor="description" className="form-label">
-            Complaint Description
+          <label htmlFor="requestedItem" className="form-label">
+            Requested Items
           </label>
           <textarea
             className="form-control"
-            id="description"
-            name="description"
+            id="requestedItem"
+            name="requestedItem"
+            rows="3"
+            cols="50"
+            placeholder="No Items Selected"
+            required
+            readOnly
+            onChange={(event) => {
+              setAmenityRequest({
+                ...AmenityRequest,
+                requestedItem: event.target.value,
+              });
+            }}
+          />
+        </div>
+
+        <div className="mb-3">
+          <label htmlFor="note" className="form-label">
+            Notes
+          </label>
+          <textarea
+            className="form-control"
+            id="note"
+            name="note"
             rows="6"
             cols="50"
             placeholder="Let us know more so that we can help you"
             onChange={(event) => {
-              setComplaintRequest({
-                ...ComplaintRequest,
-                description: event.target.value,
+              setAmenityRequest({
+                ...AmenityRequest,
+                note: event.target.value,
               });
             }}
             required

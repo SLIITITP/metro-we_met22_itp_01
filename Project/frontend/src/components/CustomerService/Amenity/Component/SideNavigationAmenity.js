@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-function SideNavigationComplaint() {
+function SideNavigationAmenity() {
   return (
     <div
       className="container"
@@ -103,13 +103,13 @@ function SideNavigationComplaint() {
             }}
           >
             <button
-              className="nav-link"
-              id="v-pills-profile-tab"
+              className="nav-link active"
+              id="v-pills-home-tab"
               data-bs-toggle="pill"
-              data-bs-target="#v-pills-profile"
+              data-bs-target="#v-pills-home"
               type="button"
               role="tab"
-              aria-controls="v-pills-profile"
+              aria-controls="v-pills-home"
               aria-selected="true"
               style={{ width: "100%" }}
             >
@@ -126,14 +126,14 @@ function SideNavigationComplaint() {
             }}
           >
             <button
-              className="nav-link active"
-              id="v-pills-home-tab"
+              className="nav-link"
+              id="v-pills-profile-tab"
               data-bs-toggle="pill"
-              data-bs-target="#v-pills-home"
+              data-bs-target="#v-pills-profile"
               type="button"
               role="tab"
-              aria-controls="v-pills-home"
-              aria-selected="true"
+              aria-controls="v-pills-profile"
+              aria-selected="false"
               style={{ width: "100%" }}
             >
               Complaint
@@ -214,4 +214,4 @@ function SideNavigationComplaint() {
   );
 }
 
-export { SideNavigationComplaint };
+export { SideNavigationAmenity };

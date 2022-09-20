@@ -95,7 +95,7 @@ function SideNavigationTransport() {
           </Link>
 
           <Link
-            to="/customerService"
+            to="/customerService/amenity"
             style={{
               textDecoration: "none",
               color: "black",
@@ -118,7 +118,7 @@ function SideNavigationTransport() {
           </Link>
 
           <Link
-            to="/customerService"
+            to="/customerService/complaint"
             style={{
               textDecoration: "none",
               color: "black",

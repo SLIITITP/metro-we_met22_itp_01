@@ -11,6 +11,9 @@ import ShowTransportRequest from "./components/CustomerService/Transport/Content
 import ComplaintCustomer from "./components/CustomerService/Complaint/Content/CreateComplaint";
 import { SideNavigationComplaint } from "./components/CustomerService/Complaint/Component/SideNavigationComplaint";
 import ShowComplaintRequest from "./components/CustomerService/Complaint/Content/showComplaint";
+import AmenityCustomer from "./components/CustomerService/Amenity/Content/CreateAmenity";
+import ShowAmenityRequest from "./components/CustomerService/Amenity/Content/showAmenity";
+import { SideNavigationAmenity } from "./components/CustomerService/Amenity/Component/SideNavigationAmenity";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 function App() {
@@ -62,6 +65,19 @@ function App() {
                 <ComplaintCustomer />
                 <ShowComplaintRequest />
                 <SideNavigationComplaint />
+              </>
+            }
+          />
+        </Routes>
+
+        <Routes>
+          <Route
+            path="/customerService/amenity"
+            element={
+              <>
+                <AmenityCustomer />
+                {/* <ShowAmenityRequest /> */}
+                <SideNavigationAmenity />
               </>
             }
           />

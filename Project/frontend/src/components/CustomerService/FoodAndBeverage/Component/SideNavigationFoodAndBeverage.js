@@ -99,7 +99,7 @@ function SideNavigationFoodAndBeverage() {
           </Link>
 
           <Link
-            to="/customerService"
+            to="/customerService/amenity"
             style={{
               textDecoration: "none",
               color: "black",
