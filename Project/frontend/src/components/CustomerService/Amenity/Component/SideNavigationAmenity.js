@@ -9,7 +9,7 @@ function SideNavigationAmenity() {
         top: "180px",
         float: "left",
         width: "15%",
-        height: "35%",
+        height: "100%",
         position: "fixed",
         paddingTop: "20px",
         marginLeft: "20px",
