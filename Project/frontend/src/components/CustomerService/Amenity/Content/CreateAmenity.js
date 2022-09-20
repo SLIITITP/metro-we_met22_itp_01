@@ -139,19 +139,26 @@ export default function CreateAmenityCustomer() {
     selectedItem = document.getElementById("item").value;
     if (selectedItem !== "") {
       setArray((state) => [...state, selectedItem]);
+    }
+  }
 
-      for (var i = 0; i < array.length; i++) {
-        var counter = 0;
-        if (array[i] === selectedItem) {
-          counter++;
-        }
-      }
+  function RemoveFunction() {
+    array.pop();
+    var textBox = "";
+
+    if (array.length === 0) {
+      textBox = "";
+      document.getElementById("requestedItem").value = textBox;
+    }
+
+    for (var i = 0; i < array.length; i++) {
+      textBox += array[i] + "\n";
+      document.getElementById("requestedItem").value = textBox;
     }
   }
   var textBox = "";
-  for (var i = 0; i < array.length; i++) {
-    if (array.length === 0) array.push(selectedItem);
 
+  for (var i = 0; i < array.length; i++) {
     textBox += array[i] + "\n";
     document.getElementById("requestedItem").value = textBox;
   }
@@ -164,11 +171,6 @@ export default function CreateAmenityCustomer() {
         position: "sticky",
       }}
     >
-      {/*  reqId: { type: String, required: true, unique: true },
-   status: String,
-   requestedItem: String,
-  note: String */}
-
       <form
         style={{ marginTop: "100px", marginLeft: "-175px", width: "100%" }}
         onSubmit={Create}
@@ -225,7 +227,11 @@ export default function CreateAmenityCustomer() {
             <i class="bi bi-plus-circle" style={{ marginLeft: "5px" }}></i>
           </button>
           &emsp;
-          <button type="button" class="btn btn-outline-danger">
+          <button
+            type="button"
+            class="btn btn-outline-danger"
+            onClick={RemoveFunction}
+          >
             Remove
             <i class="bi bi-x-circle" style={{ marginLeft: "5px" }}></i>
           </button>
