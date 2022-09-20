@@ -10,15 +10,17 @@ export const Form = ({ onSubmit }) => {
   var itemList1 = "";
 
   function EnterReq() {
-    if (itemList1 === "")
-      itemList1 = document.getElementById("item1").value + ", \n";
-    else itemList1 += document.getElementById("item1").value + ", \n";
+    if (document.getElementById("item").value !== "") {
+      if (itemList1 === "")
+        itemList1 = document.getElementById("item1").value + ", \n";
+      else itemList1 += document.getElementById("item1").value + ", \n";
 
-    document.getElementById("requestedItem1").value = itemList1;
+      document.getElementById("requestedItem1").value = itemList1;
 
-    var a = AmenityRequest1;
-    a.requestedItems = itemList1;
-    setAmenityRequest1(a);
+      var a = AmenityRequest1;
+      a.requestedItems = itemList1;
+      setAmenityRequest1(a);
+    }
   }
 
   function ClearList() {

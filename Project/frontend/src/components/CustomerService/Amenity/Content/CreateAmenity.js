@@ -88,15 +88,17 @@ export default function CreateAmenityCustomer() {
 
   var itemList = "";
   function EnterReq() {
-    if (itemList === "")
-      itemList = document.getElementById("item").value + ", \n";
-    else itemList += document.getElementById("item").value + ", \n";
+    if (document.getElementById("item").value !== "") {
+      if (itemList === "")
+        itemList = document.getElementById("item").value + ", \n";
+      else itemList += document.getElementById("item").value + ", \n";
 
-    document.getElementById("requestedItem").value = itemList;
+      document.getElementById("requestedItem").value = itemList;
 
-    var a = AmenityRequest;
-    a.requestedItems = itemList;
-    setAmenityRequest(a);
+      var a = AmenityRequest;
+      a.requestedItems = itemList;
+      setAmenityRequest(a);
+    }
   }
 
   function ClearList() {
