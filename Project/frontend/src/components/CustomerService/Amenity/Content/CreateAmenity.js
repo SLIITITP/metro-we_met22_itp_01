@@ -155,6 +155,8 @@ export default function CreateAmenityCustomer() {
             <option value="Combs">Combs</option>
             <option value="Shaving Cream">Shaving Cream</option>
             <option value="Razor">Razor</option>
+            <option value="Tissue Box">Tissue Box</option>
+            <option value="Blankets">Blankets</option>
             <option value="Hair Dryer">Hair Dryer</option>
             <option
               value=""

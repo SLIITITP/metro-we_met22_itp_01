@@ -50,28 +50,6 @@ function SideNavigationComplaint() {
           </Link>
 
           <Link
-            to="/customerService/trainer"
-            style={{
-              textDecoration: "none",
-              color: "black",
-              FontFace: "bold",
-            }}
-          >
-            <button
-              className="nav-link"
-              id="v-pills-profile-tab"
-              data-bs-toggle="pill"
-              data-bs-target="#v-pills-profile"
-              type="button"
-              role="tab"
-              aria-controls="v-pills-profile"
-              style={{ width: "100%" }}
-            >
-              Trainer
-            </button>
-          </Link>
-
-          <Link
             to="/customerService/transport"
             style={{
               textDecoration: "none",
