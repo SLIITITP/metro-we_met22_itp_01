@@ -10,7 +10,7 @@ export const Form = ({ onSubmit }) => {
   var itemList1 = "";
 
   function EnterReq() {
-    if (document.getElementById("item").value !== "") {
+    if (document.getElementById("item1").value !== "") {
       if (itemList1 === "")
         itemList1 = document.getElementById("item1").value + ", \n";
       else itemList1 += document.getElementById("item1").value + ", \n";
