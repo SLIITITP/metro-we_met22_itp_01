@@ -12,7 +12,7 @@ function PopoverPosition(props) {
           placement={placement}
           overlay={
             <Popover id={`popover-positioned-${placement}`}>
-              <Popover.Header as="h3">Notes</Popover.Header>
+              <Popover.Header as="h3">Details</Popover.Header>
               <Popover.Body>{props.msg}</Popover.Body>
             </Popover>
           }
