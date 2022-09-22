@@ -34,6 +34,8 @@ export default function CreateAmenityCustomer() {
     requestedOn: "",
     requestedtime: "",
     roomId: "1",
+    notes: "",
+    status: "Ongoing",
   });
 
   Request.requestedOn = fecha;
@@ -87,6 +89,7 @@ export default function CreateAmenityCustomer() {
   }
 
   var itemList = "";
+
   function EnterReq() {
     if (document.getElementById("item").value !== "") {
       if (itemList === "")
@@ -228,6 +231,10 @@ export default function CreateAmenityCustomer() {
               setAmenityRequest({
                 ...AmenityRequest,
                 note: event.target.value,
+              });
+              setRequest({
+                ...Request,
+                notes: event.target.value,
               });
             }}
           />

@@ -4,27 +4,34 @@ import getTransportRequest from "./getTransportRequest";
 import { Container } from "../js/Container";
 import "../../../../index.css";
 import GetOneTransportRequest from "./getOneTransportRequest";
+import getAllRequest from "./getRequest";
 
 export default function ShowTransportRequest() {
   var color = "black"; //for the status field in the table
   const transportList = getTransportRequest();
+  const reqList = getAllRequest();
 
   //For the search button
   const [search, setSearch] = useState("");
 
   //To store all details in TransportRequest and update and display data
   const [TransportRequest, setTransportRequest] = useState({});
+  const [Request, setRequest] = useState({});
 
   let i = 0;
+  let j = 0;
+  var reqID;
+
   const OnSubmit = (event, id) => {
     for (i; i < transportList.length; i++) {
       if (transportList[i]._id == id) {
         break;
       }
     }
-
     //Setting up TransportRequest so that we can update it using the update Route
     setTransportRequest(transportList[i]);
+    setRequest(reqList[j]);
+
     TransportRequest.noOfSeats = event.target.numberOfSeats.value;
 
     axios
@@ -54,10 +61,23 @@ export default function ShowTransportRequest() {
 
   //To cancel an ongoing request
   function CancelRequest(id) {
+    for (i; i < transportList.length; i++) {
+      if (transportList[i]._id == id) {
+        break;
+      }
+    }
+    reqID = transportList[i].reqId;
+
+    for (j = 0; j < reqList.length; j++) {
+      if (reqList[j].reqId == reqID) {
+        break;
+      }
+    }
     <GetOneTransportRequest id={id} />;
     setTransportCancel(GetOneTransportRequest);
 
     transportCancel.status = "Cancelled";
+    Request.status = "Cancelled";
 
     axios
       .post(
@@ -67,6 +87,18 @@ export default function ShowTransportRequest() {
       .then((info) => {
         console.log(info);
         alert("Booking Cancelled");
+      })
+      .catch((err) => {
+        console.log(err.message);
+      });
+    axios
+      .post(
+        "http://localhost:8070/customerService/update/" + reqList[j]._id,
+        Request
+      )
+      .then((info) => {
+        console.log(info);
+        console.log("Booking Cancelled");
       })
       .catch((err) => {
         console.log(err.message);

@@ -1,133 +1,75 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import getFoodAndBeverage from "./getFoodAndBeverage";
+import getComplaintRequest from "./getComplaint";
 import { Container } from "../js/Container";
 import "../../../../index.css";
-import GetOneReq from "./getOneRequest";
-import PopOver from "../Component/popOver";
-import getAllRequest from "./getRequest";
+import Trigger from "../Component/popOver";
+import GetOneComplaint from "./getOneComplaint";
 
-export default function ShowFoodAndBeverage() {
+export default function ShowComplaintRequest() {
   var color = "black"; //for the status field in the table
-  const fAndBList = getFoodAndBeverage();
-  const reqList = getAllRequest();
+  const complaintList = getComplaintRequest();
 
   //For the search button
   const [search, setSearch] = useState("");
 
-  //To store all details in FoodAndBeverage and update and display data
-  const [FoodAndBeverage, setFoodAndBeverage] = useState({});
+  //To store all details in ComplaintRequest and update and display data
+  const [ComplaintRequest, setComplaintRequest] = useState({});
 
-  const [Request, setRequest] = useState({});
   let i = 0;
-  let j = 0;
-  var reqID;
-
   const OnSubmit = (event, id) => {
-    for (i = 0; i < fAndBList.length; i++) {
-      if (fAndBList[i]._id == id) {
+    for (i; i < complaintList.length; i++) {
+      if (complaintList[i]._id == id) {
         break;
       }
     }
 
-    reqID = fAndBList[i].reqId;
-
-    for (j = 0; j < reqList.length; j++) {
-      if (reqList[j].reqId == reqID) {
-        break;
-      }
-    }
-
-    //Setting up FoodAndBeverage so that we can update it using the update Route
-    setFoodAndBeverage(fAndBList[i]);
-    FoodAndBeverage.notes = event.target.notes.value;
-    FoodAndBeverage.requestForDate = event.target.date.value;
-    FoodAndBeverage.requestForTime = event.target.time.value;
-
-    Request.notes = event.target.notes.value;
+    //Setting up ComplaintRequest so that we can update it using the update Route
+    setComplaintRequest(complaintList[i]);
+    ComplaintRequest.description = event.target.description.value;
+    ComplaintRequest.type = event.target.type.value;
+    ComplaintRequest.for = event.target.for.value;
 
     axios
       .post(
-        "http://localhost:8070/customerService/foodAndBeverageRequest/update/" +
-          id,
-        FoodAndBeverage
+        "http://localhost:8070/customerService/complaint/update/" + id,
+        ComplaintRequest
       )
       .then(() => {
-        alert("Request Updated");
-      })
-      .catch((err) => {
-        console.log(err.message);
-      });
-
-    axios
-      .post(
-        "http://localhost:8070/customerService/update/" + reqList[j]._id,
-        Request
-      )
-      .then(() => {
-        console.log("Update Successful");
+        alert("Update Successful");
       })
       .catch((err) => {
         console.log(err.message);
       });
   };
 
+  //To delete a Complaint request created
   function DeleteItem(id) {
     axios
-      .delete(
-        "http://localhost:8070/customerService/foodAndBeverageRequest/" + id
-      )
+      .delete("http://localhost:8070/customerService/complaint/" + id)
       .then(() => {
         window.location.reload(false);
         alert("Record Deleted Successfully");
       });
   }
 
-  const [fAndBCancel, setfAndBCancel] = useState({});
+  const [ComplaintCancel, setComplaintCancel] = useState({});
 
   //To cancel an ongoing request
   function CancelRequest(id) {
-    for (i = 0; i < fAndBList.length; i++) {
-      if (fAndBList[i]._id == id) {
-        break;
-      }
-    }
+    <GetOneComplaint id={id} />;
+    setComplaintCancel(GetOneComplaint);
 
-    reqID = fAndBList[i].reqId;
-
-    for (j = 0; j < reqList.length; j++) {
-      if (reqList[j].reqId == reqID) {
-        break;
-      }
-    }
-
-    <GetOneReq id={id} />;
-    setfAndBCancel(GetOneReq);
-
-    fAndBCancel.status = "Cancelled";
-    Request.status = "Cancelled";
-    axios
-      .post(
-        "http://localhost:8070/customerService/foodAndBeverageRequest/update/" +
-          id,
-        fAndBCancel
-      )
-      .then((info) => {
-        console.log(info);
-        alert("Request Cancelled");
-      })
-      .catch((err) => {
-        console.log(err.message);
-      });
+    ComplaintCancel.status = "Cancelled";
 
     axios
       .post(
-        "http://localhost:8070/customerService/update/" + reqList[j]._id,
-        Request
+        "http://localhost:8070/customerService/complaint/update/" + id,
+        ComplaintCancel
       )
       .then((info) => {
         console.log(info);
-        console.log("Booking Cancelled");
+        alert("Booking Cancelled");
       })
       .catch((err) => {
         console.log(err.message);
@@ -153,23 +95,23 @@ export default function ShowFoodAndBeverage() {
         style={{ marginBottom: "12px", float: "left" }}
       >
         <form
-          class="form-inline my-2 my-lg-0"
+          className="form-inline my-2 my-lg-0"
           onSubmit={(e) => {
             setSearch(e.target.search.value);
             e.preventDefault();
-            e.window.location.reload(false);
+            // window.location.reload(false);
           }}
         >
           <input
-            class="form-control mr-sm-2"
+            className="form-control mr-sm-2"
             type="search"
             id="search"
-            placeholder="Search Notes"
+            placeholder="Search Description"
             aria-label="Search"
           />
 
-          <button class="btn btn-primary my-2 my-sm-0" type="submit">
-            <i class="bi bi-search"></i>
+          <button className="btn btn-primary my-2 my-sm-0" type="submit">
+            <i className="bi bi-search"></i>
           </button>
         </form>
       </div>
@@ -177,37 +119,37 @@ export default function ShowFoodAndBeverage() {
       <table className="table" style={{ width: "100%" }}>
         <thead>
           <tr style={{ backgroundColor: "#0d6efd", color: "white" }}>
-            <th scope="col">ReqID</th>
-            <th scope="col">Amount</th>
+            <th scope="col">ID</th>
             <th scope="col">Date</th>
             <th scope="col">Time</th>
-            <th scope="col">Notes</th>
+            <th scope="col">Complaint</th>
+            <th scope="col">Description</th>
             <th scope="col">Status</th>
             <th scope="col">Action</th>
           </tr>
         </thead>
         <tbody>
-          {fAndBList
-            ? fAndBList
+          {complaintList
+            ? complaintList
                 .filter((val) => {
                   if (search === "") return val;
                   else if (
-                    val.notes.toLowerCase().includes(search.toLowerCase())
+                    val.description.toLowerCase().includes(search.toLowerCase())
                   ) {
                     return val;
                   }
                 })
                 .map((val) => (
                   <tr key={val._id} onChange={changeColor(val.status)}>
-                    <td scope="row">{val.reqId}</td>
-                    <td>{val.amount}</td>
-                    <td>{val.requestForDate}</td>
-                    <td>{val.requestForTime}</td>
+                    <td scope="row">{val.complaintId}</td>
+                    <td>{val.date}</td>
+                    <td>{val.time}</td>
+                    <td>{val.for}</td>
                     <td>
-                      <PopOver msg={val.notes} />
+                      <Trigger msg={val.description} />
                     </td>
-
                     <td style={{ color: color }}>{val.status}</td>
+
                     <td>
                       <div
                         className="container"
@@ -236,7 +178,7 @@ export default function ShowFoodAndBeverage() {
                           <i className="bi bi-trash-fill"></i>
                         </button>
 
-                        {/* To show cancel Request button only when status is ongoing */}
+                        {/* To show cancel button only when status is ongoing */}
                         {(val.status === "Ongoing" ||
                           val.status === "Completed") && (
                           <button
@@ -255,7 +197,7 @@ export default function ShowFoodAndBeverage() {
                     </td>
                   </tr>
                 ))
-            : fAndBList}
+            : complaintList}
         </tbody>
       </table>
     </div>

@@ -5,29 +5,47 @@ import { Container } from "../js/Container";
 import "../../../../index.css";
 import PopOver from "../Component/popOver";
 import GetOneAmenity from "./getOneAmenity";
+import getAllRequest from "./getRequest";
 
 export default function ShowAmenityRequest() {
   var color = "#0d6efd"; //for the status field in the table
   const amenityList = getAllAmenityRequest();
+  const reqList = getAllRequest();
 
   //For the search button
   const [search, setSearch] = useState("");
 
   //To store all details in AmenityRequest and update and display data
   const [AmenityRequest, setAmenityRequest] = useState({});
+  const [Request, setRequest] = useState({});
 
   let i = 0;
+  let j = 0;
+  var reqID;
+
   const OnSubmit = (event, id) => {
-    for (i; i < amenityList.length; i++) {
+    for (i = 0; i < amenityList.length; i++) {
       if (amenityList[i]._id == id) {
+        break;
+      }
+    }
+
+    reqID = amenityList[i].reqId;
+
+    for (j = 0; j < reqList.length; j++) {
+      if (reqList[j].reqId == reqID) {
         break;
       }
     }
 
     //Setting up AmenityRequest so that we can update it using the update Route
     setAmenityRequest(amenityList[i]);
+    setRequest(reqList[j]);
+
     AmenityRequest.note = event.target.note.value;
     AmenityRequest.requestedItems = event.target.requestedItem1.value;
+
+    Request.notes = event.target.note.value;
 
     axios
       .post(
@@ -41,16 +59,29 @@ export default function ShowAmenityRequest() {
       .catch((err) => {
         console.log(err.message);
       });
+
+    axios
+      .post(
+        "http://localhost:8070/customerService/update/" + reqList[j]._id,
+        Request
+      )
+      .then(() => {
+        console.log("Update Successful");
+      })
+      .catch((err) => {
+        console.log(err.message);
+      });
   };
 
   //To delete a Amenity request created
   function DeleteItem(id) {
+    window.location.reload(false);
+
     axios
       .delete(
         "http://localhost:8070/customerService/roomNecessityRequest/" + id
       )
       .then(() => {
-        window.location.reload(false);
         alert("Record Deleted Successfully");
       });
   }
@@ -59,10 +90,25 @@ export default function ShowAmenityRequest() {
 
   //To cancel an ongoing request
   function CancelRequest(id) {
+    for (i = 0; i < amenityList.length; i++) {
+      if (amenityList[i]._id == id) {
+        break;
+      }
+    }
+
+    reqID = amenityList[i].reqId;
+
+    for (j = 0; j < reqList.length; j++) {
+      if (reqList[j].reqId == reqID) {
+        break;
+      }
+    }
+
     <GetOneAmenity id={id} />;
     setAmenityCancel(GetOneAmenity);
 
     AmenityCancel.status = "Cancelled";
+    Request.status = "Cancelled";
 
     axios
       .post(
@@ -73,6 +119,19 @@ export default function ShowAmenityRequest() {
       .then((info) => {
         console.log(info);
         alert("Booking Cancelled");
+      })
+      .catch((err) => {
+        console.log(err.message);
+      });
+
+    axios
+      .post(
+        "http://localhost:8070/customerService/update/" + reqList[j]._id,
+        Request
+      )
+      .then((info) => {
+        console.log(info);
+        console.log("Booking Cancelled");
       })
       .catch((err) => {
         console.log(err.message);

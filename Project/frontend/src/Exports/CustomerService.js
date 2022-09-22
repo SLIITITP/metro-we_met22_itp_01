@@ -12,6 +12,10 @@ import ShowComplaintRequest from "../components/CustomerService/Complaint/Conten
 import AmenityCustomer from "../components/CustomerService/Amenity/Content/CreateAmenity";
 import ShowAmenityRequest from "../components/CustomerService/Amenity/Content/showAmenity";
 import { SideNavigationAmenity } from "../components/CustomerService/Amenity/Component/SideNavigationAmenity";
+import ComplaintStaff from "../components/CustomerService/ComplaintStaff/Content/CreateComplaint";
+import { SideNavigationComplaintStaff } from "../components/CustomerService/ComplaintStaff/Component/SideNavigationComplaintStaff";
+import ShowComplaintRequestStaff from "../components/CustomerService/ComplaintStaff/Content/showComplaint";
+import { MainNavigationStaff } from "../components/CustomerService/ComplaintStaff/Component/MainNavigation";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 export default function CustServ() {
@@ -66,6 +70,20 @@ export default function CustServ() {
                 <AmenityCustomer />
                 <ShowAmenityRequest />
                 <SideNavigationAmenity />
+              </>
+            }
+          />
+        </Routes>
+
+        <Routes>
+          <Route
+            path="/customerService/complaintStaff"
+            element={
+              <>
+                <MainNavigationStaff />
+                <ComplaintStaff />
+                <ShowComplaintRequestStaff />
+                <SideNavigationComplaintStaff />
               </>
             }
           />

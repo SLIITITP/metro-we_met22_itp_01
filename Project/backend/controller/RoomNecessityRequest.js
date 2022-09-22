@@ -4,7 +4,6 @@ const RoomNecessityRequest = require("../models/RoomNecessityRequest");
 const getRequests = async (req, res) => {
   try {
     const allReqs = await RoomNecessityRequest.find(); //now this will find all students and save it in allStudents
-
     res.status(200).json(allReqs);
   } catch (error) {
     // console.log(error);
@@ -58,7 +57,7 @@ const getOneRequest = async (req, res) => {
   const request = await RoomNecessityRequest.findById(id)
     .then((reqs) => {
       let object = { status: "Fetched Request" };
-      res.status(200).send(object.status);
+      res.status(200).json(reqs);
     })
     .catch((err) => {
       console.log(err.message);

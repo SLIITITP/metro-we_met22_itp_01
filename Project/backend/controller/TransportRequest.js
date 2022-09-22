@@ -58,7 +58,7 @@ const getOneRequest = async (req, res) => {
   const request = await TransportRequest.findById(id)
     .then((reqs) => {
       let object = { status: "Fetched Request" };
-      res.status(200).send(object.status);
+      res.status(200).json(reqs);
     })
     .catch((err) => {
       console.log(err.message);

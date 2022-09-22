@@ -34,6 +34,8 @@ export default function CreateTransportRequestCustomer() {
     requestedOn: "",
     requestedtime: "",
     roomId: "1",
+    notes: "",
+    status: "Ongoing",
   });
 
   Request.requestedOn = fecha;
@@ -62,7 +64,7 @@ export default function CreateTransportRequestCustomer() {
 
   //To create a record in the table
   function Create(e) {
-    e.preventDefault();
+    window.location.reload(false);
 
     TransportRequest.departureTime = document.getElementById("time").value;
 
@@ -84,7 +86,7 @@ export default function CreateTransportRequestCustomer() {
     axios
       .post("http://localhost:8070/customerService", Request)
       .then(() => {
-        window.location.reload(false);
+        alert("Request added");
       })
       .catch((err) => {
         alert(err.message);

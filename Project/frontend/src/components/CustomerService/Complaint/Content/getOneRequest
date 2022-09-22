@@ -6,7 +6,10 @@ export default function GetOneRequest(props) {
 
   useEffect(() => {
     axios
-      .get("http://localhost:8070/customerService/get/" + props.id)
+      .get(
+        "http://localhost:8070/customerService/get/" +
+        props.id
+      )
       .then((Info) => {
         setRequest(Info.data);
       })
