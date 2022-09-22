@@ -205,10 +205,18 @@ export default function ShowAmenityRequest() {
                   <tr key={val._id} onChange={changeColor(val.status)}>
                     <td scope="row">{val.reqId}</td>
                     <td>
-                      <PopOver msg={val.requestedItems} />
+                      <PopOver
+                        msg={val.requestedItems}
+                        viewName="List"
+                        btnName={"View List"}
+                      />
                     </td>
                     <td>
-                      <PopOver msg={val.note} />
+                      <PopOver
+                        msg={val.note}
+                        viewName="Notes"
+                        btnName={"Read Notes"}
+                      />
                     </td>
                     <td style={{ color: color }}>{val.status}</td>
 
