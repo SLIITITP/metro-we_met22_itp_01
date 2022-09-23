@@ -91,7 +91,7 @@ router.route("/get/:id").get(async (req, res) => {
   let id = req.params.id;
   const kitchenStock = await KitchenStock.findById(id)
     .then((kitchenStock) => {
-      res.status(200).send({ status: "kitcehn stock fetched", kitchenStock });
+      res.status(200).send({ status: "kitchen stock fetched", kitchenStock });
     })
     .catch(() => {
       console.log(err.message);
