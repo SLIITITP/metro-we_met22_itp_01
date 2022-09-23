@@ -39,6 +39,16 @@ const OrdinaryEmployeeRouter = require("./routes/OrdinaryEmployeeRoutes.js");
 const LeaveRouter = require("./routes/LeaveRoutes.js");
 const DepartmentRouter = require("./routes/DepartmentRoutes.js");
 
+//for Inventory Management
+const chefRequestRouter = require ("./routes/ChefRequestRoutes.js");
+const KitchenIngredientsRouter = require ("./routes/KitchenIngredientsRoutes.js");
+const ManagerRequestRouter = require ("./routes/ManagerRequestRoutes.js");
+const InventoryRouter = require ("./routes/InventoryRoutes.js");
+const KitchenStockRouter = require ("./routes/KitchenStockRoutes.js");
+const ToiletriesRouter = require ("./routes/ToiletriesRoutes.js");
+const AssetsRouter = require ("./routes/AssetRoutes.js");
+const MaintenanceRouter = require ("./routes/MaintenanceRoutes.js");
+
 //https://localhost:8070:customer will load CustomerRouter.js
 app.use("/customer", CustomerRouter);
 app.use("/loyalCustomer", LoyalCustomerRouter);
@@ -66,6 +76,16 @@ app.use("/shift", ShiftRouter);
 app.use("/ordinaryemployee", OrdinaryEmployeeRouter);
 app.use("/leave", LeaveRouter);
 app.use("/department", DepartmentRouter);
+
+//http://localhost:8080/chefRequest the chefRequest javascript file will be loaded
+app.use("/inventory/chefRequest", chefRequestRouter); 
+app.use("/kitchenIngredients", KitchenIngredientsRouter);
+app.use("/inventory/managerRequest",ManagerRequestRouter);
+app.use("/inventory", InventoryRouter);
+app.use("/kitchenStock", KitchenStockRouter);
+app.use("/toiletries", ToiletriesRouter);
+app.use("/assets", AssetsRouter);
+app.use("/maintenance", MaintenanceRouter);
 
 //pricess.env.PORT will allow us to choose the available port that is availabe once hosted
 const PORT = process.env.PORT || 8070;
