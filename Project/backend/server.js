@@ -24,6 +24,21 @@ const AttendRequestRouter = require("./routes/AttendRequestRoutes.js");
 const AttendComplaintRouter = require("./routes/AttendComplaintRoutes.js");
 const CustomerComplaintRouter = require("./routes/CustomerComplaintRoute");
 
+//For Staff Management
+const EmployeeRouter = require("./routes/EmployeeRoutes.js");
+const ManagerRouter = require("./routes/ManagerRoutes.js");
+const EmployeeLoginRouter = require("./routes/EmployeeLoginRoutes.js");
+const InvoiceRouter = require("./routes/InvoiceRoutes.js");
+const AllowanceRouter = require("./routes/AllowanceRoutes.js");
+const ReceiveRouter = require("./routes/ReceiveRoutes.js");
+const AdminRouter = require("./routes/AdminRoutes.js");
+const AttendanceRouter = require("./routes/AttendanceRoutes.js");
+const HasRouter = require("./routes/HasRoutes.js");
+const ShiftRouter = require("./routes/ShiftRoutes.js");
+const OrdinaryEmployeeRouter = require("./routes/OrdinaryEmployeeRoutes.js");
+const LeaveRouter = require("./routes/LeaveRoutes.js");
+const DepartmentRouter = require("./routes/DepartmentRoutes.js");
+
 //https://localhost:8070:customer will load CustomerRouter.js
 app.use("/customer", CustomerRouter);
 app.use("/loyalCustomer", LoyalCustomerRouter);
@@ -36,6 +51,21 @@ app.use("/customerService/transportRequest", TransportRequestRouter);
 app.use("/customerService/roomNecessityRequest", RoomNecessityRouter);
 app.use("/customerService/attendRequest", AttendRequestRouter);
 app.use("/customerService/attendComplaint", AttendComplaintRouter);
+
+//http://localhost:8080/employee
+app.use("/employee", EmployeeRouter);
+app.use("/manager", ManagerRouter);
+app.use("/employeelogin", EmployeeLoginRouter);
+app.use("/invoice", InvoiceRouter);
+app.use("/allowance", AllowanceRouter);
+app.use("/receive", ReceiveRouter);
+app.use("/admin", AdminRouter);
+app.use("/attendance", AttendanceRouter);
+app.use("/has", HasRouter);
+app.use("/shift", ShiftRouter);
+app.use("/ordinaryemployee", OrdinaryEmployeeRouter);
+app.use("/leave", LeaveRouter);
+app.use("/department", DepartmentRouter);
 
 //pricess.env.PORT will allow us to choose the available port that is availabe once hosted
 const PORT = process.env.PORT || 8070;
