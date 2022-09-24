@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
-import getRequest from "./getRequest";
+import getRequest from "./getAllRequest";
 
 export default function CreateComplaintCustomer() {
   //For ComplaintRequest

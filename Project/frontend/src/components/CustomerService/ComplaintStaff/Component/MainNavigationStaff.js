@@ -104,7 +104,10 @@ function MainNavigationStaff() {
         </li>
 
         <li className="nav-item" role="presentation">
-          <Link to="" style={{ textDecoration: "none" }}>
+          <Link
+            to="/customerService/complaintStaff"
+            style={{ textDecoration: "none" }}
+          >
             <button
               className="nav-link"
               id="profile-tab"

@@ -56,7 +56,7 @@ export default function CreateComplaintCustomer() {
     complaintId = reqId.toString();
     // console.log(complaintId);
     ComplaintRequest.complaintId = complaintId;
-    Request.reqId = complaintId;
+    Request.reqId = reqId.toString();
   }
 
   //To create a record in the table

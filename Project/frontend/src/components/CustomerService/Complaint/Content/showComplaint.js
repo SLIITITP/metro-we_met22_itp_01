@@ -139,6 +139,8 @@ export default function ShowComplaintRequest() {
   function changeColor(data) {
     if (data === "Cancelled") color = "red";
     else if (data === "Ongoing") color = "#0d6efd";
+    else if (data === "Solved") color = "green";
+    else if (data === "Pending") color = "#E8A317";
   }
   return (
     <div
@@ -238,13 +240,13 @@ export default function ShowComplaintRequest() {
                           <i className="bi bi-trash-fill"></i>
                         </button>
 
-                        {/* To show cancel button only when status is ongoing */}
-                        {(val.status === "Ongoing" ||
-                          val.status === "Completed") && (
+                        {/* To show cancel button only when status is ongoing or Pending*/}
+                        {val.status !== "Cancelled" && val.status !== "Solved" && (
                           <button
                             type="button"
                             className="close"
                             aria-label="Close"
+                            style={{ color: "#C41E3A" }}
                             onClick={(e) => {
                               CancelRequest(val._id);
                             }}

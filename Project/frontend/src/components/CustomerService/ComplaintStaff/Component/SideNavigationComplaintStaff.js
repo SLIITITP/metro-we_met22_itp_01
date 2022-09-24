@@ -28,7 +28,7 @@ function SideNavigationComplaintStaff() {
           aria-orientation="vertical"
         >
           <Link
-            to="/customerService"
+            to=""
             style={{
               textDecoration: "none",
               color: "black",
@@ -50,7 +50,7 @@ function SideNavigationComplaintStaff() {
           </Link>
 
           <Link
-            to="/customerService/transport"
+            to=""
             style={{
               textDecoration: "none",
               color: "black",
@@ -73,7 +73,7 @@ function SideNavigationComplaintStaff() {
           </Link>
 
           <Link
-            to="/customerService/amenity"
+            to=""
             style={{
               textDecoration: "none",
               color: "black",
@@ -84,7 +84,7 @@ function SideNavigationComplaintStaff() {
               className="nav-link"
               id="v-pills-profile-tab"
               data-bs-toggle="pill"
-              data-bs-target="#v-pills-profile"
+              data-bs-target="#v-pills-protofile"
               type="button"
               role="tab"
               aria-controls="v-pills-profile"
@@ -96,7 +96,7 @@ function SideNavigationComplaintStaff() {
           </Link>
 
           <Link
-            to="/customerService/complaint"
+            to=""
             style={{
               textDecoration: "none",
               color: "black",
@@ -119,7 +119,7 @@ function SideNavigationComplaintStaff() {
           </Link>
 
           <Link
-            to="/customerService"
+            to=""
             style={{
               textDecoration: "none",
               color: "black",
