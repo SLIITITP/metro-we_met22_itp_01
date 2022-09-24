@@ -5,11 +5,18 @@ let toiletries = require("../models/Toiletries");
 router.route("/add").post((req,res) => {
     const invenID = req.body.invenID;
     const quantity = req.body.quantity;
-   
+    const name = req.body.name;
+  const category = req.body.category;
+  const description = req.body.description;
+  const date = req.body.purchaseDate;
 
     const newToiletries = new Toiletries({
           invenID,
-          quantity
+          quantity,
+          name,
+    category,
+    description,
+    date,
     })
 
    //exception handling catching the error
@@ -30,11 +37,15 @@ router.route("/").get((req,res) => {
 
 router.route("/update/:id").put(async (req,res) => {
     let id = req.params.id;  
-      const {invenID,quantity} = req.body;
+      const {invenID,quantity,name,category,description,date} = req.body;
 
       const updateToiletries = {
         invenID,
-        quantity
+        quantity,
+        name,
+        category,
+        description,
+        date,
     }
 
     const update = await Toiletries.findByIdAndUpdate(id, updateToiletries)

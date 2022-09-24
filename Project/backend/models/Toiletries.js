@@ -14,6 +14,20 @@ const Schema = mongoose.Schema;
         required: true
 
     },
+    category: {
+        type: String,
+      },
+      name: {
+        type: String,
+        required: true,
+      },
+      description: {
+        type: String,
+      },
+      date: {
+        type: String,
+        required: true,
+      },
  });
 
  const Toiletries = mongoose.model (
