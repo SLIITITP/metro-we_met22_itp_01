@@ -3,7 +3,7 @@ const TransportRequest = require("../models/TransportRequest");
 //To get All Transport Request
 const getRequests = async (req, res) => {
   try {
-    const allReqs = await TransportRequest.find(); //now this will find all students and save it in allStudents
+    const allReqs = await TransportRequest.find(); //Will get All information
 
     res.status(200).json(allReqs);
   } catch (error) {
