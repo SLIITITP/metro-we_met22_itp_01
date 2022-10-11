@@ -40,19 +40,19 @@ const LeaveRouter = require("./routes/LeaveRoutes.js");
 const DepartmentRouter = require("./routes/DepartmentRoutes.js");
 
 //for Inventory Management
-const chefRequestRouter = require ("./routes/ChefRequestRoutes.js");
-const KitchenIngredientsRouter = require ("./routes/KitchenIngredientsRoutes.js");
-const ManagerRequestRouter = require ("./routes/ManagerRequestRoutes.js");
-const InventoryRouter = require ("./routes/InventoryRoutes.js");
-const KitchenStockRouter = require ("./routes/KitchenStockRoutes.js");
-const ToiletriesRouter = require ("./routes/ToiletriesRoutes.js");
-const AssetsRouter = require ("./routes/AssetRoutes.js");
-const MaintenanceRouter = require ("./routes/MaintenanceRoutes.js");
+const chefRequestRouter = require("./routes/ChefRequestRoutes.js");
+const KitchenIngredientsRouter = require("./routes/KitchenIngredientsRoutes.js");
+const ManagerRequestRouter = require("./routes/ManagerRequestRoutes.js");
+const InventoryRouter = require("./routes/InventoryRoutes.js");
+const KitchenStockRouter = require("./routes/KitchenStockRoutes.js");
+const ToiletriesRouter = require("./routes/ToiletriesRoutes.js");
+const AssetsRouter = require("./routes/AssetRoutes.js");
+const MaintenanceRouter = require("./routes/MaintenanceRoutes.js");
 
-//https://localhost:8070:customer will load CustomerRouter.js
+//https://localhost:8070/customer will load CustomerRouter.js
 app.use("/customer", CustomerRouter);
-app.use("/loyalCustomer", LoyalCustomerRouter);
-app.use("/ordinaryCustomer", OrdinaryCustomerRouter);
+// app.use("/loyalCustomer", LoyalCustomerRouter);
+// app.use("/ordinaryCustomer", OrdinaryCustomerRouter);
 app.use("/customerService", CustomerRequestRouter);
 app.use("/customerService/complaint", CustomerComplaintRouter);
 app.use("/customerService/foodAndBeverageRequest", FoodAndBeverageRouter);
@@ -78,9 +78,9 @@ app.use("/leave", LeaveRouter);
 app.use("/department", DepartmentRouter);
 
 //http://localhost:8080/chefRequest the chefRequest javascript file will be loaded
-app.use("/inventory/chefRequest", chefRequestRouter); 
+app.use("/inventory/chefRequest", chefRequestRouter);
 app.use("/kitchenIngredients", KitchenIngredientsRouter);
-app.use("/inventory/managerRequest",ManagerRequestRouter);
+app.use("/inventory/managerRequest", ManagerRequestRouter);
 app.use("/inventory", InventoryRouter);
 app.use("/kitchenStock", KitchenStockRouter);
 app.use("/toiletries", ToiletriesRouter);

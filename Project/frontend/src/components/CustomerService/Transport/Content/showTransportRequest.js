@@ -30,7 +30,7 @@ export default function ShowTransportRequest() {
     }
     //Setting up TransportRequest so that we can update it using the update Route
     setTransportRequest(transportList[i]);
-    setRequest(reqList[j]);
+    setRequest(reqList[j]); //Check and remove this line
 
     TransportRequest.noOfSeats = event.target.numberOfSeats.value;
 
