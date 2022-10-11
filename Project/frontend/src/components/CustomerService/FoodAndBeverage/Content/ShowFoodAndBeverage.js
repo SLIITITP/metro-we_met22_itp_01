@@ -4,11 +4,13 @@ import getFoodAndBeverage from "./getFoodAndBeverage";
 import { Container } from "../js/Container";
 import "../../../../index.css";
 import GetOneReq from "./getOneRequest";
-import Trigger from "../Component/popOver";
+import PopOver from "../Component/popOver";
+import getAllRequest from "./getRequest";
 
 export default function ShowFoodAndBeverage() {
   var color = "black"; //for the status field in the table
   const fAndBList = getFoodAndBeverage();
+  const reqList = getAllRequest();
 
   //For the search button
   const [search, setSearch] = useState("");
@@ -16,10 +18,22 @@ export default function ShowFoodAndBeverage() {
   //To store all details in FoodAndBeverage and update and display data
   const [FoodAndBeverage, setFoodAndBeverage] = useState({});
 
+  const [Request, setRequest] = useState({});
   let i = 0;
+  let j = 0;
+  var reqID;
+
   const OnSubmit = (event, id) => {
-    for (i; i < fAndBList.length; i++) {
+    for (i = 0; i < fAndBList.length; i++) {
       if (fAndBList[i]._id == id) {
+        break;
+      }
+    }
+
+    reqID = fAndBList[i].reqId;
+
+    for (j = 0; j < reqList.length; j++) {
+      if (reqList[j].reqId == reqID) {
         break;
       }
     }
@@ -30,6 +44,8 @@ export default function ShowFoodAndBeverage() {
     FoodAndBeverage.requestForDate = event.target.date.value;
     FoodAndBeverage.requestForTime = event.target.time.value;
 
+    Request.notes = event.target.notes.value;
+
     axios
       .post(
         "http://localhost:8070/customerService/foodAndBeverageRequest/update/" +
@@ -38,6 +54,18 @@ export default function ShowFoodAndBeverage() {
       )
       .then(() => {
         alert("Request Updated");
+      })
+      .catch((err) => {
+        console.log(err.message);
+      });
+
+    axios
+      .post(
+        "http://localhost:8070/customerService/update/" + reqList[j]._id,
+        Request
+      )
+      .then(() => {
+        console.log("Update Successful");
       })
       .catch((err) => {
         console.log(err.message);
@@ -59,11 +87,25 @@ export default function ShowFoodAndBeverage() {
 
   //To cancel an ongoing request
   function CancelRequest(id) {
+    for (i = 0; i < fAndBList.length; i++) {
+      if (fAndBList[i]._id == id) {
+        break;
+      }
+    }
+
+    reqID = fAndBList[i].reqId;
+
+    for (j = 0; j < reqList.length; j++) {
+      if (reqList[j].reqId == reqID) {
+        break;
+      }
+    }
+
     <GetOneReq id={id} />;
     setfAndBCancel(GetOneReq);
 
     fAndBCancel.status = "Cancelled";
-
+    Request.status = "Cancelled";
     axios
       .post(
         "http://localhost:8070/customerService/foodAndBeverageRequest/update/" +
@@ -73,6 +115,19 @@ export default function ShowFoodAndBeverage() {
       .then((info) => {
         console.log(info);
         alert("Request Cancelled");
+      })
+      .catch((err) => {
+        console.log(err.message);
+      });
+
+    axios
+      .post(
+        "http://localhost:8070/customerService/update/" + reqList[j]._id,
+        Request
+      )
+      .then((info) => {
+        console.log(info);
+        console.log("Booking Cancelled");
       })
       .catch((err) => {
         console.log(err.message);
@@ -149,7 +204,7 @@ export default function ShowFoodAndBeverage() {
                     <td>{val.requestForDate}</td>
                     <td>{val.requestForTime}</td>
                     <td>
-                      <Trigger msg={val.notes} />
+                      <PopOver msg={val.notes} />
                     </td>
 
                     <td style={{ color: color }}>{val.status}</td>

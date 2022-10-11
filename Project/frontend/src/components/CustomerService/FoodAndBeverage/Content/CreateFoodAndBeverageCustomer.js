@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import getRequest from "./getRequest";
+
 export default function CreateFoodAndBeverageCustomer() {
   //For FoodAndBeverageRequest
   let reqIdString = "1";
@@ -32,11 +33,17 @@ export default function CreateFoodAndBeverageCustomer() {
   const [Request, setRequest] = useState({
     reqId: "1",
     custId: "1",
-    serviceType: "FoodAndBeverage",
-    requestedOn: fecha,
-    requestedtime: time,
+    serviceType: "FoodAndBeverageRequest",
+    requestedOn: "",
+    requestedtime: "",
     roomId: "1",
+    notes: "",
+    status: "Ongoing",
   });
+
+  Request.requestedOn = fecha;
+  Request.requestedtime = time;
+
   //To find the last id
   let j = reqList.length;
   j--;
@@ -165,6 +172,10 @@ export default function CreateFoodAndBeverageCustomer() {
             onChange={(event) => {
               setFoodAndBeverage({
                 ...FoodAndBeverage,
+                notes: event.target.value,
+              });
+              setRequest({
+                ...Request,
                 notes: event.target.value,
               });
             }}

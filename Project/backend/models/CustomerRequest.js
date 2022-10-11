@@ -13,6 +13,8 @@ const requestSchema = new Schema({
   requestedOn: { type: String, required: true },
   requestedtime: { type: String, required: true },
   roomId: { type: Number, required: true },
+  notes: { type: String, default: "" },
+  status: String,
 });
 
 const Request = mongoose.model("Request", requestSchema);

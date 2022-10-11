@@ -10,7 +10,7 @@ export const Form = ({ onSubmit }) => {
   var itemList1 = "";
 
   function EnterReq() {
-    if (document.getElementById("item").value !== "") {
+    if (document.getElementById("item1").value !== "") {
       if (itemList1 === "")
         itemList1 = document.getElementById("item1").value + ", \n";
       else itemList1 += document.getElementById("item1").value + ", \n";
@@ -62,6 +62,8 @@ export const Form = ({ onSubmit }) => {
           <option value="Combs">Combs</option>
           <option value="Shaving Cream">Shaving Cream</option>
           <option value="Razor">Razor</option>
+          <option value="Blankets">Blankets</option>
+          <option value="Hair Dryer">Hair Dryer</option>
           <option value="Hair Dryer">Hair Dryer</option>
           <option
             value=""

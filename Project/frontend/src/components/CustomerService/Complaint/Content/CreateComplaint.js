@@ -9,14 +9,6 @@ export default function CreateComplaintCustomer() {
 
   const reqList = getRequest();
 
-  // complaintId: { type: String, required: true, unique: true },
-  // custId: { type: String, required: true, unique: true },
-  // description: { type: String, required: true },
-  // type: { type: String, required: true }, //service related or restaurant related?
-  // date: { type: Date, default: Date() },
-  // time: { type: String, default: "00:00" },
-  // status: { type: String, required: true },
-
   const [ComplaintRequest, setComplaintRequest] = useState({
     complaintId: "1",
     custId: "1",
@@ -42,10 +34,12 @@ export default function CreateComplaintCustomer() {
   const [Request, setRequest] = useState({
     reqId: "1",
     custId: "1",
-    serviceType: "ComplaintRequest",
+    serviceType: "CustomerComplaint",
     requestedOn: "",
     requestedtime: "",
     roomId: "1",
+    notes: "",
+    status: "Ongoing",
   });
 
   Request.requestedOn = fecha;
@@ -62,18 +56,18 @@ export default function CreateComplaintCustomer() {
     complaintId = reqId.toString();
     // console.log(complaintId);
     ComplaintRequest.complaintId = complaintId;
-    Request.reqId = complaintId;
+    Request.reqId = reqId.toString();
   }
 
   //To create a record in the table
   function Create(e) {
     e.preventDefault();
+    window.location.reload(false);
 
     axios
       .post("http://localhost:8070/customerService/complaint", ComplaintRequest)
       .then(() => {
         alert("Request Added Successfully");
-        window.location.reload(false);
       })
       .catch((err) => {
         alert(err.message);
@@ -249,6 +243,10 @@ export default function CreateComplaintCustomer() {
               setComplaintRequest({
                 ...ComplaintRequest,
                 description: event.target.value,
+              });
+              setRequest({
+                ...Request,
+                notes: event.target.value,
               });
             }}
             required

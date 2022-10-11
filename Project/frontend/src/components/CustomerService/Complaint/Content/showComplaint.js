@@ -5,21 +5,37 @@ import { Container } from "../js/Container";
 import "../../../../index.css";
 import Trigger from "../Component/popOver";
 import GetOneComplaint from "./getOneComplaint";
+import getAllRequest from "./getRequest";
 
 export default function ShowComplaintRequest() {
   var color = "black"; //for the status field in the table
   const complaintList = getComplaintRequest();
+  const reqList = getAllRequest();
 
   //For the search button
   const [search, setSearch] = useState("");
 
   //To store all details in ComplaintRequest and update and display data
   const [ComplaintRequest, setComplaintRequest] = useState({});
+  const [Request, setRequest] = useState({});
 
   let i = 0;
+  let j = 0;
+  var reqID;
+
   const OnSubmit = (event, id) => {
-    for (i; i < complaintList.length; i++) {
+    window.location.reload(false);
+
+    for (i = 0; i < complaintList.length; i++) {
       if (complaintList[i]._id == id) {
+        break;
+      }
+    }
+
+    reqID = complaintList[i].complaintId;
+
+    for (j = 0; j < reqList.length; j++) {
+      if (reqList[j].reqId == reqID) {
         break;
       }
     }
@@ -29,6 +45,8 @@ export default function ShowComplaintRequest() {
     ComplaintRequest.description = event.target.description.value;
     ComplaintRequest.type = event.target.type.value;
     ComplaintRequest.for = event.target.for.value;
+
+    Request.notes = event.target.description.value;
 
     axios
       .post(
@@ -41,14 +59,27 @@ export default function ShowComplaintRequest() {
       .catch((err) => {
         console.log(err.message);
       });
+
+    axios
+      .post(
+        "http://localhost:8070/customerService/update/" + reqList[j]._id,
+        Request
+      )
+      .then(() => {
+        console.log("Update Successful");
+      })
+      .catch((err) => {
+        console.log(err.message);
+      });
   };
 
   //To delete a Complaint request created
   function DeleteItem(id) {
+    window.location.reload(false);
+
     axios
       .delete("http://localhost:8070/customerService/complaint/" + id)
       .then(() => {
-        window.location.reload(false);
         alert("Record Deleted Successfully");
       });
   }
@@ -57,10 +88,27 @@ export default function ShowComplaintRequest() {
 
   //To cancel an ongoing request
   function CancelRequest(id) {
+    window.location.reload(false);
+
+    for (i = 0; i < complaintList.length; i++) {
+      if (complaintList[i]._id == id) {
+        break;
+      }
+    }
+
+    reqID = complaintList[i].complaintId;
+
+    for (j = 0; j < reqList.length; j++) {
+      if (reqList[j].reqId == reqID) {
+        break;
+      }
+    }
+
     <GetOneComplaint id={id} />;
     setComplaintCancel(GetOneComplaint);
 
     ComplaintCancel.status = "Cancelled";
+    Request.status = "Cancelled";
 
     axios
       .post(
@@ -74,10 +122,25 @@ export default function ShowComplaintRequest() {
       .catch((err) => {
         console.log(err.message);
       });
+
+    axios
+      .post(
+        "http://localhost:8070/customerService/update/" + reqList[j]._id,
+        Request
+      )
+      .then((info) => {
+        console.log(info);
+        console.log("Booking Cancelled");
+      })
+      .catch((err) => {
+        console.log(err.message);
+      });
   }
   function changeColor(data) {
     if (data === "Cancelled") color = "red";
     else if (data === "Ongoing") color = "#0d6efd";
+    else if (data === "Solved") color = "green";
+    else if (data === "Pending") color = "#E8A317";
   }
   return (
     <div
@@ -99,7 +162,6 @@ export default function ShowComplaintRequest() {
           onSubmit={(e) => {
             setSearch(e.target.search.value);
             e.preventDefault();
-            // window.location.reload(false);
           }}
         >
           <input
@@ -178,16 +240,15 @@ export default function ShowComplaintRequest() {
                           <i className="bi bi-trash-fill"></i>
                         </button>
 
-                        {/* To show cancel button only when status is ongoing */}
-                        {(val.status === "Ongoing" ||
-                          val.status === "Completed") && (
+                        {/* To show cancel button only when status is ongoing or Pending*/}
+                        {val.status !== "Cancelled" && val.status !== "Solved" && (
                           <button
                             type="button"
                             className="close"
                             aria-label="Close"
+                            style={{ color: "#C41E3A" }}
                             onClick={(e) => {
                               CancelRequest(val._id);
-                              window.location.reload(false);
                             }}
                           >
                             <span aria-hidden="true">&times;</span>

@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-function SideNavigationTransport() {
+function SideNavigationComplaintStaff() {
   return (
     <div
       className="container"
@@ -9,7 +9,7 @@ function SideNavigationTransport() {
         top: "180px",
         float: "left",
         width: "15%",
-        height: "35%",
+        height: "100%",
         position: "fixed",
         paddingTop: "20px",
         marginLeft: "20px",
@@ -28,7 +28,7 @@ function SideNavigationTransport() {
           aria-orientation="vertical"
         >
           <Link
-            to="/customerService"
+            to=""
             style={{
               textDecoration: "none",
               color: "black",
@@ -50,7 +50,7 @@ function SideNavigationTransport() {
           </Link>
 
           <Link
-            to="/customerService/trainer"
+            to=""
             style={{
               textDecoration: "none",
               color: "black",
@@ -65,14 +65,38 @@ function SideNavigationTransport() {
               type="button"
               role="tab"
               aria-controls="v-pills-profile"
+              aria-selected="true"
               style={{ width: "100%" }}
             >
-              Trainer
+              Transport
             </button>
           </Link>
 
           <Link
-            to="/customerService/transport"
+            to=""
+            style={{
+              textDecoration: "none",
+              color: "black",
+              FontFace: "bold",
+            }}
+          >
+            <button
+              className="nav-link"
+              id="v-pills-profile-tab"
+              data-bs-toggle="pill"
+              data-bs-target="#v-pills-protofile"
+              type="button"
+              role="tab"
+              aria-controls="v-pills-profile"
+              aria-selected="true"
+              style={{ width: "100%" }}
+            >
+              Amenity
+            </button>
+          </Link>
+
+          <Link
+            to=""
             style={{
               textDecoration: "none",
               color: "black",
@@ -90,58 +114,12 @@ function SideNavigationTransport() {
               aria-selected="true"
               style={{ width: "100%" }}
             >
-              Transport
-            </button>
-          </Link>
-
-          <Link
-            to="/customerService/amenity"
-            style={{
-              textDecoration: "none",
-              color: "black",
-              FontFace: "bold",
-            }}
-          >
-            <button
-              className="nav-link"
-              id="v-pills-profile-tab"
-              data-bs-toggle="pill"
-              data-bs-target="#v-pills-profile"
-              type="button"
-              role="tab"
-              aria-controls="v-pills-profile"
-              aria-selected="true"
-              style={{ width: "100%" }}
-            >
-              Amenity
-            </button>
-          </Link>
-
-          <Link
-            to="/customerService/complaint"
-            style={{
-              textDecoration: "none",
-              color: "black",
-              FontFace: "bold",
-            }}
-          >
-            <button
-              className="nav-link"
-              id="v-pills-profile-tab"
-              data-bs-toggle="pill"
-              data-bs-target="#v-pills-profile"
-              type="button"
-              role="tab"
-              aria-controls="v-pills-profile"
-              aria-selected="false"
-              style={{ width: "100%" }}
-            >
               Complaint
             </button>
           </Link>
 
           <Link
-            to="/customerService"
+            to=""
             style={{
               textDecoration: "none",
               color: "black",
@@ -214,4 +192,4 @@ function SideNavigationTransport() {
   );
 }
 
-export { SideNavigationTrainer };
+export { SideNavigationComplaintStaff };

@@ -12,12 +12,12 @@ function PopoverPosition(props) {
           placement={placement}
           overlay={
             <Popover id={`popover-positioned-${placement}`}>
-              <Popover.Header as="h3">Notes</Popover.Header>
+              <Popover.Header as="h3">{props.viewName}</Popover.Header>
               <Popover.Body>{props.msg}</Popover.Body>
             </Popover>
           }
         >
-          <Button variant="btn btn-primary btn-sm">Expand</Button>
+          <Button variant="btn btn-primary btn-sm">{props.btnName}</Button>
         </OverlayTrigger>
       ))}
     </>

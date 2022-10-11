@@ -34,6 +34,8 @@ export default function CreateAmenityCustomer() {
     requestedOn: "",
     requestedtime: "",
     roomId: "1",
+    notes: "",
+    status: "Ongoing",
   });
 
   Request.requestedOn = fecha;
@@ -87,6 +89,7 @@ export default function CreateAmenityCustomer() {
   }
 
   var itemList = "";
+
   function EnterReq() {
     if (document.getElementById("item").value !== "") {
       if (itemList === "")
@@ -155,6 +158,8 @@ export default function CreateAmenityCustomer() {
             <option value="Combs">Combs</option>
             <option value="Shaving Cream">Shaving Cream</option>
             <option value="Razor">Razor</option>
+            <option value="Tissue Box">Tissue Box</option>
+            <option value="Blankets">Blankets</option>
             <option value="Hair Dryer">Hair Dryer</option>
             <option
               value=""
@@ -226,6 +231,10 @@ export default function CreateAmenityCustomer() {
               setAmenityRequest({
                 ...AmenityRequest,
                 note: event.target.value,
+              });
+              setRequest({
+                ...Request,
+                notes: event.target.value,
               });
             }}
           />
