@@ -144,7 +144,7 @@ export default function ShowFoodAndBeverage() {
         width: "40%",
         float: "right",
         marginTop: "-422px",
-        marginRight: "20px",
+        marginRight: "65px",
         position: "sticky",
       }}
     >

@@ -94,7 +94,7 @@ export default function CreateFoodAndBeverageCustomer() {
     <div
       className="container"
       style={{
-        width: "40%",
+        width: "38%",
         position: "sticky",
       }}
     >
