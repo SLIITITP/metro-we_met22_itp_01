@@ -1,6 +1,12 @@
 import React, { useState } from "react";
 import axios from "axios";
 import getRequest from "./getRequest";
+import kandy from "./Kandy.png";
+import lagoon from "./br.png";
+import dambulla from "./DambullaCT.png";
+import wilpattu from "./WilpattuNp.png";
+
+let image = lagoon; //to store and display the image
 
 export default function CreateTransportRequestCustomer() {
   //For TransportRequestRequest
@@ -55,10 +61,10 @@ export default function CreateTransportRequestCustomer() {
 
   //Function to set Time based on Route
   function setTransport(data) {
-    if (data === "Route1") TransportRequest.departureTime = "08:00";
-    else if (data === "Route2") TransportRequest.departureTime = "16:00";
-    else if (data === "Route3") TransportRequest.departureTime = "14:00";
-
+    if (data === "Kandy") TransportRequest.departureTime = "08:00";
+    else if (data === "Dambulla") TransportRequest.departureTime = "16:00";
+    else if (data === "Wilpattu") TransportRequest.departureTime = "14:00";
+    else TransportRequest.departureTime = "";
     document.getElementById("time").value = TransportRequest.departureTime;
   }
 
@@ -94,6 +100,13 @@ export default function CreateTransportRequestCustomer() {
       });
   }
 
+  function changeImageFuncton(val) {
+    if (val === "Kandy") image = kandy;
+    else if (val === "Dambulla") image = dambulla;
+    else if (val === "Wilpattu") image = wilpattu;
+    else image = lagoon;
+  }
+
   return (
     <div
       className="container"
@@ -109,10 +122,43 @@ export default function CreateTransportRequestCustomer() {
         <h1 className="display-6" style={{ marginBottom: "20px" }}>
           Transport Request
         </h1>
+        <div className="mb-3">
+          <img src={image} style={{ width: "300px", height: "300px" }} />
+          <br />
+        </div>
+
+        <div className="mb-3">
+          <label htmlFor="routes" className="form-label">
+            Excursion To
+          </label>
+          <select
+            className="form-select"
+            id="routes"
+            aria-label="Default select example"
+            required
+            onChange={(event) => {
+              setTransportRequest({
+                ...TransportRequest,
+                route: event.target.value,
+              });
+              changeImageFuncton(event.target.value);
+              setTransport(event.target.value);
+            }}
+          >
+            <option value="" style={{}}>
+              Choose Your Destination
+            </option>
+            <option value="Kandy" style={{}}>
+              Sacred City of Kandy
+            </option>
+            <option value="Dambulla">Damubulla Cave Temple</option>
+            <option value="Wilpattu">Wilpattu National Park Safari</option>
+          </select>
+        </div>
 
         <div className="mb-3">
           <label htmlFor="requestForDate" className="form-label">
-            Scheduled For
+            Reservation Date
           </label>
           <input
             type="date"
@@ -130,30 +176,6 @@ export default function CreateTransportRequestCustomer() {
         </div>
 
         <div className="mb-3">
-          <label htmlFor="routes" className="form-label">
-            Routes
-          </label>
-          <select
-            className="form-select"
-            id="routes"
-            aria-label="Default select example"
-            required
-            onChange={(event) => {
-              setTransportRequest({
-                ...TransportRequest,
-                route: event.target.value,
-              });
-              setTransport(event.target.value);
-            }}
-          >
-            <option value="">Choose Route</option>
-            <option value="Route1">Route 1</option>
-            <option value="Route2">Route 2</option>
-            <option value="Route3">Route 3</option>
-          </select>
-        </div>
-
-        <div className="mb-3">
           <label htmlFor="departureTime" className="form-label">
             Departure Time
           </label>
@@ -166,7 +188,6 @@ export default function CreateTransportRequestCustomer() {
             readOnly
           />
         </div>
-
         <div className="mb-3">
           <label htmlFor="noOfSeats" className="form-label">
             Number Of Seats
@@ -187,7 +208,6 @@ export default function CreateTransportRequestCustomer() {
             }}
           />
         </div>
-
         <div className="mb-3">
           <label htmlFor="serviceType" className="form-label">
             Service Type
@@ -196,7 +216,6 @@ export default function CreateTransportRequestCustomer() {
             <option value="TransportRequest">Resort Transport</option>
           </select>
         </div>
-
         <button type="submit" className="btn btn-primary">
           Submit
         </button>

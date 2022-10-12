@@ -114,7 +114,7 @@ export default function ShowTransportRequest() {
       style={{
         width: "40%",
         float: "right",
-        marginTop: "-422px",
+        marginTop: "-810px",
         marginRight: "20px",
         position: "sticky",
       }}
