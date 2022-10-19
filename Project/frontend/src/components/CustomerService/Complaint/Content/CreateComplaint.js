@@ -40,6 +40,10 @@ export default function CreateComplaintCustomer() {
     roomId: "1",
     notes: "",
     status: "Ongoing",
+    status: "Null",
+    busNo: "Null",
+    route: "Null",
+    bookingDate: "Null",
   });
 
   Request.requestedOn = fecha;
