@@ -116,7 +116,9 @@ export default function DisplayTransportPage() {
   function displayList() {
     //To update the seletedRequestList with cancellationReason
     display();
-    for (var z = 0; z < selectedRequestList.length; z++) {
+
+    var z = 0;
+    for (z = 0; z < selectedRequestList.length; z++) {
       var reqId1 = selectedRequestList[z].reqId;
 
       for (var y = 0; y < allAttendReq.length; y++) {
@@ -130,7 +132,7 @@ export default function DisplayTransportPage() {
       for (var f = 0; f < allDrivers.length; f++) {
         if (selectedRequestList[z].route === allDrivers[f].route) {
           selectedRequestList[z].driverID = allDrivers[f].driverID;
-          selectedRequestList[z].driverName = allDrivers[f].driverName;
+          selectedRequestList[z].busNo = allDrivers[f].busNo;
           selectedRequestList[z].cancellationReason = allTransList[f].message;
           break;
         }
@@ -267,7 +269,7 @@ export default function DisplayTransportPage() {
             <th scope="col">BusNo</th>
             <th scope="col">Route</th>
             <th scope="col">DriverID</th>
-            <th scope="col">DriverName</th>
+            <th scope="col">Route</th>
             <th scope="col">Date</th>
             <th scope="col">Booked</th>
             <th scope="col">Available</th>
@@ -292,7 +294,7 @@ export default function DisplayTransportPage() {
                     <td scope="row">{val.busNo}</td>
                     <td>{val.route}</td>
                     <td>{val.driverID}</td>
-                    <td>{val.driverName}</td>
+                    <td>{val.route}</td>
                     <td>{val.bookingDate}</td>
                     <td>{val.bookedSeats}</td>
                     <td>{val.availableSeats}</td>

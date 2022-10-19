@@ -171,7 +171,7 @@ export default function CreateTransportRequestCustomer() {
             <option value="Kandy" style={{}}>
               Sacred City of Kandy
             </option>
-            <option value="Dambulla">Damubulla Cave Temple</option>
+            <option value="Dambulla">Dambulla Cave Temple</option>
             <option value="Wilpattu">Wilpattu National Park Safari</option>
           </select>
         </div>
