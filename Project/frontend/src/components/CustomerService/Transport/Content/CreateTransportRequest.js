@@ -15,7 +15,8 @@ export default function CreateTransportRequestCustomer() {
 
   const [TransportRequest, setTransportRequest] = useState({
     reqId: "1",
-    status: "Ongoing",
+    status: "Booked",
+    message: "None",
   });
 
   //Taking only the date from Date()
@@ -41,7 +42,10 @@ export default function CreateTransportRequestCustomer() {
     requestedtime: "",
     roomId: "1",
     notes: "",
-    status: "Ongoing",
+    status: "Booked",
+    busNo: "",
+    route: "",
+    bookingDate: "",
   });
 
   Request.requestedOn = fecha;
@@ -61,11 +65,21 @@ export default function CreateTransportRequestCustomer() {
 
   //Function to set Time based on Route
   function setTransport(data) {
-    if (data === "Kandy") TransportRequest.departureTime = "08:00";
-    else if (data === "Dambulla") TransportRequest.departureTime = "16:00";
-    else if (data === "Wilpattu") TransportRequest.departureTime = "14:00";
-    else TransportRequest.departureTime = "";
+    if (data === "Kandy") {
+      TransportRequest.departureTime = "08:00";
+      TransportRequest.busNo = "NC-5770";
+    } else if (data === "Dambulla") {
+      TransportRequest.departureTime = "16:00";
+      TransportRequest.busNo = "NC-5969";
+    } else if (data === "Wilpattu") {
+      TransportRequest.departureTime = "14:00";
+      TransportRequest.busNo = "NF-6198";
+    } else {
+      TransportRequest.departureTime = "";
+      TransportRequest.busNo = "";
+    }
     document.getElementById("time").value = TransportRequest.departureTime;
+    document.getElementById("busNo").value = TransportRequest.busNo;
   }
 
   //To create a record in the table
@@ -73,6 +87,8 @@ export default function CreateTransportRequestCustomer() {
     window.location.reload(false);
 
     TransportRequest.departureTime = document.getElementById("time").value;
+    TransportRequest.busNo = document.getElementById("busNo").value;
+    Request.busNo = document.getElementById("busNo").value;
 
     axios
       .post(
@@ -80,8 +96,7 @@ export default function CreateTransportRequestCustomer() {
         TransportRequest
       )
       .then(() => {
-        alert("Request Added Successfully");
-        window.location.reload(false);
+        alert("Transport Request Added Successfully");
       })
       .catch((err) => {
         alert(err.message);
@@ -92,7 +107,8 @@ export default function CreateTransportRequestCustomer() {
     axios
       .post("http://localhost:8070/customerService", Request)
       .then(() => {
-        alert("Request added");
+        console.log("Transport Request Added");
+        window.location.reload(false);
       })
       .catch((err) => {
         alert(err.message);
@@ -141,6 +157,10 @@ export default function CreateTransportRequestCustomer() {
                 ...TransportRequest,
                 route: event.target.value,
               });
+              setRequest({
+                ...Request,
+                route: event.target.value,
+              });
               changeImageFuncton(event.target.value);
               setTransport(event.target.value);
             }}
@@ -171,23 +191,15 @@ export default function CreateTransportRequestCustomer() {
                 ...TransportRequest,
                 requestForDate: event.target.value,
               });
+
+              setRequest({
+                ...Request,
+                bookingDate: event.target.value,
+              });
             }}
           />
         </div>
 
-        <div className="mb-3">
-          <label htmlFor="departureTime" className="form-label">
-            Departure Time
-          </label>
-          <input
-            type="text"
-            id="time"
-            name="time"
-            className="form-control"
-            required
-            readOnly
-          />
-        </div>
         <div className="mb-3">
           <label htmlFor="noOfSeats" className="form-label">
             Number Of Seats
@@ -208,6 +220,35 @@ export default function CreateTransportRequestCustomer() {
             }}
           />
         </div>
+
+        <div className="mb-3">
+          <label htmlFor="departureTime" className="form-label">
+            Bus No
+          </label>
+          <input
+            type="text"
+            id="busNo"
+            name="busNo"
+            className="form-control"
+            required
+            readOnly
+          />
+        </div>
+
+        <div className="mb-3">
+          <label htmlFor="departureTime" className="form-label">
+            Departure Time
+          </label>
+          <input
+            type="text"
+            id="time"
+            name="time"
+            className="form-control"
+            required
+            readOnly
+          />
+        </div>
+
         <div className="mb-3">
           <label htmlFor="serviceType" className="form-label">
             Service Type

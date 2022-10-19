@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-function MainNavigationStaff() {
+export default function MainNavigationStaffComplaint() {
   return (
     <div
       className="container"
@@ -22,14 +22,14 @@ function MainNavigationStaff() {
         <li className="nav-item" role="presentation">
           <Link to="" style={{ textDecoration: "none" }}>
             <button
-              className="nav-link active"
-              id="home-tab"
+              className="nav-link"
+              id="profile-tab"
               data-bs-toggle="tab"
-              data-bs-target="#home-tab-pane"
+              data-bs-target="#profile-tab-pane"
               type="button"
               role="tab"
-              aria-controls="home-tab-pane"
-              aria-selected="true"
+              aria-controls="profile-tab-pane"
+              aria-selected="false"
             >
               Bookings
             </button>
@@ -70,7 +70,10 @@ function MainNavigationStaff() {
         </li>
 
         <li className="nav-item" role="presentation">
-          <Link to="" style={{ textDecoration: "none" }}>
+          <Link
+            to="/customerService/transportStaff"
+            style={{ textDecoration: "none" }}
+          >
             <button
               className="nav-link"
               id="profile-tab"
@@ -109,14 +112,14 @@ function MainNavigationStaff() {
             style={{ textDecoration: "none" }}
           >
             <button
-              className="nav-link"
-              id="profile-tab"
+              className="nav-link active"
+              id="home-tab"
               data-bs-toggle="tab"
-              data-bs-target="#profile-tab-pane"
+              data-bs-target="#home-tab-pane"
               type="button"
               role="tab"
-              aria-controls="profile-tab-pane"
-              aria-selected="false"
+              aria-controls="home-tab-pane"
+              aria-selected="true"
             >
               Complaint
             </button>
@@ -162,5 +165,3 @@ function MainNavigationStaff() {
     </div>
   );
 }
-
-export { MainNavigationStaff };

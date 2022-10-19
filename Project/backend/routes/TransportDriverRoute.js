@@ -1,9 +1,9 @@
 const express = require("express");
-const getRequests = require("../controller/AttendComplaint");
-const createRequest = require("../controller/AttendComplaint");
-const deleteRequest = require("../controller/AttendComplaint");
-const updateRequest = require("../controller/AttendComplaint");
-const getOneRequest = require("../controller/AttendComplaint");
+const getRequests = require("../controller/TransportDriver");
+const createRequest = require("../controller/TransportDriver");
+const deleteRequest = require("../controller/TransportDriver");
+const updateRequest = require("../controller/TransportDriver");
+const getOneRequest = require("../controller/TransportDriver");
 
 //To create an instance of express.router
 const router = express.Router();

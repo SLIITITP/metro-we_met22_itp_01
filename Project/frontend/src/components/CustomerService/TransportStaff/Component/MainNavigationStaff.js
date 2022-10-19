@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-function MainNavigationStaff() {
+export default function MainNavigationTransportStaff() {
   return (
     <div
       className="container"
@@ -70,7 +70,10 @@ function MainNavigationStaff() {
         </li>
 
         <li className="nav-item" role="presentation">
-          <Link to="" style={{ textDecoration: "none" }}>
+          <Link
+            to="/customerService/transportStaff"
+            style={{ textDecoration: "none" }}
+          >
             <button
               className="nav-link"
               id="profile-tab"
@@ -162,5 +165,3 @@ function MainNavigationStaff() {
     </div>
   );
 }
-
-export { MainNavigationStaff };

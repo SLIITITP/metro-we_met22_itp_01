@@ -9,7 +9,9 @@ const Trigger = ({ triggerText, buttonRef, showModal }) => {
       ref={buttonRef}
       onClick={showModal}
     >
-      <i class="bi bi-pencil"></i>
+      <button type="button" class="btn btn-outline-danger">
+        Cancel
+      </button>
       {triggerText}
     </button>
   );

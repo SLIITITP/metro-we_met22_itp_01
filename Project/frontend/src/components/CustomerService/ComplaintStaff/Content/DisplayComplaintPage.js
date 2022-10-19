@@ -33,7 +33,7 @@ export default function DisplayComplaintRequest() {
     action: "",
     updatedDate: "",
     updatedTime: "",
-  });
+  }); //To update the AttendRequest Table
 
   AttendRequest.updatedDate = fecha;
   AttendRequest.updatedTime = time;
@@ -41,52 +41,62 @@ export default function DisplayComplaintRequest() {
   //For the search button
   const [search, setSearch] = useState("");
 
-  var selectedRequestList = []; //I'm taking it as an array
+  var selectedRequestList = []; //To select only the request with servicetype = complaint
 
   //To store all details in ReqForAgent and update and display data
-  const [ReqForAgent, setReqForAgent] = useState({});
+  const [ReqForAgent, setReqForAgent] = useState({}); //To update Request Table with popup form
+
+  //To update customer Complaint table with action taken after the agent enters the action taken
   const [ComplaintReqForCust, setComplaintReqForCust] = useState({});
 
   let i = 0;
   let j = 0;
 
+  //taking servicetype=complaint records from the request table
   for (i = 0; i < allReqList.length; i++) {
     if (allReqList[i].serviceType === "CustomerComplaint") {
       selectedRequestList.push(allReqList[i]);
     }
   }
 
-  const allCompList = GetAllComplaint();
-  var allAttendReq = GetAllAttendInfo();
+  const allCompList = GetAllComplaint(); // to get all the complaints from the customer complaint table
+  var allAttendReq = GetAllAttendInfo(); //to get all attended request information from AttendRequest Table
 
   function displayList() {
     for (var z = 0; z < selectedRequestList.length; z++) {
       var reqId1 = selectedRequestList[z].reqId;
-      var stats = 0;
+      var stats = 0; //To check if the complaint has been attended
 
       for (var y = 0; y < allAttendReq.length; y++) {
         if (reqId1 === allAttendReq[y].reqId) {
           stats = 1;
-          selectedRequestList[z].action = allAttendReq[y].action;
+          selectedRequestList[z].action = allAttendReq[y].action; //To add an action field for selectedRequestList
           break;
         }
       }
-      if (stats === 0) selectedRequestList[z].action = "Request Not Attended";
+      if (stats === 0)
+        selectedRequestList[z].action = "Request Not Attended Yet"; //To add an action field for selectedRequestList
     }
   }
 
   displayList();
 
   const OnSubmit = (event, id) => {
-    //
     window.location.reload(false);
 
     for (i = 0; i < selectedRequestList.length; i++) {
       if (selectedRequestList[i]._id == id) break;
+      //To get the matching complaint from the list with selected ID
+      //This we do because we cant directly obtain the matching id field from the allCompList array
     }
 
     for (j = 0; j < allCompList.length; j++) {
       if (allCompList[j].complaintId == selectedRequestList[i].reqId) break;
+      /* To get the correct complaint from the complaint list with the matching requestID of
+      above selected 
+      
+      We compare with selectedRequestList's reqID because allCompList has a different _id
+      */
     }
 
     //Setting up ReqForAgent so that we can update it using the update Route
@@ -111,7 +121,7 @@ export default function DisplayComplaintRequest() {
         ComplaintReqForCust
       )
       .then(() => {
-        alert("Update Successful");
+        console.log("Update Successful");
       })
       .catch((err) => {
         console.log(err.message);
@@ -120,7 +130,7 @@ export default function DisplayComplaintRequest() {
     axios
       .post("http://localhost:8070/customerService/update/" + id, ReqForAgent)
       .then(() => {
-        console.log("Update Successful");
+        alert("Update Successful");
       })
       .catch((err) => {
         console.log(err.message);
@@ -136,6 +146,7 @@ export default function DisplayComplaintRequest() {
     }
 
     if (available === 0) {
+      //If not attended previously we insert it. If attended previously then we update it
       axios
         .post(
           "http://localhost:8070/customerService/attendRequest/",
@@ -173,10 +184,8 @@ export default function DisplayComplaintRequest() {
     <div
       className="container"
       style={{
-        width: "40%",
         marginTop: "150px",
         position: "sticky",
-        marginLeft: "270px",
       }}
     >
       <div className="container">
@@ -199,18 +208,10 @@ export default function DisplayComplaintRequest() {
             <option value="Solved">Solved</option>
             <option value="Pending">Pending</option>
           </select>
-
-          {/* <button
-            className="btn btn-primary my-2 my-sm-0"
-            type="submit"
-            style={{ height: "45px", width: "45px" }}
-          >
-            <i className="bi bi-search"></i>
-          </button> */}
         </form>
       </div>
 
-      <table className="table" style={{ width: "100%" }}>
+      <table className="table">
         <thead>
           <tr
             style={{

@@ -13,6 +13,8 @@ const TransportRequestSchema = new Schema({
   },
   departureTime: { type: String, required: true },
   status: { type: String, required: true }, //Booked, Cancelled or complete
+  busNo: String,
+  message: { type: String, default: "None" },
 });
 
 const TransportRequest = mongoose.model(

@@ -5,6 +5,7 @@ import { Container } from "../js/Container";
 import "../../../../index.css";
 import GetOneTransportRequest from "./getOneTransportRequest";
 import getAllRequest from "./getRequest";
+import PopOver from "../Component/popOver";
 
 export default function ShowTransportRequest() {
   var color = "black"; //for the status field in the table
@@ -106,31 +107,28 @@ export default function ShowTransportRequest() {
   }
   function changeColor(data) {
     if (data === "Cancelled") color = "red";
-    else if (data === "Ongoing") color = "#0d6efd";
+    else if (data === "Booked") color = "#0d6efd";
   }
   return (
     <div
       className="container"
       style={{
         width: "40%",
-        float: "right",
-        marginTop: "-810px",
-        marginRight: "20px",
-        position: "sticky",
+        overflow: "auto",
+        marginTop: "-870px",
+        marginLeft: "720px",
+        position: "fixed",
       }}
     >
       <div
         className="container"
-        style={{ marginBottom: "12px", float: "left" }}
+        style={{
+          marginBottom: "500px",
+          float: "left",
+          position: "fixed",
+        }}
       >
-        <form
-          class="form-inline my-2 my-lg-0"
-          onSubmit={(e) => {
-            setSearch(e.target.search.value);
-            e.preventDefault();
-            // window.location.reload(false);
-          }}
-        >
+        <form class="form-inline my-2 my-lg-0">
           <input
             class="form-control mr-sm-2"
             type="text"
@@ -139,11 +137,12 @@ export default function ShowTransportRequest() {
             id="search"
             placeholder="Search on Booking Date"
             aria-label="Search"
+            style={{ marginTop: "-70px" }}
+            onChange={(e) => {
+              setSearch(e.target.value);
+              e.preventDefault();
+            }}
           />
-
-          <button class="btn btn-primary my-2 my-sm-0" type="submit">
-            <i class="bi bi-search"></i>
-          </button>
         </form>
       </div>
 
@@ -156,6 +155,8 @@ export default function ShowTransportRequest() {
             <th scope="col">Time</th>
             <th scope="col">Seats</th>
             <th scope="col">Status</th>
+            <th scope="col">BusNo</th>
+            <th scope="col">Message</th>
             <th scope="col">Action</th>
           </tr>
         </thead>
@@ -180,7 +181,13 @@ export default function ShowTransportRequest() {
                     <td>{val.departureTime}</td>
                     <td>{val.noOfSeats}</td>
                     <td style={{ color: color }}>{val.status}</td>
-
+                    <td>{val.busNo}</td>
+                    <td>
+                      {/* {val.message !== "None" && (
+                        
+                      )} */}
+                      <PopOver msg={val.message} color={color} />
+                    </td>
                     <td>
                       <div
                         className="container"
@@ -189,7 +196,7 @@ export default function ShowTransportRequest() {
                         }}
                       >
                         {/* To show the edit button only if val.status==="Ongoing" */}
-                        {val.status === "Ongoing" && (
+                        {val.status === "Booked" && (
                           <Container
                             onSubmit={(e) => {
                               OnSubmit(e, val._id);
@@ -210,8 +217,7 @@ export default function ShowTransportRequest() {
                         </button>
 
                         {/* To show modify button only when status is ongoing */}
-                        {(val.status === "Ongoing" ||
-                          val.status === "Completed") && (
+                        {val.status === "Booked" && (
                           <button
                             type="button"
                             className="close"

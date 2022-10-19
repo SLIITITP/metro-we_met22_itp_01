@@ -12,10 +12,13 @@ import ShowComplaintRequest from "../components/CustomerService/Complaint/Conten
 import AmenityCustomer from "../components/CustomerService/Amenity/Content/CreateAmenity";
 import ShowAmenityRequest from "../components/CustomerService/Amenity/Content/showAmenity";
 import { SideNavigationAmenity } from "../components/CustomerService/Amenity/Component/SideNavigationAmenity";
-import ComplaintStaff from "../components/CustomerService/ComplaintStaff/Content/CreateComplaint";
 import { SideNavigationComplaintStaff } from "../components/CustomerService/ComplaintStaff/Component/SideNavigationComplaintStaff";
 import DisplayComplaintRequest from "../components/CustomerService/ComplaintStaff/Content/DisplayComplaintPage";
-import { MainNavigationStaff } from "../components/CustomerService/ComplaintStaff/Component/MainNavigationStaff";
+import MainNavigationStaffComplaint from "../components/CustomerService/ComplaintStaff/Component/MainNavigationStaff";
+import MainNavigationStaffTransport from "../components/CustomerService/TransportStaff/Component/MainNavigationStaff";
+import DisplayTransportPage from "../components/CustomerService/TransportStaff/Content/DisplayTransportPage";
+import { SideNavigationTransportStaff } from "../components/CustomerService/TransportStaff/Component/SideNavigationTransportStaff";
+
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 export default function CustServ() {
@@ -80,9 +83,24 @@ export default function CustServ() {
             path="/customerService/complaintStaff"
             element={
               <>
-                <MainNavigationStaff />
+                <MainNavigationStaffComplaint />
                 <DisplayComplaintRequest />
-                <SideNavigationComplaintStaff />
+                {/* <SideNavigationComplaintStaff /> */}
+              </>
+            }
+          />
+        </Routes>
+
+        <Routes>
+          <Route
+            path="/customerService/transportStaff"
+            element={
+              <>
+                <MainNavigationStaffTransport />
+                <DisplayTransportPage />
+                {/* <SideNavigationTransportStaff /> */}
+                {/* <DisplayComplaintRequest />
+                 */}
               </>
             }
           />

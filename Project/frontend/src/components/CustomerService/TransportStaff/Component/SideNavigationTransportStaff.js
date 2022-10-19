@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-function SideNavigationComplaintStaff() {
+function SideNavigationTransportStaff() {
   return (
     <div
       className="container"
@@ -192,4 +192,4 @@ function SideNavigationComplaintStaff() {
   );
 }
 
-export { SideNavigationComplaintStaff };
+export { SideNavigationTransportStaff };

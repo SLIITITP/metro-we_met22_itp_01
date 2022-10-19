@@ -1,5 +1,5 @@
 import "../App.css";
-import ComplaintStaff from "../components/CustomerService/ComplaintStaff/Content/CreateComplaint";
+//import ComplaintStaff from "../components/CustomerService/ComplaintStaff/Content/CreateComplaint";
 import { SideNavigationComplaintStaff } from "../components/CustomerService/ComplaintStaff/Component/SideNavigationComplaintStaff";
 import DisplayComplaintRequest from "../components/CustomerService/ComplaintStaff/Content/DisplayComplaintPage";
 
@@ -17,7 +17,7 @@ export default function CustServStaff() {
             path="/customerService/complaintStaff"
             element={
               <>
-                <ComplaintStaff />
+                <DisplayComplaintRequest />
                 <ShowComplaintRequestStaff />
                 <SideNavigationComplaintStaff />
               </>
