@@ -53,10 +53,13 @@ export default function DisplayTransportPage() {
   var selectedRequestList = []; //To select only the request with servicetype = transport
 
   var i1 = 0;
+  var top = -1;
 
   function display() {
     //taking servicetype=transport records from the request table
-    var top = -1;
+    i1 = 0;
+    top = -1;
+
     for (i1 = 0; i1 < allReqList.length; i1++) {
       var selectedDate = document.getElementById("search").value;
       //To display only current date's transport booking for a route
@@ -110,12 +113,11 @@ export default function DisplayTransportPage() {
       }
     }
   }
-
+  display();
   var allAttendReq = GetAllAttendInfo(); //to get all attended request information from AttendRequest Table
 
   function displayList() {
     //To update the seletedRequestList with cancellationReason
-    display();
 
     var z = 0;
     for (z = 0; z < selectedRequestList.length; z++) {
