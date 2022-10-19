@@ -139,7 +139,7 @@ export default function DisplayComplaintRequest() {
     var available = 0; //To check if the request has been previously attended
 
     for (j = 0; j < allAttendReq.length; j++) {
-      if (allAttendReq[j].reqId == selectedRequestList[i].reqId) {
+      if (allAttendReq[j].reqId === selectedRequestList[i].reqId) {
         available = 1;
         break;
       } else available = 0;
