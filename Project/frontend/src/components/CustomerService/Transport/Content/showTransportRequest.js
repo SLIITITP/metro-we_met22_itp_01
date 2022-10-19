@@ -116,7 +116,7 @@ export default function ShowTransportRequest() {
         width: "40%",
         overflow: "auto",
         marginTop: "-870px",
-        marginLeft: "720px",
+        marginLeft: "900px",
         position: "fixed",
       }}
     >
