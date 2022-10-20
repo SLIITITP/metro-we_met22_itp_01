@@ -1,6 +1,5 @@
 const router = require("express").Router();
 let Employee = require("../models/Employee");
-const { findOne } = require("../models/RoomNecessityRequest");
 
 //http://localhost:8080/employee/create
 //Add a record to the database
