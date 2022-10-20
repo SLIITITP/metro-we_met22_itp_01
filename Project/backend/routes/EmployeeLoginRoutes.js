@@ -103,21 +103,20 @@ router.route("/delete/:id").delete(async (req, res) => {
 });
 
 router.route("/login").post(async (req, res) => {
-  console.log(req.body);
-  const { email, password } = req.body.user;
+  const { username, password } = req.body.user;
   try {
     const user = await EmployeeLogin.findOne({
-      email: email,
+      username: username,
       password: password,
     });
 
     //console.log(user)
     if (user) {
       const temp = {
-        name: user.name,
+        username: user.username,
         email: user.email,
-        isAdmin: user.isAdmin,
-        _id: user._id,
+        password: user.password,
+        empID: user.empID,
       };
       res.send(temp);
     } else {

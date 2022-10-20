@@ -6,28 +6,30 @@ let Employee = require("../models/Employee");
 router.route("/create").post((req, res) => {
   const empID = req.body.empID;
   const name = req.body.empName;
-  const DOB = req.body.DOB;
-  const gender = req.body.gender;
-  const NIC = req.body.NIC;
   const designation = req.body.desig;
-  const phone = req.body.phone;
-  const email = req.body.email;
-  const address = req.body.address;
+  const deptName = req.body.deptName;
   const hourlyPay = Number(req.body.hourlyPay);
   const otRate = Number(req.body.otRate);
+  const NIC = req.body.NIC;
+  const DOB = req.body.DOB;
+  const gender = req.body.gender;
+  const address = req.body.address;
+  const email = req.body.email;
+  const phone = req.body.phone;
 
   const newEmployee = new Employee({
     empID,
     name,
-    DOB,
-    gender,
-    NIC,
     designation,
-    phone,
-    email,
-    address,
+    deptName,
     hourlyPay,
     otRate,
+    NIC,
+    DOB,
+    gender,
+    address,
+    email,
+    phone,
   });
 
   newEmployee
@@ -43,80 +45,47 @@ router.route("/create").post((req, res) => {
 //http://localhost:8080/employee/read
 //Read data from the database
 //Display records of all the employees
-router.route("/read").get((req, res) => {
-  Employee.find().exec((err, employees) => {
-    if (err) {
-      return res.status(400).json({
-        error: err,
-      });
-    }
-    return res.status(200).json({
-      success: true,
-      existingEmployees: employees,
-    });
-  });
+router.route("/read").get(async (req, res) => {
+  try {
+    const allEmp = await Employee.find();
+    res.status(200).json(allEmp);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
 });
 
 //http://localhost:8080/employee/read/id
 //Read data from the database
 //Display recoords of one employee
+//router.get("/read/:id", (req, res) =>
 router.route("/read/:id").get(async (req, res) => {
   let userId = req.params.id;
 
-  const user = await Employee.findById(userId)
-    .then((employee) => {
-      res.status(200).send({ status: "User Fetched", employee });
-    })
-    .catch((err) => {
-      console.log(err.message);
-      res
-        .status(500)
-        .send({ status: "Error with fetching user", error: err.message });
+  await Employee.findById(userId, (err, employee) => {
+    if (err) {
+      return res.status(400).json({ success: false, err });
+    }
+
+    return res.status(200).json({
+      success: true,
+      employee,
     });
+  });
 });
 
 //http://localhost:8080/employee/update/id
 //Update one record
 router.route("/update/:id").put(async (req, res) => {
-  let userId = req.params.id;
-  const {
-    empID,
-    name,
-    designation,
-    hourlyPay,
-    otRate,
-    NIC,
-    DOB,
-    gender,
-    address,
-    email,
-    phone,
-  } = req.body;
-
-  const updateEmployee = {
-    empID,
-    name,
-    DOB,
-    gender,
-    NIC,
-    designation,
-    phone,
-    email,
-    address,
-    hourlyPay,
-    otRate,
-  };
-
-  const update = await Employee.findByIdAndUpdate(userId, updateEmployee)
-    .then(() => {
-      res.status(200).send({ status: "User Updated" });
-    })
-    .catch((err) => {
-      console.log(err);
-      res
-        .status(500)
-        .send({ status: "Error with updating data", error: err.message });
-    });
+  const id = req.params.id;
+  const body = req.body;
+  try {
+    await Employee.findByIdAndUpdate(id, body);
+    res.status(200).send("Successfully Updated");
+  } catch {
+    (err) => {
+      res.status(500).send(err.message);
+    };
+  }
 });
 
 //http://localhost:8080/employee/delete/id
