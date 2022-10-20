@@ -18,7 +18,7 @@ import MainNavigationStaffComplaint from "../components/CustomerService/Complain
 import MainNavigationStaffTransport from "../components/CustomerService/TransportStaff/Component/MainNavigationStaff";
 import DisplayTransportPage from "../components/CustomerService/TransportStaff/Content/DisplayTransportPage";
 import { SideNavigationTransportStaff } from "../components/CustomerService/TransportStaff/Component/SideNavigationTransportStaff";
-
+import LoginPage from "../components/Login/Login";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 export default function CustServ() {
@@ -101,6 +101,17 @@ export default function CustServ() {
                 {/* <SideNavigationTransportStaff /> */}
                 {/* <DisplayComplaintRequest />
                  */}
+              </>
+            }
+          />
+        </Routes>
+
+        <Routes>
+          <Route
+            path="/login"
+            element={
+              <>
+                <LoginPage />
               </>
             }
           />
