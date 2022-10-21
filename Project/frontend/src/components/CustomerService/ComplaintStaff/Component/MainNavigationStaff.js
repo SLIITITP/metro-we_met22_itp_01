@@ -47,6 +47,23 @@ export default function MainNavigationStaffComplaint() {
               aria-controls="profile-tab-pane"
               aria-selected="false"
             >
+              Employee
+            </button>
+          </Link>
+        </li>
+
+        <li className="nav-item" role="presentation">
+          <Link to="" style={{ textDecoration: "none" }}>
+            <button
+              className="nav-link"
+              id="profile-tab"
+              data-bs-toggle="tab"
+              data-bs-target="#profile-tab-pane"
+              type="button"
+              role="tab"
+              aria-controls="profile-tab-pane"
+              aria-selected="false"
+            >
               Kitchen
             </button>
           </Link>
