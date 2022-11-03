@@ -77,38 +77,40 @@ export default function LoginPage() {
 
   return (
     <div>
-      <form style={{ width: "60%", marginLeft: "70px" }}>
-        <h3>Sign In</h3>
-        <div className="mb-3">
-          <label>Email address</label>
-          <input
-            type="email"
-            className="form-control"
-            placeholder="Enter email"
-            id="email"
-            onChange={(e) => {
-              setEmail(e.target.value);
-              setEmailCust(e.target.value);
-            }}
-          />
-        </div>
-        <div className="mb-3">
-          <label>Password</label>
-          <input
-            type="password"
-            className="form-control"
-            placeholder="Enter password"
-            id="password"
-            onChange={(e) => setPwd(e.target.value)}
-          />
-        </div>
-        <div className="mb-3"></div>
-        <div className="d-grid">
-          <button type="button" className="btn btn-primary" onClick={Verify}>
-            Submit
-          </button>
-        </div>
-      </form>
+      <center>
+        <form style={{ width: "40%", marginTop: "150px" }}>
+          <h3>Sign In</h3>
+          <div className="mb-3">
+            <label>Email address</label>
+            <input
+              type="email"
+              className="form-control"
+              placeholder="Enter email"
+              id="email"
+              onChange={(e) => {
+                setEmail(e.target.value);
+                setEmailCust(e.target.value);
+              }}
+            />
+          </div>
+          <div className="mb-3">
+            <label>Password</label>
+            <input
+              type="password"
+              className="form-control"
+              placeholder="Enter password"
+              id="password"
+              onChange={(e) => setPwd(e.target.value)}
+            />
+          </div>
+          <div className="mb-3"></div>
+          <div className="d-grid">
+            <button type="button" className="btn btn-primary" onClick={Verify}>
+              Submit
+            </button>
+          </div>
+        </form>
+      </center>
     </div>
   );
 }
