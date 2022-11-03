@@ -30,6 +30,7 @@ router.post("/login",async(req,res)=>{
 
             }
             res.send(temp) 
+            console.log(temp)
         }
         else{
            // return res.status(400).json({message : 'login failed.'})
