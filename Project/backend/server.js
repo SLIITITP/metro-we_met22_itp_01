@@ -12,6 +12,7 @@ app.use(bodyParser.json({ limit: "30 mb", extended: true })); //sometimes we mig
 app.use(bodyParser.urlencoded({ limit: "30 mb", extended: true }));
 
 //Add here the routers and paths
+const userRouter = require("./routes/UserRoutes");
 const CustomerRouter = require("./routes/CustomerRoutes.js");
 // const OrdinaryCustomerRouter = require("./routes/OrdinaryCustomerRoutes.js");
 // const LoyalCustomerRouter = require("./routes/OrdinaryCustomerRoutes.js");
@@ -39,6 +40,7 @@ const OrdinaryEmployeeRouter = require("./routes/OrdinaryEmployeeRoutes.js");
 const LeaveRouter = require("./routes/LeaveRoutes.js");
 const DepartmentRouter = require("./routes/DepartmentRoutes.js");
 
+
 //for Inventory Management
 const chefRequestRouter = require("./routes/ChefRequestRoutes.js");
 const KitchenIngredientsRouter = require("./routes/KitchenIngredientsRoutes.js");
@@ -61,6 +63,7 @@ app.use("/customerService/transportRequest", TransportRequestRouter);
 app.use("/customerService/roomNecessityRequest", RoomNecessityRouter);
 app.use("/customerService/attendRequest", AttendRequestRouter);
 app.use("/customerService/transportDriver", TransportDriverRouter);
+app.use("/users",userRouter);
 
 //http://localhost:8080/employee
 app.use("/employee", EmployeeRouter);
@@ -86,6 +89,7 @@ app.use("/kitchenStock", KitchenStockRouter);
 app.use("/toiletries", ToiletriesRouter);
 app.use("/assets", AssetsRouter);
 app.use("/maintenance", MaintenanceRouter);
+
 
 //pricess.env.PORT will allow us to choose the available port that is availabe once hosted
 const PORT = process.env.PORT || 8070;
