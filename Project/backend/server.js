@@ -62,7 +62,7 @@ app.use("/customerService/roomNecessityRequest", RoomNecessityRouter);
 app.use("/customerService/attendRequest", AttendRequestRouter);
 app.use("/customerService/transportDriver", TransportDriverRouter);
 
-//http://localhost:8080/employee
+//http://localhost:8070/employee
 app.use("/employee", EmployeeRouter);
 app.use("/manager", ManagerRouter);
 app.use("/employeelogin", EmployeeLoginRouter);
@@ -77,7 +77,7 @@ app.use("/ordinaryemployee", OrdinaryEmployeeRouter);
 app.use("/leave", LeaveRouter);
 app.use("/department", DepartmentRouter);
 
-//http://localhost:8080/chefRequest the chefRequest javascript file will be loaded
+//http://localhost:8070/chefRequest the chefRequest javascript file will be loaded
 app.use("/inventory/chefRequest", chefRequestRouter);
 app.use("/kitchenIngredients", KitchenIngredientsRouter);
 app.use("/inventory/managerRequest", ManagerRequestRouter);

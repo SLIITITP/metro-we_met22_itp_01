@@ -73,6 +73,19 @@ router.route("/read/:id").get(async (req, res) => {
   });
 });
 
+router.get("/findbyid", async (req, res) => {
+  const userId = req.body.userId;
+
+  try {
+    const req = await Employee.findOne({ userId: userId });
+
+    res.status(200).json(req);
+  } catch (error) {
+    // console.log(error);
+    res.status(500).json({ message: error.message });
+  }
+});
+
 //http://localhost:8080/employee/update/id
 //Update one record
 router.route("/update/:id").put(async (req, res) => {

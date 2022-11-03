@@ -15,20 +15,20 @@ export default function LoginPage() {
 
   var i = 0;
 
-  console.log(user);
-
-  async function Verify() {
+  async function Verify(userObj) {
     try {
       const result = await axios.post(
         "http://localhost:8070/employeelogin/login",
         {
-          user,
+          userObj,
         }
       );
-      //   console.log(result.data);
 
       if (result.data.message) {
+        /* Here we know the user is not an employee. So we write some code to
+        check if he is either a customer or an admin */
       } else {
+        //checking if the user is an employee
         localStorage.setItem("currentUser", JSON.stringify(result.data));
 
         let loggedEmp = result.data;
@@ -74,7 +74,11 @@ export default function LoginPage() {
         </div>
         <div className="mb-3"></div>
         <div className="d-grid">
-          <button type="button" className="btn btn-primary" onClick={Verify}>
+          <button
+            type="button"
+            className="btn btn-primary"
+            onClick={Verify(user)}
+          >
             Submit
           </button>
         </div>
