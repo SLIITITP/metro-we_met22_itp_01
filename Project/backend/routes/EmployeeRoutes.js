@@ -73,15 +73,21 @@ router.route("/read/:id").get(async (req, res) => {
   });
 });
 
-router.get("/findbyid", async (req, res) => {
-  const userId = req.body.userId;
+router.post("/findbyid", async (req, res) => {
+  const empID = req.body.empID;
 
   try {
-    const req = await Employee.findOne({ userId: userId });
+    const user = await Employee.findOne({ empID: empID });
 
-    res.status(200).json(req);
+    if (user) {
+      const temp = user;
+      res.send(temp);
+      // console.log(temp);
+    } else {
+      res.send({ message: "Login failed" });
+      console.log("failed");
+    }
   } catch (error) {
-    // console.log(error);
     res.status(500).json({ message: error.message });
   }
 });

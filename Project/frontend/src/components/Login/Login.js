@@ -4,38 +4,65 @@ import GetEmployeeDetails from "./getAllEmployees";
 
 export default function LoginPage() {
   const [username, setEmail] = useState("");
+  const [email, setEmailCust] = useState("");
   const [password, setPwd] = useState("");
 
   var allEmp = GetEmployeeDetails();
 
-  const user = {
+  const staff = {
     username,
+    password,
+  };
+
+  const user = {
+    email,
     password,
   };
 
   var i = 0;
 
-  async function Verify(userObj) {
+  async function Verify() {
     try {
       const result = await axios.post(
         "http://localhost:8070/employeelogin/login",
         {
-          userObj,
+          staff,
         }
       );
 
       if (result.data.message) {
-        /* Here we know the user is not an employee. So we write some code to
-        check if he is either a customer or an admin */
+        /* Here we check if the user is not a customer */
+        try {
+          const custResult = await axios.post(
+            "http://localhost:8070/users/login",
+            {
+              user,
+            }
+          );
+
+          if (custResult.data.message) {
+            alert("Incorrect UserName/Password");
+          } else {
+            console.log("Welcome User");
+          }
+        } catch (error) {
+          console.log(error);
+        }
       } else {
         //checking if the user is an employee
         localStorage.setItem("currentUser", JSON.stringify(result.data));
 
-        let loggedEmp = result.data;
+        let loggedId = result.data.empID;
 
-        for (i = 0; i < allEmp.length; i++) {
-          if (loggedEmp.empID === allEmp[i].empID) break;
+        for (var k = 0; k < allEmp.length; k++) {
+          if (loggedId === allEmp[k].empID) break;
         }
+
+        if (allEmp[k].designation.trim().slice(-7) === "Manager")
+          console.log("Hello Manager");
+        else console.log("Hello Employee");
+
+        //To find the employee's designation
 
         //localStorage.setItem('currentUser',1);
         // JSON.parse(localStorage.getItem("currentUser"));
@@ -59,7 +86,10 @@ export default function LoginPage() {
             className="form-control"
             placeholder="Enter email"
             id="email"
-            onChange={(e) => setEmail(e.target.value)}
+            onChange={(e) => {
+              setEmail(e.target.value);
+              setEmailCust(e.target.value);
+            }}
           />
         </div>
         <div className="mb-3">
@@ -74,11 +104,7 @@ export default function LoginPage() {
         </div>
         <div className="mb-3"></div>
         <div className="d-grid">
-          <button
-            type="button"
-            className="btn btn-primary"
-            onClick={Verify(user)}
-          >
+          <button type="button" className="btn btn-primary" onClick={Verify}>
             Submit
           </button>
         </div>

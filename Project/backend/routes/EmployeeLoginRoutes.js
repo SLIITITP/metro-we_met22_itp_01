@@ -50,7 +50,7 @@ router.route("/read/:id").get(async (req, res) => {
     .catch((err) => {
       console.log(err.message);
       res.status(500).send({
-        status: "Error with fetching user login details",
+        status: "Error with fetching staff login details",
         error: err.message,
       });
     });
@@ -103,20 +103,20 @@ router.route("/delete/:id").delete(async (req, res) => {
 });
 
 router.route("/login").post(async (req, res) => {
-  const { username, password } = req.body.user;
+  const { username, password } = req.body.staff;
   try {
-    const user = await EmployeeLogin.findOne({
+    const staff = await EmployeeLogin.findOne({
       username: username,
       password: password,
     });
 
-    //console.log(user)
-    if (user) {
+    //console.log(staff)
+    if (staff) {
       const temp = {
-        username: user.username,
-        email: user.email,
-        password: user.password,
-        empID: user.empID,
+        username: staff.username,
+        email: staff.email,
+        password: staff.password,
+        empID: staff.empID,
       };
       res.send(temp);
     } else {
