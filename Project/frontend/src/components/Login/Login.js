@@ -44,6 +44,7 @@ export default function LoginPage() {
             alert("Incorrect UserName/Password");
           } else {
             console.log("Welcome User");
+            localStorage.setItem("currentUser", JSON.stringify(result.data));
           }
         } catch (error) {
           console.log(error);
