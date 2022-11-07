@@ -9,7 +9,8 @@ function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<LoginPage />}></Route>
+        <Route path="/" element={<LoginPage />}></Route> //add as star after
+        //login path after bookings page is connected
       </Routes>
       <Routes>
         <Route path="/*" element={<CustServ />}></Route>

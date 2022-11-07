@@ -221,7 +221,7 @@ export default function DisplayComplaintRequest() {
             }}
           >
             <th scope="col">ComplaintID</th>
-            <th scope="col">CustID</th>
+            <th scope="col">Email</th>
             <th scope="col">RoomID</th>
             <th scope="col">RequestedOn</th>
             <th scope="col">RequestedFor</th>

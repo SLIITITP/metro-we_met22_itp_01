@@ -12,6 +12,7 @@ import ShowComplaintRequest from "../components/CustomerService/Complaint/Conten
 import AmenityCustomer from "../components/CustomerService/Amenity/Content/CreateAmenity";
 import ShowAmenityRequest from "../components/CustomerService/Amenity/Content/showAmenity";
 import { SideNavigationAmenity } from "../components/CustomerService/Amenity/Component/SideNavigationAmenity";
+import TransportAd from "../components/CustomerService/Transport/Content/TransportAdvertisement";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 export default function CustServ() {
@@ -19,7 +20,7 @@ export default function CustServ() {
     <div className="App">
       <Routes>
         <Route
-          path="/customerService"
+          path="/customerService/*"
           element={
             <>
               <MainNavigation />
@@ -46,8 +47,9 @@ export default function CustServ() {
           path="/customerService/transport"
           element={
             <>
-              <TransportCustomer />
-              <ShowTransportRequest />
+              {/* <TransportCustomer /> */}
+              {/* <ShowTransportRequest /> */}
+              <TransportAd />
               <SideNavigationTransport />
             </>
           }
