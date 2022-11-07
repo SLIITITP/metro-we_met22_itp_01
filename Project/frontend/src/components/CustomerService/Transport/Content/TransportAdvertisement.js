@@ -24,8 +24,9 @@ export default function TransportAd() {
         <div className="card-body">
           <h5 className="card-title">Sacred City of Kandy</h5>
           <p className="card-text">
-            Some quick example text to build on the card title and make up the
-            bulk of the card's content.
+            Kandy, the cultural capital of Sri Lanka, a World Heritage Site sits
+            pretty in a valley surrounded by rings of mountains, 115km away from
+            the seaport of Colombo.
           </p>
         </div>
         <ul className="list-group list-group-flush">
@@ -56,8 +57,9 @@ export default function TransportAd() {
         <div className="card-body">
           <h5 className="card-title">Dambulla Cave Temple</h5>
           <p className="card-text">
-            Some quick example text to build on the card title and make up the
-            bulk of the card's content.
+            Dambulla cave temple also known as the Golden Temple of Dambulla is
+            a World Heritage Site (1991) in Sri Lanka, situated in the central
+            part of the country.
           </p>
         </div>
         <ul className="list-group list-group-flush">
@@ -88,8 +90,9 @@ export default function TransportAd() {
         <div className="card-body">
           <h5 className="card-title">Wilpattu National Park Safari</h5>
           <p className="card-text">
-            Some quick example text to build on the card title and make up the
-            bulk of the card's content.
+            Wilpattu National Park is located on the 30 kms north of Puttalam.
+            Wilpattu Natonal Park is home for many villus, or natural lakes
+            which dot the landscape in the Wilpattu National Park.
           </p>
         </div>
         <ul className="list-group list-group-flush">
