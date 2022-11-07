@@ -5,6 +5,7 @@ const Schema = mongoose.Schema;
 
 const RoomNecessitySchema = new Schema({
   reqId: { type: String, required: true, unique: true },
+  custID: { type: String, required: true },
   status: String,
   requestedItems: { type: String },
   note: String,

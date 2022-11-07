@@ -9,9 +9,12 @@ export default function CreateComplaintCustomer() {
 
   const reqList = getRequest();
 
+  let email = JSON.parse(window.localStorage.getItem("currentUserID"));
+  console.log(email);
+
   const [ComplaintRequest, setComplaintRequest] = useState({
     complaintId: "1",
-    custId: "1",
+    custId: email,
     status: "Ongoing",
   });
 
@@ -33,7 +36,7 @@ export default function CreateComplaintCustomer() {
   //To update the request table when a complaint is created
   const [Request, setRequest] = useState({
     reqId: "1",
-    custId: "1",
+    custId: email,
     serviceType: "CustomerComplaint",
     requestedOn: "",
     requestedtime: "",
@@ -65,12 +68,11 @@ export default function CreateComplaintCustomer() {
   //To create a record in the table
   function Create(e) {
     e.preventDefault();
-    window.location.reload(false);
 
     axios
       .post("http://localhost:8070/customerService/complaint", ComplaintRequest)
       .then(() => {
-        alert("Request Added Successfully");
+        window.location.reload(false);
       })
       .catch((err) => {
         alert(err.message);
@@ -81,7 +83,7 @@ export default function CreateComplaintCustomer() {
     axios
       .post("http://localhost:8070/customerService", Request)
       .then(() => {
-        window.location.reload(false);
+        alert("Request Added Successfully");
       })
       .catch((err) => {
         alert(err.message);

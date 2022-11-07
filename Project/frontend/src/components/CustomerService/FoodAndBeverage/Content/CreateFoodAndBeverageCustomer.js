@@ -1,15 +1,18 @@
 import React, { useState } from "react";
 import axios from "axios";
 import getRequest from "./getRequest";
-
 export default function CreateFoodAndBeverageCustomer() {
   //For FoodAndBeverageRequest
   let reqIdString = "1";
   const reqList = getRequest();
 
+  let email = JSON.parse(window.localStorage.getItem("currentUserID"));
+  console.log(email);
+
   const [FoodAndBeverage, setFoodAndBeverage] = useState({
     reqId: "1",
     amount: 0,
+    custID: email,
     foodItemId: "01",
     requestForDate: "",
     requestForTime: "",
@@ -32,7 +35,7 @@ export default function CreateFoodAndBeverageCustomer() {
 
   const [Request, setRequest] = useState({
     reqId: "1",
-    custId: "1",
+    custId: email,
     serviceType: "FoodAndBeverageRequest",
     requestedOn: "",
     requestedtime: "",

@@ -22,22 +22,6 @@ function MainNavigation() {
         <li className="nav-item" role="presentation">
           <Link to="/" style={{ textDecoration: "none" }}>
             <button
-              className="nav-link active"
-              id="home-tab"
-              data-bs-toggle="tab"
-              data-bs-target="#home-tab-pane"
-              type="button"
-              role="tab"
-              aria-controls="home-tab-pane"
-              aria-selected="true"
-            >
-              Home
-            </button>
-          </Link>
-        </li>
-        <li className="nav-item" role="presentation">
-          <Link to="/customerService" style={{ textDecoration: "none" }}>
-            <button
               className="nav-link"
               id="profile-tab"
               data-bs-toggle="tab"
@@ -46,6 +30,22 @@ function MainNavigation() {
               role="tab"
               aria-controls="profile-tab-pane"
               aria-selected="false"
+            >
+              Home
+            </button>
+          </Link>
+        </li>
+        <li className="nav-item" role="presentation">
+          <Link to="/customerService" style={{ textDecoration: "none" }}>
+            <button
+              className="nav-link active"
+              id="home-tab"
+              data-bs-toggle="tab"
+              data-bs-target="#home-tab-pane"
+              type="button"
+              role="tab"
+              aria-controls="home-tab-pane"
+              aria-selected="true"
             >
               Customer Service {/* <font color="grey">Create Student</font>*/}
             </button>

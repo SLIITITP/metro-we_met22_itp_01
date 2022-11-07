@@ -9,8 +9,18 @@ import getAllRequest from "./getRequest";
 
 export default function ShowFoodAndBeverage() {
   var color = "black"; //for the status field in the table
-  const fAndBList = getFoodAndBeverage();
+  const fAndBList1 = getFoodAndBeverage();
+  let fAndBList = [];
   const reqList = getAllRequest();
+
+  let email = JSON.parse(window.localStorage.getItem("currentUserID"));
+  console.log(email);
+
+  for (let m = 0; m < fAndBList1.length; m++) {
+    if (fAndBList1[m].custID == email) {
+      fAndBList.push(fAndBList1[m]);
+    }
+  }
 
   //For the search button
   const [search, setSearch] = useState("");

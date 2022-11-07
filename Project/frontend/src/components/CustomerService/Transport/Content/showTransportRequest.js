@@ -9,8 +9,19 @@ import PopOver from "../Component/popOver";
 
 export default function ShowTransportRequest() {
   var color = "black"; //for the status field in the table
-  const transportList = getTransportRequest();
+  const transportList1 = getTransportRequest();
   const reqList = getAllRequest();
+
+  let transportList = [];
+
+  let email = JSON.parse(window.localStorage.getItem("currentUserID"));
+  console.log(email);
+
+  for (let m = 0; m < transportList1.length; m++) {
+    if (transportList1[m].custID == email) {
+      transportList.push(transportList1[m]);
+    }
+  }
 
   //For the search button
   const [search, setSearch] = useState("");

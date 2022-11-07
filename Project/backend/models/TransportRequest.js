@@ -5,6 +5,7 @@ const Schema = mongoose.Schema;
 
 const TransportRequestSchema = new Schema({
   reqId: { type: String, required: true },
+  custID: { type: String, required: true },
   route: { type: String, required: true },
   noOfSeats: { type: Number, required: true },
   requestForDate: {

@@ -9,8 +9,17 @@ import getAllRequest from "./getRequest";
 
 export default function ShowAmenityRequest() {
   var color = "#0d6efd"; //for the status field in the table
-  const amenityList = getAllAmenityRequest();
+  const amenityList1 = getAllAmenityRequest();
   const reqList = getAllRequest();
+
+  let amenityList = [];
+
+  let email = JSON.parse(window.localStorage.getItem("currentUserID"));
+  console.log(email);
+
+  for (let m = 0; m < amenityList1.length; m++) {
+    if (amenityList1[m].custID == email) amenityList.push(amenityList1[m]);
+  }
 
   //For the search button
   const [search, setSearch] = useState("");

@@ -9,8 +9,19 @@ import getAllRequest from "./getRequest";
 
 export default function ShowComplaintRequest() {
   var color = "black"; //for the status field in the table
-  const complaintList = getComplaintRequest();
+  const complaintList1 = getComplaintRequest();
   const reqList = getAllRequest();
+
+  let complaintList = [];
+
+  let email = JSON.parse(window.localStorage.getItem("currentUserID"));
+  console.log(email);
+
+  for (let m = 0; m < complaintList1.length; m++) {
+    if (complaintList1[m].custId == email) {
+      complaintList.push(complaintList1[m]);
+    }
+  }
 
   //For the search button
   const [search, setSearch] = useState("");

@@ -13,8 +13,12 @@ export default function CreateTransportRequestCustomer() {
   let reqIdString = "1";
   const reqList = getRequest();
 
+  let email = JSON.parse(window.localStorage.getItem("currentUserID"));
+  console.log(email);
+
   const [TransportRequest, setTransportRequest] = useState({
     reqId: "1",
+    custID: email,
     status: "Booked",
     message: "None",
   });

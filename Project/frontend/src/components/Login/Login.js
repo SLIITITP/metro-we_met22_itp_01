@@ -44,7 +44,13 @@ export default function LoginPage() {
             alert("Incorrect UserName/Password");
           } else {
             console.log("Welcome User");
+            console.log(custResult.data);
             localStorage.setItem("currentUser", JSON.stringify(result.data));
+            localStorage.setItem(
+              "currentUserID",
+              JSON.stringify(custResult.data.email)
+            );
+            window.location.href = `/customerservice/`;
           }
         } catch (error) {
           console.log(error);
@@ -62,6 +68,8 @@ export default function LoginPage() {
         if (allEmp[k].designation.trim().slice(-7) === "Manager")
           console.log("Hello Manager");
         else console.log("Hello Employee");
+
+        console.log(allEmp[k]);
 
         //To find the employee's designation
 

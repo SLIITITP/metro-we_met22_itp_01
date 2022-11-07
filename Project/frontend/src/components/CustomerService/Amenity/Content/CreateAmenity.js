@@ -5,8 +5,12 @@ import getRequest from "./getRequest";
 export default function CreateAmenityCustomer() {
   const reqList = getRequest();
 
+  let email = JSON.parse(window.localStorage.getItem("currentUserID"));
+  console.log(email);
+
   const [AmenityRequest, setAmenityRequest] = useState({
     reqId: "1",
+    custID: email,
     status: "Ongoing",
     requestedItems: "",
   });
@@ -29,7 +33,7 @@ export default function CreateAmenityCustomer() {
   //To update the request table date and time when a Amenity Request is created
   const [Request, setRequest] = useState({
     reqId: "1",
-    custId: "1",
+    custId: email,
     serviceType: "RoomNecessityRequest",
     requestedOn: "",
     requestedtime: "",

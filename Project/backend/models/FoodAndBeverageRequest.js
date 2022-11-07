@@ -7,7 +7,7 @@ const Schema = mongoose.Schema;
 const FoodRequest = new Schema({
   reqId: { type: String, required: true },
   amount: { type: Number, required: true },
-
+  custID: { type: String, required: true },
   foodItemId: { type: String, required: true },
   requestForDate: {
     type: String,
