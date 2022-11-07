@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-export default function MainNavigationTransportStaff() {
+export default function MainNavigationStaff() {
   return (
     <div
       className="container"
@@ -22,19 +22,36 @@ export default function MainNavigationTransportStaff() {
         <li className="nav-item" role="presentation">
           <Link to="" style={{ textDecoration: "none" }}>
             <button
-              className="nav-link active"
-              id="home-tab"
+              className="nav-link"
+              id="profile-tab"
               data-bs-toggle="tab"
-              data-bs-target="#home-tab-pane"
+              data-bs-target="#profile-tab-pane"
               type="button"
               role="tab"
-              aria-controls="home-tab-pane"
-              aria-selected="true"
+              aria-controls="profile-tab-pane"
+              aria-selected="false"
             >
               Bookings
             </button>
           </Link>
         </li>
+        <li className="nav-item" role="presentation">
+          <Link to="" style={{ textDecoration: "none" }}>
+            <button
+              className="nav-link"
+              id="profile-tab"
+              data-bs-toggle="tab"
+              data-bs-target="#profile-tab-pane"
+              type="button"
+              role="tab"
+              aria-controls="profile-tab-pane"
+              aria-selected="false"
+            >
+              Employee
+            </button>
+          </Link>
+        </li>
+
         <li className="nav-item" role="presentation">
           <Link to="" style={{ textDecoration: "none" }}>
             <button
@@ -71,7 +88,7 @@ export default function MainNavigationTransportStaff() {
 
         <li className="nav-item" role="presentation">
           <Link
-            to="/customerService/transportStaff"
+            to="/customerServiceStaff/transportStaff"
             style={{ textDecoration: "none" }}
           >
             <button
@@ -108,18 +125,18 @@ export default function MainNavigationTransportStaff() {
 
         <li className="nav-item" role="presentation">
           <Link
-            to="/customerService/complaintStaff"
+            to="/customerServiceStaff/complaintStaff"
             style={{ textDecoration: "none" }}
           >
             <button
-              className="nav-link"
-              id="profile-tab"
+              className="nav-link active"
+              id="home-tab"
               data-bs-toggle="tab"
-              data-bs-target="#profile-tab-pane"
+              data-bs-target="#home-tab-pane"
               type="button"
               role="tab"
-              aria-controls="profile-tab-pane"
-              aria-selected="false"
+              aria-controls="home-tab-pane"
+              aria-selected="true"
             >
               Complaint
             </button>

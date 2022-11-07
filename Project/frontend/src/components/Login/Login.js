@@ -41,16 +41,21 @@ export default function LoginPage() {
           );
 
           if (custResult.data.message) {
+            localStorage.setItem("userType", "None");
             alert("Incorrect UserName/Password");
           } else {
             console.log("Welcome User");
             console.log(custResult.data);
             localStorage.setItem("currentUser", JSON.stringify(result.data));
+
+            //setting the user type
+            localStorage.setItem("userType", "Customer");
+
             localStorage.setItem(
               "currentUserID",
               JSON.stringify(custResult.data.email)
             );
-            window.location.href = `/customerservice/`;
+            window.location.href = "/customerService";
           }
         } catch (error) {
           console.log(error);
@@ -65,10 +70,16 @@ export default function LoginPage() {
           if (loggedId === allEmp[k].empID) break;
         }
 
-        if (allEmp[k].designation.trim().slice(-7) === "Manager")
+        if (allEmp[k].designation.trim().slice(-7) === "Manager") {
           console.log("Hello Manager");
-        else console.log("Hello Employee");
 
+          //setting the user type
+          localStorage.setItem("userType", "Manager");
+        } else {
+          localStorage.setItem("userType", "Employee");
+          console.log("Hello Employee");
+          window.location.href = "/customerServiceStaff";
+        }
         console.log(allEmp[k]);
 
         //To find the employee's designation

@@ -12,111 +12,73 @@ import ShowComplaintRequest from "../components/CustomerService/Complaint/Conten
 import AmenityCustomer from "../components/CustomerService/Amenity/Content/CreateAmenity";
 import ShowAmenityRequest from "../components/CustomerService/Amenity/Content/showAmenity";
 import { SideNavigationAmenity } from "../components/CustomerService/Amenity/Component/SideNavigationAmenity";
-import { SideNavigationComplaintStaff } from "../components/CustomerService/ComplaintStaff/Component/SideNavigationComplaintStaff";
-import DisplayComplaintRequest from "../components/CustomerService/ComplaintStaff/Content/DisplayComplaintPage";
-import MainNavigationStaffComplaint from "../components/CustomerService/ComplaintStaff/Component/MainNavigationStaff";
-import MainNavigationStaffTransport from "../components/CustomerService/TransportStaff/Component/MainNavigationStaff";
-import DisplayTransportPage from "../components/CustomerService/TransportStaff/Content/DisplayTransportPage";
-import { SideNavigationTransportStaff } from "../components/CustomerService/TransportStaff/Component/SideNavigationTransportStaff";
-import LoginPage from "../components/Login/Login";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 export default function CustServ() {
   return (
-    <Router>
-      <div className="App">
-        <MainNavigation />
-        <Routes>
-          <Route
-            path="/customerService"
-            element={
-              <>
-                <FoodAndBeverageCustomer />
-                <ShowFoodAndBeverage />
-                <SideNavigationFoodAndBeverage />
-              </>
-            }
-          />
-        </Routes>
+    <div className="App">
+      <Routes>
+        <Route
+          path="/customerService"
+          element={
+            <>
+              <MainNavigation />
+            </>
+          }
+        />
+      </Routes>
 
-        <Routes>
-          <Route
-            path="/customerService/transport"
-            element={
-              <>
-                <TransportCustomer />
-                <ShowTransportRequest />
-                <SideNavigationTransport />
-              </>
-            }
-          />
-        </Routes>
+      <Routes>
+        <Route
+          path="/customerService"
+          element={
+            <>
+              <FoodAndBeverageCustomer />
+              <ShowFoodAndBeverage />
+              <SideNavigationFoodAndBeverage />
+            </>
+          }
+        />
+      </Routes>
 
-        <Routes>
-          <Route
-            path="/customerService/complaint"
-            element={
-              <>
-                <ComplaintCustomer />
-                <ShowComplaintRequest />
-                <SideNavigationComplaint />
-              </>
-            }
-          />
-        </Routes>
+      <Routes>
+        <Route
+          path="/customerService/transport"
+          element={
+            <>
+              <TransportCustomer />
+              <ShowTransportRequest />
+              <SideNavigationTransport />
+            </>
+          }
+        />
+      </Routes>
 
-        <Routes>
-          <Route
-            path="/customerService/amenity"
-            element={
-              <>
-                <AmenityCustomer />
-                <ShowAmenityRequest />
-                <SideNavigationAmenity />
-              </>
-            }
-          />
-        </Routes>
+      <Routes>
+        <Route
+          path="/customerService/complaint"
+          element={
+            <>
+              <ComplaintCustomer />
+              <ShowComplaintRequest />
+              <SideNavigationComplaint />
+            </>
+          }
+        />
+      </Routes>
 
-        <Routes>
-          <Route
-            path="/customerService/complaintStaff"
-            element={
-              <>
-                <MainNavigationStaffComplaint />
-                <DisplayComplaintRequest />
-                {/* <SideNavigationComplaintStaff /> */}
-              </>
-            }
-          />
-        </Routes>
-
-        <Routes>
-          <Route
-            path="/customerService/transportStaff"
-            element={
-              <>
-                <MainNavigationStaffTransport />
-                <DisplayTransportPage />
-                {/* <SideNavigationTransportStaff /> */}
-                {/* <DisplayComplaintRequest />
-                 */}
-              </>
-            }
-          />
-        </Routes>
-
-        <Routes>
-          <Route
-            path="/login"
-            element={
-              <>
-                <LoginPage />
-              </>
-            }
-          />
-        </Routes>
-      </div>
-    </Router>
+      <Routes>
+        <Route
+          path="/customerService/amenity"
+          element={
+            <>
+              <AmenityCustomer />
+              <ShowAmenityRequest />
+              <SideNavigationAmenity />
+            </>
+          }
+        />
+      </Routes>
+    </div>
   );
 }
