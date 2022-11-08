@@ -22,14 +22,14 @@ export default function MainNavigationStaff() {
         <li className="nav-item" role="presentation">
           <Link to="" style={{ textDecoration: "none" }}>
             <button
-             className="nav-link active"
-             id="home-tab"
-             data-bs-toggle="tab"
-             data-bs-target="#home-tab-pane"
-             type="button"
-             role="tab"
-             aria-controls="home-tab-pane"
-             aria-selected="true"
+              className="nav-link"
+              id="profile-tab"
+              data-bs-toggle="tab"
+              data-bs-target="#profile-tab-pane"
+              type="button"
+              role="tab"
+              aria-controls="profile-tab-pane"
+              aria-selected="false"
             >
               Bookings
             </button>
@@ -53,7 +53,10 @@ export default function MainNavigationStaff() {
         </li>
 
         <li className="nav-item" role="presentation">
-          <Link to="/Staff/inventoryStaff/kitchenStaff" style={{ textDecoration: "none" }}>
+          <Link
+            to="Staff/inventoryStaff/kitchenStaff"
+            style={{ textDecoration: "none" }}
+          >
             <button
               className="nav-link"
               id="profile-tab"
@@ -88,7 +91,7 @@ export default function MainNavigationStaff() {
 
         <li className="nav-item" role="presentation">
           <Link
-            to="/Staff/transportStaff"
+            to="/customerServiceStaff/transportStaff"
             style={{ textDecoration: "none" }}
           >
             <button
@@ -100,8 +103,6 @@ export default function MainNavigationStaff() {
               role="tab"
               aria-controls="profile-tab-pane"
               aria-selected="false"
-
-              
             >
               Transport
             </button>
@@ -127,20 +128,18 @@ export default function MainNavigationStaff() {
 
         <li className="nav-item" role="presentation">
           <Link
-            to="/Staff/complaintStaff"
+            to="/customerServiceStaff/complaintStaff"
             style={{ textDecoration: "none" }}
           >
             <button
-              
-
-              className="nav-link"
-              id="profile-tab"
+              className="nav-link active"
+              id="home-tab"
               data-bs-toggle="tab"
-              data-bs-target="#profile-tab-pane"
+              data-bs-target="#home-tab-pane"
               type="button"
               role="tab"
-              aria-controls="profile-tab-pane"
-              aria-selected="false"
+              aria-controls="home-tab-pane"
+              aria-selected="true"
             >
               Complaint
             </button>
