@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import CustServ from "./Exports/CustomerService";
 import LoginPage from "./components/Login/Login";
 import Staff from "./Exports/Staff";
+import parking from "./Exports/ParkingManagement";
 
 function App() {
   return (
@@ -17,6 +18,9 @@ function App() {
       </Routes>
       <Routes>
         <Route path="/*" element={<Staff />}></Route>
+      </Routes>
+      <Routes>
+        <Route path="/*" element={<parking />}></Route>
       </Routes>
     </Router>
   );
