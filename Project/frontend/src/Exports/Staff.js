@@ -5,26 +5,26 @@ import DisplayComplaintRequest from "../components/CustomerService/ComplaintStaf
 import DisplayTransportPage from "../components/CustomerService/TransportStaff/Content/DisplayTransportPage";
 import MainNavigationStaff from "../components/MainNavigationStaff";
 
-export default function CustServStaff() {
+export default function Staff() {
   return (
     <div className="App">
       <Routes>
         <Route
-          path="/customerServiceStaff/*"
+          path="/Staff/*"
           element={<MainNavigationStaff />}
         />
       </Routes>
 
       <Routes>
         <Route
-          path="/customerServiceStaff/complaintStaff"
+          path="/Staff/complaintStaff"
           element={<DisplayComplaintRequest />}
         />
       </Routes>
 
       <Routes>
         <Route
-          path="/customerServiceStaff/transportStaff"
+          path="/Staff/transportStaff"
           element={<DisplayTransportPage />}
         />
       </Routes>

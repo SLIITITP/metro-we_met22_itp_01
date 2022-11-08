@@ -78,7 +78,7 @@ export default function LoginPage() {
         } else {
           localStorage.setItem("userType", "Employee");
           console.log("Hello Employee");
-          window.location.href = "/customerServiceStaff";
+          window.location.href = "/Staff";
         }
         console.log(allEmp[k]);
 

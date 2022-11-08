@@ -22,14 +22,14 @@ export default function MainNavigationStaff() {
         <li className="nav-item" role="presentation">
           <Link to="" style={{ textDecoration: "none" }}>
             <button
-              className="nav-link"
-              id="profile-tab"
-              data-bs-toggle="tab"
-              data-bs-target="#profile-tab-pane"
-              type="button"
-              role="tab"
-              aria-controls="profile-tab-pane"
-              aria-selected="false"
+             className="nav-link active"
+             id="home-tab"
+             data-bs-toggle="tab"
+             data-bs-target="#home-tab-pane"
+             type="button"
+             role="tab"
+             aria-controls="home-tab-pane"
+             aria-selected="true"
             >
               Bookings
             </button>
@@ -88,7 +88,7 @@ export default function MainNavigationStaff() {
 
         <li className="nav-item" role="presentation">
           <Link
-            to="/customerServiceStaff/transportStaff"
+            to="/Staff/transportStaff"
             style={{ textDecoration: "none" }}
           >
             <button
@@ -100,6 +100,8 @@ export default function MainNavigationStaff() {
               role="tab"
               aria-controls="profile-tab-pane"
               aria-selected="false"
+
+              
             >
               Transport
             </button>
@@ -125,18 +127,20 @@ export default function MainNavigationStaff() {
 
         <li className="nav-item" role="presentation">
           <Link
-            to="/customerServiceStaff/complaintStaff"
+            to="/Staff/complaintStaff"
             style={{ textDecoration: "none" }}
           >
             <button
-              className="nav-link active"
-              id="home-tab"
+              
+
+              className="nav-link"
+              id="profile-tab"
               data-bs-toggle="tab"
-              data-bs-target="#home-tab-pane"
+              data-bs-target="#profile-tab-pane"
               type="button"
               role="tab"
-              aria-controls="home-tab-pane"
-              aria-selected="true"
+              aria-controls="profile-tab-pane"
+              aria-selected="false"
             >
               Complaint
             </button>

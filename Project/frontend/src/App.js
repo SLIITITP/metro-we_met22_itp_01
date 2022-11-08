@@ -3,7 +3,7 @@ import "./App.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import CustServ from "./Exports/CustomerService";
 import LoginPage from "./components/Login/Login";
-import CustServStaff from "./Exports/CustomerServiceStaff";
+import Staff from "./Exports/Staff";
 
 function App() {
   return (
@@ -16,7 +16,7 @@ function App() {
         <Route path="/*" element={<CustServ />}></Route>
       </Routes>
       <Routes>
-        <Route path="/*" element={<CustServStaff />}></Route>
+        <Route path="/*" element={<Staff />}></Route>
       </Routes>
     </Router>
   );
