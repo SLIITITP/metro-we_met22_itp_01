@@ -16,10 +16,17 @@ export default function CreateTransportRequestCustomer() {
   let email = JSON.parse(window.localStorage.getItem("currentUserID"));
   console.log(email);
 
+  var obj = JSON.parse(window.localStorage.getItem("obj"));
+
   const [TransportRequest, setTransportRequest] = useState({
     reqId: "1",
     custID: email,
+    route: obj.route,
+    noOfSeats: 0,
+    requestForDate: "",
+    departureTime: obj.time,
     status: "Booked",
+    busNo: obj.busNo,
     message: "None",
   });
 
@@ -40,15 +47,15 @@ export default function CreateTransportRequestCustomer() {
 
   const [Request, setRequest] = useState({
     reqId: "1",
-    custId: "1",
+    custId: email,
     serviceType: "TransportRequest",
     requestedOn: "",
     requestedtime: "",
     roomId: "1",
     notes: "",
     status: "Booked",
-    busNo: "",
-    route: "",
+    busNo: obj.busNo,
+    route: obj.route,
     bookingDate: "",
   });
 
@@ -67,32 +74,9 @@ export default function CreateTransportRequestCustomer() {
     Request.reqId = reqIdString;
   }
 
-  //Function to set Time based on Route
-  function setTransport(data) {
-    if (data === "Kandy") {
-      TransportRequest.departureTime = "08:00";
-      TransportRequest.busNo = "NC-5770";
-    } else if (data === "Dambulla") {
-      TransportRequest.departureTime = "16:00";
-      TransportRequest.busNo = "NC-5969";
-    } else if (data === "Wilpattu") {
-      TransportRequest.departureTime = "14:00";
-      TransportRequest.busNo = "NF-6198";
-    } else {
-      TransportRequest.departureTime = "";
-      TransportRequest.busNo = "";
-    }
-    document.getElementById("time").value = TransportRequest.departureTime;
-    document.getElementById("busNo").value = TransportRequest.busNo;
-  }
-
   //To create a record in the table
   function Create(e) {
-    window.location.reload(false);
-
-    TransportRequest.departureTime = document.getElementById("time").value;
-    TransportRequest.busNo = document.getElementById("busNo").value;
-    Request.busNo = document.getElementById("busNo").value;
+    e.preventDefault();
 
     axios
       .post(
@@ -103,7 +87,6 @@ export default function CreateTransportRequestCustomer() {
         alert("Transport Request Added Successfully");
       })
       .catch((err) => {
-        alert(err.message);
         console.log(err);
       });
 
@@ -118,14 +101,16 @@ export default function CreateTransportRequestCustomer() {
         alert(err.message);
         console.log(err);
       });
+    console.log(TransportRequest);
   }
 
-  function changeImageFuncton(val) {
-    if (val === "Kandy") image = kandy;
-    else if (val === "Dambulla") image = dambulla;
-    else if (val === "Wilpattu") image = wilpattu;
+  function changeImageFuncton() {
+    if (obj.route === "Kandy") image = kandy;
+    else if (obj.route === "Dambulla") image = dambulla;
+    else if (obj.route === "Wilpattu") image = wilpattu;
     else image = lagoon;
   }
+  changeImageFuncton();
 
   return (
     <div
@@ -151,33 +136,15 @@ export default function CreateTransportRequestCustomer() {
           <label htmlFor="routes" className="form-label">
             Excursion To
           </label>
-          <select
-            className="form-select"
-            id="routes"
-            aria-label="Default select example"
+          <input
+            type="text"
+            id="busNo"
+            name="busNo"
+            className="form-control"
+            value={obj.route}
             required
-            onChange={(event) => {
-              setTransportRequest({
-                ...TransportRequest,
-                route: event.target.value,
-              });
-              setRequest({
-                ...Request,
-                route: event.target.value,
-              });
-              changeImageFuncton(event.target.value);
-              setTransport(event.target.value);
-            }}
-          >
-            <option value="" style={{}}>
-              Choose Your Destination
-            </option>
-            <option value="Kandy" style={{}}>
-              Sacred City of Kandy
-            </option>
-            <option value="Dambulla">Dambulla Cave Temple</option>
-            <option value="Wilpattu">Wilpattu National Park Safari</option>
-          </select>
+            readOnly
+          />
         </div>
 
         <div className="mb-3">
@@ -190,15 +157,10 @@ export default function CreateTransportRequestCustomer() {
             name="schedule"
             className="form-control"
             required
-            onChange={(event) => {
+            onChange={(e) => {
               setTransportRequest({
                 ...TransportRequest,
-                requestForDate: event.target.value,
-              });
-
-              setRequest({
-                ...Request,
-                bookingDate: event.target.value,
+                requestForDate: e.target.value,
               });
             }}
           />
@@ -234,6 +196,7 @@ export default function CreateTransportRequestCustomer() {
             id="busNo"
             name="busNo"
             className="form-control"
+            value={obj.busNo}
             required
             readOnly
           />
@@ -248,6 +211,7 @@ export default function CreateTransportRequestCustomer() {
             id="time"
             name="time"
             className="form-control"
+            value={obj.time}
             required
             readOnly
           />

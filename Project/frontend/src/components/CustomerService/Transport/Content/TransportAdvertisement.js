@@ -9,14 +9,32 @@ import wilpattu from "./WilpattuNp.png";
 import wilpattuImage from "./WilpattuImage.jpg";
 import { Link } from "react-router-dom";
 
-import Container from "../js/js1/Container";
-
 export default function TransportAd() {
   const w = "w";
   const k = "k";
   const d = "d";
 
   const val = 22;
+
+  function saveRouteStorage(route) {
+    let obj = { route, time: "", busNo: "" };
+
+    if (route === "Kandy") {
+      obj.route = "Kandy";
+      obj.time = "08:00";
+      obj.busNo = "NC-5770";
+    } else if (route === "Dambulla") {
+      obj.route = "Dambulla";
+      obj.time = "14:00";
+      obj.busNo = "NC-5969";
+    } else if (route === "Wilpattu") {
+      obj.route = "Wilpattu";
+      obj.time = "16:00";
+      obj.busNo = "NF-6198";
+    }
+
+    localStorage.setItem("obj", JSON.stringify(obj));
+  }
 
   return (
     <div className="container">
@@ -46,22 +64,27 @@ export default function TransportAd() {
             Days : Monday - Friday
           </li>
           <li className="list-group-item" style={{ fontWeight: "bold" }}>
-            Time : Tour starts at 16:00
+            Time : Tour starts at 08:00
           </li>
         </ul>
         <div className="card-body">
-          <button
-            type="button"
-            class="btn btn-outline-primary btn-sm"
-            style={{ marginRight: "20px", width: "90px" }}
+          <Link
+            to={"booknow"}
+            style={{
+              textDecoration: "none",
+              color: "black",
+              FontFace: "bold",
+            }}
           >
-            Info
-          </button>
-
-          <button type="button" class="btn btn-primary btn-sm">
-            Book Now &nbsp;
-            <i class="bi bi-arrow-right"></i>
-          </button>
+            <button
+              type="button"
+              class="btn btn-primary btn-sm"
+              onClick={(e) => saveRouteStorage("Kandy")}
+            >
+              Book Now &nbsp;
+              <i class="bi bi-arrow-right"></i>
+            </button>
+          </Link>
         </div>
       </div>
 
@@ -91,22 +114,27 @@ export default function TransportAd() {
             Days : Monday - Friday
           </li>
           <li className="list-group-item" style={{ fontWeight: "bold" }}>
-            Time : Tour starts at 16:00
+            Time : Tour starts at 14:00
           </li>
         </ul>
         <div className="card-body">
-          <button
-            type="button"
-            class="btn btn-outline-primary btn-sm"
-            style={{ marginRight: "20px", width: "90px" }}
+          <Link
+            to={"booknow"}
+            style={{
+              textDecoration: "none",
+              color: "black",
+              FontFace: "bold",
+            }}
           >
-            Info
-          </button>
-
-          <button type="button" class="btn btn-primary btn-sm">
-            Book Now &nbsp;
-            <i class="bi bi-arrow-right"></i>
-          </button>
+            <button
+              type="button"
+              class="btn btn-primary btn-sm"
+              onClick={(e) => saveRouteStorage("Dambulla")}
+            >
+              Book Now &nbsp;
+              <i class="bi bi-arrow-right"></i>
+            </button>
+          </Link>
         </div>
       </div>
 
@@ -140,24 +168,19 @@ export default function TransportAd() {
           </li>
         </ul>
         <div className="card-body">
-          <button
-            type="button"
-            class="btn btn-outline-primary btn-sm"
-            style={{ marginRight: "20px", width: "90px" }}
-          >
-            <Container onSubmit={(e) => {}} />
-            Info
-          </button>
-
           <Link
-            to={`booknow/${w}`}
+            to={"booknow"}
             style={{
               textDecoration: "none",
               color: "black",
               FontFace: "bold",
             }}
           >
-            <button type="button" class="btn btn-primary btn-sm">
+            <button
+              type="button"
+              class="btn btn-primary btn-sm"
+              onClick={(e) => saveRouteStorage("Wilpattu")}
+            >
               Book Now &nbsp;
               <i class="bi bi-arrow-right"></i>
             </button>

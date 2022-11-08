@@ -7,7 +7,7 @@ const TransportRequestSchema = new Schema({
   reqId: { type: String, required: true },
   custID: { type: String, required: true },
   route: { type: String, required: true },
-  noOfSeats: { type: Number, required: true },
+  noOfSeats: { type: Number },
   requestForDate: {
     type: String,
     required: true,
