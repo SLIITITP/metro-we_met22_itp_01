@@ -58,6 +58,18 @@ export default function CustServ() {
 
       <Routes>
         <Route
+          path="/customerService/transport/booknow/:w1"
+          element={
+            <>
+              <TransportCustomer />
+              <ShowTransportRequest />
+            </>
+          }
+        />
+      </Routes>
+
+      <Routes>
+        <Route
           path="/customerService/complaint"
           element={
             <>

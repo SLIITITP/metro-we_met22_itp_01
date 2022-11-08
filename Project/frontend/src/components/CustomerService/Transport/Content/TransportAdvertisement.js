@@ -7,8 +7,17 @@ import dambulla from "./DambullaCT.png";
 import dambullaImage from "./dambullaImage.jpg";
 import wilpattu from "./WilpattuNp.png";
 import wilpattuImage from "./WilpattuImage.jpg";
+import { Link } from "react-router-dom";
+
+import Container from "../js/js1/Container";
 
 export default function TransportAd() {
+  const w = "w";
+  const k = "k";
+  const d = "d";
+
+  const val = 22;
+
   return (
     <div className="container">
       <div
@@ -30,17 +39,29 @@ export default function TransportAd() {
           </p>
         </div>
         <ul className="list-group list-group-flush">
-          <li className="list-group-item">Cras justo odio</li>
-          <li className="list-group-item">Dapibus ac facilisis in</li>
-          <li className="list-group-item">Vestibulum at eros</li>
+          <li className="list-group-item" style={{ fontWeight: "bold" }}>
+            Distance : 115 km
+          </li>
+          <li className="list-group-item" style={{ fontWeight: "bold" }}>
+            Days : Monday - Friday
+          </li>
+          <li className="list-group-item" style={{ fontWeight: "bold" }}>
+            Time : Tour starts at 16:00
+          </li>
         </ul>
         <div className="card-body">
-          <a href="#" className="card-link">
-            Card link
-          </a>
-          <a href="#" className="card-link">
-            Another link
-          </a>
+          <button
+            type="button"
+            class="btn btn-outline-primary btn-sm"
+            style={{ marginRight: "20px", width: "90px" }}
+          >
+            Info
+          </button>
+
+          <button type="button" class="btn btn-primary btn-sm">
+            Book Now &nbsp;
+            <i class="bi bi-arrow-right"></i>
+          </button>
         </div>
       </div>
 
@@ -63,17 +84,29 @@ export default function TransportAd() {
           </p>
         </div>
         <ul className="list-group list-group-flush">
-          <li className="list-group-item">Cras justo odio</li>
-          <li className="list-group-item">Dapibus ac facilisis in</li>
-          <li className="list-group-item">Vestibulum at eros</li>
+          <li className="list-group-item" style={{ fontWeight: "bold" }}>
+            Distance : 184.2 km
+          </li>
+          <li className="list-group-item" style={{ fontWeight: "bold" }}>
+            Days : Monday - Friday
+          </li>
+          <li className="list-group-item" style={{ fontWeight: "bold" }}>
+            Time : Tour starts at 16:00
+          </li>
         </ul>
         <div className="card-body">
-          <a href="#" className="card-link">
-            Card link
-          </a>
-          <a href="#" className="card-link">
-            Another link
-          </a>
+          <button
+            type="button"
+            class="btn btn-outline-primary btn-sm"
+            style={{ marginRight: "20px", width: "90px" }}
+          >
+            Info
+          </button>
+
+          <button type="button" class="btn btn-primary btn-sm">
+            Book Now &nbsp;
+            <i class="bi bi-arrow-right"></i>
+          </button>
         </div>
       </div>
 
@@ -96,17 +129,39 @@ export default function TransportAd() {
           </p>
         </div>
         <ul className="list-group list-group-flush">
-          <li className="list-group-item">Cras justo odio</li>
-          <li className="list-group-item">Dapibus ac facilisis in</li>
-          <li className="list-group-item">Vestibulum at eros</li>
+          <li className="list-group-item" style={{ fontWeight: "bold" }}>
+            Distance : 100 km
+          </li>
+          <li className="list-group-item" style={{ fontWeight: "bold" }}>
+            Days : Monday - Friday
+          </li>
+          <li className="list-group-item" style={{ fontWeight: "bold" }}>
+            Time : Tour starts at 16:00
+          </li>
         </ul>
         <div className="card-body">
-          <a href="#" className="card-link">
-            Card link
-          </a>
-          <a href="#" className="card-link">
-            Another link
-          </a>
+          <button
+            type="button"
+            class="btn btn-outline-primary btn-sm"
+            style={{ marginRight: "20px", width: "90px" }}
+          >
+            <Container onSubmit={(e) => {}} />
+            Info
+          </button>
+
+          <Link
+            to={`booknow/${w}`}
+            style={{
+              textDecoration: "none",
+              color: "black",
+              FontFace: "bold",
+            }}
+          >
+            <button type="button" class="btn btn-primary btn-sm">
+              Book Now &nbsp;
+              <i class="bi bi-arrow-right"></i>
+            </button>
+          </Link>
         </div>
       </div>
     </div>
