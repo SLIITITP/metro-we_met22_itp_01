@@ -145,14 +145,20 @@ export default function CreateTransportRequestCustomer() {
 
     if (document.getElementById("seats") != null)
       selectedSeats = document.getElementById("seats").value;
-
-    if (document.getElementById("seats") != null) {
-      if (availableSeatCount === 0 || availableSeatCount < selectedSeats)
-        document.getElementById("seats").disabled = true;
-      else document.getElementById("seats").disabled = false;
-    }
   }
   bookedSeatCountValidator();
+
+  function validateSubmit(val) {
+    if (document.getElementById("submit") != null) {
+      document.getElementById("submit").disabled = true;
+
+      val = parseInt(val);
+
+      if (availableSeatCount > val) {
+        document.getElementById("submit").disabled = false;
+      }
+    }
+  }
 
   return (
     <div
@@ -237,6 +243,7 @@ export default function CreateTransportRequestCustomer() {
                 ...TransportRequest,
                 noOfSeats: event.target.value,
               });
+              validateSubmit(event.target.value);
             }}
           />
         </div>
@@ -279,7 +286,7 @@ export default function CreateTransportRequestCustomer() {
             <option value="TransportRequest">Resort Transport</option>
           </select>
         </div>
-        <button type="submit" className="btn btn-primary">
+        <button type="submit" id="submit" className="btn btn-primary">
           Submit
         </button>
       </form>
