@@ -2,26 +2,56 @@ const mongoose = require("mongoose");
 
 const Schema = mongoose.Schema;
 
-//Attendance (empID, date, checkIn, checkOut) 
+//Attendance (attenID, empID, date, checkIn, checkOut, hours, minutes)
 const attendanceSchema = new Schema({
+  attenID: {
+    type: String,
+    required: true,
+  },
   empID: {
     type: String,
     required: true,
   },
   date: {
-    type: Date,
+    type: String,
     required: true,
-    default: Date(),
+    // default: Date(),
   },
   checkIn: {
-    type: Date, 
-    required: true, 
-    default: Date(),
+    type: String,
+    required: true,
+    //default: Date(),
   },
   checkOut: {
-    type: Date, 
-    required: true, 
-    default: Date(),
+    type: String,
+    //required: true,
+    //default: Date(),
+    default: "Log checkout time",
+  },
+  hours: {
+    type: Number,
+    //required: true,
+    default: 0,
+  },
+  minutes: {
+    type: Number,
+    //required: true,
+    default: 0,
+  },
+  hourlyPay: {
+    type: Number,
+    //required: true,
+    default: 0,
+  },
+  otRate: {
+    type: Number,
+    //required: true,
+    default: 0,
+  },
+  pay: {
+    type: Number,
+    //required: true,
+    default: 0,
   },
 });
 

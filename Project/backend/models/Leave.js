@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 
 const Schema = mongoose.Schema;
 
-//Leave (leaveID, empID, managerID, adminID, status, type, startDate, endDate, description, requestFor, startTime, endTime, date)
+//Leave (leaveID, empID, managerID, adminID, status, type, startDate, endDate, noOfDays, description, reasonOfStat, requestFor, startTime, endTime, date)
 const leaveSchema = new Schema({
   leaveID: {
     type: String,
@@ -13,17 +13,21 @@ const leaveSchema = new Schema({
     type: String,
     required: true,
   },
-  managerID: {
-    type: String,
-    required: true,
-  },
-  adminID: {
-    type: String,
-    required: true,
-  },
+  // empName: {
+  //   type: String,
+  //   required: true,
+  // },
+  // managerID: {
+  //   type: String,
+  //   required: true,
+  // },
+  // adminID: {
+  //   type: String,
+  //   required: true,
+  // },
   status: {
     type: String,
-    required: true,
+    //required: true,
     default: "Pending",
   },
   type: {
@@ -31,33 +35,41 @@ const leaveSchema = new Schema({
     required: true,
   },
   startDate: {
-    type: Date, 
-    required: true, 
+    type: String,
+    required: true,
   },
   endDate: {
-    type: Date, 
-    required: true, 
+    type: String,
+    required: true,
+  },
+  noOfDays: {
+    type: Number,
+    required: true,
   },
   description: {
     type: String,
     required: true,
   },
-  requestFor: {
+  reasonOfStat: {
     type: String,
-    required: true,
+    default: "Waiting for approval",
   },
-  startTime: {
-    type: String,
-    required: true,
-  },
-  endTime: {
-    type: String,
-    required: true,
-  },
-  date: {
-    type: Date, 
-    required: true, 
-  },
+  // requestFor: {
+  //   type: String,
+  //   required: true,
+  // },
+  // startTime: {
+  //   type: String,
+  //   required: true,
+  // },
+  // endTime: {
+  //   type: String,
+  //   required: true,
+  // },
+  // date: {
+  //   type: Date,
+  //   required: true,
+  // },
 });
 
 //model(tableName, schemaName)
