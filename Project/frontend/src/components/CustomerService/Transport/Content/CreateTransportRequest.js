@@ -6,6 +6,8 @@ import lagoon from "./br.png";
 import dambulla from "./DambullaCT.png";
 import wilpattu from "./WilpattuNp.png";
 
+import GetTransportRequest from "./getTransportRequest";
+
 let image = lagoon; //to store and display the image
 
 export default function CreateTransportRequestCustomer() {
@@ -35,6 +37,9 @@ export default function CreateTransportRequestCustomer() {
   var year = today.getFullYear();
   var mes = today.getMonth() + 1;
   var dia = today.getDate();
+
+  //For the date form field
+  var currDate = new Date().toISOString().slice(0, 10);
 
   //Taking time without seconds
   var time = today
@@ -112,6 +117,43 @@ export default function CreateTransportRequestCustomer() {
   }
   changeImageFuncton();
 
+  var availableSeatCount;
+  let allTransList = GetTransportRequest();
+  var availColor;
+
+  function availableSeat() {
+    availableSeatCount = 0;
+    let bookedSeatCount = 0;
+    var ele = document.getElementById("schedule");
+
+    if (ele != null) var date22 = document.getElementById("schedule").value;
+
+    for (let x = 0; x < allTransList.length; x++) {
+      if (allTransList[x].requestForDate == date22)
+        bookedSeatCount += allTransList[x].noOfSeats;
+    }
+    availableSeatCount = 72 - bookedSeatCount;
+
+    if (availableSeatCount === 0) availColor = "red";
+    else availColor = "green";
+  }
+
+  availableSeat();
+
+  function bookedSeatCountValidator() {
+    var selectedSeats;
+
+    if (document.getElementById("seats") != null)
+      selectedSeats = document.getElementById("seats").value;
+
+    if (document.getElementById("seats") != null) {
+      if (availableSeatCount === 0 || availableSeatCount < selectedSeats)
+        document.getElementById("seats").disabled = true;
+      else document.getElementById("seats").disabled = false;
+    }
+  }
+  bookedSeatCountValidator();
+
   return (
     <div
       className="container"
@@ -154,8 +196,9 @@ export default function CreateTransportRequestCustomer() {
           <input
             type="date"
             id="schedule"
-            name="schedule"
             className="form-control"
+            defaultValue={currDate}
+            min={currDate}
             required
             onChange={(e) => {
               setTransportRequest({
@@ -164,6 +207,17 @@ export default function CreateTransportRequestCustomer() {
               });
             }}
           />
+        </div>
+
+        <div className="mb-3">
+          <label
+            htmlFor="availableSeats"
+            className="form-label"
+            value={20}
+            style={{ color: availColor }}
+          >
+            Available Seats : {availableSeatCount}
+          </label>
         </div>
 
         <div className="mb-3">
