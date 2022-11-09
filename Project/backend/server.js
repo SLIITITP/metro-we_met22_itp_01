@@ -51,6 +51,11 @@ const ToiletriesRouter = require("./routes/ToiletriesRoutes.js");
 const AssetsRouter = require("./routes/AssetRoutes.js");
 const MaintenanceRouter = require("./routes/MaintenanceRoutes.js");
 
+//for parking management
+const ParkingFeeRouter = require("./routes/ParkingFeeRouter.js");
+const ParkingRouter = require("./routes/ParkingRouter.js");
+const ParkingStructureRouter = require("./routes/ParkingStructureRouter.js");
+
 //https://localhost:8070/customer will load CustomerRouter.js
 app.use("/customer", CustomerRouter);
 app.use("/users", userRouter);
@@ -90,6 +95,14 @@ app.use("/kitchenStock", KitchenStockRouter);
 app.use("/toiletries", ToiletriesRouter);
 app.use("/assets", AssetsRouter);
 app.use("/maintenance", MaintenanceRouter);
+
+
+//https://localhost:8070/Park
+app.use("/park/parkFee", ParkingFeeRouter);
+app.use("/park", ParkingRouter);
+app.use("/park/parkStruct", ParkingStructureRouter);
+
+
 
 //pricess.env.PORT will allow us to choose the available port that is availabe once hosted
 const PORT = process.env.PORT || 8070;

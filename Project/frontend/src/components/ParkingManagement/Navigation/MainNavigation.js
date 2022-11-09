@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-export default function MainNavigationStaff() {
+function MainNavigation() {
   return (
     <div
       className="container"
@@ -20,7 +20,7 @@ export default function MainNavigationStaff() {
         style={{ backgroundColor: "white" }}
       >
         <li className="nav-item" role="presentation">
-          <Link to="" style={{ textDecoration: "none" }}>
+          <Link to="/login" style={{ textDecoration: "none" }}>
             <button
               className="nav-link active"
               id="home-tab"
@@ -31,12 +31,12 @@ export default function MainNavigationStaff() {
               aria-controls="home-tab-pane"
               aria-selected="true"
             >
-              Bookings
+              Login
             </button>
           </Link>
         </li>
         <li className="nav-item" role="presentation">
-          <Link to="" style={{ textDecoration: "none" }}>
+          <Link to="/Park" style={{ textDecoration: "none" }}>
             <button
               className="nav-link"
               id="profile-tab"
@@ -47,16 +47,12 @@ export default function MainNavigationStaff() {
               aria-controls="profile-tab-pane"
               aria-selected="false"
             >
-              Employee
+              Parking Management {/* <font color="grey">Create Student</font>*/}
             </button>
           </Link>
         </li>
-
         <li className="nav-item" role="presentation">
-          <Link
-            to="/Staff/inventoryStaff/kitchenStaff"
-            style={{ textDecoration: "none" }}
-          >
+          <Link to="/Admin" style={{ textDecoration: "none" }}>
             <button
               className="nav-link"
               id="profile-tab"
@@ -67,75 +63,7 @@ export default function MainNavigationStaff() {
               aria-controls="profile-tab-pane"
               aria-selected="false"
             >
-              Kitchen
-            </button>
-          </Link>
-        </li>
-
-        <li className="nav-item" role="presentation">
-          <Link to="" style={{ textDecoration: "none" }}>
-            <button
-              className="nav-link"
-              id="profile-tab"
-              data-bs-toggle="tab"
-              data-bs-target="#profile-tab-pane"
-              type="button"
-              role="tab"
-              aria-controls="profile-tab-pane"
-              aria-selected="false"
-            >
-              Restaurant
-            </button>
-          </Link>
-        </li>
-
-        <li className="nav-item" role="presentation">
-          <Link to="/Staff/transportStaff" style={{ textDecoration: "none" }}>
-            <button
-              className="nav-link"
-              id="profile-tab"
-              data-bs-toggle="tab"
-              data-bs-target="#profile-tab-pane"
-              type="button"
-              role="tab"
-              aria-controls="profile-tab-pane"
-              aria-selected="false"
-            >
-              Transport
-            </button>
-          </Link>
-        </li>
-
-        <li className="nav-item" role="presentation">
-          <Link to="/park" style={{ textDecoration: "none" }}>
-            <button
-              className="nav-link"
-              id="profile-tab"
-              data-bs-toggle="tab"
-              data-bs-target="#profile-tab-pane"
-              type="button"
-              role="tab"
-              aria-controls="profile-tab-pane"
-              aria-selected="false"
-            >
-              Parking
-            </button>
-          </Link>
-        </li>
-
-        <li className="nav-item" role="presentation">
-          <Link to="/Staff/complaintStaff" style={{ textDecoration: "none" }}>
-            <button
-              className="nav-link"
-              id="profile-tab"
-              data-bs-toggle="tab"
-              data-bs-target="#profile-tab-pane"
-              type="button"
-              role="tab"
-              aria-controls="profile-tab-pane"
-              aria-selected="false"
-            >
-              Complaint
+              Admin {/* <font color="grey">Create Student</font>*/}
             </button>
           </Link>
         </li>
@@ -179,3 +107,5 @@ export default function MainNavigationStaff() {
     </div>
   );
 }
+
+export { MainNavigation };
