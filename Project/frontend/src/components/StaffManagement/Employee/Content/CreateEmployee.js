@@ -82,20 +82,6 @@ export default function CreateEmployee() {
       .catch((err) => {
         alert(err);
       });
-
-    // To clear out the form fields
-    document.getElementById("empID").value = "";
-    document.getElementById("empName").value = "";
-    document.getElementById("desig").value = "";
-    document.getElementById("deptName").value = "";
-    document.getElementById("hourlyPay").value = "";
-    document.getElementById("otRate").value = "";
-    document.getElementById("NIC").value = "";
-    document.getElementById("DOB").value = "";
-    document.getElementById("gender").value = "";
-    document.getElementById("address").value = "";
-    document.getElementById("email").value = "";
-    document.getElementById("phone").value = "";
   }
 
   return (
