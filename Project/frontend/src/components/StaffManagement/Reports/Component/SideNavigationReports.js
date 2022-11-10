@@ -163,7 +163,7 @@ export default function SideNavigationReports() {
               aria-selected="false"
               style={{ width: "100%" }}
             >
-              Manage Leaves
+              Manage Leave
             </button>
           </Link>
 

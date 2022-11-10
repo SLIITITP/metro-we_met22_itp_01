@@ -275,7 +275,7 @@ export default function GetAttendance() {
       >
         <div
           className="container"
-          style={{ float: "right", marginRight: "-900px" }}
+          style={{ float: "right", marginRight: "-1000px" }}
         >
           <form
             class="form-inline my-2 my-lg-0"

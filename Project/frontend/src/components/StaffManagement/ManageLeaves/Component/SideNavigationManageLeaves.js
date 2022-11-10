@@ -162,7 +162,7 @@ export default function SideNavigationManageLeaves() {
               aria-controls="v-pills-home"
               style={{ width: "100%" }}
             >
-              Manage Leaves
+              Manage Leave
             </button>
           </Link>
 
