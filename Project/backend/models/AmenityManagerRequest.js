@@ -3,11 +3,9 @@ const Schema = mongoose.Schema;
 
 //Manager_Request (reqID, date, req_type, invenID, status, managerID)
 
-const ManagerRequestSchema = new Schema({
+const AmenityManagerRequestSchema = new Schema({
   reqID: {
     type: String,
-    required: true,
-    unique: true,
   },
 
   date: {
@@ -25,21 +23,31 @@ const ManagerRequestSchema = new Schema({
   //accepted/rejected/pending status
   status: {
     type: String,
+
     default: "Pending",
   },
+  // managerID: {
+  //   type: String,
+  //
+  // },
 
-  name: {
-    type: String,
-  },
+  // name: {
+  //   type: String,
+  //   //
+  // },
 
   quantity: {
     type: Number,
+    required: true,
   },
   description: {
     type: String,
   },
 });
 
-const ManagerRequest = mongoose.model("ManagerRequest", ManagerRequestSchema);
+const AmenityManagerRequest = mongoose.model(
+  "AmenityManagerRequest",
+  AmenityManagerRequestSchema
+);
 
-module.exports = ManagerRequest;
+module.exports = AmenityManagerRequest;

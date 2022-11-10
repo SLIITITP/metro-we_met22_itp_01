@@ -1,31 +1,33 @@
 const router = require("express").Router();
-let ChefRequest = require("../models/ChefRequest");
+let AmenityManagerRequest = require("../models/AmenityManagerRequest");
 
 router.route("/add").post((req, res) => {
   const reqID = req.body.reqID;
-
-  const kitIngID = req.body.kitIngID;
   const reqType = req.body.reqType;
+  const invenID = req.body.invenID;
+  // const managerID = req.body.managerID;
+  // const status = req.body.status;
   const date = req.body.date;
-  const name = req.body.name;
+  //const name = req.body.name;
   const quantity = req.body.quantity;
   const description = req.body.description;
 
-  const newChefRequest = new ChefRequest({
+  const newAmenityManagerRequest = new AmenityManagerRequest({
     reqID,
-    kitIngID,
     reqType,
+    invenID,
+    // managerID,
+    //status,
     date,
-    name,
+    //name,
     quantity,
     description,
   });
 
-  //exception handling catching the error
-  newChefRequest
+  newAmenityManagerRequest
     .save()
     .then(() => {
-      res.json("chef request added");
+      res.json("Manager request added");
     })
     .catch((err) => {
       console.log(err);
@@ -33,19 +35,9 @@ router.route("/add").post((req, res) => {
 });
 
 router.route("/").get((req, res) => {
-  ChefRequest.find()
-    .then((ChefRequest) => {
-      res.json(ChefRequest);
-    })
-    .catch((err) => {
-      console.log(err);
-    });
-});
-
-router.route("/getApproved").get((req, res) => {
-  ChefRequest.find({ status: "Approved" })
-    .then((ChefRequest) => {
-      res.json(ChefRequest);
+  AmenityManagerRequest.find()
+    .then((AmenityManagerRequest) => {
+      res.json(AmenityManagerRequest);
     })
     .catch((err) => {
       console.log(err);
@@ -53,32 +45,37 @@ router.route("/getApproved").get((req, res) => {
 });
 
 router.route("/update/:id").put(async (req, res) => {
-  let id = req.params.id;
+  let reqId = req.params.id;
   const {
     reqID,
-    kitIngID,
     reqType,
+    invenID,
+    status,
+    // managerID,
     date,
-    name,
+    //name,
     quantity,
     description,
-    status,
   } = req.body;
 
   const updateRequest = {
     reqID,
-    kitIngID,
     reqType,
+    invenID,
+    // managerID,
+    status,
     date,
-    name,
+    //name,
     quantity,
     description,
-    status,
   };
 
-  const update = await ChefRequest.findByIdAndUpdate(id, updateRequest)
+  const update = await AmenityManagerRequest.findByIdAndUpdate(
+    reqId,
+    updateRequest
+  )
     .then(() => {
-      res.status(200).send({ status: "Chef request updated successfully" });
+      res.status(200).send({ status: "Manager request updated successfully" });
     })
     .catch((err) => {
       console.log(err);
@@ -89,11 +86,11 @@ router.route("/update/:id").put(async (req, res) => {
 });
 
 router.route("/delete/:id").delete(async (req, res) => {
-  let id = req.params.id;
+  let reqId = req.params.id;
 
-  await ChefRequest.findByIdAndDelete(id)
+  await ManagerRequest.findByIdAndDelete(reqId)
     .then(() => {
-      res.status(200).send({ status: "Chef request deleted successfully" });
+      res.status(200).send({ status: "Manager request deleted successfully" });
     })
     .catch((err) => {
       res
@@ -103,10 +100,10 @@ router.route("/delete/:id").delete(async (req, res) => {
 });
 
 router.route("/get/:id").get(async (req, res) => {
-  let id = req.params.id;
-  const reques = await ChefRequest.findById(id)
-    .then((ChefRequest) => {
-      res.status(200).send({ status: "request fetched", ChefRequest });
+  let reqId = req.params.id;
+  const request = await AmenityManagerRequest.findById(reqId)
+    .then((request) => {
+      res.status(200).send({ status: "request fetched", request });
     })
     .catch(() => {
       console.log(err.message);

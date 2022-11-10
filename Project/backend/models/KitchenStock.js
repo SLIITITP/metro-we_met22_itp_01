@@ -5,17 +5,18 @@ const Schema = mongoose.Schema;
 const KitchenStockSchema = new Schema({
   invenID: {
     type: String,
-    required: true,
-    unique: true,
+    //required: true,
+    // unique: true,
   },
 
   quantity: {
-    type: String,
+    type: Number,
     required: true,
   },
 
   category: {
     type: String,
+    required: true,
   },
   name: {
     type: String,
