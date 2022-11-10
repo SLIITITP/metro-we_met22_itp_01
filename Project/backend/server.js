@@ -50,8 +50,7 @@ const InventoryRouter = require("./routes/InventoryRoutes.js");
 const KitchenStockRouter = require("./routes/KitchenStockRoutes.js");
 const ToiletriesRouter = require("./routes/ToiletriesRoutes.js");
 const AssetsRouter = require("./routes/AssetRoutes.js");
-const MaintenanceRouter = require("./routes/MaintenanceRoutes.js");
-
+const AmenityManagerRequestRouter = require("./routes/AmenityManagerRequestRoutes.js");
 //for parking management
 const ParkingFeeRouter = require("./routes/ParkingFeeRouter.js");
 const ParkingRouter = require("./routes/ParkingRouter.js");
@@ -92,11 +91,12 @@ app.use("/department", DepartmentRouter);
 app.use("/inventory/chefRequest", chefRequestRouter);
 app.use("/kitchenIngredients", KitchenIngredientsRouter);
 app.use("/inventory/managerRequest", ManagerRequestRouter);
+app.use("/inventory/amenityManagerRequest", AmenityManagerRequestRouter);
 app.use("/inventory", InventoryRouter);
 app.use("/kitchenStock", KitchenStockRouter);
 app.use("/toiletries", ToiletriesRouter);
 app.use("/assets", AssetsRouter);
-app.use("/maintenance", MaintenanceRouter);
+
 
 //https://localhost:8070/Park
 app.use("/park/parkFee", ParkingFeeRouter);
