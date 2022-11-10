@@ -3,16 +3,14 @@ import Notification from "../components/ParkingManagement/components/userCompone
 import ManageBar from "../components/ParkingManagement/components/userComponent/ManageBar";
 import StatusBar from "../components/ParkingManagement/components/userComponent/StatusBar";
 import ParkingLot from "../components/ParkingManagement/components/userComponent/ParkingLot";
-import { MainNavigation } from "../components/ParkingManagement/Navigation/MainNavigation";
 import "../App.css";
 
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
-export default function parking() {
+export default function ParkingManagement() {
   return (
     <Router>
       <div className="App">
-        <MainNavigation />
         <Routes>
           <Route
             path="/park"
@@ -43,7 +41,14 @@ export default function parking() {
         </Routes>
 
         <Routes>
-          <Route path="/park/admin" element={<></>} />
+          <Route
+            path="/park/admin"
+            element={
+              <>
+                <parkFee />
+              </>
+            }
+          />
         </Routes>
 
         <Routes>

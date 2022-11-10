@@ -11,6 +11,8 @@ router.route("/create").post((req, res) => {
   const checkOut = req.body.checkOut;
   const hours = req.body.hours;
   const minutes = req.body.minutes;
+  const shiftHours = req.body.shiftHours;
+  const otHours = req.body.otHours;
   const hourlyPay = req.body.hourlyPay;
   const otRate = req.body.otRate;
   const pay = req.body.pay;
@@ -23,6 +25,8 @@ router.route("/create").post((req, res) => {
     checkOut,
     hours,
     minutes,
+    shiftHours,
+    otHours,
     hourlyPay,
     otRate,
     pay,

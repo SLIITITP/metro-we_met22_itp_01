@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-function MainNavigation() {
+export default function MainNavigationAdmin() {
   return (
     <div
       className="container"
@@ -20,7 +20,7 @@ function MainNavigation() {
         style={{ backgroundColor: "white" }}
       >
         <li className="nav-item" role="presentation">
-          <Link to="/login" style={{ textDecoration: "none" }}>
+          <Link to="admin/reservation" style={{ textDecoration: "none" }}>
             <button
               className="nav-link active"
               id="home-tab"
@@ -31,12 +31,12 @@ function MainNavigation() {
               aria-controls="home-tab-pane"
               aria-selected="true"
             >
-              Login
+              Reservation
             </button>
           </Link>
         </li>
         <li className="nav-item" role="presentation">
-          <Link to="/Park" style={{ textDecoration: "none" }}>
+          <Link to="/admin/staffManagement" style={{ textDecoration: "none" }}>
             <button
               className="nav-link"
               id="profile-tab"
@@ -47,12 +47,13 @@ function MainNavigation() {
               aria-controls="profile-tab-pane"
               aria-selected="false"
             >
-              Parking Management {/* <font color="grey">Create Student</font>*/}
+              Employee
             </button>
           </Link>
         </li>
+
         <li className="nav-item" role="presentation">
-          <Link to="/Admin" style={{ textDecoration: "none" }}>
+          <Link to="/admin/inventory" style={{ textDecoration: "none" }}>
             <button
               className="nav-link"
               id="profile-tab"
@@ -63,7 +64,58 @@ function MainNavigation() {
               aria-controls="profile-tab-pane"
               aria-selected="false"
             >
-              Admin {/* <font color="grey">Create Student</font>*/}
+              Inventory
+            </button>
+          </Link>
+        </li>
+
+        <li className="nav-item" role="presentation">
+          <Link to="/admin/supplier" style={{ textDecoration: "none" }}>
+            <button
+              className="nav-link"
+              id="profile-tab"
+              data-bs-toggle="tab"
+              data-bs-target="#profile-tab-pane"
+              type="button"
+              role="tab"
+              aria-controls="profile-tab-pane"
+              aria-selected="false"
+            >
+              Supplier
+            </button>
+          </Link>
+        </li>
+
+        <li className="nav-item" role="presentation">
+          <Link to="/admin/customerservice" style={{ textDecoration: "none" }}>
+            <button
+              className="nav-link"
+              id="profile-tab"
+              data-bs-toggle="tab"
+              data-bs-target="#profile-tab-pane"
+              type="button"
+              role="tab"
+              aria-controls="profile-tab-pane"
+              aria-selected="false"
+            >
+              Customer Service
+            </button>
+          </Link>
+        </li>
+
+        <li className="nav-item" role="presentation">
+          <Link to="/admin/parking" style={{ textDecoration: "none" }}>
+            <button
+              className="nav-link"
+              id="profile-tab"
+              data-bs-toggle="tab"
+              data-bs-target="#profile-tab-pane"
+              type="button"
+              role="tab"
+              aria-controls="profile-tab-pane"
+              aria-selected="false"
+            >
+              Parking
             </button>
           </Link>
         </li>
@@ -107,5 +159,3 @@ function MainNavigation() {
     </div>
   );
 }
-
-export { MainNavigation };

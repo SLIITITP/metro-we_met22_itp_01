@@ -38,6 +38,16 @@ const attendanceSchema = new Schema({
     //required: true,
     default: 0,
   },
+  shiftHours: {
+    type: Number,
+    //required: true,
+    default: 0,
+  },
+  otHours: {
+    type: Number,
+    //required: true,
+    default: 0,
+  },
   hourlyPay: {
     type: Number,
     //required: true,

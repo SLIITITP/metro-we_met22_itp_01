@@ -16,23 +16,32 @@ export default function GetAttendance() {
   //For the search button
   const [search, setSearch] = useState("");
 
+  //Taking only the date from Date()
+  var today = new Date();
+  var year = today.getFullYear();
+  var month = today.getMonth() + 1;
+  var dia = today.getDate();
+
+  var dateString = year + "-" + month + "-" + dia;
+
+  var time = today.toLocaleTimeString();
+
+  const [newAtten, setnewAtten] = useState({
+    // attenID: "",
+    // empID: "",
+    date: dateString,
+    checkIn: time,
+  });
+
   let attenIdString = "1";
   var attendanceList = GetAttendanceDetails();
   var employee = GetEmployeeDetails();
 
   const [show, setShow] = useState(false);
-  const [disabled, setDisabled] = useState(false);
-  // const [attenID, setAttenID] = useState("");
-  // const [empID, setEmpID] = useState("");
-  // const [date, setDate] = useState("");
-  // const [checkIn, setCheckIn] = useState("");
-  // const [editAtten, setEditAtten] = useState({});
-
-  const [attenID, setAttenID] = useState(null);
-  const [empID, setEmpID] = useState(null);
-  const [date, setDate] = useState(null);
-  const [checkIn, setCheckIn] = useState(null);
-
+  const [attenID, setAttenID] = useState("");
+  const [empID, setEmpID] = useState("");
+  const [date, setDate] = useState("");
+  const [checkIn, setCheckIn] = useState("");
   const [checkOut, setCheckOut] = useState(null);
   const [hours, setHours] = useState(null);
   const [minutes, setMinutes] = useState(null);
@@ -71,47 +80,6 @@ export default function GetAttendance() {
   function sendData(e) {
     e.preventDefault();
 
-    const newAtten = {
-      attenID,
-      empID,
-      date,
-      checkIn,
-    };
-
-    //Taking only the date from Date()
-    var today = new Date();
-    var year = today.getFullYear();
-    var month = today.getMonth() + 1;
-    var dia = today.getDate();
-
-    const dateString = year + "-" + month + "-" + dia;
-    newAtten.date = dateString;
-
-    // var dTime = today.toLocaleString();
-    // newAtten.dateTime = dTime;
-
-    // var time = today
-    //   .toLocaleTimeString("en-US", {
-    //     hour12: false,
-    //   })
-    //   .replace(/(.*)\D\d+/, "$1");
-    //newAtten.checkIn = time;
-
-    // var time = today.toLocaleTimeString("en-US", {
-    //   hourCycle: "h23",
-    //   hour12: false,
-    // });
-    //newAtten.checkIn = time;
-
-    //var time = today.toLocaleTimeString("en-GB");
-    //newAtten.checkIn = time;
-
-    // var time = today.toLocaleTimeString("en-US", { hour12: false });
-    // newAtten.checkIn = time;
-
-    var time = today.toLocaleTimeString();
-    newAtten.checkIn = time;
-
     //To find the last id
     let j = attendanceList.length;
     j--;
@@ -120,18 +88,22 @@ export default function GetAttendance() {
       attenId++;
       attenIdString = attenId.toString();
       setAttenID(attenIdString);
-      console.log(attenID);
     } else {
       setAttenID(attenIdString);
-      console.log(attenID);
     }
 
-    console.log(newAtten);
+    newAtten.attenID = attenIdString;
+
+    var empIDHardCoded;
+    if (document.getElementById("empID") != null)
+      empIDHardCoded = document.getElementById("empID").value;
+
+    newAtten.empID = empIDHardCoded;
 
     axios
       .post("http://localhost:8070/attendance/create", newAtten)
       .then(() => {
-        //alert("Logged in check in time.");
+        alert("Logged in check in time.");
         window.location.reload(false);
       })
       .catch((err) => {
@@ -139,14 +111,14 @@ export default function GetAttendance() {
       });
   }
   let i = 0;
-  let j = 0;
+
   const [editAtten, setEditAtten] = useState({});
 
   //To end the shift and update the table
   function endShift(id) {
     for (i = 0; i < attendanceList.length; i++) {
       if (attendanceList[i]._id == id) {
-        for (j = 0; j < employee.length; j++) {
+        for (let j = 0; j < employee.length; j++) {
           if (employee[j].empID == attendanceList[i].empID) {
             editAtten.hourlyPay = employee[j].hourlyPay;
             editAtten.otRate = employee[j].otRate;
@@ -213,12 +185,30 @@ export default function GetAttendance() {
       .put("http://localhost:8070/attendance/update/" + id, editAtten)
       .then((info) => {
         console.log(info);
-        //alert("Logged in check out time");
+        alert("Logged in check out time");
       })
       .catch((err) => {
         console.log(err.message);
       });
   }
+
+  function validateAttendance() {
+    var empIdhard;
+
+    if (document.getElementById("empID") != null)
+      empIdhard = document.getElementById("empID").value;
+
+    for (var z = 0; z < attendanceList.length; z++) {
+      if (
+        attendanceList[z].date === dateString &&
+        attendanceList[z].empID === empIdhard
+      )
+        if (document.getElementById("startShift") != null)
+          document.getElementById("startShift").disabled = true;
+    }
+  }
+
+  validateAttendance();
 
   return (
     <div
@@ -252,32 +242,23 @@ export default function GetAttendance() {
               name="empID"
               className="form-control"
               required
+              value="12344"
               placeholder="Enter employee id"
-              onChange={(event) => {
-                setEmpID(event.target.value);
-              }}
+              // onChange={(e) => {
+              //   setnewAtten({
+              //     ...newAtten,
+              //     empID: e.target.value,
+              //   });
+              // }}
             />
           </div>
 
           <DateTime></DateTime>
-
           <br></br>
           <br></br>
           <br></br>
           <div className="container">
-            <button
-              type="submit"
-              id="attBtn"
-              className="btn btn-primary"
-              onClick={(e) => {
-                e.preventDefault();
-                setDisabled(true);
-                setTimeout(() => {
-                  setDisabled(false);
-                }, 20000);
-              }}
-              disabled={disabled}
-            >
+            <button type="submit" id="startShift" className="btn btn-primary">
               Start Shift
             </button>
           </div>
@@ -301,7 +282,6 @@ export default function GetAttendance() {
             onSubmit={(e) => {
               setSearch(e.target.search.value);
               e.preventDefault();
-              e.window.location.reload(false);
             }}
           >
             <input
