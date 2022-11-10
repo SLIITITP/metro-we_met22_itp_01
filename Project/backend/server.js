@@ -14,6 +14,8 @@ app.use(bodyParser.urlencoded({ limit: "30 mb", extended: true }));
 //Add here the routers and paths
 const userRouter = require("./routes/UserRoutes");
 const CustomerRouter = require("./routes/CustomerRoutes.js");
+const bookRoomRouter = require("./routes/BookingRoomRoutes");
+const roomsRouter = require("./routes/roomsroute");
 
 // const OrdinaryCustomerRouter = require("./routes/OrdinaryCustomerRoutes.js");
 // const LoyalCustomerRouter = require("./routes/OrdinaryCustomerRoutes.js");
@@ -60,7 +62,8 @@ const ParkingStructureRouter = require("./routes/ParkingStructureRouter.js");
 //https://localhost:8070/customer will load CustomerRouter.js
 app.use("/customer", CustomerRouter);
 app.use("/users", userRouter);
-
+app.use("/bookings",bookRoomRouter);
+app.use("/rooms",roomsRouter);
 // app.use("/loyalCustomer", LoyalCustomerRouter);
 // app.use("/ordinaryCustomer", OrdinaryCustomerRouter);
 app.use("/customerService", CustomerRequestRouter);
