@@ -21,24 +21,21 @@ export default function CreateEmployee() {
   const [username, setUsername] = useState("");
   const [phone, setPhone] = useState("");
 
+  //To find the last id
+  let j = empList.length;
+  j--;
+  if (j >= 0) {
+    let empId = parseInt(empList[j].empID);
+    empId++;
+    empIdString = empId.toString();
+  } else {
+    empIdString = "1111";
+  }
+
   function sendData(e) {
     e.preventDefault();
 
-    //To find the last id
-    let j = empList.length;
-    j--;
-    if (j >= 0) {
-      let empId = parseInt(empList[j].empID);
-      empId++;
-      empIdString = empId.toString();
-      setID(empIdString);
-      console.log(empID);
-    } else {
-      setID(empIdString);
-      console.log(empID);
-    }
-
-    const newEmployee = {
+    var newEmployee = {
       empID,
       empName,
       desig,
@@ -53,14 +50,15 @@ export default function CreateEmployee() {
       phone,
     };
 
-    const newEmployeeLogin = {
+    newEmployee.empID = empIdString;
+
+    var newEmployeeLogin = {
       username,
       password,
       empID,
     };
 
-    console.log(newEmployee);
-    console.log(newEmployeeLogin);
+    newEmployeeLogin.empID = empIdString;
 
     axios
       .post("http://localhost:8070/employee/create", newEmployee)
@@ -102,23 +100,6 @@ export default function CreateEmployee() {
         >
           Add New Employee
         </h1>
-
-        {/* <div className="mb-3">
-          <label htmlFor="EmpID" className="form-label">
-            Employee ID
-          </label>
-          <input
-            type="text"
-            id="empID"
-            name="empID"
-            className="form-control"
-            required
-            placeholder="Enter employee id"
-            onChange={(event) => {
-              setID(event.target.value);
-            }}
-          />
-        </div> */}
 
         <div className="mb-3">
           <label htmlFor="EmpName" className="form-label">
