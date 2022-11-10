@@ -282,6 +282,7 @@ export default function GetAttendance() {
             class="form-inline my-2 my-lg-0"
             onSubmit={(e) => {
               setSearch(e.target.search.value);
+              e.preventDefault();
             }}
           >
             <input
