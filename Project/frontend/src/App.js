@@ -19,9 +19,9 @@ function App() {
       <Routes>
         <Route path="/*" element={<Staff />}></Route>
       </Routes>
-      <Routes>
+      {/* <Routes>
         <Route path="/*" element={<ParkingManagement />}></Route>
-      </Routes>
+      </Routes> */}
     </Router>
   );
 }
