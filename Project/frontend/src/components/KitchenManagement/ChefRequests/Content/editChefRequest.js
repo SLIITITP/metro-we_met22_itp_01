@@ -1,84 +1,67 @@
 import React, { useState } from "react";
 import axios from "axios";
+import { useParams } from "react-router-dom";
 import GetChefRequestDetails from "./getAllChefRequests";
-export default function CreateChefRequest() {
-  const [chefRequest, setChefRequest] = useState({
-    reqID: " ",
-    kitIngID: " ",
-    reqType: " ",
-    name: " ",
-    quantity: 0,
-    date: " ",
-    description: " ",
-    status: " ",
-  });
-  const [reqID, setReqID] = useState("1");
-  const [kitIngID, setKitIngID] = useState("1");
+
+export default function EditChefRequest() {
+  const id = useParams();
+  var z = id.id;
+  var request = GetChefRequestDetails();
+  // const [editRequest, setEditRequest] = useState({});
+  var i = 0;
+  var details = {};
+  for (i = 0; i < request.length; i++) {
+    if (request[i]._id === z) {
+      details.reqID = request[i].reqID;
+      details.kitIngID = request[i].kitIngID;
+      details.reqType = request[i].reqType;
+      details.name = request[i].name;
+      details.quantity = request[i].quantity;
+
+      details.date = request[i].date;
+      details.description = request[i].description;
+      break;
+    }
+  }
+  console.log(z);
+  const [reqId, setReqID] = useState("");
+  const [kitIngID, setKitIngID] = useState("");
   const [reqType, setReqType] = useState("");
   const [name, setName] = useState("");
   const [quantity, setQuantity] = useState("");
-  const [date, setRequestedDate] = useState("");
+  const [date, setDate] = useState("");
   const [description, setDescription] = useState("");
-  const [status, setStatus] = useState("");
 
-  const chefRequestList = GetChefRequestDetails();
-  let j = chefRequestList.length;
-  let chefRequestIDString;
-  //let ID;
-  console.log(chefRequestList);
-  j--;
-  if (j >= 0) {
-    let chefRequestID = parseInt(chefRequestList[j].reqID);
-    chefRequestID++;
-    chefRequestIDString = chefRequestID.toString();
-  } else {
-    chefRequestIDString = "1";
-  }
-
-  const RequestList = GetChefRequestDetails();
-  let s = RequestList.length;
-  let RequestIDString;
-  //let ID;
-  console.log(RequestList);
-  s--;
-  if (s >= 0) {
-    let RequestID = parseInt(RequestList[j].kitIngID);
-    RequestID++;
-    RequestIDString = RequestID.toString();
-  } else {
-    RequestIDString = "1";
-  }
-
-  function addChefRequests(e) {
+  function updateChefRequest(e) {
     e.preventDefault();
 
-    var newRequest = {
-      reqID,
-      kitIngID,
-      reqType,
-      name,
+    const editRequest = {
+      reqID: request[i].reqID,
+      kitIngID: request[i].kitIngID,
+      reqType: request[i].reqType,
+      name: request[i].name,
       quantity,
+      //date: request[i].date,
       date,
       description,
-      status,
     };
-    newRequest.reqID = chefRequestIDString;
-    newRequest.kitIngID = RequestIDString;
-    console.log(newRequest);
+
+    let port = window.location.port;
     axios
-      .post("http://localhost:8070/inventory/chefRequest/add", newRequest)
+      .put(
+        "http://localhost:8070/inventory/chefRequest/update/" + z,
+        editRequest
+      )
       .then(() => {
-        alert("request made successfully");
-        // window.location.replace(
-        //   "http://localhost:3000/inventoryManagement/requestLog"
-        // );
-        window.location.reload(false);
+        alert("Updated Successfully!");
+        window.location.replace(
+          `http://localhost:${port}/Staff/kitchenStaff/chefRequests`
+        );
       })
       .catch((err) => {
-        alert(err);
+        console.log(err.message);
       });
   }
-
   return (
     <div
       className="container"
@@ -88,7 +71,7 @@ export default function CreateChefRequest() {
       }}
     >
       <form
-        onSubmit={addChefRequests}
+        onSubmit={updateChefRequest}
         style={{
           marginTop: "50px",
           marginLeft: "-50px",
@@ -96,9 +79,24 @@ export default function CreateChefRequest() {
         }}
       >
         <h1 className="display-6" style={{ marginBottom: "20px" }}>
-          Request Ingredient
+          Edit Request
         </h1>
         {/* <div className="mb-3">
+          <label htmlFor="requestFormanagerID" className="form-label">
+            Manager ID
+          </label>
+          <input
+            type="text"
+            id="managerID"
+            name="managerID"
+            className="form-control"
+            placeholder="Enter Manager ID"
+            onChange={(e) => {
+              setManagerID(e.target.value);
+            }}
+          />
+        </div> */}
+        <div className="mb-3">
           <label htmlFor="requestForRequestID" className="form-label">
             Request ID
           </label>
@@ -107,37 +105,43 @@ export default function CreateChefRequest() {
             id="reqID"
             name="reqID"
             className="form-control"
+            readOnly
+            value={details.reqID}
             placeholder="Enter Request ID"
-            onChange={(e) => {
-              setReqID(e.target.value);
-            }}
+            onChange={(e) => setReqID(e.target.value)}
           />
-        </div> */}
-        {/* <div className="mb-3">
-          <label htmlFor="requestForinventoryID" className="form-label">
+        </div>
+        <div className="mb-3">
+          <label htmlFor="requestForKitchenIngredientID" className="form-label">
             Kitchen Ingredient ID
           </label>
           <input
             type="text"
             id="kitIngID"
             name="kitIngID"
+            readOnly
             className="form-control"
             placeholder="Enter inventory ID"
-            onChange={(e) => {
-              setKitIngID(e.target.value);
-            }}
+            value={details.kitIngID}
           />
-        </div> */}
+        </div>
         <div className="mb-3">
+          <label htmlFor="requestForCategory" className="form-label">
+            Choose Category
+          </label>
+          <input type="text" className="form-control" value={details.reqType} />
+        </div>
+        {/* <div className="mb-3">
           <label htmlFor="requestForCategory" className="form-label">
             Choose Category
           </label>
           <select
             className="form-select"
             id="reqType"
+            placeholder={details.category}
             aria-label="Default select example"
             onChange={(e) => {
-              setReqType(e.target.value);
+              setCategory(e.target.value);
             }}
           >
             <option value="">Choose Ingredient Type </option>
@@ -150,7 +154,7 @@ export default function CreateChefRequest() {
             <option value="Meat">Meat</option>
             <option value="seaFood">seaFood</option>
           </select>
-        </div>
+        </div> */}
         <div className="mb-3">
           <label htmlFor="requestForName" className="form-label">
             Ingredient Name
@@ -159,10 +163,9 @@ export default function CreateChefRequest() {
             type="text"
             id="name"
             name="name"
+            readOnly
             className="form-control"
-            onChange={(e) => {
-              setName(e.target.value);
-            }}
+            value={details.name}
           />
         </div>
         <div className="mb-3">
@@ -173,6 +176,7 @@ export default function CreateChefRequest() {
             type="number"
             id="quantity"
             name="quantity"
+            placeholder={details.quantity}
             className="form-control"
             onChange={(e) => {
               setQuantity(e.target.value);
@@ -185,11 +189,12 @@ export default function CreateChefRequest() {
           </label>
           <input
             type="date"
-            id="requestedDate"
+            id="date"
             name="requestedDate"
+            //value={details.date}
             className="form-control"
             onChange={(e) => {
-              setRequestedDate(e.target.value);
+              setDate(e.target.value);
             }}
           />
         </div>
@@ -201,6 +206,7 @@ export default function CreateChefRequest() {
             className="form-control"
             id="description"
             name="description"
+            placeholder={details.description}
             rows="4"
             cols="50"
             onChange={(e) => {
@@ -213,18 +219,18 @@ export default function CreateChefRequest() {
             // href="/inventoryManagement/requestLog"
             style={{ textDecoration: "none", color: "white", padding: "40px" }}
           >
-            Submit Request
+            Update Request
           </a>
         </button>
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        {/* <button type="submit" className="btn btn-danger">
+        <button type="submit" className="btn btn-danger">
           <a
-            href="/inventoryManagement/requestLog"
+            href="/Staff/kitchenStaff/chefRequests"
             style={{ textDecoration: "none", color: "white", padding: "40px" }}
           >
             Cancel
           </a>
-        </button> */}
+        </button>
       </form>
     </div>
   );
