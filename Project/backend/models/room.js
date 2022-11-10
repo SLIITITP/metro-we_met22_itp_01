@@ -7,7 +7,7 @@ const RoomSchema = new Schema({
         type: String,
         required: true,
     },
-    maxCount:{
+    maxcount:{
         type:Number,
         required:true,
     },
@@ -20,7 +20,7 @@ const RoomSchema = new Schema({
         required:true,
     },
     imageurls : [],
-    currentbookings :[],
+    currentbookings : [],
     type : {
         type:String,
         required:true,
