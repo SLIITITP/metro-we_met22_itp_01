@@ -50,65 +50,76 @@ export default function DisplayTransportPage() {
   //For the search button
   const [search, setSearch] = useState("");
 
-  var selectedRequestList = []; //To select only the request with servicetype = transport
-
   var i1 = 0;
   var top = -1;
+  var s = 0;
+  var selectedRequestList; //To select only the request with servicetype = transport
 
   function display() {
     //taking servicetype=transport records from the request table
     i1 = 0;
     top = -1;
+    selectedRequestList = [];
+    s = 0;
 
     for (i1 = 0; i1 < allReqList.length; i1++) {
-      var selectedDate = document.getElementById("search").value;
-      //To display only current date's transport booking for a route
-      if (
-        allReqList[i1].serviceType === "TransportRequest" &&
-        allReqList[i1].bookingDate === selectedDate
-      ) {
-        if (selectedRequestList.length === 0) {
-          top++;
-          selectedRequestList.push(allReqList[i1]);
-          selectedRequestList[top].bookedSeats = allTransList[top].noOfSeats;
-          selectedRequestList[top].availableSeats =
-            72 - selectedRequestList[top].bookedSeats;
-        } else if (selectedRequestList.length > 0) {
-          var available = 0;
-          var t = 0;
-          var v = 0;
+      var selectedDate;
 
-          //This loop is just to check if the record for similar route already exists
-          //Or A for loop to check if the record already exists in seletedRequestList
-          for (t = 0; t < selectedRequestList.length; t++) {
-            if (allReqList[i1].route === selectedRequestList[t].route) {
-              available = 1;
-              break;
-            }
+      if (document.getElementById("search") != null) {
+        selectedDate = document.getElementById("search").value;
+
+        console.log(selectedDate);
+
+        //To display only current date's transport booking for a route
+        if (
+          allReqList[i1].serviceType === "TransportRequest" &&
+          allReqList[i1].bookingDate === selectedDate
+        ) {
+          for (s = 0; s < allTransList.length; s++) {
+            if (allReqList[i1].reqId === allTransList[s].reqId) break;
           }
 
-          //To get the correct transport record
-          for (v = 0; v < allTransList.length; v++) {
-            if (
-              allReqList[i1].reqId === allTransList[v].reqId &&
-              allReqList[i1].bookingDate === selectedDate
-            )
-              break;
-          }
-
-          //To get the correct RequestList record
-          for (top = 0; top < selectedRequestList.length; top++) {
-            if (allReqList[i1].route === selectedRequestList[top].route) break;
-          }
-
-          if (available === 1)
-            selectedRequestList[top].bookedSeats += allTransList[v].noOfSeats;
-          else if (available === 0) {
+          if (selectedRequestList.length === 0) {
             selectedRequestList.push(allReqList[i1]);
-            selectedRequestList[top].bookedSeats = allTransList[v].noOfSeats;
+            selectedRequestList[0].bookedSeats = allTransList[s].noOfSeats;
+            selectedRequestList[0].availableSeats =
+              72 - selectedRequestList[0].bookedSeats;
+          } else if (selectedRequestList.length >= 1) {
+            console.log("in 2nd loop");
+            var available = 0;
+            var t = 0;
+            var v = 0;
+
+            //This loop is just to check if the record for similar route already exists
+            //Or A for loop to check if the record already exists in seletedRequestList
+            for (t = 0; t < selectedRequestList.length; t++) {
+              if (allReqList[i1].route === selectedRequestList[t].route) {
+                available = 1;
+                break;
+              }
+            }
+
+            //To get the correct transport record
+            for (v = 0; v < allTransList.length; v++) {
+              if (allReqList[i1].reqId === allTransList[v].reqId) break;
+            }
+
+            //To get the correct RequestList record
+            var b = 0;
+
+            for (b = 0; b < selectedRequestList.length; b++) {
+              if (allReqList[i1].route === selectedRequestList[b].route) break;
+            }
+
+            if (available === 1)
+              selectedRequestList[b].bookedSeats += allTransList[v].noOfSeats;
+            else if (available === 0) {
+              selectedRequestList.push(allReqList[i1]);
+              selectedRequestList[b].bookedSeats = allTransList[v].noOfSeats;
+            }
+            selectedRequestList[b].availableSeats =
+              72 - selectedRequestList[b].bookedSeats;
           }
-          selectedRequestList[top].availableSeats =
-            72 - selectedRequestList[top].bookedSeats;
         }
       }
     }

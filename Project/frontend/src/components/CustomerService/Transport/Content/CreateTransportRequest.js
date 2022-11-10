@@ -20,18 +20,6 @@ export default function CreateTransportRequestCustomer() {
 
   var obj = JSON.parse(window.localStorage.getItem("obj"));
 
-  const [TransportRequest, setTransportRequest] = useState({
-    reqId: "1",
-    custID: email,
-    route: obj.route,
-    noOfSeats: 0,
-    requestForDate: "",
-    departureTime: obj.time,
-    status: "Booked",
-    busNo: obj.busNo,
-    message: "None",
-  });
-
   //Taking only the date from Date()
   var today = new Date();
   var year = today.getFullYear();
@@ -48,7 +36,19 @@ export default function CreateTransportRequestCustomer() {
     })
     .replace(/(.*)\D\d+/, "$1");
 
-  const fecha = year + "-" + mes + "-" + dia;
+  var fecha = year + "-" + mes + "-" + dia;
+
+  const [TransportRequest, setTransportRequest] = useState({
+    reqId: "1",
+    custID: email,
+    route: obj.route,
+    noOfSeats: 0,
+    requestForDate: fecha,
+    departureTime: obj.time,
+    status: "Booked",
+    busNo: obj.busNo,
+    message: "None",
+  });
 
   const [Request, setRequest] = useState({
     reqId: "1",
@@ -94,6 +94,14 @@ export default function CreateTransportRequestCustomer() {
       .catch((err) => {
         console.log(err);
       });
+
+    axios
+      .post(
+        "http://localhost:8070/customerService/transportManagement",
+        TransportRequest
+      )
+      .then(() => {})
+      .catch((err) => {});
 
     //To enter info into Customer Request Table
     axios
@@ -207,6 +215,10 @@ export default function CreateTransportRequestCustomer() {
             min={currDate}
             required
             onChange={(e) => {
+              setRequest({
+                ...Request,
+                bookingDate: e.target.value,
+              });
               setTransportRequest({
                 ...TransportRequest,
                 requestForDate: e.target.value,

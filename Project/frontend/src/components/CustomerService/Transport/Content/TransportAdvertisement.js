@@ -40,7 +40,7 @@ export default function TransportAd() {
     <div className="container">
       <div
         className="card"
-        style={{ width: "18rem", marginLeft: "150px", marginTop: "140px" }}
+        style={{ width: "18rem", marginLeft: "250px", marginTop: "140px" }}
       >
         <img
           src={kandyImage}
@@ -90,7 +90,7 @@ export default function TransportAd() {
 
       <div
         className="card"
-        style={{ width: "18rem", marginLeft: "475px", marginTop: "-508px" }}
+        style={{ width: "18rem", marginLeft: "575px", marginTop: "-508px" }}
       >
         <img
           src={dambullaImage}
@@ -140,7 +140,7 @@ export default function TransportAd() {
 
       <div
         className="card"
-        style={{ width: "18rem", marginLeft: "800px", marginTop: "-508px" }}
+        style={{ width: "18rem", marginLeft: "900px", marginTop: "-508px" }}
       >
         <img
           src={wilpattuImage}

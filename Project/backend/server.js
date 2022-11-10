@@ -25,6 +25,7 @@ const RoomNecessityRouter = require("./routes/RoomNecessityRequestRoutes.js");
 const AttendRequestRouter = require("./routes/AttendRequestRoutes.js");
 const CustomerComplaintRouter = require("./routes/CustomerComplaintRoute");
 const TransportDriverRouter = require("./routes/TransportDriverRoute");
+const TransportManagementRouter = require("./routes/TransportManagement");
 
 //For Staff Management
 const EmployeeRouter = require("./routes/EmployeeRoutes.js");
@@ -67,6 +68,7 @@ app.use("/customerService/complaint", CustomerComplaintRouter);
 app.use("/customerService/foodAndBeverageRequest", FoodAndBeverageRouter);
 app.use("/customerService/trainerRequest", TrainerRequestRouter);
 app.use("/customerService/transportRequest", TransportRequestRouter);
+app.use("/customerService/transportManagement", TransportManagementRouter);
 app.use("/customerService/roomNecessityRequest", RoomNecessityRouter);
 app.use("/customerService/attendRequest", AttendRequestRouter);
 app.use("/customerService/transportDriver", TransportDriverRouter);
@@ -96,13 +98,10 @@ app.use("/toiletries", ToiletriesRouter);
 app.use("/assets", AssetsRouter);
 app.use("/maintenance", MaintenanceRouter);
 
-
 //https://localhost:8070/Park
 app.use("/park/parkFee", ParkingFeeRouter);
 app.use("/park", ParkingRouter);
 app.use("/park/parkStruct", ParkingStructureRouter);
-
-
 
 //pricess.env.PORT will allow us to choose the available port that is availabe once hosted
 const PORT = process.env.PORT || 8070;
