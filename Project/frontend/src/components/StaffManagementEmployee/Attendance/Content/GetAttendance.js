@@ -21,7 +21,6 @@ export default function GetAttendance() {
   var employee = GetEmployeeDetails();
 
   const [show, setShow] = useState(false);
-  const [disabled, setDisabled] = useState(false);
   // const [attenID, setAttenID] = useState("");
   // const [empID, setEmpID] = useState("");
   // const [date, setDate] = useState("");
@@ -37,6 +36,8 @@ export default function GetAttendance() {
   const [hours, setHours] = useState(null);
   const [minutes, setMinutes] = useState(null);
   const [hourlyPay, setHourlyPay] = useState(null);
+  const [shiftHours, setShiftHours] = useState(null);
+  const [otHours, setOtHours] = useState(null);
   const [otRate, setOtRate] = useState(null);
   const [totalPay, setTotalPay] = useState(null);
 
@@ -49,6 +50,8 @@ export default function GetAttendance() {
     setCheckOut(null);
     setHours(null);
     setMinutes(null);
+    setShiftHours(null);
+    setOtHours(null);
     setHourlyPay(null);
     setOtRate(null);
     setTotalPay(null);
@@ -63,6 +66,8 @@ export default function GetAttendance() {
     setCheckOut(val.checkOut);
     setHours(val.hours);
     setMinutes(val.minutes);
+    setShiftHours(val.shiftHours);
+    setOtHours(val.otHours);
     setHourlyPay(val.hourlyPay);
     setOtRate(val.otRate);
     setTotalPay(val.pay);
@@ -70,6 +75,20 @@ export default function GetAttendance() {
 
   function sendData(e) {
     e.preventDefault();
+
+    //To find the last id
+    let j = attendanceList.length;
+    j--;
+    if (j >= 0) {
+      let attenId = parseInt(attendanceList[j].attenID);
+      attenId++;
+      attenIdString = attenId.toString();
+      setAttenID(attenIdString);
+      console.log(attenID);
+    } else {
+      setAttenID(attenIdString);
+      console.log(attenID);
+    }
 
     const newAtten = {
       attenID,
@@ -111,22 +130,6 @@ export default function GetAttendance() {
 
     var time = today.toLocaleTimeString();
     newAtten.checkIn = time;
-
-    //To find the last id
-    let j = attendanceList.length;
-    j--;
-    if (j >= 0) {
-      let attenId = parseInt(attendanceList[j].attenID);
-      attenId++;
-      attenIdString = attenId.toString();
-      setAttenID(attenIdString);
-      console.log(attenID);
-    } else {
-      setAttenID(attenIdString);
-      console.log(attenID);
-    }
-
-    console.log(newAtten);
 
     axios
       .post("http://localhost:8070/attendance/create", newAtten)
@@ -194,19 +197,25 @@ export default function GetAttendance() {
     var totalHours = hours + mins / 60;
 
     if (totalHours >= 8) {
+      var otHours = Math.round(totalHours - 8);
       var ot = totalHours - 8;
+      var shift = 8;
       var otPay =
         [(editAtten.otRate / 100) * editAtten.hourlyPay + editAtten.hourlyPay] *
         ot;
-      var notOtPay = 8 * editAtten.hourlyPay;
+      var notOtPay = shift * editAtten.hourlyPay;
 
       var totalPay = Math.floor(notOtPay + otPay);
     } else {
+      ot = 0;
+      shift = Math.round(hours + mins / 60);
       var totalPay = Math.floor([hours + mins / 60] * editAtten.hourlyPay);
     }
 
     editAtten.hours = hours;
     editAtten.minutes = mins;
+    editAtten.shiftHours = shift;
+    editAtten.otHours = otHours;
     editAtten.pay = totalPay;
 
     axios
@@ -265,19 +274,7 @@ export default function GetAttendance() {
           <br></br>
           <br></br>
           <div className="container">
-            <button
-              type="submit"
-              id="attBtn"
-              className="btn btn-primary"
-              onClick={(e) => {
-                e.preventDefault();
-                setDisabled(true);
-                setTimeout(() => {
-                  setDisabled(false);
-                }, 20000);
-              }}
-              disabled={disabled}
-            >
+            <button type="submit" className="btn btn-primary">
               Start Shift
             </button>
           </div>
@@ -507,6 +504,25 @@ export default function GetAttendance() {
                                         borderColor: " #96D4D4",
                                       }}
                                     >
+                                      Shift Hours :
+                                    </th>
+                                    <td
+                                      style={{
+                                        border: "2px solid ",
+                                        borderColor: " #96D4D4",
+                                      }}
+                                    >
+                                      {shiftHours}
+                                    </td>
+                                  </tr>
+
+                                  <tr>
+                                    <th
+                                      style={{
+                                        border: "2px solid ",
+                                        borderColor: " #96D4D4",
+                                      }}
+                                    >
                                       Hourly Pay :
                                     </th>
                                     <td
@@ -516,6 +532,24 @@ export default function GetAttendance() {
                                       }}
                                     >
                                       {hourlyPay}
+                                    </td>
+                                  </tr>
+                                  <tr>
+                                    <th
+                                      style={{
+                                        border: "2px solid ",
+                                        borderColor: " #96D4D4",
+                                      }}
+                                    >
+                                      Ot hours :
+                                    </th>
+                                    <td
+                                      style={{
+                                        border: "2px solid ",
+                                        borderColor: " #96D4D4",
+                                      }}
+                                    >
+                                      {otHours}
                                     </td>
                                   </tr>
                                   <tr>

@@ -7,7 +7,6 @@ export default function CreateEmployee() {
   const empList = GetEmployeeDetails();
 
   const [empID, setID] = useState("");
-  const [managerID, setmanID] = useState("");
   const [empName, setName] = useState("");
   const [desig, setDesig] = useState("");
   const [deptName, setDeptName] = useState("Temporary");
@@ -62,27 +61,6 @@ export default function CreateEmployee() {
 
     console.log(newEmployee);
     console.log(newEmployeeLogin);
-
-    // //(desig.slice(-7) == "Manager")
-    // //(desig.include("Manager"))
-    // if (desig.endsWith("Manager")) {
-    //   setmanID(empID);
-
-    //   const newManager = {
-    //     managerID,
-    //   };
-
-    //   console.log(newManager);
-
-    //   axios
-    //     .post("http://localhost:8070/manager/create", newManager)
-    //     .then(() => {
-    //       window.location.reload(false);
-    //     })
-    //     .catch((err) => {
-    //       alert(err);
-    //     });
-    // }
 
     axios
       .post("http://localhost:8070/employee/create", newEmployee)
