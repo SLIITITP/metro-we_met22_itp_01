@@ -38,9 +38,18 @@ export default function GetLeaveRequestsManager() {
     setShow(true);
   }
 
+  const emp = JSON.parse(localStorage.getItem("currentUser")).empID;
+  var leaveDetails = GetLeaveDetails();
+  var x = 0;
+  var details = [];
+  for (x = 0; x < leaveDetails.length; x++) {
+    if (leaveDetails[x].empID == emp) {
+      details.push(leaveDetails[x]);
+    }
+  }
+
   //For the status field in the table
   var color = "black";
-  var leaveDetails = GetLeaveDetails();
 
   //For the search button
   const [search, setSearch] = useState("");
@@ -48,7 +57,6 @@ export default function GetLeaveRequestsManager() {
   const [leaveReqCancel, setLeaveReqCancel] = useState({});
   const [editLeave, setEditLeave] = useState({});
   let i = 0;
-  var leaveID;
 
   // const [type, setType] = useState("");
   const [startDate, setStartDate] = useState("");
@@ -58,12 +66,6 @@ export default function GetLeaveRequestsManager() {
 
   //To edit a pending request
   function EditRequest(id) {
-    for (i = 0; i < leaveDetails.length; i++) {
-      if (leaveDetails[i]._id == id) {
-        break;
-      }
-    }
-
     <GetOneLeave id={id} />;
     setEditLeave(GetOneLeave);
 
@@ -86,14 +88,6 @@ export default function GetLeaveRequestsManager() {
 
   //To cancel a pending request
   function CancelRequest(id) {
-    for (i = 0; i < leaveDetails.length; i++) {
-      if (leaveDetails[i]._id == id) {
-        break;
-      }
-    }
-
-    leaveID = leaveDetails[i].leaveID;
-
     <GetOneLeave id={id} />;
     setLeaveReqCancel(GetOneLeave);
 
@@ -121,9 +115,9 @@ export default function GetLeaveRequestsManager() {
     <>
       <div
         className="container"
-        style={{ float: "right", marginRight: "-1000px" }}
+        style={{ float: "right", marginRight: "-1250px" }}
       >
-        <form
+        {/* <form
           class="form-inline my-2 my-lg-0"
           onSubmit={(e) => {
             setSearch(e.target.search.value);
@@ -141,6 +135,27 @@ export default function GetLeaveRequestsManager() {
           <button class="btn btn-primary my-2 my-sm-0" type="submit">
             <i class="bi bi-search"></i>
           </button>
+        </form> */}
+        <form className="form-inline my-2 my-lg-0">
+          <select
+            className="form-select"
+            style={{
+              marginBottom: "30px",
+              width: "150px",
+            }}
+            id="search"
+            name="search"
+            onChange={(e) => {
+              setSearch(e.target.value);
+              e.preventDefault();
+            }}
+          >
+            <option value="">Show All</option>
+            <option value="Pending">Pending</option>
+            <option value="Cancelled">Cancelled</option>
+            <option value="Approved">Approved</option>
+            <option value="Rejected">Rejected</option>
+          </select>
         </form>
       </div>
 
@@ -154,10 +169,7 @@ export default function GetLeaveRequestsManager() {
           position: "sticky",
         }}
       >
-        <h1
-          className="display-6"
-          style={{ marginBottom: "80px", zIndex: "200" }}
-        >
+        <h1 className="display-6" style={{ marginBottom: "80px" }}>
           Leave Requests
         </h1>
 
@@ -178,8 +190,8 @@ export default function GetLeaveRequestsManager() {
             </tr>
           </thead>
           <tbody>
-            {leaveDetails
-              ? leaveDetails
+            {details
+              ? details
                   .filter((val) => {
                     if (search === "") return val;
                     else if (
@@ -334,7 +346,7 @@ export default function GetLeaveRequestsManager() {
                       </td>
                     </tr>
                   ))
-              : leaveDetails}
+              : details}
           </tbody>
         </table>
         <br></br>

@@ -52,7 +52,7 @@ const leaveSchema = new Schema({
   },
   reasonOfStat: {
     type: String,
-    default: "Waiting for approval",
+    default: "Wait for approval",
   },
   // requestFor: {
   //   type: String,
