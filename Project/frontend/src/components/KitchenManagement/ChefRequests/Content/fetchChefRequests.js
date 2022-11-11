@@ -12,7 +12,7 @@ export default function FetchChefRequests() {
   const [requestCancel, setRequestCancel] = useState({});
   const [editRequest, setEditRequest] = useState({});
   let i = 0;
-
+  var currDate = new Date().toISOString().slice(0, 10);
   var requestID;
   const OnSubmit = (event, id) => {
     for (i = 0; i < reqDetails.length; i++) {
@@ -75,7 +75,7 @@ export default function FetchChefRequests() {
         className="container"
         style={{ float: "right", marginRight: "-700px" }}
       >
-        <form
+        {/* <form
           class="form-inline my-2 my-lg-0"
           onSubmit={(e) => {
             setSearch(e.target.search.value);
@@ -94,7 +94,20 @@ export default function FetchChefRequests() {
           <button class="btn btn-primary my-2 my-sm-0" type="submit">
             <i class="bi bi-search"></i>
           </button>
-        </form>
+        </form> */}
+        <form className="form-inline my-2 my-lg-0">
+            <input
+              type="date"
+              id="search"
+              name="search"
+              className="form-control"
+              defaultValue={currDate}
+              onChange={(e) => {
+                setSearch(e.target.value);
+                e.preventDefault();
+              }}
+            />
+          </form>
       </div>
       <div
         className="container"
@@ -132,7 +145,7 @@ export default function FetchChefRequests() {
                   .filter((val) => {
                     if (search === "") return val;
                     else if (
-                      val.name.toLowerCase().includes(search.toLowerCase())
+                      val.date.toLowerCase().includes(search.toLowerCase())
                     ) {
                       return val;
                     }
