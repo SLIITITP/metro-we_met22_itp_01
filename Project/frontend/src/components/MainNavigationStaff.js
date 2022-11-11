@@ -73,26 +73,6 @@ export default function MainNavigationStaff() {
         </li>
 
         <li className="nav-item" role="presentation">
-<<<<<<< Updated upstream
-=======
-          <Link to="/restaurant" style={{ textDecoration: "none" }}>
-            <button
-              className="nav-link"
-              id="profile-tab"
-              data-bs-toggle="tab"
-              data-bs-target="#profile-tab-pane"
-              type="button"
-              role="tab"
-              aria-controls="profile-tab-pane"
-              aria-selected="false"
-            >
-              Restaurant
-            </button>
-          </Link>
-        </li>
-
-        <li className="nav-item" role="presentation">
->>>>>>> Stashed changes
           <Link to="/Staff/transportStaff" style={{ textDecoration: "none" }}>
             <button
               className="nav-link"
