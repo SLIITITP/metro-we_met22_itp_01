@@ -5,10 +5,10 @@ import DisplayComplaintRequest from "../components/CustomerService/ComplaintStaf
 import DisplayTransportPage from "../components/CustomerService/TransportStaff/Content/DisplayTransportPage";
 import MainNavigationStaff from "../components/MainNavigationStaff";
 
-
 //Employee Interface - Zainab
 
 import SideNavigationProfileEmployee from "../components/StaffManagementEmployee/Profile/Component/SideNavigationProfileEmployee";
+import ProfileDetails from "../components/StaffManagementEmployee/Profile/Content/ProfileDetails";
 
 import SideNavigationAttendanceEmployee from "../components/StaffManagementEmployee/Attendance/Component/SideNavigationAttendanceEmployee";
 import GetAttendance from "../components/StaffManagementEmployee/Attendance/Content/GetAttendance";
@@ -32,7 +32,6 @@ import BookingScreen from "../components/BookingManagement/CloseBookings/Screens
 import ViewBookings from "../components/BookingManagement/ViewBookings/Screens/ViewBookings";
 import ViewUsers from "../components/BookingManagement/ViewUsers/Screens/ViewUsers";
 
-
 //chef interface Rashida
 import { SideNavigationChefProfile } from "../components/KitchenManagement/Profile/Component/SideNavigationChefProfile";
 import { SideNavigationChefRequests } from "../components/KitchenManagement/ChefRequests/Component/SideNavigationChefRequests";
@@ -43,7 +42,12 @@ import IngredientFetchChefRequests from "../components/KitchenManagement/ChefIng
 import ChefRequestDetails from "../components/KitchenManagement/ChefRequests/Content/chefRequestDetails";
 import EditChefRequest from "../components/KitchenManagement/ChefRequests/Content/editChefRequest";
 
-
+// parking
+import Dashboard from "../components/ParkingManagement/pages/dashboard";
+import Initialize from "../components/ParkingManagement/pages/initialize";
+import Report from "../components/ParkingManagement/pages/report";
+import Header from "../components/ParkingManagement/header/header";
+import SideNavigationParkAdmin from "../components/ParkingManagement/header/SideNavigationParkAdmin";
 
 export default function Staff() {
   return (
@@ -139,6 +143,7 @@ export default function Staff() {
           path="/Staff/staffManagementEmployee"
           element={
             <>
+              <ProfileDetails />
               <SideNavigationProfileEmployee />
             </>
           }
@@ -234,7 +239,7 @@ export default function Staff() {
           path="/Staff/viewBookings"
           element={
             <>
-               <ViewBookings />
+              <ViewBookings />
               <SideNavigationViewBookings />
             </>
           }
@@ -258,6 +263,16 @@ export default function Staff() {
             <>
               <BookingScreen />
               <SideNavigationViewUsers />
+            </>
+          }
+        />
+      </Routes>
+      <Routes>
+        <Route
+          path="/Staff/park"
+          element={
+            <>
+              <Dashboard />
             </>
           }
         />

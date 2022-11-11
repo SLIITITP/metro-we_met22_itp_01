@@ -186,7 +186,7 @@ export default function SideNavigationLeave() {
               aria-selected="false"
               style={{ width: "100%" }}
             >
-              Reports
+              Employees At Work
             </button>
           </Link>
         </div>

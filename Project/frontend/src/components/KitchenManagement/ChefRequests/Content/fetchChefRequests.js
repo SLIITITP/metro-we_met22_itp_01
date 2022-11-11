@@ -96,18 +96,18 @@ export default function FetchChefRequests() {
           </button>
         </form> */}
         <form className="form-inline my-2 my-lg-0">
-            <input
-              type="date"
-              id="search"
-              name="search"
-              className="form-control"
-              defaultValue={currDate}
-              onChange={(e) => {
-                setSearch(e.target.value);
-                e.preventDefault();
-              }}
-            />
-          </form>
+          <input
+            type="date"
+            id="search"
+            name="search"
+            className="form-control"
+            defaultValue={currDate}
+            onChange={(e) => {
+              setSearch(e.target.value);
+              e.preventDefault();
+            }}
+          />
+        </form>
       </div>
       <div
         className="container"

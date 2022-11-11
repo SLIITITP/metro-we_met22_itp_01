@@ -9,16 +9,6 @@ export default function GetEmployees() {
 
   const [search, setSearch] = useState("");
 
-  let i = 0;
-
-  // const OnSubmit = (event, id) => {
-  //   for (i = 0; i < empDetails.length; i++) {
-  //     if (empDetails[i]._id == id) {
-  //       break;
-  //     }
-  //   }
-  // };
-
   function Delete(id) {
     // axios
     //   .delete("http://localhost:8070/employeelogin/delete/" + id)
@@ -43,7 +33,7 @@ export default function GetEmployees() {
     <>
       <div
         className="container"
-        style={{ float: "right", marginRight: "-900px" }}
+        style={{ float: "right", marginRight: "-1130px" }}
       >
         <form
           class="form-inline my-2 my-lg-0"
@@ -77,10 +67,7 @@ export default function GetEmployees() {
           position: "sticky",
         }}
       >
-        <h1
-          className="display-6"
-          style={{ marginBottom: "80px", zIndex: "200" }}
-        >
+        <h1 className="display-6" style={{ marginBottom: "80px" }}>
           All Employees
         </h1>
 

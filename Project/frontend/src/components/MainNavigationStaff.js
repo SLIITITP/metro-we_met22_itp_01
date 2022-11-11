@@ -90,7 +90,7 @@ export default function MainNavigationStaff() {
         </li>
 
         <li className="nav-item" role="presentation">
-          <Link to="/park" style={{ textDecoration: "none" }}>
+          <Link to="/Staff/park" style={{ textDecoration: "none" }}>
             <button
               className="nav-link"
               id="profile-tab"

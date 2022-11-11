@@ -139,6 +139,11 @@ app.listen(PORT, () => {
 const router = express.Router();
 
 //parking management controllers
+router.get("/", (req, res) => {
+  res.json({ message: "Test me" });
+  console.log("hello");
+});
+
 router.get("/getDashboard", (req, res) => {
   console.log("req ", req.body);
   parking_space.find({}, (err, data) => {
@@ -403,3 +408,4 @@ router.get("/insert", (req, res) => {
     });
   }
 });
+app.use("/api", router);

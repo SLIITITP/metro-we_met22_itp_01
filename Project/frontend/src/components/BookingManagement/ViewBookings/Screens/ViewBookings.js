@@ -1,5 +1,7 @@
 import React, {useState,useEffect} from 'react'
 import axios from 'axios'
+
+import {jsPDF} from "jspdf";
 import { getAllRooms } from "../actions/roomActions"
 import { useDispatch,useSelector } from "react-redux";
 import Loader from '../Components/Loader';
@@ -25,7 +27,13 @@ export default function ViewBookings() {
         }
         fetchData();
     }, [])
-  
+    const createPDF = async () => {
+        const pdf= new jsPDF("landscape","px","a2",false);
+        const data = await document.querySelector("#report");
+        pdf.html(data).then(()=>{
+          pdf.save("Bookings.pdf");
+        });
+      };
   
     return (
     
@@ -35,7 +43,7 @@ export default function ViewBookings() {
 
                     <h1 style={{marginTop:"75px"}}>Bookings</h1>
                     {loading && (<Loader />)}
-                    <table class="table table-striped table-dark" style={{width:"70%", marginLeft:"250px"}}>
+                    <table id="report" class="table table-striped table-dark" style={{width:"70%", marginLeft:"250px"}}>
                         <thead>
                             <tr>
                                 <th scope="col">Booking Id</th>
@@ -59,6 +67,8 @@ export default function ViewBookings() {
                             }))}
                         </tbody>
                     </table>
+                    
+                <button onClick={createPDF}>Print Report</button>
 
                 </div>
             </div>

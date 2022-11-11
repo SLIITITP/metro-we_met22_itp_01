@@ -1,0 +1,108 @@
+.container-fluid .jumbotron, .container .jumbotron {
+    border-radius: 6px;
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+  
+  @media screen and (min-width: 768px)
+  {
+  .container-fluid .jumbotron, .container .jumbotron {
+      padding-left: 60px;
+      padding-right: 60px;
+  }
+  }
+  
+  @media screen and (min-width: 768px)
+  {
+  .jumbotron {
+      padding-bottom: 48px;
+      padding-top: 48px;
+  }
+  }
+  
+  .jumbotron {
+    background-color: #eee;
+    padding-left: 60px;
+    padding-right: 60px;
+    margin-bottom: 30px;
+    padding-bottom: 30px;
+    padding-top: 30px;
+  }
+
+  
+  .center{
+    text-align: center;
+    margin: auto;
+  }
+  
+  .not-found h1 {
+    font-size: 150px;
+  }
+  
+  .not-found h2 {
+    font-size: 50px;
+  }
+  
+  .not-found Button {
+    margin: 50px;
+  }
+  
+  .parking-space-list.card-columns {
+    column-count: 3;
+    display: flex;
+    flex-wrap: wrap;
+    width: 30%;
+  }
+  
+  .parking-space-list.card-columns .card {
+    flex: 15%;
+    margin: 10px;
+  }
+  
+  @media only screen and (max-width: 600px) {
+    .parking-space-list.card-columns .card {
+      flex: 80%;
+    }
+  }
+  
+  @media only screen and (max-width: 1200px) {
+    .parking-space-list.card-columns .card {
+      flex: 25%;
+    }
+  }
+  
+  .parking-item.show-cursor{
+    cursor: pointer;
+  }
+  .parking-item.available {
+    background-color: rgb(73, 73, 207);
+  }
+  
+  .parking-item.not-available {
+    background-color: #bdc3c7;
+  }
+  
+  .pull-right {
+    float: right;
+  }
+  
+  .m-7 {
+    margin: 7px;
+  }
+  .m-10 {
+    margin: 10px;
+  }
+  
+  .mlr-10 {
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+  .error{
+    color: crimson;
+  }
+  .column {
+    float: left;
+    width: 25%;
+    padding: 0 10px;
+  }
+  

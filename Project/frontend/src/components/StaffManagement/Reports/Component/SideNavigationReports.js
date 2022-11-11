@@ -186,7 +186,7 @@ export default function SideNavigationReports() {
               aria-selected="true"
               style={{ width: "100%" }}
             >
-              Reports
+              Employees At Work
             </button>
           </Link>
         </div>

@@ -35,61 +35,232 @@ export default function EmployeeDetails() {
         width: "50%",
         float: "center",
         marginTop: "30px",
-        marginLeft: "215px",
+        marginLeft: "230px",
         position: "sticky",
       }}
     >
       <h1 className="display-6" style={{ marginBottom: "20px", zIndex: "200" }}>
         Employee Details
       </h1>
-      <table className="table">
+      <table
+        className="table"
+        style={{
+          border: "2px solid ",
+          borderColor: " #96D4D4",
+        }}
+      >
         <tr>
-          <th scope="col">Employee ID</th>
+          <th
+            scope="col"
+            style={{
+              border: "2px solid ",
+              borderColor: " #96D4D4",
+            }}
+          >
+            Employee ID
+          </th>
           <td>{details.ID}</td>
         </tr>
         <tr>
           <th scope="col">Employee Name</th>
-          <td>{details.name}</td>
+          <td
+            style={{
+              border: "2px solid ",
+              borderColor: " #96D4D4",
+            }}
+          >
+            {details.name}
+          </td>
         </tr>
         <tr>
-          <th scope="col">Designation</th>
-          <td>{details.designation}</td>
+          <th
+            scope="col"
+            style={{
+              border: "2px solid ",
+              borderColor: " #96D4D4",
+            }}
+          >
+            Designation
+          </th>
+          <td
+            style={{
+              border: "2px solid ",
+              borderColor: " #96D4D4",
+            }}
+          >
+            {details.designation}
+          </td>
         </tr>
         <tr>
-          <th scope="col">Department</th>
-          <td>{details.deptName}</td>
+          <th
+            scope="col"
+            style={{
+              border: "2px solid ",
+              borderColor: " #96D4D4",
+            }}
+          >
+            Department
+          </th>
+          <td
+            style={{
+              border: "2px solid ",
+              borderColor: " #96D4D4",
+            }}
+          >
+            {details.deptName}
+          </td>
         </tr>
         <tr>
-          <th scope="col">Hourly Pay</th>
-          <td>{details.hourlyPay}</td>
+          <th
+            scope="col"
+            style={{
+              border: "2px solid ",
+              borderColor: " #96D4D4",
+            }}
+          >
+            Hourly Pay
+          </th>
+          <td
+            style={{
+              border: "2px solid ",
+              borderColor: " #96D4D4",
+            }}
+          >
+            {details.hourlyPay}
+          </td>
         </tr>
         <tr>
-          <th scope="col">OT Rate</th>
-          <td>{details.otRate}</td>
+          <th
+            scope="col"
+            style={{
+              border: "2px solid ",
+              borderColor: " #96D4D4",
+            }}
+          >
+            OT Rate
+          </th>
+          <td
+            style={{
+              border: "2px solid ",
+              borderColor: " #96D4D4",
+            }}
+          >
+            {details.otRate}
+          </td>
         </tr>
         <tr>
-          <th scope="col">NIC</th>
-          <td>{details.NIC}</td>
+          <th
+            scope="col"
+            style={{
+              border: "2px solid ",
+              borderColor: " #96D4D4",
+            }}
+          >
+            NIC
+          </th>
+          <td
+            style={{
+              border: "2px solid ",
+              borderColor: " #96D4D4",
+            }}
+          >
+            {details.NIC}
+          </td>
         </tr>
         <tr>
-          <th scope="col">DOB</th>
-          <td>{details.DOB}</td>
+          <th
+            scope="col"
+            style={{
+              border: "2px solid ",
+              borderColor: " #96D4D4",
+            }}
+          >
+            DOB
+          </th>
+          <td
+            style={{
+              border: "2px solid ",
+              borderColor: " #96D4D4",
+            }}
+          >
+            {details.DOB}
+          </td>
         </tr>
         <tr>
-          <th scope="col">Gender</th>
-          <td>{details.gender}</td>
+          <th
+            scope="col"
+            style={{
+              border: "2px solid ",
+              borderColor: " #96D4D4",
+            }}
+          >
+            Gender
+          </th>
+          <td
+            style={{
+              border: "2px solid ",
+              borderColor: " #96D4D4",
+            }}
+          >
+            {details.gender}
+          </td>
         </tr>
         <tr>
-          <th scope="col">Address</th>
-          <td>{details.address}</td>
+          <th
+            scope="col"
+            style={{
+              border: "2px solid ",
+              borderColor: " #96D4D4",
+            }}
+          >
+            Address
+          </th>
+          <td
+            style={{
+              border: "2px solid ",
+              borderColor: " #96D4D4",
+            }}
+          >
+            {details.address}
+          </td>
         </tr>
         <tr>
-          <th scope="col">Email</th>
-          <td>{details.email}</td>
+          <th
+            scope="col"
+            style={{
+              border: "2px solid ",
+              borderColor: " #96D4D4",
+            }}
+          >
+            Email
+          </th>
+          <td
+            style={{
+              border: "2px solid ",
+              borderColor: " #96D4D4",
+            }}
+          >
+            {details.email}
+          </td>
         </tr>
         <tr>
-          <th scope="col">Phone</th>
-          <td>{details.phone}</td>
+          <th
+            scope="col"
+            style={{
+              border: "2px solid ",
+              borderColor: " #96D4D4",
+            }}
+          >
+            Phone
+          </th>
+          <td
+            style={{
+              border: "2px solid ",
+              borderColor: " #96D4D4",
+            }}
+          >
+            {details.phone}
+          </td>
         </tr>
       </table>
       <button className="btn btn-primary">
@@ -100,6 +271,8 @@ export default function EmployeeDetails() {
           <i class="fa-solid fa-chevron-left"></i>&nbsp; Back
         </a>
       </button>
+      <br></br>
+      <br></br>
     </div>
   );
 }
