@@ -56,10 +56,7 @@ export default function MainNavigationManager() {
         </li>
 
         <li className="nav-item" role="presentation">
-          <Link
-            to="/Manager/supplierManagement"
-            style={{ textDecoration: "none" }}
-          >
+          <Link to="/Manager/Supplier" style={{ textDecoration: "none" }}>
             <button
               className="nav-link"
               id="profile-tab"
