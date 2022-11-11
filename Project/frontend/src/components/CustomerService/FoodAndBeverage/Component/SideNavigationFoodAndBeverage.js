@@ -121,29 +121,6 @@ function SideNavigationFoodAndBeverage() {
               Complaint
             </button>
           </Link>
-
-          <Link
-            to="/customerService"
-            style={{
-              textDecoration: "none",
-              color: "black",
-              FontFace: "bold",
-            }}
-          >
-            <button
-              className="nav-link"
-              id="v-pills-profile-tab"
-              data-bs-toggle="pill"
-              data-bs-target="#v-pills-profile"
-              type="button"
-              role="tab"
-              aria-controls="v-pills-profile"
-              aria-selected="false"
-              style={{ width: "100%" }}
-            >
-              Reports
-            </button>
-          </Link>
         </div>
         <div className="tab-content" id="v-pills-tabContent">
           <div
