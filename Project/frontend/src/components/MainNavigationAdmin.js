@@ -107,7 +107,7 @@ export default function MainNavigationAdmin() {
         </li>
 
         <li className="nav-item" role="presentation">
-          <Link to="/admin/parking" style={{ textDecoration: "none" }}>
+          <Link to="/admin/park" style={{ textDecoration: "none" }}>
             <button
               className="nav-link"
               id="profile-tab"
