@@ -609,6 +609,30 @@ export default function Manager() {
           }
         />
       </Routes>
+
+      <Routes>
+        <Route
+          path="/manager/park/add"
+          element={
+            <>
+              <Header />
+              <Dashboard />
+            </>
+          }
+        />
+      </Routes>
+
+      <Routes>
+        <Route
+          path="/park"
+          element={
+            <>
+              <Header />
+              <Dashboard />
+            </>
+          }
+        />
+      </Routes>
     </div>
   );
 }
