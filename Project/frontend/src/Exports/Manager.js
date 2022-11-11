@@ -62,11 +62,24 @@ import EditRequest from "../components/InventoryManagement/IngredientsLog/Conten
 import EditAmenityRequest from "../components/InventoryManagement/ToiletriesLog/Content/editAmenityRequest";
 import FetchRoomNecessityRequests from "../components/InventoryManagement/AttendRequests/Content/fetchRequests";
 
-
 import ChefRequestDetails from "../components/KitchenManagement/ChefRequests/Content/chefRequestDetails";
 
 import { SideNavigationAttendChefRequests } from "../components/InventoryManagement/AttendChefRequests/Component/SideNavigationAttendChefRequests";
 import FetchChefIngredientRequests from "../components/InventoryManagement/AttendChefRequests/Content/fetchChefIngredientsRequests";
+
+// Supplier Management
+import OrderDetails from "../components/Supplier/Order/content/OrderDetails";
+import { SideNavigationOrder } from "../components/Supplier/Order/component/SideNavigationOrder";
+import ShowallOrder from "../components/Supplier/Order/content/ShowallOrder";
+import AddOrder from "../components/Supplier/Order/content/AddOrder";
+import AddReview from "../components/Supplier/Review/content/AddReview";
+import ShowallReview from "../components/Supplier/Review/content/ShowallReview";
+import EditSupplier from "../components/Supplier/Supplier/content/EditSupplier";
+import ShowallSupplier from "../components/Supplier/Supplier/content/ShowallSupplier";
+import SuggestSupplier from "../components/Supplier/Supplier/content/SuggestSupplier";
+import AddSupplier from "../components/Supplier/Supplier/content/AddSupplier";
+import { SideNavigationSupplier } from "../components/Supplier/Supplier/component/SideNavigationSupplier";
+import { SideNavigationReview } from "../components/Supplier/Review/component/SideNavigationReview";
 
 export default function Manager() {
   return (
@@ -228,240 +241,239 @@ export default function Manager() {
           }
         />
       </Routes>
-     
 
-        <Routes>
-          <Route
-            path="/Manager/inventoryManagement"
-            element={
-              <>
-                <FetchIngredients />
-                <SideNavigationIngredients />
-              </>
-            }
-          ></Route>
+      <Routes>
+        <Route
+          path="/Manager/inventoryManagement"
+          element={
+            <>
+              <FetchIngredients />
+              <SideNavigationIngredients />
+            </>
+          }
+        ></Route>
 
-          <Route
-            path="/Manager/inventoryManagement/attendRequests"
-            element={
-              <>
-                <FetchRoomNecessityRequests />
-                <SideNavigationAttendRequest />
-              </>
-            }
-          ></Route>
-          <Route
-            path="/Manager/inventoryManagement/ingredientsLog/createIngredient"
-            element={
-              <>
-                <CreateIngredients />
-                <SideNavigationIngredients />
-              </>
-            }
-          ></Route>
-          <Route
-            path="/Manager/inventoryManagement/ingredientsLog/getIngredient/:id"
-            element={
-              <>
-                <IngredientsDetails />
-              </>
-            }
-          ></Route>
-          <Route
-            path="/Manager/inventoryManagement/ingredientsLog/createRequest/:id"
-            element={
-              <>
-                <CreateRequest />
-              </>
-            }
-          ></Route>
-          <Route
-            path="/Manager/inventoryManagement/requestLog/createNewRequest"
-            element={
-              <>
-                <CreateNewRequest />
-              </>
-            }
-          ></Route>
-          <Route
-            path="/Manager/inventoryManagement/requestLog/editRequest/:id"
-            element={
-              <>
-                <EditRequest />
-              </>
-            }
-          ></Route>
-          <Route
-            path="/Manager/inventoryManagement/requestLog/getRequest/:id"
-            element={
-              <>
-                <IngredientsRequestDetails />
-                <SideNavigationRequestForSupplies />
-              </>
-            }
-          ></Route>
-          <Route
-            path="/Manager/inventoryManagement/requestLog"
-            element={
-              <>
-                <FetchRequests />
-                <SideNavigationRequestForSupplies />
-              </>
-            }
-          ></Route>
-          <Route
-            path="/Manager/inventoryManagement/ingredientsLog/editIngredient/:id"
-            element={
-              <>
-                <EditIngredients />
-              </>
-            }
-          ></Route>
-        </Routes>
+        <Route
+          path="/Manager/inventoryManagement/attendRequests"
+          element={
+            <>
+              <FetchRoomNecessityRequests />
+              <SideNavigationAttendRequest />
+            </>
+          }
+        ></Route>
+        <Route
+          path="/Manager/inventoryManagement/ingredientsLog/createIngredient"
+          element={
+            <>
+              <CreateIngredients />
+              <SideNavigationIngredients />
+            </>
+          }
+        ></Route>
+        <Route
+          path="/Manager/inventoryManagement/ingredientsLog/getIngredient/:id"
+          element={
+            <>
+              <IngredientsDetails />
+            </>
+          }
+        ></Route>
+        <Route
+          path="/Manager/inventoryManagement/ingredientsLog/createRequest/:id"
+          element={
+            <>
+              <CreateRequest />
+            </>
+          }
+        ></Route>
+        <Route
+          path="/Manager/inventoryManagement/requestLog/createNewRequest"
+          element={
+            <>
+              <CreateNewRequest />
+            </>
+          }
+        ></Route>
+        <Route
+          path="/Manager/inventoryManagement/requestLog/editRequest/:id"
+          element={
+            <>
+              <EditRequest />
+            </>
+          }
+        ></Route>
+        <Route
+          path="/Manager/inventoryManagement/requestLog/getRequest/:id"
+          element={
+            <>
+              <IngredientsRequestDetails />
+              <SideNavigationRequestForSupplies />
+            </>
+          }
+        ></Route>
+        <Route
+          path="/Manager/inventoryManagement/requestLog"
+          element={
+            <>
+              <FetchRequests />
+              <SideNavigationRequestForSupplies />
+            </>
+          }
+        ></Route>
+        <Route
+          path="/Manager/inventoryManagement/ingredientsLog/editIngredient/:id"
+          element={
+            <>
+              <EditIngredients />
+            </>
+          }
+        ></Route>
+      </Routes>
 
-        <Routes>
-          <Route
-            path="/Manager/inventoryManagement/toiletriesLog"
-            element={
-              <>
-                <FetchToiletries />
-                <SideNavigationToiletries />
-              </>
-            }
-          ></Route>
-          <Route
-            path="/Manager/inventoryManagement/toiletriesLog/createRequest/:id"
-            element={
-              <>
-                <CreateAmenityRequest />
-              </>
-            }
-          ></Route>
+      <Routes>
+        <Route
+          path="/Manager/inventoryManagement/toiletriesLog"
+          element={
+            <>
+              <FetchToiletries />
+              <SideNavigationToiletries />
+            </>
+          }
+        ></Route>
+        <Route
+          path="/Manager/inventoryManagement/toiletriesLog/createRequest/:id"
+          element={
+            <>
+              <CreateAmenityRequest />
+            </>
+          }
+        ></Route>
 
-          <Route
-            path="/Manager/inventoryManagement/amenityRequestLog/createNewAmenityRequest"
-            element={
-              <>
-                <CreateNewAmenityRequest />
-              </>
-            }
-          ></Route>
-          <Route
-            path="/Manager/inventoryManagement/amenityRequestLog/editRequest/:id"
-            element={
-              <>
-                <EditAmenityRequest />
-              </>
-            }
-          ></Route>
-          <Route
-            path="/Manager/inventoryManagement/amenityRequestLog"
-            element={
-              <>
-                <FetchAmenityRequests />
-                <SideNavigationRequestForSupplies />
-              </>
-            }
-          ></Route>
+        <Route
+          path="/Manager/inventoryManagement/amenityRequestLog/createNewAmenityRequest"
+          element={
+            <>
+              <CreateNewAmenityRequest />
+            </>
+          }
+        ></Route>
+        <Route
+          path="/Manager/inventoryManagement/amenityRequestLog/editRequest/:id"
+          element={
+            <>
+              <EditAmenityRequest />
+            </>
+          }
+        ></Route>
+        <Route
+          path="/Manager/inventoryManagement/amenityRequestLog"
+          element={
+            <>
+              <FetchAmenityRequests />
+              <SideNavigationRequestForSupplies />
+            </>
+          }
+        ></Route>
 
-          <Route
-            path="/Manager/inventoryManagement/toiletriesLog/createToiletry"
-            element={
-              <>
-                <CreateToiletry />
-                <SideNavigationToiletries />
-              </>
-            }
-          />
-          <Route
-            path="/Manager/inventoryManagement/toiletriesLog/getToiletry/:id"
-            element={
-              <>
-                <ToiletryDetails />
-              </>
-            }
-          ></Route>
-          <Route
-            path="/Manager/inventoryManagement/toiletriesLog/editToiletry/:id"
-            element={
-              <>
-                <EditToiletry />
-              </>
-            }
-          ></Route>
-        </Routes>
+        <Route
+          path="/Manager/inventoryManagement/toiletriesLog/createToiletry"
+          element={
+            <>
+              <CreateToiletry />
+              <SideNavigationToiletries />
+            </>
+          }
+        />
+        <Route
+          path="/Manager/inventoryManagement/toiletriesLog/getToiletry/:id"
+          element={
+            <>
+              <ToiletryDetails />
+            </>
+          }
+        ></Route>
+        <Route
+          path="/Manager/inventoryManagement/toiletriesLog/editToiletry/:id"
+          element={
+            <>
+              <EditToiletry />
+            </>
+          }
+        ></Route>
+      </Routes>
 
-        <Routes>
-          <Route
-            path="/Manager/inventoryManagement/assetsLog"
-            element={
-              <>
-                <FetchAssets />
-                <SideNavigationAssets />
-              </>
-            }
-          ></Route>
-          <Route
-            path="/Manager/inventoryManagement/assetsLog/createAsset"
-            element={
-              <>
-                <CreateAsset />
-                <SideNavigationAssets />
-              </>
-            }
-          ></Route>
-          <Route
-            path="/Manager/inventoryManagement/assetsLog/getAsset/:id"
-            element={
-              <>
-                <AssetDetails />
-                <SideNavigationAssets />
-              </>
-            }
-          ></Route>
-          <Route
-            path="/Manager/inventoryManagement/assetsLog/editAssets/:id"
-            element={
-              <>
-                <EditAsset />
-                <SideNavigationAssets />
-              </>
-            }
-          ></Route>
-        </Routes>
-        <Routes>
-          <Route
-            path="/Manager/inventoryManagement/attendRequests"
-            element={
-              <>
-                <SideNavigationAttendRequest />
-              </>
-            }
-          />
-        </Routes>
+      <Routes>
+        <Route
+          path="/Manager/inventoryManagement/assetsLog"
+          element={
+            <>
+              <FetchAssets />
+              <SideNavigationAssets />
+            </>
+          }
+        ></Route>
+        <Route
+          path="/Manager/inventoryManagement/assetsLog/createAsset"
+          element={
+            <>
+              <CreateAsset />
+              <SideNavigationAssets />
+            </>
+          }
+        ></Route>
+        <Route
+          path="/Manager/inventoryManagement/assetsLog/getAsset/:id"
+          element={
+            <>
+              <AssetDetails />
+              <SideNavigationAssets />
+            </>
+          }
+        ></Route>
+        <Route
+          path="/Manager/inventoryManagement/assetsLog/editAssets/:id"
+          element={
+            <>
+              <EditAsset />
+              <SideNavigationAssets />
+            </>
+          }
+        ></Route>
+      </Routes>
+      <Routes>
+        <Route
+          path="/Manager/inventoryManagement/attendRequests"
+          element={
+            <>
+              <SideNavigationAttendRequest />
+            </>
+          }
+        />
+      </Routes>
 
-        <Routes>
-          <Route
-            path="/Manager/inventoryManagement/chefRequestLog"
-            element={
-              <>
-                <FetchChefIngredientRequests />
-                <SideNavigationAttendChefRequests />
-              </>
-            }
-          />
-          <Route
-            path="/Manager/inventoryManagement/chefRequestLog/getRequest/:id"
-            element={
-              <>
-                <ChefRequestDetails />
-                <SideNavigationAttendChefRequests />
-              </>
-            }
-          />
-        </Routes>
-        <Routes>
-          {/* <Route
+      <Routes>
+        <Route
+          path="/Manager/inventoryManagement/chefRequestLog"
+          element={
+            <>
+              <FetchChefIngredientRequests />
+              <SideNavigationAttendChefRequests />
+            </>
+          }
+        />
+        <Route
+          path="/Manager/inventoryManagement/chefRequestLog/getRequest/:id"
+          element={
+            <>
+              <ChefRequestDetails />
+              <SideNavigationAttendChefRequests />
+            </>
+          }
+        />
+      </Routes>
+      <Routes>
+        {/* <Route
             path="/Manager/inventoryManagement/reports"
             element={
               <>
@@ -469,7 +481,116 @@ export default function Manager() {
               </>
             }
           /> */}
-        </Routes>
+      </Routes>
+
+      {/* Supplier */}
+      <Routes>
+        <Route
+          path="/Manager/Supplier"
+          element={
+            <>
+              <SideNavigationSupplier />
+              <ShowallSupplier />
+            </>
+          }
+        />
+      </Routes>
+
+      <Routes>
+        <Route
+          path="/Manager/Supplier/addsupplier"
+          element={
+            <>
+              <AddSupplier />
+              <SideNavigationSupplier />
+            </>
+          }
+        />
+      </Routes>
+
+      <Routes>
+        <Route
+          path="/Manager/Supplier/avgstar/:id"
+          element={
+            <>
+              <SideNavigationSupplier />
+              <SuggestSupplier />
+            </>
+          }
+        />
+      </Routes>
+
+      <Routes>
+        <Route
+          path="/Manager/Review"
+          element={
+            <>
+              <SideNavigationReview />
+              <ShowallReview />
+            </>
+          }
+        />
+      </Routes>
+
+      <Routes>
+        <Route
+          path="/Manager/Supplier/Review/:id"
+          element={
+            <>
+              <SideNavigationReview />
+              <AddReview />
+            </>
+          }
+        />
+      </Routes>
+
+      <Routes>
+        <Route
+          path="/Manager/Order/:id"
+          element={
+            <>
+              <AddOrder />
+              <SideNavigationOrder />
+              <ShowallOrder />
+            </>
+          }
+        />
+      </Routes>
+
+      <Routes>
+        <Route
+          path="/Manager/Order"
+          element={
+            <>
+              <AddOrder />
+              <SideNavigationOrder />
+              <ShowallOrder />
+            </>
+          }
+        />
+      </Routes>
+      <Routes>
+        <Route
+          path="/Manager/order/requestDetails/:id"
+          element={
+            <>
+              <SideNavigationReview />
+              <OrderDetails />
+            </>
+          }
+        />
+      </Routes>
+      <Routes>
+        <Route
+          path="/Manager/supplier/editSupplier/:id"
+          element={
+            <>
+              <SideNavigationSupplier />
+              <EditSupplier />
+            </>
+          }
+        />
+      </Routes>
     </div>
   );
 }
