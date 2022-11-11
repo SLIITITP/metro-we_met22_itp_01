@@ -5,7 +5,6 @@ import CustServ from "./Exports/CustomerService";
 import LoginPage from "./components/Login/Login";
 import Staff from "./Exports/Staff";
 import Manager from "./Exports/Manager";
-import ParkingManagement from "./Exports/ParkingManagement";
 import Admin from "./Exports/Admin";
 
 function App() {
@@ -26,9 +25,6 @@ function App() {
       <Routes>
         <Route path="/*" element={<Admin />}></Route>
       </Routes>
-      {/* <Routes>
-        <Route path="/*" element={<ParkingManagement />}></Route>
-      </Routes> */}
     </Router>
   );
 }
