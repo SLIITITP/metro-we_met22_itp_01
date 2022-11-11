@@ -7,7 +7,7 @@ export default function FetchAssets() {
   var availStatus = "";
   var assetDetails = GetAssetDetails();
   const [search, setSearch] = useState("");
-  const [requestCancel, setRequestCancel] = useState({});
+  //const [requestCancel, setRequestCancel] = useState({});
 
   let i = 0;
   var requestID;
@@ -18,31 +18,7 @@ export default function FetchAssets() {
       }
     }
   };
-  // function CancelRequest(id) {
-  //   for (i = 0; i < assetDetails.length; i++) {
-  //     if (assetDetails[i]._id == id) {
-  //       break;
-  //     }
-  //   }
-
-  //   requestID = assetDetails[i].requestID;
-
-  //   <GetOneAssetRequest id={id} />;
-  //   setRequestCancel(GetOneAssetRequest);
-  //   requestCancel.availibilityStatus = "Unavailable";
-  //   axios
-  //     .put("http://localhost:8070/assets/update/" + id, requestCancel)
-  //     .then((Info) => {
-  //       alert("Request for Room Necessity made Unavailable!");
-  //       console.log(Info);
-  //       // window.location.replace(
-  //       //   `http://localhost:${port}/inventoryManagement/requestLog`
-  //       // );
-  //     })
-  //     .catch((err) => {
-  //       console.log(err.message);
-  //     });
-  // }
+  
 
   function Delete(id) {
     axios
@@ -142,7 +118,7 @@ export default function FetchAssets() {
                     >
                       <td>
                         <a
-                          href={`/inventoryManagement/assetsLog/getAsset/${val._id}`}
+                          href={`/Manager/inventoryManagement/assetsLog/getAsset/${val._id}`}
                           style={{ textDecoration: "none" }}
                         >
                           {val.invenID}
@@ -160,7 +136,7 @@ export default function FetchAssets() {
                       <td>
                         <a
                           className="btn btn-warning"
-                          href={`/inventoryManagement/assetsLog/editAssets/${val._id}`}
+                          href={`/Manager/inventoryManagement/assetsLog/editAssets/${val._id}`}
                         >
                           <i className="fas fa-edit"></i>&nbsp;Edit
                         </a>
@@ -172,37 +148,7 @@ export default function FetchAssets() {
                           <i className="far fa-trash-alt"></i>&nbsp;Delete
                         </a>
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        {/* To show the approve button only if val.status==="unavailable"
-                        {availStatus === "Unavailable" && (
-                          <a
-                            style={{ color: "white" }}
-                            data-toggle="tooltip"
-                            data-placement="top"
-                            title="Approve"
-                            className="btn btn-sm btn-success"
-                            onClick={(e) => {
-                              approveRequest(val._id);
-                              window.location.reload(false);
-                            }}
-                          >
-                            <i className="fa-solid fa-check"></i>
-                          </a>
-                        )}
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; */}
-                        {/* To show the cancel button only if val.status==="available */}
-                        {/* {availStatus === "Available" && (
-                          <a
-                            style={{ color: "white" }}
-                            title="Make Room Necessity Request Unavailable"
-                            className="btn btn-sm btn-danger"
-                            onClick={(e) => {
-                              CancelRequest(val._id);
-                              window.location.reload(false);
-                            }}
-                          >
-                            <i className="fa-regular fa-rectangle-xmark"></i>
-                          </a>
-                        )} */}
+                       
                       </td>
                     </tr>
                   ))
@@ -212,7 +158,7 @@ export default function FetchAssets() {
         <br></br>
         <button className="btn btn-success">
           <a
-            href="/inventoryManagement/assetsLog/createAsset"
+            href="/Manager/inventoryManagement/assetsLog/createAsset"
             style={{ textDecoration: "none", color: "white" }}
           >
             Add New Property

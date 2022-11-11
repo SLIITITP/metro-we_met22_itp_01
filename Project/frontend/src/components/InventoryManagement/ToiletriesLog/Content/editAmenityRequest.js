@@ -54,7 +54,7 @@ export default function EditAmenityRequest() {
       .then(() => {
         alert("Updated Successfully!");
         window.location.replace(
-          `http://localhost:${port}/inventoryManagement/amenityRequestLog`
+          `http://localhost:${port}/Manager/inventoryManagement/amenityRequestLog`
         );
       })
       .catch((err) => {
@@ -224,7 +224,7 @@ export default function EditAmenityRequest() {
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <button type="submit" className="btn btn-danger">
           <a
-            href="/inventoryManagement/amenityRequestLog"
+            href="/Manager/inventoryManagement/amenityRequestLog"
             style={{ textDecoration: "none", color: "white", padding: "40px" }}
           >
             Cancel

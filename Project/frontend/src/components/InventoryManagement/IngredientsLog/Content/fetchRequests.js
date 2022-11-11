@@ -141,7 +141,7 @@ export default function FetchRequests() {
                     <tr key={val._id} onChange={changeColor(val.status)}>
                       <td>
                         <a
-                          href={`/inventoryManagement/requestLog/getRequest/${val._id}`}
+                          href={`/Manager/inventoryManagement/requestLog/getRequest/${val._id}`}
                           style={{ textDecoration: "none" }}
                         >
                           {val.invenID}
@@ -210,7 +210,7 @@ export default function FetchRequests() {
         </table>
         <button className="btn btn-success">
           <a
-            href="/inventoryManagement/requestLog/createNewRequest"
+            href="/Manager/inventoryManagement/requestLog/createNewRequest"
             style={{ textDecoration: "none", color: "white" }}
           >
             Add New Request
@@ -221,7 +221,7 @@ export default function FetchRequests() {
         <br></br>
         <a
           className=""
-          href="/inventoryManagement/amenityRequestLog"
+          href="/Manager/inventoryManagement/amenityRequestLog"
           style={{
             border: "none",
             backgroundColor: "#34495E",

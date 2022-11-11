@@ -112,7 +112,7 @@ export default function FetchIngredients() {
                     <tr key={val._id}>
                       <td>
                         <a
-                          href={`/inventoryManagement/ingredientsLog/getIngredient/${val._id}`}
+                          href={`/Manager/inventoryManagement/ingredientsLog/getIngredient/${val._id}`}
                           style={{ textDecoration: "none" }}
                         >
                           {val.invenID}
@@ -144,7 +144,7 @@ export default function FetchIngredients() {
                             return (
                               <a
                                 className="btn btn-alert"
-                                href={`/inventoryManagement/ingredientsLog/createRequest/${val._id}`}
+                                href={`/Manager/inventoryManagement/ingredientsLog/createRequest/${val._id}`}
                                 style={{
                                   border: "none",
                                   backgroundColor: "#ED3B15",
@@ -168,7 +168,7 @@ export default function FetchIngredients() {
                             return (
                               <a
                                 className="btn btn-alert"
-                                href={`/inventoryManagement/ingredientsLog/createRequest/${val._id}`}
+                                href={`/Manager/inventoryManagement/ingredientsLog/createRequest/${val._id}`}
                                 style={{
                                   border: "none",
                                   backgroundColor: "#ED3B15",
@@ -192,7 +192,7 @@ export default function FetchIngredients() {
                             return (
                               <a
                                 className="btn btn-alert"
-                                href={`/inventoryManagement/ingredientsLog/createRequest/${val._id}`}
+                                href={`/Manager/inventoryManagement/ingredientsLog/createRequest/${val._id}`}
                                 style={{
                                   border: "none",
                                   backgroundColor: "#ED3B15",
@@ -213,7 +213,7 @@ export default function FetchIngredients() {
                             return (
                               <a
                                 className="btn btn-alert"
-                                href={`/inventoryManagement/ingredientsLog/createRequest/${val._id}`}
+                                href={`/Manager/inventoryManagement/ingredientsLog/createRequest/${val._id}`}
                                 style={{
                                   border: "none",
                                   backgroundColor: "#ED3B15",
@@ -237,7 +237,7 @@ export default function FetchIngredients() {
                             return (
                               <a
                                 className="btn btn-alert"
-                                href={`/inventoryManagement/ingredientsLog/createRequest/${val._id}`}
+                                href={`/Manager/inventoryManagement/ingredientsLog/createRequest/${val._id}`}
                                 style={{
                                   border: "none",
                                   backgroundColor: "#ED3B15",
@@ -261,7 +261,7 @@ export default function FetchIngredients() {
                             return (
                               <a
                                 className="btn btn-alert"
-                                href={`/inventoryManagement/ingredientsLog/createRequest/${val._id}`}
+                                href={`/Manager/inventoryManagement/ingredientsLog/createRequest/${val._id}`}
                                 style={{
                                   border: "none",
                                   backgroundColor: "#ED3B15",
@@ -282,7 +282,7 @@ export default function FetchIngredients() {
                             return (
                               <a
                                 className="btn btn-alert"
-                                href={`/inventoryManagement/ingredientsLog/createRequest/${val._id}`}
+                                href={`/Manager/inventoryManagement/ingredientsLog/createRequest/${val._id}`}
                                 style={{
                                   border: "none",
                                   backgroundColor: "#ED3B15",
@@ -303,7 +303,7 @@ export default function FetchIngredients() {
                             return (
                               <a
                                 className="btn btn-alert"
-                                href={`/inventoryManagement/ingredientsLog/createRequest/${val._id}`}
+                                href={`/Manager/inventoryManagement/ingredientsLog/createRequest/${val._id}`}
                                 style={{
                                   border: "none",
                                   backgroundColor: "#ED3B15",
@@ -360,7 +360,7 @@ export default function FetchIngredients() {
         <br></br>
         <button className="btn btn-success">
           <a
-            href="/inventoryManagement/ingredientsLog/createIngredient"
+            href="/Manager/inventoryManagement/ingredientsLog/createIngredient"
             style={{ textDecoration: "none", color: "white" }}
           >
             Add New Ingredient

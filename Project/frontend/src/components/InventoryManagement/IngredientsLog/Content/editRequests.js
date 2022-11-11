@@ -55,7 +55,7 @@ export default function EditRequest() {
       .then(() => {
         alert("Updated Successfully!");
         window.location.replace(
-          `http://localhost:${port}/inventoryManagement/requestLog`
+          `http://localhost:${port}/Manager/inventoryManagement/requestLog`
         );
       })
       .catch((err) => {
@@ -81,21 +81,7 @@ export default function EditRequest() {
         <h1 className="display-6" style={{ marginBottom: "20px" }}>
           Edit Request
         </h1>
-        {/* <div className="mb-3">
-          <label htmlFor="requestFormanagerID" className="form-label">
-            Manager ID
-          </label>
-          <input
-            type="text"
-            id="managerID"
-            name="managerID"
-            className="form-control"
-            placeholder="Enter Manager ID"
-            onChange={(e) => {
-              setManagerID(e.target.value);
-            }}
-          />
-        </div> */}
+       
         <div className="mb-3">
           <label htmlFor="requestForRequestID" className="form-label">
             Request ID
@@ -131,30 +117,7 @@ export default function EditRequest() {
           </label>
           <input type="text" className="form-control" value={details.reqType} />
         </div>
-        {/* <div className="mb-3">
-          <label htmlFor="requestForCategory" className="form-label">
-            Choose Category
-          </label>
-          <select
-            className="form-select"
-            id="reqType"
-            placeholder={details.category}
-            aria-label="Default select example"
-            onChange={(e) => {
-              setCategory(e.target.value);
-            }}
-          >
-            <option value="">Choose Ingredient Type </option>
-            <option value="Dry Rations">Dry Rations</option>
-            <option value="Vegetables">Vegetables</option>
-            <option value="Fruits">Fruits</option>
-            <option value="Dairy Products">Dairy Products</option>
-            <option value="Spices">Spices</option>
-            <option value="Cereals & Pulses">Cereals & Pulses</option>
-            <option value="Meat">Meat</option>
-            <option value="seaFood">seaFood</option>
-          </select>
-        </div> */}
+       
         <div className="mb-3">
           <label htmlFor="requestForName" className="form-label">
             Ingredient Name
@@ -225,7 +188,7 @@ export default function EditRequest() {
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <button type="submit" className="btn btn-danger">
           <a
-            href="/inventoryManagement/requestLog"
+            href="/Manager/inventoryManagement/requestLog"
             style={{ textDecoration: "none", color: "white", padding: "40px" }}
           >
             Cancel

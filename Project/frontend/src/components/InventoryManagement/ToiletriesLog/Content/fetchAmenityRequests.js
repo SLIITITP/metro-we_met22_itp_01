@@ -137,7 +137,7 @@ export default function FetchAmenityRequests() {
                     <tr key={val._id} onChange={changeColor(val.status)}>
                       <td>
                         <a
-                          href={`/inventoryManagement/amenityRequestLog/getAmenityRequest/${val._id}`}
+                          href={`/Manager/inventoryManagement/amenityRequestLog/getAmenityRequest/${val._id}`}
                           style={{ textDecoration: "none" }}
                         >
                           {val.invenID}
@@ -205,7 +205,7 @@ export default function FetchAmenityRequests() {
         </table>
         <button className="btn btn-success">
           <a
-            href="/inventoryManagement/amenityRequestLog/createNewAmenityRequest"
+            href="/Manager/inventoryManagement/amenityRequestLog/createNewAmenityRequest"
             style={{ textDecoration: "none", color: "white" }}
           >
             Add New Request

@@ -96,7 +96,7 @@ export default function FetchToiletries() {
                     <tr key={val._id}>
                       <td>
                         <a
-                          href={`/inventoryManagement/toiletriesLog/getToiletry/${val._id}`}
+                          href={`/Manager/inventoryManagement/toiletriesLog/getToiletry/${val._id}`}
                           style={{ textDecoration: "none" }}
                         >
                           {val.invenID}
@@ -111,7 +111,7 @@ export default function FetchToiletries() {
                       <td>
                         <a
                           className="btn btn-warning"
-                          href={`/inventoryManagement/toiletriesLog/editToiletry/${val._id}`}
+                          href={`/Manager/inventoryManagement/toiletriesLog/editToiletry/${val._id}`}
                         >
                           <i className="fas fa-edit"></i>&nbsp;Edit
                         </a>
@@ -128,7 +128,7 @@ export default function FetchToiletries() {
                             return (
                               <a
                                 className="btn btn-alert"
-                                href={`/inventoryManagement/toiletriesLog/createRequest/${val._id}`}
+                                href={`/Manager/inventoryManagement/toiletriesLog/createRequest/${val._id}`}
                                 style={{
                                   border: "none",
                                   backgroundColor: "#ED3B15",
@@ -152,7 +152,7 @@ export default function FetchToiletries() {
                             return (
                               <a
                                 className="btn btn-alert"
-                                href={`/inventoryManagement/toiletriesLog/createRequest/${val._id}`}
+                                href={`/Manager/inventoryManagement/toiletriesLog/createRequest/${val._id}`}
                                 style={{
                                   border: "none",
                                   backgroundColor: "#ED3B15",
@@ -173,7 +173,7 @@ export default function FetchToiletries() {
                             return (
                               <a
                                 className="btn btn-alert"
-                                href={`/inventoryManagement/toiletriesLog/createRequest/${val._id}`}
+                                href={`/Manager/inventoryManagement/toiletriesLog/createRequest/${val._id}`}
                                 style={{
                                   border: "none",
                                   backgroundColor: "#ED3B15",
@@ -197,7 +197,7 @@ export default function FetchToiletries() {
                             return (
                               <a
                                 className="btn btn-alert"
-                                href={`/inventoryManagement/toiletriesLog/createRequest/${val._id}`}
+                                href={`/Manager/inventoryManagement/toiletriesLog/createRequest/${val._id}`}
                                 style={{
                                   border: "none",
                                   backgroundColor: "#ED3B15",
@@ -221,7 +221,7 @@ export default function FetchToiletries() {
                             return (
                               <a
                                 className="btn btn-alert"
-                                href={`/inventoryManagement/toiletriesLog/createRequest/${val._id}`}
+                                href={`/Manager/inventoryManagement/toiletriesLog/createRequest/${val._id}`}
                                 style={{
                                   border: "none",
                                   backgroundColor: "#ED3B15",
@@ -242,7 +242,7 @@ export default function FetchToiletries() {
                             return (
                               <a
                                 className="btn btn-alert"
-                                href={`/inventoryManagement/toiletriesLog/createRequest/${val._id}`}
+                                href={`/Manager/inventoryManagement/toiletriesLog/createRequest/${val._id}`}
                                 style={{
                                   border: "none",
                                   backgroundColor: "#ED3B15",
@@ -266,7 +266,7 @@ export default function FetchToiletries() {
                             return (
                               <a
                                 className="btn btn-alert"
-                                href={`/inventoryManagement/toiletriesLog/createRequest/${val._id}`}
+                                href={`/Manager/inventoryManagement/toiletriesLog/createRequest/${val._id}`}
                                 style={{
                                   border: "none",
                                   backgroundColor: "#ED3B15",
@@ -290,7 +290,7 @@ export default function FetchToiletries() {
                             return (
                               <a
                                 className="btn btn-alert"
-                                href={`/inventoryManagement/toiletriesLog/createRequest/${val._id}`}
+                                href={`/Manager/inventoryManagement/toiletriesLog/createRequest/${val._id}`}
                                 style={{
                                   border: "none",
                                   backgroundColor: "#ED3B15",
@@ -325,20 +325,7 @@ export default function FetchToiletries() {
                             );
                           }
                         })()}
-                        <a
-                        // className="btn btn-alert"
-                        // href={`/inventoryManagement/toiletriesLog/createRequest/${val._id}`}
-                        // style={{
-                        //   border: "none",
-                        //   backgroundColor: "#34495E",
-                        //   color: "white ",
-                        //   //fontWeight: "bold",
-                        // }}
-                        >
-                          {/* fa-solid fa-triangle-exclamation */}
-                          {/* <i className="fa-regular fa-salad"></i>
-                          &nbsp;Request for Supplies */}
-                        </a>
+                       
                       </td>
                     </tr>
                   ))
@@ -348,7 +335,7 @@ export default function FetchToiletries() {
         <br></br>
         <button className="btn btn-success">
           <a
-            href="/inventoryManagement/toiletriesLog/createToiletry"
+            href="/Manager/inventoryManagement/toiletriesLog/createToiletry"
             style={{ textDecoration: "none", color: "white" }}
           >
             Add New Amenity

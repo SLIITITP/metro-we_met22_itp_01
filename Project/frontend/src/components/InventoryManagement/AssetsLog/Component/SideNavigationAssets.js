@@ -29,7 +29,7 @@ function SideNavigationAssets() {
           style={{ backgroundColor: "white" }}
         >
           <Link
-            to="/inventoryManagement"
+            to="/Manager/inventoryManagement"
             style={{
               textDecoration: "none",
               color: "black",
@@ -51,7 +51,7 @@ function SideNavigationAssets() {
           </Link>
 
           <Link
-            to="/inventoryManagement/ingredientsLog"
+            to="/Manager/inventoryManagement/ingredientsLog"
             style={{
               textDecoration: "none",
               color: "black",
@@ -73,7 +73,7 @@ function SideNavigationAssets() {
           </Link>
 
           <Link
-            to="/inventoryManagement/toiletriesLog"
+            to="/Manager/inventoryManagement/toiletriesLog"
             style={{
               textDecoration: "none",
               color: "black",
@@ -96,7 +96,7 @@ function SideNavigationAssets() {
           </Link>
 
           <Link
-            to="/inventoryManagement/assetsLog"
+            to="/Manager/inventoryManagement/assetsLog"
             style={{
               textDecoration: "none",
               color: "black",
@@ -119,7 +119,7 @@ function SideNavigationAssets() {
           </Link>
 
           <Link
-            to="/inventoryManagement/requestLog"
+            to="/Manager/inventoryManagement/requestLog"
             style={{
               textDecoration: "none",
               color: "black",
@@ -141,7 +141,7 @@ function SideNavigationAssets() {
             </button>
           </Link>
           <Link
-            to="/inventoryManagement/chefRequestLog"
+            to="/Manager/inventoryManagement/chefRequestLog"
             style={{
               textDecoration: "none",
               color: "black",
@@ -163,7 +163,7 @@ function SideNavigationAssets() {
             </button>
           </Link>
           <Link
-            to="/inventoryManagement/attendRequests"
+            to="/Manager/inventoryManagement/attendRequests"
             style={{
               textDecoration: "none",
               color: "black",
@@ -186,7 +186,7 @@ function SideNavigationAssets() {
           </Link>
 
           <Link
-            to="/inventoryManagement/reports"
+            to="/Manager/inventoryManagement/reports"
             style={{
               textDecoration: "none",
               color: "black",
