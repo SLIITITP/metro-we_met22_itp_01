@@ -616,7 +616,7 @@ export default function Manager() {
           element={
             <>
               <Header />
-              <Dashboard />
+              <Initialize />
             </>
           }
         />
@@ -628,7 +628,7 @@ export default function Manager() {
           element={
             <>
               <Header />
-              <Dashboard />
+              <Report />
             </>
           }
         />

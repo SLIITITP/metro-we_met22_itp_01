@@ -2,6 +2,7 @@ import React from "react";
 import { Card, Row, Button, Form, Modal } from "react-bootstrap";
 //import parkingSpace from '../model/ParkingSpaceList';
 import { Col } from "react-bootstrap";
+import "./Style.css";
 
 const BookingModal = ({
   showParkingModal,
@@ -18,21 +19,11 @@ const BookingModal = ({
         <Modal.Body>
           <Form.Group controlId="v_id">
             <Form.Label>ZoneID</Form.Label>
-            <Form.Control
-              type="text"
-              placeholder={zone_id}
-              name="v_id"
-              required
-            />
+            <Form.Control type="text" placeholder={zone_id} name="v_id" />
           </Form.Group>
           <Form.Group controlId="v_title">
             <Form.Label>Parking Space:</Form.Label>
-            <Form.Control
-              type="text"
-              placeholder={title}
-              name="v_title"
-              required
-            />
+            <Form.Control type="text" placeholder={title} name="v_title" />
           </Form.Group>
           <Form.Group controlId="vehicle_no">
             <Form.Label>Vehicle Registration No.</Form.Label>
