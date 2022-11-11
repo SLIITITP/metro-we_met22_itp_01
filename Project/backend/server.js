@@ -58,11 +58,17 @@ const ParkingFeeRouter = require("./routes/ParkingFeeRouter.js");
 const ParkingRouter = require("./routes/ParkingRouter.js");
 const ParkingStructureRouter = require("./routes/ParkingStructureRouter.js");
 
+//Supplier Management
+const Supplier = require("./routes/Supplier.js");
+const Review = require("./routes/Review.js");
+const Order = require("./routes/Order.js");
+const HasOrder = require("./routes/HasOrder.js");
+
 //https://localhost:8070/customer will load CustomerRouter.js
 app.use("/customer", CustomerRouter);
 app.use("/users", userRouter);
-app.use("/bookings",bookRoomRouter);
-app.use("/rooms",roomsRouter);
+app.use("/bookings", bookRoomRouter);
+app.use("/rooms", roomsRouter);
 // app.use("/loyalCustomer", LoyalCustomerRouter);
 // app.use("/ordinaryCustomer", OrdinaryCustomerRouter);
 app.use("/customerService", CustomerRequestRouter);
@@ -100,6 +106,11 @@ app.use("/kitchenStock", KitchenStockRouter);
 app.use("/toiletries", ToiletriesRouter);
 app.use("/assets", AssetsRouter);
 
+//Supplier Management
+app.use("/supplier", Supplier);
+app.use("/review", Review);
+app.use("/order", Order);
+app.use("/hasOrder", HasOrder);
 
 //https://localhost:8070/Park
 app.use("/park/parkFee", ParkingFeeRouter);
