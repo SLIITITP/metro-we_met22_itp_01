@@ -42,6 +42,8 @@ export default function DisplayTransportPage() {
     cancellationReason: "",
     updatedDate: "",
     updatedTime: "",
+    cancelledDate: "null",
+    cancelledRoute: "null",
   };
 
   AttendRequest.updatedDate = fecha;
@@ -234,6 +236,8 @@ export default function DisplayTransportPage() {
       AttendRequest.cancellationReason = desc;
       AttendRequest.status = "Cancelled";
 
+      AttendRequest.cancelledDate = bookingDate;
+      AttendRequest.cancelledRoute = busNo;
       if (cancellationReqList[k].route === "Kandy")
         AttendRequest.empId = "D001";
       else if (cancellationReqList[k].route === "Dambulla")

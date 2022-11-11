@@ -11,6 +11,8 @@ const AttendsRequestSchema = new Schema({
   cancellationReason: { type: String, default: "Null" },
   updatedDate: { type: String },
   updatedTime: { type: String },
+  cancelledDate: String,
+  cancelledRoute: String,
 });
 
 const AttendRequest = mongoose.model("AttendRequest", AttendsRequestSchema);

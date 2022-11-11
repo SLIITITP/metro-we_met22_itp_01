@@ -5,7 +5,7 @@ import kandy from "./Kandy.png";
 import lagoon from "./br.png";
 import dambulla from "./DambullaCT.png";
 import wilpattu from "./WilpattuNp.png";
-
+import GetAllAttendInfo from "./getAllAttendRequest";
 import GetTransportRequest from "./getTransportRequest";
 
 let image = lagoon; //to store and display the image
@@ -13,6 +13,10 @@ let image = lagoon; //to store and display the image
 export default function CreateTransportRequestCustomer() {
   //For TransportRequestRequest
   let reqIdString = "1";
+
+  const [cDate, setCDate] = useState("");
+
+  let attendList = GetAllAttendInfo();
   const reqList = getRequest();
 
   let email = JSON.parse(window.localStorage.getItem("currentUserID"));
@@ -83,38 +87,54 @@ export default function CreateTransportRequestCustomer() {
   function Create(e) {
     e.preventDefault();
 
-    axios
-      .post(
-        "http://localhost:8070/customerService/transportRequest",
-        TransportRequest
-      )
-      .then(() => {
-        alert("Transport Request Added Successfully");
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    var cancelledDateStatus = 0;
 
-    axios
-      .post(
-        "http://localhost:8070/customerService/transportManagement",
-        TransportRequest
-      )
-      .then(() => {})
-      .catch((err) => {});
+    for (let v = 0; v < attendList.length; v++) {
+      if (
+        attendList[v].cancelledDate === cDate &&
+        attendList[v].cancelledRoute === TransportRequest.busNo
+      ) {
+        cancelledDateStatus = 1;
+        break;
+      }
+    }
 
-    //To enter info into Customer Request Table
-    axios
-      .post("http://localhost:8070/customerService", Request)
-      .then(() => {
-        console.log("Transport Request Added");
-        window.location.reload(false);
-      })
-      .catch((err) => {
-        alert(err.message);
-        console.log(err);
-      });
-    console.log(TransportRequest);
+    if (cancelledDateStatus === 0) {
+      axios
+        .post(
+          "http://localhost:8070/customerService/transportRequest",
+          TransportRequest
+        )
+        .then(() => {
+          alert("Transport Request Added Successfully");
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+
+      axios
+        .post(
+          "http://localhost:8070/customerService/transportManagement",
+          TransportRequest
+        )
+        .then(() => {})
+        .catch((err) => {});
+
+      //To enter info into Customer Request Table
+      axios
+        .post("http://localhost:8070/customerService", Request)
+        .then(() => {
+          console.log("Transport Request Added");
+          window.location.reload(false);
+        })
+        .catch((err) => {
+          alert(err.message);
+          console.log(err);
+        });
+    } else if (cancelledDateStatus === 1) {
+      alert(`Bookings Cancelled For ${cDate}`);
+      window.location.reload(false);
+    }
   }
 
   function changeImageFuncton() {
@@ -223,6 +243,7 @@ export default function CreateTransportRequestCustomer() {
                 ...TransportRequest,
                 requestForDate: e.target.value,
               });
+              setCDate(e.target.value);
             }}
           />
         </div>
