@@ -612,7 +612,7 @@ export default function Manager() {
 
       <Routes>
         <Route
-          path="/manager/park/add"
+          path="/addPark"
           element={
             <>
               <Header />
@@ -624,7 +624,7 @@ export default function Manager() {
 
       <Routes>
         <Route
-          path="/park"
+          path="/parkreport"
           element={
             <>
               <Header />

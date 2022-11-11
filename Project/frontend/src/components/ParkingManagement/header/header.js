@@ -24,12 +24,8 @@ const Header = () => {
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav className="mr-auto">
           {loggedinUser == null ? <NavLink href="/park">Layout</NavLink> : null}
-          {canInitialize ? (
-            <NavLink href="/manager/park/add">Initialize</NavLink>
-          ) : null}
-          {canSeeReports ? (
-            <NavLink href="/manager/park/report">Reports</NavLink>
-          ) : null}
+          {canInitialize ? <NavLink href="/addPark">Initialize</NavLink> : null}
+          {canSeeReports ? <NavLink href="/parkreport">Reports</NavLink> : null}
         </Nav>
       </Navbar.Collapse>
     </Navbar>
