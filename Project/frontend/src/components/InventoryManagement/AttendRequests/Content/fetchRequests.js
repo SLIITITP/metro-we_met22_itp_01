@@ -2,7 +2,7 @@ import React, { Component, useState, useEffect } from "react";
 import axios from "axios";
 
 import GetAmenityRequests from "../../../CustomerService/Amenity/Content/getAmenity";
-import GetOneAmenity from "./getOneRequest";
+import GetOneAmenity from "../../../CustomerService/Amenity/Content/getOneAmenity";
 import GetInventoryAmenityRequests from "./getAllRequests";
 export default function FetchRoomNecessityRequests() {
   var color = "black";

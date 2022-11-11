@@ -2,7 +2,7 @@ import React, { Component, useState, useEffect } from "react";
 import axios from "axios";
 import GetChefIngredientRequestDetails from "./getAllChefIngredientRequests";
 import GetOneChefIngredientRequest from "./getOneChefIngredientRequest";
-import GetChefRequestDetails from "../../../StaffManagement/ChefRequests/Content/getAllChefRequests";
+import GetChefRequestDetails from "../../../KitchenManagement/ChefRequests/Content/getAllChefRequests";
 import FetchIngredients from "../../IngredientsLog/Content/fetchIngredients";
 export default function FetchChefIngredientRequests() {
   var color = "black";
