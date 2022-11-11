@@ -607,6 +607,7 @@ export default function Manager() {
           element={
             <>
               <Header />
+              <SideNavigationParkAdmin />
               <Initialize />
             </>
           }
@@ -619,6 +620,7 @@ export default function Manager() {
             <>
               <Header />
               <Report />
+              <SideNavigationParkAdmin />
             </>
           }
         />

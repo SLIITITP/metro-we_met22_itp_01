@@ -11,41 +11,49 @@ const BookingModal = ({
   closeModal,
 }) => {
   return (
-    <Modal show={showParkingModal} centered size="sm">
-      <Modal.Header>
-        <Modal.Title>Book a Parking Lot</Modal.Title>
-      </Modal.Header>
-      <Form onSubmit={bookParkingHandler}>
-        <Modal.Body>
-          <Form.Group controlId="v_id">
-            <Form.Label>ZoneID</Form.Label>
-            <Form.Control type="text" placeholder={zone_id} name="v_id" />
-          </Form.Group>
-          <Form.Group controlId="v_title">
-            <Form.Label>Parking Space:</Form.Label>
-            <Form.Control type="text" placeholder={title} name="v_title" />
-          </Form.Group>
-          <Form.Group controlId="vehicle_no">
-            <Form.Label>Vehicle Registration No.</Form.Label>
-            <Form.Control
-              type="text"
-              placeholder="Enter Vehicle No."
-              name="v_no"
-              required
-            />
-          </Form.Group>
-        </Modal.Body>
+    <div
+      className="container"
+      style={{
+        marginTop: "50px",
+        marginLeft: "215px",
+      }}
+    >
+      <Modal show={showParkingModal} centered size="sm">
+        <Modal.Header>
+          <Modal.Title>Book a Parking Lot</Modal.Title>
+        </Modal.Header>
+        <Form onSubmit={bookParkingHandler}>
+          <Modal.Body>
+            <Form.Group controlId="v_id">
+              <Form.Label>ZoneID</Form.Label>
+              <Form.Control type="text" placeholder={zone_id} name="v_id" />
+            </Form.Group>
+            <Form.Group controlId="v_title">
+              <Form.Label>Parking Space:</Form.Label>
+              <Form.Control type="text" placeholder={title} name="v_title" />
+            </Form.Group>
+            <Form.Group controlId="vehicle_no">
+              <Form.Label>Vehicle Registration No.</Form.Label>
+              <Form.Control
+                type="text"
+                placeholder="Enter Vehicle No."
+                name="v_no"
+                required
+              />
+            </Form.Group>
+          </Modal.Body>
 
-        <Modal.Footer>
-          <Button variant="secondary" onClick={closeModal}>
-            Cancel
-          </Button>
-          <Button variant="primary" type="submit">
-            Enter
-          </Button>
-        </Modal.Footer>
-      </Form>
-    </Modal>
+          <Modal.Footer>
+            <Button variant="secondary" onClick={closeModal}>
+              Cancel
+            </Button>
+            <Button variant="primary" type="submit">
+              Enter
+            </Button>
+          </Modal.Footer>
+        </Form>
+      </Modal>
+    </div>
   );
 };
 
@@ -169,83 +177,91 @@ class Dashboard extends React.Component {
       previlage: { canBookParking },
     } = this.state;
     return (
-      <div>
-        <div class="jumbotron">
-          <Row>
-            {canBookParking ? (
-              <Col>
-                <Button
-                  className="mlr-10"
-                  variant="outline-primary"
-                  onClick={this.bookParking.bind(this)}
-                >
-                  Book a Parking Space or select a slot
-                </Button>
-              </Col>
-            ) : null}
-            <Col>
-              <Form.Control
-                as="select"
-                className="pull-right w-auto mlr-10"
-                value={filterZone}
-                onChange={this.filterZoneHandler.bind(this)}
-                name="filter-zone"
-              >
-                <option value="All">All</option>
-                {parkingZoneList &&
-                  parkingZoneList.map((v, i) => (
-                    <option key={i} value={v}>
-                      Zone {v}
-                    </option>
-                  ))}
-              </Form.Control>
-              <Form.Label className="pull-right w-auto m-7">
-                Filter by Zone:{" "}
-              </Form.Label>
-            </Col>
-          </Row>
-          <div className="parking-space-list">
-            {parkingSpaceList &&
-              parkingSpaceList.map((v, i, a) =>
-                filterZone === "All" || v.zone_id === filterZone ? (
-                  <Card
-                    key={i}
-                    className={`parking-item ${
-                      v.is_available ? "available" : "not-available"
-                    } ${canBookParking ? "show-cursor" : ""}`}
-                    title={
-                      canBookParking
-                        ? v.is_available
-                          ? "Book Parking"
-                          : "Release Parking"
-                        : v.is_available
-                        ? "Available"
-                        : "Booked"
-                    }
-                    onClick={
-                      canBookParking
-                        ? v.is_available
-                          ? this.bookParking.bind(this, v)
-                          : this.releaseParking.bind(this, v)
-                        : null
-                    }
+      <div
+        className="container"
+        style={{
+          marginTop: "50px",
+          marginLeft: "215px",
+        }}
+      >
+        <div>
+          <div class="jumbotron">
+            <Row>
+              {canBookParking ? (
+                <Col>
+                  <Button
+                    className="mlr-10"
+                    variant="outline-primary"
+                    onClick={this.bookParking.bind(this)}
                   >
-                    <Card.Body>
-                      <Card.Text>
-                        {v.title}
-                        {!v.is_available ? ` | ${v.vehicle_no}` : null}
-                      </Card.Text>
-                    </Card.Body>
-                  </Card>
-                ) : null
-              )}
+                    Book a Parking Space or select a slot
+                  </Button>
+                </Col>
+              ) : null}
+              <Col>
+                <Form.Control
+                  as="select"
+                  className="pull-right w-auto mlr-10"
+                  value={filterZone}
+                  onChange={this.filterZoneHandler.bind(this)}
+                  name="filter-zone"
+                >
+                  <option value="All">All</option>
+                  {parkingZoneList &&
+                    parkingZoneList.map((v, i) => (
+                      <option key={i} value={v}>
+                        Zone {v}
+                      </option>
+                    ))}
+                </Form.Control>
+                <Form.Label className="pull-right w-auto m-7">
+                  Filter by Zone:{" "}
+                </Form.Label>
+              </Col>
+            </Row>
+            <div className="parking-space-list">
+              {parkingSpaceList &&
+                parkingSpaceList.map((v, i, a) =>
+                  filterZone === "All" || v.zone_id === filterZone ? (
+                    <Card
+                      key={i}
+                      className={`parking-item ${
+                        v.is_available ? "available" : "not-available"
+                      } ${canBookParking ? "show-cursor" : ""}`}
+                      title={
+                        canBookParking
+                          ? v.is_available
+                            ? "Book Parking"
+                            : "Release Parking"
+                          : v.is_available
+                          ? "Available"
+                          : "Booked"
+                      }
+                      onClick={
+                        canBookParking
+                          ? v.is_available
+                            ? this.bookParking.bind(this, v)
+                            : this.releaseParking.bind(this, v)
+                          : null
+                      }
+                    >
+                      <Card.Body>
+                        <Card.Text>
+                          {v.title}
+                          {!v.is_available ? ` | ${v.vehicle_no}` : null}
+                        </Card.Text>
+                      </Card.Body>
+                    </Card>
+                  ) : null
+                )}
+            </div>
+            <BookingModal
+              showParkingModal={this.state.showParkingModal}
+              bookingData={this.state.bookingParkingState}
+              bookParkingHandler={this.bookParkingHandler.bind(this)}
+              closeModal={this.closeModal.bind(this)}
+            ></BookingModal>
           </div>
-          <BookingModal
-            showParkingModal={this.state.showParkingModal}
-            bookingData={this.state.bookingParkingState}
-            bookParkingHandler={this.bookParkingHandler.bind(this)}
-            closeModal={this.closeModal.bind(this)}
-          ></BookingModal>
         </div>
       </div>
     );

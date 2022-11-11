@@ -36,102 +36,110 @@ class Report extends React.PureComponent {
   render() {
     let { reportData } = this.state;
     return (
-      <div>
-        <div>
-          <br></br>
-        </div>
-        <Container fluid>
-          <Row>
-            <Col lg="3" sm="6">
-              <Card className="card-stats">
-                <Card.Body>
-                  <Row>
-                    <Col xs="5">
-                      <div className="icon-big text-center icon-warning">
-                        <i className="nc-icon nc-chart text-warning"></i>
-                      </div>
-                    </Col>
-                    <Col xs="7">
-                      <div className="numbers">
-                        <p className="card-category">Total parking</p>
-                        <Card.Title as="h4"> </Card.Title>
-                      </div>
-                    </Col>
-                  </Row>
-                </Card.Body>
-              </Card>
-            </Col>
-            <Col lg="3" sm="6">
-              <Card className="card-stats">
-                <Card.Body>
-                  <Row>
-                    <Col xs="5">
-                      <div className="icon-big text-center icon-warning">
-                        <i className="nc-icon nc-light-3 text-success"></i>
-                      </div>
-                    </Col>
-                    <Col xs="7">
-                      <div className="numbers">
-                        <p className="card-category">Revenue</p>
-                        <Card.Title as="h4"> LKR</Card.Title>
-                      </div>
-                    </Col>
-                  </Row>
-                </Card.Body>
-              </Card>
-            </Col>
-            <Col lg="3" sm="6">
-              <Card className="card-stats">
-                <Card.Body>
-                  <Row>
-                    <Col xs="5">
-                      <div className="icon-big text-center icon-warning">
-                        <i className="nc-icon nc-vector text-danger"></i>
-                      </div>
-                    </Col>
-                    <Col xs="7">
-                      <div className="numbers">
-                        <p className="card-category">todays parking</p>
-                        <Card.Title as="h4"> </Card.Title>
-                      </div>
-                    </Col>
-                  </Row>
-                </Card.Body>
-              </Card>
-            </Col>
-          </Row>
-        </Container>
-
-        <div>
-          <br></br>
-        </div>
-
+      <div
+        className="container"
+        style={{
+          marginTop: "50px",
+          marginLeft: "215px",
+        }}
+      >
         <div>
           <div>
-            <Table responsive="sm">
-              <thead>
-                <tr>
-                  <th>Parking Zone</th>
-                  <th>Parking Space</th>
-                  <th>Booking Date Time</th>
-                  <th>Release Date Time</th>
-                  <th>Vehicle No.</th>
-                </tr>
-              </thead>
-              <tbody>
-                {reportData &&
-                  reportData.map((v, i) => (
-                    <tr key={i}>
-                      <script>var count = count + 1</script>
-                      <td>{v.parking_zone_id}</td>
-                      <td>{v.parking_space_id}</td>
-                      <td>{v.booking_date_time}</td>
-                      <td>{v.release_date_time || "Not Released"}</td>
-                      <td>{v.vehicle_no}</td>
-                    </tr>
-                  ))}
-              </tbody>
-            </Table>
+            <br></br>
+          </div>
+          <Container fluid>
+            <Row>
+              <Col lg="3" sm="6">
+                <Card className="card-stats">
+                  <Card.Body>
+                    <Row>
+                      <Col xs="5">
+                        <div className="icon-big text-center icon-warning">
+                          <i className="nc-icon nc-chart text-warning"></i>
+                        </div>
+                      </Col>
+                      <Col xs="7">
+                        <div className="numbers">
+                          <p className="card-category">Total parking</p>
+                          <Card.Title as="h4"> </Card.Title>
+                        </div>
+                      </Col>
+                    </Row>
+                  </Card.Body>
+                </Card>
+              </Col>
+              <Col lg="3" sm="6">
+                <Card className="card-stats">
+                  <Card.Body>
+                    <Row>
+                      <Col xs="5">
+                        <div className="icon-big text-center icon-warning">
+                          <i className="nc-icon nc-light-3 text-success"></i>
+                        </div>
+                      </Col>
+                      <Col xs="7">
+                        <div className="numbers">
+                          <p className="card-category">Revenue</p>
+                          <Card.Title as="h4"> LKR</Card.Title>
+                        </div>
+                      </Col>
+                    </Row>
+                  </Card.Body>
+                </Card>
+              </Col>
+              <Col lg="3" sm="6">
+                <Card className="card-stats">
+                  <Card.Body>
+                    <Row>
+                      <Col xs="5">
+                        <div className="icon-big text-center icon-warning">
+                          <i className="nc-icon nc-vector text-danger"></i>
+                        </div>
+                      </Col>
+                      <Col xs="7">
+                        <div className="numbers">
+                          <p className="card-category">todays parking</p>
+                          <Card.Title as="h4"> </Card.Title>
+                        </div>
+                      </Col>
+                    </Row>
+                  </Card.Body>
+                </Card>
+              </Col>
+            </Row>
+          </Container>
+
+          <div>
+            <br></br>
+          </div>
+
+          <div>
+            <div>
+              <Table responsive="sm">
+                <thead>
+                  <tr>
+                    <th>Parking Zone</th>
+                    <th>Parking Space</th>
+                    <th>Booking Date Time</th>
+                    <th>Release Date Time</th>
+                    <th>Vehicle No.</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {reportData &&
+                    reportData.map((v, i) => (
+                      <tr key={i}>
+                        <script>var count = count + 1</script>
+                        <td>{v.parking_zone_id}</td>
+                        <td>{v.parking_space_id}</td>
+                        <td>{v.booking_date_time}</td>
+                        <td>{v.release_date_time || "Not Released"}</td>
+                        <td>{v.vehicle_no}</td>
+                      </tr>
+                    ))}
+                </tbody>
+              </Table>
+            </div>
           </div>
         </div>
       </div>

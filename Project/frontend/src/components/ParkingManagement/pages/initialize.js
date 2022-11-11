@@ -46,41 +46,49 @@ class Initialize extends React.Component {
   render() {
     let { zone } = this.state;
     return (
-      <div>
-        Create new parking zones
-        <div class="jumbotron">
-          <Row>
-            <Col>
-              {zone && zone.length <= 25 ? (
-                <Button
-                  className="mlr-10"
-                  variant="outline-primary"
-                  onClick={this.createZone.bind(this)}
-                >
-                  Create Parking Zone
-                </Button>
-              ) : null}
-              {zone && zone.length > 1 ? (
-                <Button
-                  className="mlr-10"
-                  variant="outline-danger"
-                  onClick={this.deleteZone.bind(this)}
-                >
-                  Delete Parking Zone
-                </Button>
-              ) : null}
-            </Col>
-            <Col></Col>
-          </Row>
-          <div className="parking-space-list">
-            {zone &&
-              zone.map((v, i, a) => (
-                <Card key={i} className="parking-item available">
-                  <Card.Body>
-                    <Card.Text>{v.parking_zone_id}</Card.Text>
-                  </Card.Body>
-                </Card>
-              ))}
+      <div
+        className="container"
+        style={{
+          marginTop: "50px",
+          marginLeft: "215px",
+        }}
+      >
+        <div>
+          Create new parking zones
+          <div class="jumbotron">
+            <Row>
+              <Col>
+                {zone && zone.length <= 25 ? (
+                  <Button
+                    className="mlr-10"
+                    variant="outline-primary"
+                    onClick={this.createZone.bind(this)}
+                  >
+                    Create Parking Zone
+                  </Button>
+                ) : null}
+                {zone && zone.length > 1 ? (
+                  <Button
+                    className="mlr-10"
+                    variant="outline-danger"
+                    onClick={this.deleteZone.bind(this)}
+                  >
+                    Delete Parking Zone
+                  </Button>
+                ) : null}
+              </Col>
+              <Col></Col>
+            </Row>
+            <div className="parking-space-list">
+              {zone &&
+                zone.map((v, i, a) => (
+                  <Card key={i} className="parking-item available">
+                    <Card.Body>
+                      <Card.Text>{v.parking_zone_id}</Card.Text>
+                    </Card.Body>
+                  </Card>
+                ))}
+            </div>
           </div>
         </div>
       </div>

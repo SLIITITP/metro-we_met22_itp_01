@@ -45,8 +45,8 @@ export default function CustServ() {
           path="/admin/park"
           element={
             <>
-              <Header />
               <Dashboard />
+              <SideNavigationParkAdmin />
             </>
           }
         />
@@ -56,8 +56,8 @@ export default function CustServ() {
           path="/admin/addPark"
           element={
             <>
-              <Header />
               <Initialize />
+              <SideNavigationParkAdmin />
             </>
           }
         />
@@ -67,8 +67,8 @@ export default function CustServ() {
           path="/admin/parkreport"
           element={
             <>
-              <Header />
               <Report />
+              <SideNavigationParkAdmin />
             </>
           }
         />

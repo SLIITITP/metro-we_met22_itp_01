@@ -29,7 +29,7 @@ export default function SideNavigationParkAdmin() {
           style={{ backgroundColor: "white" }}
         >
           <Link
-            to="/manager/park/add"
+            to="/admin/addPark"
             style={{
               textDecoration: "none",
               color: "black",
@@ -52,7 +52,7 @@ export default function SideNavigationParkAdmin() {
           </Link>
 
           <Link
-            to="/manager/park/report"
+            to="/admin/parkreport"
             style={{
               textDecoration: "none",
               color: "black",
