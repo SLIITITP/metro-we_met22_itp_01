@@ -28,7 +28,7 @@ function SideNavigationAttendChefRequests() {
           aria-orientation="vertical"
           style={{ backgroundColor: "white" }}
         >
-          <Link
+          {/* <Link
             to="/Manager/inventoryManagement"
             style={{
               textDecoration: "none",
@@ -48,10 +48,10 @@ function SideNavigationAttendChefRequests() {
             >
               Profile
             </button>
-          </Link>
+          </Link> */}
 
           <Link
-            to="/Manager/inventoryManagement/ingredientsLog"
+            to="/Manager/inventoryManagement/"
             style={{
               textDecoration: "none",
               color: "black",
@@ -187,7 +187,7 @@ function SideNavigationAttendChefRequests() {
             </button>
           </Link>
 
-          <Link
+          {/* <Link
             to="/Manager/inventoryManagement/reports"
             style={{
               textDecoration: "none",
@@ -208,7 +208,7 @@ function SideNavigationAttendChefRequests() {
             >
               Reports
             </button>
-          </Link>
+          </Link> */}
         </div>
         <div className="tab-content" id="v-pills-tabContent">
           <div

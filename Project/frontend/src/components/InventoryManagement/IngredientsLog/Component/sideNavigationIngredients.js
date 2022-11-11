@@ -27,7 +27,7 @@ function SideNavigationIngredients() {
           role="tablist"
           aria-orientation="vertical"
         >
-          <Link
+          {/* <Link
             to="/Manager/inventoryManagement"
             style={{
               textDecoration: "none",
@@ -47,10 +47,10 @@ function SideNavigationIngredients() {
             >
               Profile
             </button>
-          </Link>
+          </Link> */}
 
           <Link
-            to="/Manager/inventoryManagement/ingredientsLog"
+            to="/Manager/inventoryManagement/"
             style={{
               textDecoration: "none",
               color: "black",
@@ -184,7 +184,7 @@ function SideNavigationIngredients() {
             </button>
           </Link>
 
-          <Link
+          {/* <Link
             to="/Manager/inventoryManagement/reports"
             style={{
               textDecoration: "none",
@@ -205,7 +205,7 @@ function SideNavigationIngredients() {
             >
               Reports
             </button>
-          </Link>
+          </Link> */}
         </div>
         <div className="tab-content" id="v-pills-tabContent">
           <div

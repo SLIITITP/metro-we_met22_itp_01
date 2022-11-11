@@ -28,7 +28,7 @@ function SideNavigationToiletries() {
           aria-orientation="vertical"
           style={{ backgroundColor: "white" }}
         >
-          <Link
+          {/* <Link
             to="/Manager/inventoryManagement"
             style={{
               textDecoration: "none",
@@ -48,7 +48,7 @@ function SideNavigationToiletries() {
             >
               Profile
             </button>
-          </Link>
+          </Link> */}
 
           <Link
             to="/Manager/inventoryManagement/ingredientsLog"
@@ -184,7 +184,7 @@ function SideNavigationToiletries() {
             </button>
           </Link>
 
-          <Link
+          {/* <Link
             to="/Manager/inventoryManagement/reports"
             style={{
               textDecoration: "none",
@@ -205,7 +205,7 @@ function SideNavigationToiletries() {
             >
               Reports
             </button>
-          </Link>
+          </Link> */}
         </div>
         <div className="tab-content" id="v-pills-tabContent">
           <div

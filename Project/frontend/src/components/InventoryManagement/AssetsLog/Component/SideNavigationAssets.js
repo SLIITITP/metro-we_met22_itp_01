@@ -28,7 +28,7 @@ function SideNavigationAssets() {
           aria-orientation="vertical"
           style={{ backgroundColor: "white" }}
         >
-          <Link
+          {/* <Link
             to="/Manager/inventoryManagement"
             style={{
               textDecoration: "none",
@@ -48,10 +48,10 @@ function SideNavigationAssets() {
             >
               Profile
             </button>
-          </Link>
+          </Link> */}
 
           <Link
-            to="/Manager/inventoryManagement/ingredientsLog"
+            to="/Manager/inventoryManagement/"
             style={{
               textDecoration: "none",
               color: "black",
@@ -185,7 +185,7 @@ function SideNavigationAssets() {
             </button>
           </Link>
 
-          <Link
+          {/* <Link
             to="/Manager/inventoryManagement/reports"
             style={{
               textDecoration: "none",
@@ -206,7 +206,7 @@ function SideNavigationAssets() {
             >
               Reports
             </button>
-          </Link>
+          </Link> */}
         </div>
         <div className="tab-content" id="v-pills-tabContent">
           <div

@@ -31,7 +31,7 @@ import LeaveDetailsManager from "../components/StaffManagement/ManageLeaves/Cont
 import SideNavigationReports from "../components/StaffManagement/Reports/Component/SideNavigationReports";
 
 //Inventory Manager Interface -  Rashida
-//import SideNavigationProfile from "../components/StaffManagement/Profile/Component/SideNavigationProfile";
+
 import { SideNavigationIngredients } from "../components/InventoryManagement/IngredientsLog/Component/sideNavigationIngredients";
 import CreateIngredients from "../components/InventoryManagement/IngredientsLog/Content/createIngredients";
 import { SideNavigationToiletries } from "../components/InventoryManagement/ToiletriesLog/Component/SideNavigationToiletries";
@@ -228,20 +228,11 @@ export default function Manager() {
           }
         />
       </Routes>
-      <Routes>
-          <Route
-            path="/Manager/inventoryManagement"
-            element={
-              <>
-                <SideNavigationProfile />
-              </>
-            }
-          />
-        </Routes>
+     
 
         <Routes>
           <Route
-            path="/Manager/inventoryManagement/ingredientsLog"
+            path="/Manager/inventoryManagement"
             element={
               <>
                 <FetchIngredients />
@@ -470,14 +461,14 @@ export default function Manager() {
           />
         </Routes>
         <Routes>
-          <Route
+          {/* <Route
             path="/Manager/inventoryManagement/reports"
             element={
               <>
                 <SideNavigationReports />
               </>
             }
-          />
+          /> */}
         </Routes>
     </div>
   );

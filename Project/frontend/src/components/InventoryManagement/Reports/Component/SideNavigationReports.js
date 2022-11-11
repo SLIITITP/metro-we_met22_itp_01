@@ -28,7 +28,7 @@ function SideNavigationReports() {
           aria-orientation="vertical"
           style={{ backgroundColor: "white" }}
         >
-          <Link
+          {/* <Link
             to="/inventoryManagement"
             style={{
               textDecoration: "none",
@@ -48,10 +48,10 @@ function SideNavigationReports() {
             >
               Profile
             </button>
-          </Link>
+          </Link> */}
 
           <Link
-            to="/inventoryManagement/ingredientsLog"
+            to="/Manager/inventoryManagement/"
             style={{
               textDecoration: "none",
               color: "black",
@@ -73,7 +73,7 @@ function SideNavigationReports() {
           </Link>
 
           <Link
-            to="/inventoryManagement/toiletriesLog"
+            to="/Manager/inventoryManagement/toiletriesLog"
             style={{
               textDecoration: "none",
               color: "black",
@@ -96,7 +96,7 @@ function SideNavigationReports() {
           </Link>
 
           <Link
-            to="/inventoryManagement/assetsLog"
+            to="/Manager/inventoryManagement/assetsLog"
             style={{
               textDecoration: "none",
               color: "black",
@@ -118,7 +118,7 @@ function SideNavigationReports() {
             </button>
           </Link>
           <Link
-            to="/inventoryManagement/requestLog"
+            to="/Manager/inventoryManagement/requestLog"
             style={{
               textDecoration: "none",
               color: "black",
@@ -140,7 +140,7 @@ function SideNavigationReports() {
             </button>
           </Link>
           <Link
-            to="/inventoryManagement/chefRequestLog"
+            to="/Manager/inventoryManagement/chefRequestLog"
             style={{
               textDecoration: "none",
               color: "black",
@@ -162,7 +162,7 @@ function SideNavigationReports() {
             </button>
           </Link>
           <Link
-            to="/inventoryManagement/attendRequests"
+            to="/Manager/inventoryManagement/attendRequests"
             style={{
               textDecoration: "none",
               color: "black",
@@ -184,8 +184,8 @@ function SideNavigationReports() {
             </button>
           </Link>
 
-          <Link
-            to="/inventoryManagement/reports"
+          {/* <Link
+            to="/Manager/inventoryManagement/reports"
             style={{
               textDecoration: "none",
               color: "black",
@@ -205,7 +205,7 @@ function SideNavigationReports() {
             >
               Reports
             </button>
-          </Link>
+          </Link> */}
         </div>
         <div className="tab-content" id="v-pills-tabContent">
           <div
