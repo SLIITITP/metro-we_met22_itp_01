@@ -83,6 +83,7 @@ import AddSupplier from "../components/Supplier/Supplier/content/AddSupplier";
 import { SideNavigationSupplier } from "../components/Supplier/Supplier/component/SideNavigationSupplier";
 import { SideNavigationReview } from "../components/Supplier/Review/component/SideNavigationReview";
 import SupFetchChefRequests from "../components/Supplier/Order/content/supfetchChefRequests";
+import { SideNavigationOreq } from "../components/Supplier/Order/component/SideNavigationOreq";
 
 // parking
 import Dashboard from "../components/ParkingManagement/pages/dashboard";
@@ -545,7 +546,7 @@ export default function Manager() {
           element={
             <>
               <SupFetchChefRequests />
-              <SideNavigationOrder />
+              <SideNavigationOreq />
             </>
           }
         />

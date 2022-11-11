@@ -1,15 +1,15 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-function SideNavigationSupplier() {
+function SideNavigationOreq() {
   return (
     <div
       className="container"
       style={{
         top: "180px",
         float: "left",
-        width: "10%",
-        height: "40%",
+        width: "50px",
+        height: "30%",
         position: "fixed",
         paddingTop: "20px",
 
@@ -36,7 +36,7 @@ function SideNavigationSupplier() {
             }}
           >
             <button
-              className="nav-link active"
+              className="nav-link"
               id="v-pills-profile-tab"
               data-bs-toggle="pill"
               data-bs-target="#v-pills-profile"
@@ -92,7 +92,6 @@ function SideNavigationSupplier() {
               Order
             </button>
           </Link>
-
           <Link
             to="/Manager/Order/fetch"
             style={{
@@ -102,7 +101,7 @@ function SideNavigationSupplier() {
             }}
           >
             <button
-              className="nav-link"
+              className="nav-link active"
               id="v-pills-profile-tab"
               data-bs-toggle="pill"
               data-bs-target="#v-pills-profile"
@@ -125,4 +124,4 @@ function SideNavigationSupplier() {
   );
 }
 
-export { SideNavigationSupplier };
+export { SideNavigationOreq };

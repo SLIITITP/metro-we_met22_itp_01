@@ -217,23 +217,6 @@ export default function FetchChefRequests() {
                         </a> */}
                         &nbsp;
                       </td>
-
-                      {val.status === "Pending" && (
-                        <td>
-                          <a
-                            data-toggle="tooltip"
-                            data-placement="top"
-                            title="Make order"
-                            style={{
-                              border: "none",
-                              backgroundColor: "white",
-                            }}
-                            href={`Manager/Order/add/${val._id}`}
-                          >
-                            <i class="bi bi-check2-square"></i>
-                          </a>
-                        </td>
-                      )}
                     </tr>
                   ))
               : reqDetails}

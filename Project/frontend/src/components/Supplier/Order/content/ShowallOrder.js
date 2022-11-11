@@ -5,6 +5,8 @@ import "../../../../index.css";
 import GetOrder from "./GetOrder";
 import { Link } from "react-router-dom";
 import { Container } from "../js/Container";
+import GetOneChefRequest from "./oneChefRequest";
+import GetChefRequestDetails from "./getAllChefRequests";
 
 export default function ShowallOrder() {
   var color = "black";
@@ -53,6 +55,7 @@ export default function ShowallOrder() {
   const [changeStatus, setChangeStatus] = useState({});
 
   function PendingToReceived(id) {
+    <GetOneOrder id={id} />;
     <GetOneOrder id={id} />;
     setChangeStatus(GetOneOrder);
 

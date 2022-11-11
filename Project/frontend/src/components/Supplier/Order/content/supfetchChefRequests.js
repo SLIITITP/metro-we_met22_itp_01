@@ -22,6 +22,47 @@ export default function SupFetchChefRequests() {
     }
   };
 
+  //to edit a pending request
+  function EditRequest(id) {
+    for (i = 0; i < reqDetails.length; i++) {
+      if (reqDetails[i]._id == id) {
+        break;
+      }
+    }
+    <GetOneChefRequest id={id} />;
+    setEditRequest(GetOneChefRequest);
+  }
+
+  // to cancel a pending request
+  function ApproveRequest(id) {
+    for (i = 0; i < reqDetails.length; i++) {
+      if (reqDetails[i]._id == id) {
+        break;
+      }
+    }
+
+    requestID = reqDetails[i].requestID;
+
+    <GetOneChefRequest id={id} />;
+    setRequestCancel(GetOneChefRequest);
+    requestCancel.status = "Approved";
+    axios
+      .put(
+        "http://localhost:8070/inventory/chefRequest/update/" + id,
+        requestCancel
+      )
+      .then((Info) => {
+        alert("Request is Approved");
+        console.log(Info);
+        // window.location.replace(
+        //   `http://localhost:${port}/inventoryManagement/requestLog`
+        // );
+      })
+      .catch((err) => {
+        console.log(err.message);
+      });
+  }
+
   function changeColor(data) {
     if (data === "Cancelled") color = "red";
     else if (data === "Approved") color = "green";
@@ -124,6 +165,26 @@ export default function SupFetchChefRequests() {
                           <a
                             data-toggle="tooltip"
                             data-placement="top"
+                            title="Approve the request"
+                            style={{
+                              border: "none",
+                              backgroundColor: "white",
+                            }}
+                            onClick={(e) => {
+                              ApproveRequest(val._id);
+                              window.location.reload(false);
+                            }}
+                          >
+                            <i class="bi bi-check2-square"></i>
+                          </a>
+                        </td>
+                      )}
+
+                      {val.status === "Pending" && (
+                        <td>
+                          <a
+                            data-toggle="tooltip"
+                            data-placement="top"
                             title="Make order"
                             style={{
                               border: "none",
@@ -131,7 +192,7 @@ export default function SupFetchChefRequests() {
                             }}
                             href={`Manager/Order/add/${val._id}`}
                           >
-                            <i class="bi bi-check2-square"></i>
+                            <i class="bi bi-basket"></i>
                           </a>
                         </td>
                       )}
@@ -140,14 +201,6 @@ export default function SupFetchChefRequests() {
               : reqDetails}
           </tbody>
         </table>
-        <button className="btn btn-success">
-          <a
-            href="/Staff/kitchenStaff/chefRequests/requestLog"
-            style={{ textDecoration: "none", color: "white" }}
-          >
-            Add New Request
-          </a>
-        </button>
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
       </div>
     </>
