@@ -55,7 +55,7 @@ export default function BookingScreen() {
   async function bookRoom() {
     const bookingDetails = {
       room,
-      userid: JSON.parse(localStorage.getItem("currentUser"))._id,
+      userid: JSON.parse(localStorage.getItem("currentUser")).empID,
       fromdate,
       todate,
       totalamount,
@@ -69,7 +69,7 @@ export default function BookingScreen() {
       );
       console.log(result);
       setloading(false);
-       Swal.fire('Congratulations','Your room has been booked successfully..','success');
+       Swal.fire('Congratulations','Your room has been booked successfully..','success')
       // .then(result=>{
       // //   window.location.href='/profile'
       // // })
