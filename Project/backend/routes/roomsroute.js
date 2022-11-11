@@ -1,5 +1,6 @@
 const router = require("express").Router();
 let Room = require('../models/room');
+const moment = require("moment");
  
 router.get("/getallrooms", async (req, res) => {
     try {
@@ -26,6 +27,26 @@ router.get("/getallrooms", async (req, res) => {
     }
   });
   
+  router.post('/bookallrooms',async(req,res)=>{
+    const {fromdate,todate,userid}=req.body;
+    try {
+      const rooms = await Room.find();
+      rooms.currentbookings.push({
+        bookingid: "123456",
+        fromdate: moment(fromdate).format("DD-MM-YYYY"),
+        todate: moment(todate).format("DD-MM-YYYY"),
+        userid: userid,
+        status: "booked",
+      })
+      await rooms.save();
+      console.log("Rooms closed successfully..");
+      res.send("Rooms closed successfully..");
+    } catch (error) {
+      console.log(error);
+      return res.status(400).json({error});
+    }
+  })
+
   router.post('/addroom',async(req,res)=>{
     try {
         const newRoom = await Room(req.body)
