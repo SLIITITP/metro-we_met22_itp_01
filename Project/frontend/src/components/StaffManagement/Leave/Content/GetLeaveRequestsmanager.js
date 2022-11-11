@@ -115,7 +115,7 @@ export default function GetLeaveRequestsManager() {
     <>
       <div
         className="container"
-        style={{ float: "right", marginRight: "-1250px" }}
+        style={{ float: "right", marginRight: "-1100px" }}
       >
         {/* <form
           class="form-inline my-2 my-lg-0"

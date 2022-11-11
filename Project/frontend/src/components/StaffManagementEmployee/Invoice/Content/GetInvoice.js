@@ -24,7 +24,7 @@ export default function GetInvoice() {
     <>
       <div
         className="container"
-        style={{ float: "right", marginRight: "-1150px" }}
+        style={{ float: "right", marginRight: "-1100px" }}
       >
         {/* <form
           class="form-inline my-2 my-lg-0"
