@@ -180,7 +180,7 @@ export default function SupFetchChefRequests() {
                         </td>
                       )}
 
-                      {val.status === "Pending" && (
+                      {val.status === "Approved" && (
                         <td>
                           <a
                             data-toggle="tooltip"
