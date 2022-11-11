@@ -81,6 +81,12 @@ import AddSupplier from "../components/Supplier/Supplier/content/AddSupplier";
 import { SideNavigationSupplier } from "../components/Supplier/Supplier/component/SideNavigationSupplier";
 import { SideNavigationReview } from "../components/Supplier/Review/component/SideNavigationReview";
 
+// parking
+import Dashboard from "../components/ParkingManagement/pages/dashboard";
+import Initialize from "../components/ParkingManagement/pages/initialize";
+import Report from "../components/ParkingManagement/pages/report";
+import Header from "../components/ParkingManagement/header/header";
+import SideNavigationParkAdmin from "../components/ParkingManagement/header/SideNavigationParkAdmin";
 export default function Manager() {
   return (
     <div className="App">
@@ -587,6 +593,18 @@ export default function Manager() {
             <>
               <SideNavigationSupplier />
               <EditSupplier />
+            </>
+          }
+        />
+      </Routes>
+
+      <Routes>
+        <Route
+          path="/park"
+          element={
+            <>
+              <Header />
+              <Dashboard />
             </>
           }
         />
