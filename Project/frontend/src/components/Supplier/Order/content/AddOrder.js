@@ -4,13 +4,20 @@ import GetOrder from "./GetOrder";
 import { useParams } from "react-router-dom";
 import GetChefRequestDetails from "./getAllChefRequests";
 import GetOneChefRequest from "./oneChefRequest";
+import GetSupplier from "../../Supplier/content/GetSupplier";
+import GetOneSupplier from "../../Supplier/content/GetOneSupplier";
 
 export default function AddOrder() {
+  const [search, setSearch] = useState("");
   const id = useParams();
   var z = id.id;
   var cRequest = GetChefRequestDetails();
+  var allsupplier = GetSupplier();
+
   var i;
+  var a;
   var details = {};
+  var supdetails = {};
 
   for (i = 0; i < cRequest.length; i++) {
     if (cRequest[i]._id === z) {
@@ -19,7 +26,20 @@ export default function AddOrder() {
     }
   }
 
-  var reqType = details.reqType;
+  let suppList = [];
+
+  function display() {
+    for (let k = 0; k < allsupplier.length; k++) {
+      if (
+        allsupplier[k].type === details.reqType &&
+        allsupplier[k].availability === "Available"
+      ) {
+        suppList.push(allsupplier[k]);
+      }
+    }
+  }
+  display();
+  var reqesType = details.reqType;
 
   const [order, setOrder] = useState({
     orderID: " ",
@@ -75,10 +95,13 @@ export default function AddOrder() {
     newOrder.status = "Pending";
     newOrder.orderDate = tDate;
     newOrder.reqID = details.reqID;
+    let port = window.location.port;
     axios
       .post("http://localhost:8070/order/add", newOrder)
       .then(() => {
-        window.location.reload(false);
+        // window.location.reload(false);
+        window.location.replace(`http://localhost:${port}/Manager/Order`);
+
         alert("New Order details Added Successfully");
       })
       .catch((err) => {
@@ -105,20 +128,8 @@ export default function AddOrder() {
               onSubmit={sendData}
             >
               <h1 className="display-6" style={{ marginBottom: "20px" }}>
-                Add Order  for {reqType}
+                Add Order for {reqesType}
               </h1>
-
-              {/* <div class="form-group">
-                <label for="reqID">Request ID</label>
-                <input
-                  type="text"
-                  class="form-control"
-                  id="reqID"
-                  onChange={(event) => {
-                    setreqID(event.target.value);
-                  }}
-                />
-              </div> */}
 
               <div class="form-group">
                 <label for="supplierID">Supplier ID</label>
@@ -138,6 +149,8 @@ export default function AddOrder() {
                     <button type="submit" class="btn btn-primary">
                       Submit
                     </button>
+                    <br></br>
+                    <br></br>
                   </div>
                 </div>
               </div>
@@ -145,6 +158,35 @@ export default function AddOrder() {
           </div>
         </div>
       </div>
+      <br></br>
+      <br></br>
+      <table className="table" style={{ width: "40%" }}>
+        <thead>
+          <tr style={{ backgroundColor: "#0d6efd", color: "white" }}>
+            <th scope="col">supplier ID</th>
+
+            <th scope="col">Name</th>
+          </tr>
+        </thead>
+        <tbody>
+          {suppList
+            ? suppList
+                .filter((val) => {
+                  if (search === "") return val;
+                  else if (val.supplierID.includes(details.supplierID)) {
+                    return val;
+                  }
+                })
+
+                .map((val) => (
+                  <tr>
+                    <td>{val.supplierID}</td>
+                    <td scope="row">{val.name}</td>
+                  </tr>
+                ))
+            : suppList}
+        </tbody>
+      </table>
     </div>
   );
 }
