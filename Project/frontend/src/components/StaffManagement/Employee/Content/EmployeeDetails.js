@@ -94,7 +94,7 @@ export default function EmployeeDetails() {
       </table>
       <button className="btn btn-primary">
         <a
-          href="/staffManagement/employees"
+          href="/Manager/employees"
           style={{ textDecoration: "none", color: "white" }}
         >
           <i class="fa-solid fa-chevron-left"></i>&nbsp; Back

@@ -99,7 +99,7 @@ export default function ManagerLeaveDetails() {
       </table>
       <button className="btn btn-primary">
         <a
-          href="/staffManagement/leave"
+          href="/Manager/leave"
           style={{ textDecoration: "none", color: "white" }}
         >
           <i class="fa-solid fa-chevron-left"></i>&nbsp; Back

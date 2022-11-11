@@ -72,6 +72,7 @@ export default function LoginPage() {
 
         if (allEmp[k].designation.trim().slice(-7) === "Manager") {
           console.log("Hello Manager");
+          window.location.href = "/Manager";
         } else if (allEmp[k].designation.trim().slice(-5) === "Admin") {
           console.log("Hello Admin");
           window.location.href = "/admin";

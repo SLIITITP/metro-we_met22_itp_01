@@ -287,7 +287,7 @@ export default function ManagerInvoiceDetails() {
       </table>
       <button className="btn btn-primary">
         <a
-          href="/staffManagement/invoice"
+          href="/Manager/invoice"
           style={{ textDecoration: "none", color: "white" }}
         >
           <i class="fa-solid fa-chevron-left"></i>&nbsp; Back

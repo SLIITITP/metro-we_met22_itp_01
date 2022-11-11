@@ -4,7 +4,7 @@ import GetAttendanceDetails from "./GetAllAttendance";
 import DateTime from "./DisplayDateTime";
 import GetOneAttendance from "./GetOneAttendance";
 import moment from "moment";
-import GetEmployeeDetails from "../../../StaffManagement/Employee/Content/GetAllEmployees";
+import GetEmployeeDetails from "../../Employee/Content/GetAllEmployees";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import Modal from "react-bootstrap/Modal";
@@ -12,7 +12,7 @@ import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 
-export default function GetAttendance() {
+export default function GetAttendanceManager() {
   //For the search button
   const [search, setSearch] = useState("");
 

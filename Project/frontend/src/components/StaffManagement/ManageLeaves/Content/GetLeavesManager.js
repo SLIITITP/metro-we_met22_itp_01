@@ -209,7 +209,7 @@ export default function GetLeavesManager() {
                           data-placement="top"
                           title="View"
                           className="btn btn-sm btn-primary"
-                          href={`/staffManagement/manageLeaves/getLeave/${val._id}`}
+                          href={`/Manager/manageLeaves/getLeave/${val._id}`}
                           style={{ textDecoration: "none" }}
                         >
                           <i className="fa-regular fa-eye"></i>

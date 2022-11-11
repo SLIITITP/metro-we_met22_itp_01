@@ -135,7 +135,7 @@ export default function GetEmployees() {
                           data-placement="top"
                           title="View"
                           className="btn btn-sm btn-primary"
-                          href={`/staffManagement/employees/getEmployee/${val._id}`}
+                          href={`/Manager/employees/getEmployee/${val._id}`}
                           style={{ textDecoration: "none" }}
                         >
                           <i className="fa-regular fa-eye"></i>
@@ -147,7 +147,7 @@ export default function GetEmployees() {
                           data-placement="top"
                           title="Edit"
                           className="btn btn-sm btn-warning"
-                          href={`/staffManagement/employees/editEmployee/${val._id}`}
+                          href={`/Manager/employees/editEmployee/${val._id}`}
                         >
                           <i className="fas fa-edit"></i>&nbsp;
                         </a>
@@ -172,7 +172,7 @@ export default function GetEmployees() {
         <br></br>
         <button className="btn btn-success">
           <a
-            href="/staffManagement/employees/createEmployee"
+            href="/Manager/employees/createEmployee"
             style={{ textDecoration: "none", color: "white" }}
           >
             Add New Employee

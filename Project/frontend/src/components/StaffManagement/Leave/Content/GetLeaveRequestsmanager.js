@@ -204,7 +204,7 @@ export default function GetLeaveRequestsManager() {
                           data-placement="top"
                           title="View Leave Request"
                           className="btn btn-sm btn-primary"
-                          href={`/staffManagement/leave/getLeave/${val._id}`}
+                          href={`/Manager/leave/getLeave/${val._id}`}
                           style={{ textDecoration: "none" }}
                         >
                           <i className="fa-regular fa-eye"></i>
@@ -218,7 +218,7 @@ export default function GetLeaveRequestsManager() {
                             data-placement="top"
                             title="Edit Leave Request"
                             className="btn btn-sm btn-warning"
-                            // href={`/staffManagement/leave/editLeave/${val._id}`}
+                            // href={`/Manager/leave/editLeave/${val._id}`}
                             onClick={() => handleShow(val)}
                           >
                             <i className="fas fa-edit"></i>
@@ -340,7 +340,7 @@ export default function GetLeaveRequestsManager() {
         <br></br>
         <button className="btn btn-success">
           <a
-            href="/staffManagement/leave/createLeave"
+            href="/Manager/leave/createLeave"
             style={{ textDecoration: "none", color: "white" }}
           >
             Request New Leave

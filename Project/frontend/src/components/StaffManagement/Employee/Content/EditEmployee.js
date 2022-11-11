@@ -55,9 +55,7 @@ export default function EditEmployee() {
       .put("http://localhost:8070/employee/update/" + z, editEmployee)
       .then(() => {
         alert("Updated Successfully!");
-        window.location.replace(
-          `http://localhost:${port}/staffManagement/employees`
-        );
+        window.location.replace(`http://localhost:${port}/Manager/employees`);
       })
       .catch((err) => {
         console.log(err.message);
@@ -208,7 +206,7 @@ export default function EditEmployee() {
         <div className="container">
           <button type="submit" className="btn btn-danger">
             <a
-              href="/staffManagement/employees"
+              href="/Manager/employees"
               style={{ textDecoration: "none", color: "white" }}
             >
               Cancel

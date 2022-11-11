@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import CustServ from "./Exports/CustomerService";
 import LoginPage from "./components/Login/Login";
 import Staff from "./Exports/Staff";
+import Manager from "./Exports/Manager";
 import ParkingManagement from "./Exports/ParkingManagement";
 import Admin from "./Exports/Admin";
 
@@ -18,6 +19,9 @@ function App() {
       </Routes>
       <Routes>
         <Route path="/*" element={<Staff />}></Route>
+      </Routes>
+      <Routes>
+        <Route path="/*" element={<Manager />}></Route>
       </Routes>
       <Routes>
         <Route path="/*" element={<Admin />}></Route>

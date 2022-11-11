@@ -73,9 +73,7 @@ export default function CreateEmployee() {
       .post("http://localhost:8070/employeelogin/create", newEmployeeLogin)
       .then(() => {
         alert("Employee & Login Added");
-        window.location.replace(
-          "http://localhost:3000/staffManagement/employees"
-        );
+        window.location.replace("http://localhost:3000/Manager/employees");
       })
       .catch((err) => {
         alert(err);
@@ -294,7 +292,7 @@ export default function CreateEmployee() {
         <div className="container">
           <button type="submit" className="btn btn-danger">
             <a
-              href="/staffManagement/employees"
+              href="/Manager/employees"
               style={{ textDecoration: "none", color: "white" }}
             >
               Cancel

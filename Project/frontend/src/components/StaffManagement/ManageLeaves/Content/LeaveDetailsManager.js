@@ -1,7 +1,7 @@
 import React, { Component, useState, useEffect } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
-import GetEmployeeDetails from "../../../StaffManagement/Employee/Content/GetAllEmployees";
+import GetEmployeeDetails from "../../Employee/Content/GetAllEmployees";
 import GetLeaveDetails from "./GetAllLeaves";
 
 export default function LeaveDetails() {
@@ -256,7 +256,7 @@ export default function LeaveDetails() {
       </table>
       <button className="btn btn-primary">
         <a
-          href="/staffManagement/manageLeaves"
+          href="/Manager/manageLeaves"
           style={{ textDecoration: "none", color: "white" }}
         >
           <i class="fa-solid fa-chevron-left"></i>&nbsp; Back

@@ -31,7 +31,7 @@ export default function SideNavigationLeave() {
           style={{ backgroundColor: "white" }}
         >
           <Link
-            to="/staffManagement"
+            to="/Manager"
             style={{
               textDecoration: "none",
               color: "black",
@@ -54,7 +54,7 @@ export default function SideNavigationLeave() {
           </Link>
 
           <Link
-            to="/staffManagement/attendance"
+            to="/Manager/attendance"
             style={{
               textDecoration: "none",
               color: "black",
@@ -77,7 +77,7 @@ export default function SideNavigationLeave() {
           </Link>
 
           <Link
-            to="/staffManagement/leave"
+            to="/Manager/leave"
             style={{
               textDecoration: "none",
               color: "black",
@@ -99,7 +99,7 @@ export default function SideNavigationLeave() {
           </Link>
 
           <Link
-            to="/staffManagement/invoice"
+            to="/Manager/invoice"
             style={{
               textDecoration: "none",
               color: "black",
@@ -122,7 +122,7 @@ export default function SideNavigationLeave() {
           </Link>
 
           <Link
-            to="/staffManagement/employees"
+            to="/Manager/employees"
             style={{
               textDecoration: "none",
               color: "black",
@@ -145,7 +145,7 @@ export default function SideNavigationLeave() {
           </Link>
 
           <Link
-            to="/staffManagement/manageLeaves"
+            to="/Manager/manageLeaves"
             style={{
               textDecoration: "none",
               color: "black",
@@ -168,7 +168,7 @@ export default function SideNavigationLeave() {
           </Link>
 
           <Link
-            to="/staffManagement/reports"
+            to="/Manager/reports"
             style={{
               textDecoration: "none",
               color: "black",

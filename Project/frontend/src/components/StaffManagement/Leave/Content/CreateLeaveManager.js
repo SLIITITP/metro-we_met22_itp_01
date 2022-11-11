@@ -46,7 +46,7 @@ export default function CreateLeaveManager() {
       .post("http://localhost:8070/leave/create", newLeave)
       .then(() => {
         alert("Leave requested. Wait for approval by the manager...");
-        window.location.replace("http://localhost:3000/staffManagement/leave");
+        window.location.replace("http://localhost:3000/Manager/leave");
         // window.location.reload(false);
       })
       .catch((err) => {
@@ -192,7 +192,7 @@ export default function CreateLeaveManager() {
         <div className="container">
           <button type="submit" className="btn btn-danger">
             <a
-              href="/staffManagement/leave"
+              href="/Manager/leave"
               style={{ textDecoration: "none", color: "white" }}
             >
               Cancel

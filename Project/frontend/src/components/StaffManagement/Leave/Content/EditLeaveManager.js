@@ -53,9 +53,7 @@ export default function EditLeaveManager() {
       .put("http://localhost:8070/leave/update/" + z, editLeave)
       .then(() => {
         alert("Updated Successfully!");
-        window.location.replace(
-          `http://localhost:${port}/staffManagement/leave`
-        );
+        window.location.replace(`http://localhost:${port}/Manager/leave`);
       })
       .catch((err) => {
         console.log(err.message);
@@ -182,7 +180,7 @@ export default function EditLeaveManager() {
         <div className="container">
           <button type="submit" className="btn btn-danger">
             <a
-              href="/staffManagement/leave"
+              href="/Manager/leave"
               style={{ textDecoration: "none", color: "white" }}
             >
               Cancel
