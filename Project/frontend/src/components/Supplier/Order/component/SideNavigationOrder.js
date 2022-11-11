@@ -92,6 +92,27 @@ function SideNavigationOrder() {
               Order
             </button>
           </Link>
+          <Link
+            to="/Manager/Order/fetch"
+            style={{
+              textDecoration: "none",
+              color: "black",
+              FontFace: "bold",
+            }}
+          >
+            <button
+              className="nav-link"
+              id="v-pills-profile-tab"
+              data-bs-toggle="pill"
+              data-bs-target="#v-pills-profile"
+              type="button"
+              role="tab"
+              aria-controls="v-pills-profile"
+              style={{ width: "100%" }}
+            >
+              Make A order
+            </button>
+          </Link>
         </div>
         <div className="tab-content" id="v-pills-tabContent">
           <div className="d-flex" style={{ height: "150px" }}>

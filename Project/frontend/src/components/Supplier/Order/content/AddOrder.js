@@ -95,10 +95,13 @@ export default function AddOrder() {
     newOrder.status = "Pending";
     newOrder.orderDate = tDate;
     newOrder.reqID = details.reqID;
+    let port = window.location.port;
     axios
       .post("http://localhost:8070/order/add", newOrder)
       .then(() => {
-        window.location.reload(false);
+        // window.location.reload(false);
+        window.location.replace(`http://localhost:${port}/Manager/Order`);
+
         alert("New Order details Added Successfully");
       })
       .catch((err) => {

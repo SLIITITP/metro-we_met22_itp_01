@@ -534,7 +534,7 @@ export default function Manager() {
           }
         />
       </Routes>
-      SupFetchChefRequests
+
       <Routes>
         <Route
           path="/Manager/Order/fetch"
@@ -548,7 +548,7 @@ export default function Manager() {
       </Routes>
       <Routes>
         <Route
-          path="/Manager/Order/add/:id"
+          path="/Manager/Order/Manager/Order/add/:id"
           element={
             <>
               <AddOrder />
