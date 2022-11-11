@@ -24,11 +24,14 @@ import GetInvoice from "../components/StaffManagementEmployee/Invoice/Content/Ge
 import InvoiceDetails from "../components/StaffManagementEmployee/Invoice/Content/InvoiceDetails";
 
 //Receptionist Interface Nuha
-
 import { SideNavigationCloseBookings } from "../components/BookingManagement/CloseBookings/Components/SideNavigationCloseBookings";
-import { SideNavigationReport } from "../components/BookingManagement/Report/Components/SideNavigationReport";
 import { SideNavigationViewBookings } from "../components/BookingManagement/ViewBookings/Components/SideNavigationViewBookings";
 import { SideNavigationViewUsers } from "../components/BookingManagement/ViewUsers/Components/SideNavigationViewUsers";
+import HomeScreen from "../components/BookingManagement/CloseBookings/Screens/HomeScreen";
+import BookingScreen from "../components/BookingManagement/CloseBookings/Screens/BookingScreen";
+import ViewBookings from "../components/BookingManagement/ViewBookings/Screens/ViewBookings";
+import ViewUsers from "../components/BookingManagement/ViewUsers/Screens/ViewUsers";
+
 
 //chef interface Rashida
 import { SideNavigationChefProfile } from "../components/KitchenManagement/Profile/Component/SideNavigationChefProfile";
@@ -39,8 +42,8 @@ import FetchChefRequests from "../components/KitchenManagement/ChefRequests/Cont
 import IngredientFetchChefRequests from "../components/KitchenManagement/ChefIngredientsLog/Content/fetchChefIngredientRequests";
 import ChefRequestDetails from "../components/KitchenManagement/ChefRequests/Content/chefRequestDetails";
 import EditChefRequest from "../components/KitchenManagement/ChefRequests/Content/editChefRequest";
-import HomeScreen from "../components/BookingManagement/CloseBookings/Screens/HomeScreen";
-import BookingScreen from "../components/BookingManagement/CloseBookings/Screens/BookingScreen";
+
+
 
 export default function Staff() {
   return (
@@ -228,19 +231,10 @@ export default function Staff() {
       </Routes>
       <Routes>
         <Route
-          path="/Staff/report"
-          element={
-            <>
-              <SideNavigationReport />
-            </>
-          }
-        />
-      </Routes>
-      <Routes>
-        <Route
           path="/Staff/viewBookings"
           element={
             <>
+               <ViewBookings />
               <SideNavigationViewBookings />
             </>
           }
@@ -251,6 +245,7 @@ export default function Staff() {
           path="/Staff/viewCustomers"
           element={
             <>
+              <ViewUsers />
               <SideNavigationViewUsers />
             </>
           }

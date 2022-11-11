@@ -95,28 +95,6 @@ function SideNavigationCloseBookings() {
             </button>
           </Link>
 
-          <Link
-            to="/Staff/report"
-            style={{
-              textDecoration: "none",
-              color: "black",
-              FontFace: "bold",
-            }}
-          >
-            <button
-              className="nav-link "
-              id="v-pills-profile-tab"
-              data-bs-toggle="pill"
-              data-bs-target="#v-pills-profile"
-              type="button"
-              role="tab"
-              aria-controls="v-pills-profile"
-              aria-selected="true"
-              style={{ width: "100%" }}
-            >
-              Report
-            </button>
-          </Link>
 
         </div>
         <div className="tab-content" id="v-pills-tabContent">
@@ -161,7 +139,7 @@ function SideNavigationCloseBookings() {
           >
             ...
           </div>
-          <div className="d-flex" style={{ height: "315px" }}>
+          <div className="d-flex" style={{ height: "100px" }}>
             <div className="vr"></div>
           </div>
         </div>
