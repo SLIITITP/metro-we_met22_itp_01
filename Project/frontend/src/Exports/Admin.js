@@ -4,6 +4,7 @@ import MainNavigationAdmin from "../components/MainNavigationAdmin";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import ComplaintReport from "../components/CustomerService/CustomerServiceAdmin/complaints/complaintReport";
 import SideNavForCustServReport from "../components/CustomerService/CustomerServiceAdmin/complaints/SideNavForCustServReport";
+import TransportReport from "../components/CustomerService/CustomerServiceAdmin/transport/transportReport";
 
 export default function CustServ() {
   return (
@@ -23,6 +24,13 @@ export default function CustServ() {
         <Route
           path="/admin/customerservice/complaint"
           element={<ComplaintReport />}
+        />
+      </Routes>
+
+      <Routes>
+        <Route
+          path="/admin/customerservice/transport"
+          element={<TransportReport />}
         />
       </Routes>
     </div>

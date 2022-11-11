@@ -7,7 +7,7 @@ export default function GetAllTransports() {
   useEffect(() => {
     //useEffect is a react hook that calls itself when the page loads/reloads
     axios
-      .get("http://localhost:8070/customerService/transportManagement")
+      .get("http://localhost:8070/customerService/transportRequest")
       .then((allInfo) => {
         setTransportRequest(allInfo.data);
         console.log("Data retreived Successfully");

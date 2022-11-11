@@ -70,55 +70,62 @@ export default function DisplayTransportPage() {
 
         console.log(selectedDate);
 
+        var sAvail = 0;
         //To display only current date's transport booking for a route
         if (
           allReqList[i1].serviceType === "TransportRequest" &&
           allReqList[i1].bookingDate === selectedDate
         ) {
           for (s = 0; s < allTransList.length; s++) {
-            if (allReqList[i1].reqId === allTransList[s].reqId) break;
+            if (allReqList[i1].reqId === allTransList[s].reqId) {
+              sAvail = 1;
+              break;
+            }
           }
 
-          if (selectedRequestList.length === 0) {
-            selectedRequestList.push(allReqList[i1]);
-            selectedRequestList[0].bookedSeats = allTransList[s].noOfSeats;
-            selectedRequestList[0].availableSeats =
-              72 - selectedRequestList[0].bookedSeats;
-          } else if (selectedRequestList.length >= 1) {
-            console.log("in 2nd loop");
-            var available = 0;
-            var t = 0;
-            var v = 0;
-
-            //This loop is just to check if the record for similar route already exists
-            //Or A for loop to check if the record already exists in seletedRequestList
-            for (t = 0; t < selectedRequestList.length; t++) {
-              if (allReqList[i1].route === selectedRequestList[t].route) {
-                available = 1;
-                break;
-              }
-            }
-
-            //To get the correct transport record
-            for (v = 0; v < allTransList.length; v++) {
-              if (allReqList[i1].reqId === allTransList[v].reqId) break;
-            }
-
-            //To get the correct RequestList record
-            var b = 0;
-
-            for (b = 0; b < selectedRequestList.length; b++) {
-              if (allReqList[i1].route === selectedRequestList[b].route) break;
-            }
-
-            if (available === 1)
-              selectedRequestList[b].bookedSeats += allTransList[v].noOfSeats;
-            else if (available === 0) {
+          if (sAvail == 1) {
+            if (selectedRequestList.length === 0) {
               selectedRequestList.push(allReqList[i1]);
-              selectedRequestList[b].bookedSeats = allTransList[v].noOfSeats;
+              selectedRequestList[0].bookedSeats = allTransList[s].noOfSeats;
+              selectedRequestList[0].availableSeats =
+                72 - selectedRequestList[0].bookedSeats;
+            } else if (selectedRequestList.length >= 1) {
+              console.log("in 2nd loop");
+              var available = 0;
+              var t = 0;
+              var v = 0;
+
+              //This loop is just to check if the record for similar route already exists
+              //Or A for loop to check if the record already exists in seletedRequestList
+              for (t = 0; t < selectedRequestList.length; t++) {
+                if (allReqList[i1].route === selectedRequestList[t].route) {
+                  available = 1;
+                  break;
+                }
+              }
+
+              //To get the correct transport record
+              for (v = 0; v < allTransList.length; v++) {
+                if (allReqList[i1].reqId === allTransList[v].reqId) break;
+              }
+
+              //To get the correct RequestList record
+              var b = 0;
+
+              for (b = 0; b < selectedRequestList.length; b++) {
+                if (allReqList[i1].route === selectedRequestList[b].route)
+                  break;
+              }
+
+              if (available === 1)
+                selectedRequestList[b].bookedSeats += allTransList[v].noOfSeats;
+              else if (available === 0) {
+                selectedRequestList.push(allReqList[i1]);
+                selectedRequestList[b].bookedSeats = allTransList[v].noOfSeats;
+              }
+              selectedRequestList[b].availableSeats =
+                72 - selectedRequestList[b].bookedSeats;
             }
-            selectedRequestList[b].availableSeats =
-              72 - selectedRequestList[b].bookedSeats;
           }
         }
       }
@@ -146,7 +153,6 @@ export default function DisplayTransportPage() {
         if (selectedRequestList[z].route === allDrivers[f].route) {
           selectedRequestList[z].driverID = allDrivers[f].driverID;
           selectedRequestList[z].busNo = allDrivers[f].busNo;
-          selectedRequestList[z].cancellationReason = allTransList[f].message;
           break;
         }
       }
@@ -177,6 +183,8 @@ export default function DisplayTransportPage() {
 
     var desc = event.target.cancellationReason.value;
 
+    console.log(desc);
+
     for (j = 0; j < allTransList.length; j++) {
       if (
         allTransList[j].busNo === busNo &&
@@ -185,6 +193,10 @@ export default function DisplayTransportPage() {
         allTransList[j].status = "Cancelled";
         allTransList[j].message = desc;
         cancellationTransList.push(allTransList[j]);
+
+        // var len = cancellationTransList.length - 1;
+        // cancellationTransList[len].status = "Cancelled";
+        // cancellationTransList[len].message = desc;
       }
     }
 
@@ -282,7 +294,6 @@ export default function DisplayTransportPage() {
             <th scope="col">BusNo</th>
             <th scope="col">Route</th>
             <th scope="col">DriverID</th>
-            <th scope="col">Route</th>
             <th scope="col">Date</th>
             <th scope="col">Booked</th>
             <th scope="col">Available</th>
@@ -307,7 +318,6 @@ export default function DisplayTransportPage() {
                     <td scope="row">{val.busNo}</td>
                     <td>{val.route}</td>
                     <td>{val.driverID}</td>
-                    <td>{val.route}</td>
                     <td>{val.bookingDate}</td>
                     <td>{val.bookedSeats}</td>
                     <td>{val.availableSeats}</td>
@@ -328,9 +338,9 @@ export default function DisplayTransportPage() {
                         {/* To show the edit button only if val.status==="Ongoing" */}
                         {val.status !== "Cancelled" && (
                           <Container
-                            onSubmit={(e) => {
-                              OnSubmit(e, val.busNo, val.bookingDate);
-                              e.preventDefault();
+                            onSubmit={(event) => {
+                              OnSubmit(event, val.busNo, val.bookingDate);
+                              event.preventDefault();
                             }}
                           />
                         )}
