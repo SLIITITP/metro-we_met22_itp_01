@@ -14,6 +14,8 @@ app.use(bodyParser.urlencoded({ limit: "30 mb", extended: true }));
 //Add here the routers and paths
 const userRouter = require("./routes/UserRoutes");
 const CustomerRouter = require("./routes/CustomerRoutes.js");
+const bookRoomRouter = require("./routes/BookingRoomRoutes");
+const roomsRouter = require("./routes/roomsroute");
 
 // const OrdinaryCustomerRouter = require("./routes/OrdinaryCustomerRoutes.js");
 // const LoyalCustomerRouter = require("./routes/OrdinaryCustomerRoutes.js");
@@ -50,8 +52,7 @@ const InventoryRouter = require("./routes/InventoryRoutes.js");
 const KitchenStockRouter = require("./routes/KitchenStockRoutes.js");
 const ToiletriesRouter = require("./routes/ToiletriesRoutes.js");
 const AssetsRouter = require("./routes/AssetRoutes.js");
-const MaintenanceRouter = require("./routes/MaintenanceRoutes.js");
-
+const AmenityManagerRequestRouter = require("./routes/AmenityManagerRequestRoutes.js");
 //for parking management
 const ParkingFeeRouter = require("./routes/ParkingFeeRouter.js");
 const ParkingRouter = require("./routes/ParkingRouter.js");
@@ -60,7 +61,8 @@ const ParkingStructureRouter = require("./routes/ParkingStructureRouter.js");
 //https://localhost:8070/customer will load CustomerRouter.js
 app.use("/customer", CustomerRouter);
 app.use("/users", userRouter);
-
+app.use("/bookings",bookRoomRouter);
+app.use("/rooms",roomsRouter);
 // app.use("/loyalCustomer", LoyalCustomerRouter);
 // app.use("/ordinaryCustomer", OrdinaryCustomerRouter);
 app.use("/customerService", CustomerRequestRouter);
@@ -92,11 +94,12 @@ app.use("/department", DepartmentRouter);
 app.use("/inventory/chefRequest", chefRequestRouter);
 app.use("/kitchenIngredients", KitchenIngredientsRouter);
 app.use("/inventory/managerRequest", ManagerRequestRouter);
+app.use("/inventory/amenityManagerRequest", AmenityManagerRequestRouter);
 app.use("/inventory", InventoryRouter);
 app.use("/kitchenStock", KitchenStockRouter);
 app.use("/toiletries", ToiletriesRouter);
 app.use("/assets", AssetsRouter);
-app.use("/maintenance", MaintenanceRouter);
+
 
 //https://localhost:8070/Park
 app.use("/park/parkFee", ParkingFeeRouter);

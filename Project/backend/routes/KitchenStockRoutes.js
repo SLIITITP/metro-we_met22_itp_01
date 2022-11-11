@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const KitchenStock = require("../models/KitchenStock");
+//const KitchenStock = require("../models/KitchenStock");
 let kitchenStock = require("../models/KitchenStock");
 
 router.route("/add").post((req, res) => {
@@ -30,52 +30,36 @@ router.route("/add").post((req, res) => {
     });
 });
 
-//http://localhost:8080/employee/read
 //Read data from the database
-//Display records of all the employees
-router.route("/").get((req, res) => {
-  kitchenStock.find().exec((err, kitchenStock) => {
-    if (err) {
-      return res.status(400).json({
-        error: err,
-      });
-    }
-    return res.status(200).json({
-      success: true,
-      existingKitchenStocks: kitchenStock,
-    });
-  });
+//Display records of all the ingredients
+router.route("/").get(async (req, res) => {
+  try {
+    const allReq = await kitchenStock.find();
+    res.status(200).json(allReq);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
 });
 
 router.route("/update/:id").put(async (req, res) => {
-  let id = req.params.id;
-  const { invenID, quantity, category, name, description, date } = req.body;
+  const id = req.params.id;
+  const body = req.body;
+  try {
+    await kitchenStock.findByIdAndUpdate(id, body);
 
-  const updateKitchenStock = {
-    invenID,
-    quantity,
-    category,
-    name,
-    description,
-    date,
-  };
-
-  const update = await KitchenStock.findByIdAndUpdate(id, updateKitchenStock)
-    .then(() => {
-      res.status(200).send({ status: "Kitchen Stock updated successfully" });
-    })
-    .catch((err) => {
-      console.log(err);
-      res
-        .status(500)
-        .send({ status: "Error with updating data", error: err.message });
-    });
+    res.status(200).send("Successfully Updated");
+  } catch {
+    (err) => {
+      res.status(500).send(err.message);
+    };
+  }
 });
 
 router.route("/delete/:id").delete(async (req, res) => {
   let id = req.params.id;
 
-  await KitchenStock.findByIdAndDelete(id)
+  await kitchenStock
+    .findByIdAndDelete(id)
     .then(() => {
       res.status(200).send({ status: "Kitchen Stock deleted successfully" });
     })
@@ -86,20 +70,19 @@ router.route("/delete/:id").delete(async (req, res) => {
       });
     });
 });
-
+//display records of one ingredient
 router.route("/get/:id").get(async (req, res) => {
-  let id = req.params.id;
-  const kitchenStock = await KitchenStock.findById(id)
-    .then((kitchenStock) => {
-      res.status(200).send({ status: "kitchen stock fetched", kitchenStock });
-    })
-    .catch(() => {
-      console.log(err.message);
-      res.status(500).send({
-        status: "Error with fetching kitchen stock",
-        error: err.message,
-      });
-    });
-});
+  let userId = req.params.id;
 
+  kitchenStock.findById(userId, (err, kitchenStock) => {
+    if (err) {
+      return res.status(400).json({ success: false, err });
+    }
+
+    return res.status(200).json({
+      success: true,
+      kitchenStock,
+    });
+  });
+});
 module.exports = router;

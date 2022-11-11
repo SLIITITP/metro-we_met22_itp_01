@@ -121,14 +121,13 @@ export default function GetLeaveRequestsManager() {
     <>
       <div
         className="container"
-        style={{ float: "right", marginRight: "-900px" }}
+        style={{ float: "right", marginRight: "-1000px" }}
       >
         <form
           class="form-inline my-2 my-lg-0"
           onSubmit={(e) => {
             setSearch(e.target.search.value);
             e.preventDefault();
-            // e.window.location.reload(false);
           }}
         >
           <input
@@ -148,7 +147,7 @@ export default function GetLeaveRequestsManager() {
       <div
         className="container"
         style={{
-          width: "80%",
+          width: "75%",
           float: "center",
           marginTop: "100px",
           marginLeft: "215px",

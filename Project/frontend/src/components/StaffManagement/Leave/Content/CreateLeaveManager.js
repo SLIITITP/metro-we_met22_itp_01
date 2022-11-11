@@ -15,6 +15,17 @@ export default function CreateLeaveManager() {
   const [type, setType] = useState("");
   const [description, setDescription] = useState("");
 
+  //To find the last id
+  let j = leaveList.length;
+  j--;
+  if (j >= 0) {
+    let leaveId = parseInt(leaveList[j].leaveID);
+    leaveId++;
+    leaveIdString = leaveId.toString();
+  } else {
+    leaveIdString = "1";
+  }
+
   function sendData(e) {
     e.preventDefault();
 
@@ -29,21 +40,7 @@ export default function CreateLeaveManager() {
       description,
     };
 
-    //To find the last id
-    let j = leaveList.length;
-    j--;
-    if (j >= 0) {
-      let leaveId = parseInt(leaveList[j].leaveID);
-      leaveId++;
-      leaveIdString = leaveId.toString();
-      setLeaveID(leaveIdString);
-      console.log(leaveID);
-    } else {
-      setLeaveID(leaveIdString);
-      console.log(leaveID);
-    }
-
-    console.log(newLeave);
+    newLeave.leaveID = leaveIdString;
 
     axios
       .post("http://localhost:8070/leave/create", newLeave)
@@ -55,15 +52,6 @@ export default function CreateLeaveManager() {
       .catch((err) => {
         alert(err);
       });
-
-    // To clear out the form fields
-    document.getElementById("leaveID").value = "";
-    document.getElementById("empID").value = "";
-    //document.getElementById("empName").value = "";
-    document.getElementById("startDate").value = "";
-    document.getElementById("endDate").value = "";
-    document.getElementById("type").value = "";
-    document.getElementById("description").value = "";
   }
 
   return (
@@ -84,23 +72,6 @@ export default function CreateLeaveManager() {
         >
           Request For Leave
         </h1>
-
-        {/* <div className="mb-3">
-          <label htmlFor="LeaveID" className="form-label">
-            Leave ID
-          </label>
-          <input
-            type="text"
-            id="leaveID"
-            name="leaveID"
-            className="form-control"
-            required
-            placeholder="Enter leave id"
-            onChange={(event) => {
-              setLeaveID(event.target.value);
-            }}
-          />
-        </div> */}
 
         <div className="mb-3">
           <label htmlFor="EmpID" className="form-label">

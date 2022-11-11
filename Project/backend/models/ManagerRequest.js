@@ -1,45 +1,45 @@
-const mongoose = require ("mongoose");
+const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 //Manager_Request (reqID, date, req_type, invenID, status, managerID)
 
-const ManagerRequestSchema = new Schema ({
-    reqID: {
-        type: String,
-        required: true
-    },
+const ManagerRequestSchema = new Schema({
+  reqID: {
+    type: String,
+    required: true,
+    unique: true,
+  },
 
-    date: {
-        type: Date,
-        default: Date()
-    },
+  date: {
+    type: String,
+    required: true,
+  },
 
-    reqType: {
-        type: String,
-        required: true
-    },
+  reqType: {
+    type: String,
+  },
 
-    invenID: {
-        type: String,
-        required:true
-    },
-    //accepted/rejected/pending status
-    status: {
-        type: String,
-        required: true,
-        default: "pending"
-    },
-    managerID: {
-        type: String,
-        required: true
-    },
-    
-   
+  invenID: {
+    type: String,
+  },
+  //accepted/rejected/pending status
+  status: {
+    type: String,
+    default: "Pending",
+  },
+
+  name: {
+    type: String,
+  },
+
+  quantity: {
+    type: Number,
+  },
+  description: {
+    type: String,
+  },
 });
 
-const ManagerRequest = mongoose.model (
-        "ManagerRequest",
-        ManagerRequestSchema
-    );
+const ManagerRequest = mongoose.model("ManagerRequest", ManagerRequestSchema);
 
-    module.exports = ManagerRequest;
+module.exports = ManagerRequest;

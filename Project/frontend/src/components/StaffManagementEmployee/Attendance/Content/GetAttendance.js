@@ -38,7 +38,6 @@ export default function GetAttendance() {
   var employee = GetEmployeeDetails();
 
   const [show, setShow] = useState(false);
-  const [disabled, setDisabled] = useState(false);
   const [attenID, setAttenID] = useState("");
   const [empID, setEmpID] = useState("");
   const [date, setDate] = useState("");
@@ -278,7 +277,7 @@ export default function GetAttendance() {
       >
         <div
           className="container"
-          style={{ float: "right", marginRight: "-900px" }}
+          style={{ float: "right", marginRight: "-1000px" }}
         >
           <form
             class="form-inline my-2 my-lg-0"

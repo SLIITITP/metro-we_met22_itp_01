@@ -124,7 +124,7 @@ export default function GetLeavesManager() {
     <>
       <div
         className="container"
-        style={{ float: "right", marginRight: "-800px" }}
+        style={{ float: "right", marginRight: "-940px" }}
       >
         <form
           class="form-inline my-2 my-lg-0"
