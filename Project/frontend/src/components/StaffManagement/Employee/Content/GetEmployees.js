@@ -33,7 +33,7 @@ export default function GetEmployees() {
     <>
       <div
         className="container"
-        style={{ float: "right", marginRight: "-1130px" }}
+        style={{ float: "right", marginRight: "-1020px" }}
       >
         <form
           class="form-inline my-2 my-lg-0"

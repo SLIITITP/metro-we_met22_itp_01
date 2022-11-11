@@ -194,6 +194,11 @@ export default function GetInvoiceManager() {
               <option value="1113">1113</option>
               <option value="1114">1114</option>
               <option value="1115">1115</option>
+              <option value="1116">1116</option>
+              {/* <option value="1117">1117</option>
+              <option value="1118">1118</option>
+              <option value="1119">1119</option>
+              <option value="1120">1120</option> */}
             </select>
           </div>
 
@@ -231,7 +236,7 @@ export default function GetInvoiceManager() {
       >
         <div
           className="container"
-          style={{ float: "right", marginRight: "-975px" }}
+          style={{ float: "right", marginRight: "-1100px" }}
         >
           <form
             class="form-inline my-2 my-lg-0"

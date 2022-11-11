@@ -15,7 +15,7 @@ export default function GetAttendanceOfEmployees() {
     <>
       <div
         className="container"
-        style={{ float: "right", marginRight: "-1200px" }}
+        style={{ float: "right", marginRight: "-1100px" }}
       >
         <form className="form-inline my-2 my-lg-0">
           <input
