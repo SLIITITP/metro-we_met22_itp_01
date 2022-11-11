@@ -121,9 +121,9 @@ export default function GetLeaves() {
     <div>
       <div
         className="container"
-        style={{ float: "right", marginRight: "-1000px" }}
+        style={{ float: "right", marginRight: "-1250px" }}
       >
-        <form
+        {/* <form
           class="form-inline my-2 my-lg-0"
           onSubmit={(e) => {
             setSearch(e.target.search.value);
@@ -142,6 +142,27 @@ export default function GetLeaves() {
           <button class="btn btn-primary my-2 my-sm-0" type="submit">
             <i class="bi bi-search"></i>
           </button>
+        </form> */}
+        <form className="form-inline my-2 my-lg-0">
+          <select
+            className="form-select"
+            style={{
+              marginBottom: "30px",
+              width: "150px",
+            }}
+            id="search"
+            name="search"
+            onChange={(e) => {
+              setSearch(e.target.value);
+              e.preventDefault();
+            }}
+          >
+            <option value="">Show All</option>
+            <option value="Pending">Pending</option>
+            <option value="Cancelled">Cancelled</option>
+            <option value="Approved">Approved</option>
+            <option value="Rejected">Rejected</option>
+          </select>
         </form>
       </div>
 
