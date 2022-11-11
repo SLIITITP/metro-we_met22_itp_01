@@ -56,10 +56,7 @@ export default function MainNavigationStaff() {
         </li>
 
         <li className="nav-item" role="presentation">
-          <Link
-            to="/Staff/kitchenStaff"
-            style={{ textDecoration: "none" }}
-          >
+          <Link to="/Staff/kitchenStaff" style={{ textDecoration: "none" }}>
             <button
               className="nav-link"
               id="profile-tab"
@@ -71,23 +68,6 @@ export default function MainNavigationStaff() {
               aria-selected="false"
             >
               Kitchen
-            </button>
-          </Link>
-        </li>
-
-        <li className="nav-item" role="presentation">
-          <Link to="" style={{ textDecoration: "none" }}>
-            <button
-              className="nav-link"
-              id="profile-tab"
-              data-bs-toggle="tab"
-              data-bs-target="#profile-tab-pane"
-              type="button"
-              role="tab"
-              aria-controls="profile-tab-pane"
-              aria-selected="false"
-            >
-              Restaurant
             </button>
           </Link>
         </li>
