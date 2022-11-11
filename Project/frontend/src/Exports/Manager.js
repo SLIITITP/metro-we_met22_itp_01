@@ -31,14 +31,14 @@ import LeaveDetailsManager from "../components/StaffManagement/ManageLeaves/Cont
 import SideNavigationReports from "../components/StaffManagement/Reports/Component/SideNavigationReports";
 
 //Inventory Manager Interface -  Rashida
-import { SideNavigationProfile } from "../components/InventoryManagement/Profile/Component/SideNavigationProfile";
+//import SideNavigationProfile from "../components/StaffManagement/Profile/Component/SideNavigationProfile";
 import { SideNavigationIngredients } from "../components/InventoryManagement/IngredientsLog/Component/sideNavigationIngredients";
 import CreateIngredients from "../components/InventoryManagement/IngredientsLog/Content/createIngredients";
 import { SideNavigationToiletries } from "../components/InventoryManagement/ToiletriesLog/Component/SideNavigationToiletries";
 import { SideNavigationAssets } from "../components/InventoryManagement/AssetsLog/Component/SideNavigationAssets";
 import { SideNavigationAttendRequest } from "../components/InventoryManagement/AttendRequests/Component/SideNavigationAttendRequests";
 
-import { SideNavigationReports } from "../components/InventoryManagement/Reports/Component/SideNavigationReports";
+//import SideNavigationReports from "../components/StaffManagement/Reports/Component/SideNavigationReports";
 import { SideNavigationRequestForSupplies } from "../components/InventoryManagement/RequestForSupplies/Component/SideNavigationRequestForSupplies";
 import FetchIngredients from "../components/InventoryManagement/IngredientsLog/Content/fetchIngredients";
 import EditIngredients from "../components/InventoryManagement/IngredientsLog/Content/EditIngredients";
