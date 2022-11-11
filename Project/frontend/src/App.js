@@ -6,12 +6,15 @@ import LoginPage from "./components/Login/Login";
 import Staff from "./Exports/Staff";
 import Manager from "./Exports/Manager";
 import Admin from "./Exports/Admin";
-
+import Customer from "./Exports/Customer";
 function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<LoginPage />}></Route> //add as star after
+        <Route path="/*" element={<Customer />}></Route> //add as star after
+      </Routes>
+      <Routes>
+        <Route path="/login" element={<LoginPage />}></Route> //add as star after
       </Routes>
       <Routes>
         <Route path="/*" element={<CustServ />}></Route>
