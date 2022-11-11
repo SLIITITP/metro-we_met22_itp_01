@@ -57,7 +57,7 @@ export default function MainNavigationStaff() {
 
         <li className="nav-item" role="presentation">
           <Link
-            to="/Staff/inventoryStaff/kitchenStaff"
+            to="/Staff/kitchenStaff"
             style={{ textDecoration: "none" }}
           >
             <button

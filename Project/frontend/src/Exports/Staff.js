@@ -25,6 +25,19 @@ import { SideNavigationReport } from "../components/BookingManagement/Report/Com
 import { SideNavigationViewBookings } from "../components/BookingManagement/ViewBookings/Components/SideNavigationViewBookings";
 import { SideNavigationViewUsers } from "../components/BookingManagement/ViewUsers/Components/SideNavigationViewUsers";
 
+
+//chef interface Rashida
+import { SideNavigationChefProfile } from "../components/KitchenManagement/Profile/Component/SideNavigationChefProfile";
+import { SideNavigationChefRequests } from "../components/KitchenManagement/ChefRequests/Component/SideNavigationChefRequests";
+import { SideNavigationIngredientsLog } from "../components/KitchenManagement/ChefIngredientsLog/Component/SideNavigationIngredientsLog";
+import CreateChefRequest from "../components/KitchenManagement/ChefRequests/Content/createChefRequest";
+import FetchChefRequests from "../components/KitchenManagement/ChefRequests/Content/fetchChefRequests";
+import IngredientFetchChefRequests from "../components/KitchenManagement/ChefIngredientsLog/Content/fetchChefIngredientRequests";
+import ChefRequestDetails from "../components/KitchenManagement/ChefRequests/Content/chefRequestDetails";
+import EditChefRequest from "../components/KitchenManagement/ChefRequests/Content/editChefRequest";
+
+
+
 export default function Staff() {
   return (
     <div className="App">
@@ -48,11 +61,71 @@ export default function Staff() {
 
       {/* Rashida's */}
       <Routes>
-        <Route
-          path="/Staff/inventoryStaff/kitchenStaff"
-          element={<CreateRequest />}
-        />
-      </Routes>
+          <Route
+            path="/Staff/kitchenStaff"
+            element={
+              <>
+                <SideNavigationChefProfile />
+              </>
+            }
+          />
+        </Routes>
+
+        <Routes>
+          <Route
+            path="/Staff/kitchenStaff/chefRequests"
+            element={
+              <>
+                
+                <FetchChefRequests/>
+
+                <SideNavigationChefRequests />
+              </>
+            }
+          />
+          <Route
+            path="/Staff/kitchenStaff/chefRequests/requestLog/editRequest:id"
+            element={
+              <>
+                <EditChefRequest/>
+
+                <SideNavigationChefRequests />
+              </>
+            }
+          />
+
+          <Route
+            path="/Staff/kitchenStaff/chefRequests/requestLog"
+            element={
+              <>
+                {/* <FetchChefRequests /> */}
+                <CreateChefRequest/>
+                <SideNavigationChefRequests />
+              </>
+            }
+          />
+          <Route
+            path="/Staff/kitchenStaff/chefRequests/requestLog/getRequest:id"
+            element={
+              <>
+                <ChefRequestDetails/>
+                <SideNavigationChefRequests />
+              </>
+            }
+          />
+        </Routes>
+
+        <Routes>
+          <Route
+            path="/Staff/kitchenStaff/ingredientsLog"
+            element={
+              <>
+                <IngredientFetchChefRequests/>
+                <SideNavigationIngredientsLog />
+              </>
+            }
+          />
+        </Routes>
 
       {/* Zainab's */}
       <Routes>

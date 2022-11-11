@@ -29,7 +29,7 @@ function SideNavigationChefProfile() {
           style={{ backgroundColor: "white" }}
         >
           <Link
-            to="/Staff/kitchenStaff/profile"
+            to="/Staff/kitchenStaff"
             style={{
               textDecoration: "none",
               color: "black",
