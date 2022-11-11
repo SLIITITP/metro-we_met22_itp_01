@@ -8,6 +8,7 @@ export default function GetInvoice() {
   var invoiceDetails = GetInvoiceDetails();
 
   const [search, setSearch] = useState("");
+  var currDate = new Date().toISOString().slice(0, 10);
 
   let i = 0;
 
@@ -15,9 +16,9 @@ export default function GetInvoice() {
     <>
       <div
         className="container"
-        style={{ float: "right", marginRight: "-900px" }}
+        style={{ float: "right", marginRight: "-1150px" }}
       >
-        <form
+        {/* <form
           class="form-inline my-2 my-lg-0"
           onSubmit={(e) => {
             setSearch(e.target.search.value);
@@ -36,6 +37,19 @@ export default function GetInvoice() {
           <button class="btn btn-primary my-2 my-sm-0" type="submit">
             <i class="bi bi-search"></i>
           </button>
+        </form> */}
+        <form className="form-inline my-2 my-lg-0">
+          <input
+            type="date"
+            id="search"
+            name="search"
+            className="form-control"
+            defaultValue={currDate}
+            onChange={(e) => {
+              setSearch(e.target.value);
+              e.preventDefault();
+            }}
+          />
         </form>
       </div>
 
@@ -49,10 +63,7 @@ export default function GetInvoice() {
           position: "sticky",
         }}
       >
-        <h1
-          className="display-6"
-          style={{ marginBottom: "80px", zIndex: "200" }}
-        >
+        <h1 className="display-6" style={{ marginBottom: "80px" }}>
           Payment Invoice
         </h1>
 
