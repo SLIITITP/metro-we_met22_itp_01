@@ -141,7 +141,9 @@ export default function GetAttendance() {
     var endDate = year + "-" + month + "-" + dia + " " + time;
 
     <GetOneAttendance id={id} />;
+
     setEditAtten(GetOneAttendance);
+    console.log(editAtten);
     editAtten.checkOut = time;
 
     //Start time and End Time
@@ -243,7 +245,7 @@ export default function GetAttendance() {
               name="empID"
               className="form-control"
               required
-              value="12344"
+              value="12341114"
               placeholder="Enter employee id"
               // onChange={(e) => {
               //   setnewAtten({

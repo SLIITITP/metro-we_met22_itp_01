@@ -72,23 +72,14 @@ export default function LoginPage() {
 
         if (allEmp[k].designation.trim().slice(-7) === "Manager") {
           console.log("Hello Manager");
-
-          //setting the user type
-          localStorage.setItem("userType", "Manager");
+        } else if (allEmp[k].designation.trim().slice(-5) === "Admin") {
+          console.log("Hello Admin");
+          window.location.href = "/admin";
         } else {
-          localStorage.setItem("userType", "Employee");
           console.log("Hello Employee");
           window.location.href = "/Staff";
         }
         console.log(allEmp[k]);
-
-        //To find the employee's designation
-
-        //localStorage.setItem('currentUser',1);
-        // JSON.parse(localStorage.getItem("currentUser"));
-
-        //<Navbar data={result.data}/>
-        // window.location.href = "/room/";
       }
     } catch (error) {
       console.log(error);

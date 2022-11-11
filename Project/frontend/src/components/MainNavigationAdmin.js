@@ -87,7 +87,10 @@ export default function MainNavigationAdmin() {
         </li>
 
         <li className="nav-item" role="presentation">
-          <Link to="/admin/customerservice" style={{ textDecoration: "none" }}>
+          <Link
+            to="/admin/customerservice/complaint"
+            style={{ textDecoration: "none" }}
+          >
             <button
               className="nav-link"
               id="profile-tab"
