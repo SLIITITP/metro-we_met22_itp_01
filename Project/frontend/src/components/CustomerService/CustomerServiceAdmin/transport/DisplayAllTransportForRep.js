@@ -4,7 +4,8 @@ import getAllInfo from "../../ComplaintStaff/Content/getAllRequest";
 import { Container } from "../../TransportStaff/js/Container";
 import "../../../../index.css";
 import Trigger from "../../TransportStaff/Component/popOver";
-import GetAllTransports from "../../Transport/Content/getTransportRequest";
+
+import GetAllTransports from "./getTransportRequest";
 import GetAllDrivers from "../../TransportStaff/Content/getDriver";
 import GetAllAttendInfo from "../../ComplaintStaff/Content/getAllAttendRequest";
 
@@ -48,8 +49,8 @@ export default function DisplayAllTransportForRep() {
       Route: "Kandy",
       DriverID: "D002",
       Month: currMonth,
-      Booked: 0,
-      Available: 72,
+      Bookings: 0,
+      UnBooked: 2160,
       message: "None",
     },
     {
@@ -57,8 +58,8 @@ export default function DisplayAllTransportForRep() {
       Route: "Dambulla",
       DriverID: "D003",
       Month: currMonth,
-      Booked: 0,
-      Available: 72,
+      Bookings: 0,
+      UnBooked: 2160,
       message: "None",
     },
     {
@@ -66,8 +67,8 @@ export default function DisplayAllTransportForRep() {
       Route: "Wilpattu",
       DriverID: "D001",
       Month: currMonth,
-      Booked: 0,
-      Available: 72,
+      Bookings: 0,
+      UnBooked: 2160,
       message: "None",
     },
   ];
@@ -80,16 +81,16 @@ export default function DisplayAllTransportForRep() {
 
       if (allTransListMonth === search) {
         if (allTransList[i1].route === "Kandy") {
-          selectedRequestList[0].Booked += 1;
-          selectedRequestList[0].Available -= 1;
+          selectedRequestList[0].Bookings += 1;
+          selectedRequestList[0].UnBooked -= 1;
           selectedRequestList[0].Month = allTransListMonth;
         } else if (allTransList[i1].route === "Dambulla") {
-          selectedRequestList[1].Booked += 1;
-          selectedRequestList[1].Available -= 1;
+          selectedRequestList[1].Bookings += 1;
+          selectedRequestList[1].UnBooked -= 1;
           selectedRequestList[1].Month = allTransListMonth;
         } else if (allTransList[i1].route === "Wilpattu") {
-          selectedRequestList[2].Booked += 1;
-          selectedRequestList[2].Available -= 1;
+          selectedRequestList[2].Bookings += 1;
+          selectedRequestList[2].UnBooked -= 1;
           selectedRequestList[2].Month = allTransListMonth;
         }
       }
@@ -161,8 +162,8 @@ export default function DisplayAllTransportForRep() {
             <th scope="col">Route</th>
             <th scope="col">DriverID</th>
             <th scope="col">Month</th>
-            <th scope="col">Booked</th>
-            <th scope="col">Available</th>
+            <th scope="col">Total Bookings</th>
+            <th scope="col">UnBooked</th>
             {/* <th scope="col">Status</th>
             <th scope="col">Reason</th> */}
           </tr>
@@ -184,8 +185,8 @@ export default function DisplayAllTransportForRep() {
                     <td>{val.Route}</td>
                     <td>{val.DriverID}</td>
                     <td>{val.Month}</td>
-                    <td>{val.Booked}</td>
-                    <td>{val.Available}</td>
+                    <td>{val.Bookings}</td>
+                    <td>{val.UnBooked}</td>
                     {/* <td>{val.availableSeats}</td> */}
 
                     {/* <td style={{ color: color }}>{val.status}</td>
