@@ -4,6 +4,7 @@ import MainNavigationManager from "../components/MainNavigationManager";
 
 //Staff Manager Interface - Zainab
 import SideNavigationProfile from "../components/StaffManagement/Profile/Component/SideNavigationProfile";
+import ManagerProfileDetails from "../components/StaffManagement/Profile/Content/ManagerProfileDetails";
 
 import SideNavigationAttendance from "../components/StaffManagement/Attendance/Component/SideNavigationAttendance";
 import GetAttendanceManager from "../components/StaffManagement/Attendance/Content/GetAttendanceManager";
@@ -29,6 +30,7 @@ import GetLeavesManager from "../components/StaffManagement/ManageLeaves/Content
 import LeaveDetailsManager from "../components/StaffManagement/ManageLeaves/Content/LeaveDetailsManager";
 
 import SideNavigationReports from "../components/StaffManagement/Reports/Component/SideNavigationReports";
+import GetAttendanceOfEmployees from "../components/StaffManagement/Reports/Content/GetAttendanceOfEmployees";
 
 //Inventory Manager Interface -  Rashida
 
@@ -99,6 +101,7 @@ export default function Manager() {
           path="/Manager"
           element={
             <>
+              <ManagerProfileDetails />
               <SideNavigationProfile />
             </>
           }
@@ -236,6 +239,7 @@ export default function Manager() {
           path="/Manager/reports"
           element={
             <>
+              <GetAttendanceOfEmployees />
               <SideNavigationReports />
             </>
           }

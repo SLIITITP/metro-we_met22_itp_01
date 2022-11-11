@@ -42,6 +42,7 @@ export default function GetLeavesManager() {
     }
   }
 
+  //To not display the cancelled leaves on the manager's interface
   var final = [];
   var j = 0;
   for (j = 0; j < details.length; j++) {
@@ -124,9 +125,9 @@ export default function GetLeavesManager() {
     <>
       <div
         className="container"
-        style={{ float: "right", marginRight: "-940px" }}
+        style={{ float: "right", marginRight: "-1200px" }}
       >
-        <form
+        {/* <form
           class="form-inline my-2 my-lg-0"
           onSubmit={(e) => {
             setSearch(e.target.search.value);
@@ -145,6 +146,26 @@ export default function GetLeavesManager() {
           <button class="btn btn-primary my-2 my-sm-0" type="submit">
             <i class="bi bi-search"></i>
           </button>
+        </form> */}
+        <form className="form-inline my-2 my-lg-0">
+          <select
+            className="form-select"
+            style={{
+              marginBottom: "30px",
+              width: "150px",
+            }}
+            id="search"
+            name="search"
+            onChange={(e) => {
+              setSearch(e.target.value);
+              e.preventDefault();
+            }}
+          >
+            <option value="">Show All</option>
+            <option value="Pending">Pending</option>
+            <option value="Approved">Approved</option>
+            <option value="Rejected">Rejected</option>
+          </select>
         </form>
       </div>
 
@@ -158,10 +179,7 @@ export default function GetLeavesManager() {
           position: "sticky",
         }}
       >
-        <h1
-          className="display-6"
-          style={{ marginBottom: "80px", zIndex: "200" }}
-        >
+        <h1 className="display-6" style={{ marginBottom: "80px" }}>
           Manage Leave Requests
         </h1>
 
@@ -178,6 +196,8 @@ export default function GetLeavesManager() {
               <th scope="col">Description</th>
               <th scope="col">Status</th>
               <th scope="col">Action</th>
+              <th></th>
+              <th></th>
             </tr>
           </thead>
           <tbody>
@@ -214,7 +234,8 @@ export default function GetLeavesManager() {
                         >
                           <i className="fa-regular fa-eye"></i>
                         </a>
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                      </td>
+                      <td>
                         {/* To show the approve button only if val.status==="Pending" or  val.status==="Rejected"*/}
                         {(val.status === "Pending" ||
                           val.status == "Rejected") && (
@@ -232,7 +253,8 @@ export default function GetLeavesManager() {
                             <i className="fa-solid fa-check"></i>
                           </a>
                         )}
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                      </td>
+                      <td>
                         {/* To show the reject button only if val.status==="Pending" or  val.status==="Approved"*/}
                         {(val.status === "Pending" ||
                           val.status === "Approved") && (

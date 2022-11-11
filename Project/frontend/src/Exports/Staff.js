@@ -8,6 +8,7 @@ import MainNavigationStaff from "../components/MainNavigationStaff";
 //Employee Interface - Zainab
 
 import SideNavigationProfileEmployee from "../components/StaffManagementEmployee/Profile/Component/SideNavigationProfileEmployee";
+import ProfileDetails from "../components/StaffManagementEmployee/Profile/Content/ProfileDetails";
 
 import SideNavigationAttendanceEmployee from "../components/StaffManagementEmployee/Attendance/Component/SideNavigationAttendanceEmployee";
 import GetAttendance from "../components/StaffManagementEmployee/Attendance/Content/GetAttendance";
@@ -142,6 +143,7 @@ export default function Staff() {
           path="/Staff/staffManagementEmployee"
           element={
             <>
+              <ProfileDetails />
               <SideNavigationProfileEmployee />
             </>
           }

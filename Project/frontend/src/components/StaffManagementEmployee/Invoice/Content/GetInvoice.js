@@ -5,7 +5,15 @@ import GetInvoiceDetails from "./GetAllInvoice";
 //import { Link } from "react-router-dom";
 
 export default function GetInvoice() {
+  const emp = JSON.parse(localStorage.getItem("currentUser")).empID;
   var invoiceDetails = GetInvoiceDetails();
+  var x = 0;
+  var details = [];
+  for (x = 0; x < invoiceDetails.length; x++) {
+    if (invoiceDetails[x].empID == emp) {
+      details.push(invoiceDetails[x]);
+    }
+  }
 
   const [search, setSearch] = useState("");
   var currDate = new Date().toISOString().slice(0, 10);
@@ -81,8 +89,8 @@ export default function GetInvoice() {
             </tr>
           </thead>
           <tbody>
-            {invoiceDetails
-              ? invoiceDetails
+            {details
+              ? details
                   .filter((val) => {
                     if (search === "") return val;
                     else if (
@@ -114,7 +122,7 @@ export default function GetInvoice() {
                       </td>
                     </tr>
                   ))
-              : invoiceDetails}
+              : details}
           </tbody>
         </table>
       </div>

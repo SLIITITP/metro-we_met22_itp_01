@@ -31,7 +31,7 @@ export default function CreateLeave() {
 
     const newLeave = {
       leaveID,
-      empID,
+      empID: JSON.parse(localStorage.getItem("currentUser")).empID,
       //empName,
       startDate,
       endDate,
@@ -100,11 +100,13 @@ export default function CreateLeave() {
             id="empID"
             name="empID"
             className="form-control"
-            required
-            placeholder="Enter employee id"
-            onChange={(event) => {
-              setEmpID(event.target.value);
-            }}
+            value={JSON.parse(localStorage.getItem("currentUser")).empID}
+            readonly
+            //required
+            // placeholder="Enter employee id"
+            // onChange={(event) => {
+            //   setEmpID(event.target.value);
+            // }}
           />
         </div>
 

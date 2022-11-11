@@ -47,54 +47,210 @@ export default function ManagerLeaveDetails() {
         width: "50%",
         float: "center",
         marginTop: "50px",
-        marginLeft: "215px",
+        marginLeft: "250px",
         position: "sticky",
       }}
     >
       <h1 className="display-6" style={{ marginBottom: "40px", zIndex: "200" }}>
         Leaves Details
       </h1>
-
-      <table className="table">
+      <table
+        className="table"
+        style={{
+          border: "2px solid ",
+          borderColor: " #96D4D4",
+        }}
+      >
         <tr>
-          <th scope="col">Leave ID</th>
-          <td>{details.ID}</td>
+          <th
+            scope="col"
+            style={{
+              border: "2px solid ",
+              borderColor: " #96D4D4",
+            }}
+          >
+            Leave ID
+          </th>
+          <td
+            style={{
+              border: "2px solid ",
+              borderColor: " #96D4D4",
+            }}
+          >
+            {details.ID}
+          </td>
         </tr>
         <tr>
-          <th scope="col">Employee ID</th>
-          <td>{details.empID}</td>
+          <th
+            scope="col"
+            style={{
+              border: "2px solid ",
+              borderColor: " #96D4D4",
+            }}
+          >
+            Employee ID
+          </th>
+          <td
+            style={{
+              border: "2px solid ",
+              borderColor: " #96D4D4",
+            }}
+          >
+            {details.empID}
+          </td>
         </tr>
         <tr>
-          <th scope="col">Requested By </th>
-          <td>{details.empName}</td>
+          <th
+            scope="col"
+            style={{
+              border: "2px solid ",
+              borderColor: " #96D4D4",
+            }}
+          >
+            Requested By{" "}
+          </th>
+          <td
+            style={{
+              border: "2px solid ",
+              borderColor: " #96D4D4",
+            }}
+          >
+            {details.empName}
+          </td>
         </tr>
         <tr>
-          <th scope="col">Date of Absence From </th>
-          <td>{details.startDate}</td>
+          <th
+            scope="col"
+            style={{
+              border: "2px solid ",
+              borderColor: " #96D4D4",
+            }}
+          >
+            Date of Absence From{" "}
+          </th>
+          <td
+            style={{
+              border: "2px solid ",
+              borderColor: " #96D4D4",
+            }}
+          >
+            {details.startDate}
+          </td>
         </tr>
         <tr>
-          <th scope="col">Date of Absence To </th>
-          <td>{details.endDate}</td>
+          <th
+            scope="col"
+            style={{
+              border: "2px solid ",
+              borderColor: " #96D4D4",
+            }}
+          >
+            Date of Absence To{" "}
+          </th>
+          <td
+            style={{
+              border: "2px solid ",
+              borderColor: " #96D4D4",
+            }}
+          >
+            {details.endDate}
+          </td>
         </tr>
         <tr>
-          <th scope="col">Number of Days </th>
-          <td>{details.noOfDays}</td>
+          <th
+            scope="col"
+            style={{
+              border: "2px solid ",
+              borderColor: " #96D4D4",
+            }}
+          >
+            Number of Days{" "}
+          </th>
+          <td
+            style={{
+              border: "2px solid ",
+              borderColor: " #96D4D4",
+            }}
+          >
+            {details.noOfDays}
+          </td>
         </tr>
         <tr>
-          <th scope="col">Type</th>
-          <td>{details.type}</td>
+          <th
+            scope="col"
+            style={{
+              border: "2px solid ",
+              borderColor: " #96D4D4",
+            }}
+          >
+            Type
+          </th>
+          <td
+            style={{
+              border: "2px solid ",
+              borderColor: " #96D4D4",
+            }}
+          >
+            {details.type}
+          </td>
         </tr>
         <tr>
-          <th scope="col">Description</th>
-          <td>{details.description}</td>
+          <th
+            scope="col"
+            style={{
+              border: "2px solid ",
+              borderColor: " #96D4D4",
+            }}
+          >
+            Description
+          </th>
+          <td
+            style={{
+              border: "2px solid ",
+              borderColor: " #96D4D4",
+            }}
+          >
+            {details.description}
+          </td>
         </tr>
         <tr onChange={changeColor(details.status)}>
-          <th scope="col">Status</th>
-          <td style={{ color: color }}>{details.status}</td>
+          <th
+            scope="col"
+            style={{
+              border: "2px solid ",
+              borderColor: " #96D4D4",
+            }}
+          >
+            Status
+          </th>
+          <td
+            style={{
+              border: "2px solid ",
+              borderColor: " #96D4D4",
+              color: color,
+            }}
+          >
+            {details.status}
+          </td>
         </tr>
         <tr>
-          <th scope="col">Reason Of Approval/Rejection </th>
-          <td>{details.reasonOfStat}</td>
+          <th
+            scope="col"
+            style={{
+              border: "2px solid ",
+              borderColor: " #96D4D4",
+            }}
+          >
+            Reason Of Approval/Rejection{" "}
+          </th>
+          <td
+            style={{
+              border: "2px solid ",
+              borderColor: " #96D4D4",
+            }}
+          >
+            {details.reasonOfStat}
+          </td>
         </tr>
       </table>
       <button className="btn btn-primary">

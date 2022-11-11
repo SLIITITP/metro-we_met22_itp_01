@@ -169,7 +169,7 @@ export default function GetInvoiceManager() {
             <label htmlFor="EmpID" className="form-label">
               Employee ID
             </label>
-            <input
+            {/* <input
               type="text"
               id="empID"
               name="empID"
@@ -179,7 +179,22 @@ export default function GetInvoiceManager() {
               onChange={(event) => {
                 setEmpID(event.target.value);
               }}
-            />
+            /> */}
+            <select
+              className="form-select"
+              id="empID"
+              aria-label="Default select example"
+              onChange={(event) => {
+                setEmpID(event.target.value);
+              }}
+            >
+              <option value="Select">Select Employee ID</option>
+              <option value="1111">1111</option>
+              <option value="1112">1112</option>
+              <option value="1113">1113</option>
+              <option value="1114">1114</option>
+              <option value="1115">1115</option>
+            </select>
           </div>
 
           <div className="mb-3" style={{ float: "left", width: "25%" }}>
@@ -250,10 +265,7 @@ export default function GetInvoiceManager() {
             position: "sticky",
           }}
         >
-          <h1
-            className="display-6"
-            style={{ marginBottom: "40px", zIndex: "200" }}
-          >
+          <h1 className="display-6" style={{ marginBottom: "40px" }}>
             View Invoice
           </h1>
 

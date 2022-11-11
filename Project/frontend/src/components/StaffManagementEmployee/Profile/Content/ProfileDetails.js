@@ -1,17 +1,23 @@
 import React, { Component, useState, useEffect } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
-import GetEmployeeDetails from "./GetAllEmployees";
+import GetEmployeeDetails from "../../../StaffManagement/Employee/Content/GetAllEmployees";
+import GetAttendanceDetails from "../../Attendance/Content/GetAllAttendance";
+import GetLeaveDetails from "../../Leave/Content/GetAllLeaves";
 
-export default function EmployeeDetails() {
+export default function ProfileDetails() {
   const id = useParams();
   var z = id.id;
   var employee = GetEmployeeDetails();
+  var atten = GetAttendanceDetails();
+  var leave = GetLeaveDetails();
   var i = 0;
   var details = {};
-  //var name = "";
+
   for (i = 0; i < employee.length; i++) {
-    if (employee[i]._id == z) {
+    if (
+      employee[i].empID == JSON.parse(localStorage.getItem("currentUser")).empID
+    ) {
       details.ID = employee[i].empID;
       details.name = employee[i].name;
       details.designation = employee[i].designation;
@@ -27,6 +33,27 @@ export default function EmployeeDetails() {
       break;
     }
   }
+
+  let noOfDaysPresent = 0;
+  for (i = 0; i < atten.length; i++) {
+    if (
+      atten[i].empID == JSON.parse(localStorage.getItem("currentUser")).empID
+    ) {
+      noOfDaysPresent = noOfDaysPresent + 1;
+    }
+  }
+  details.noOfDaysPresent = noOfDaysPresent;
+
+  let noOfLeave = 0;
+  for (i = 0; i < leave.length; i++) {
+    if (
+      leave[i].empID == JSON.parse(localStorage.getItem("currentUser")).empID &&
+      leave[i].status === "Approved"
+    ) {
+      noOfLeave = noOfLeave + leave[i].noOfDays;
+    }
+  }
+  details.noOfLeave = noOfLeave;
 
   return (
     <div
@@ -156,6 +183,44 @@ export default function EmployeeDetails() {
               borderColor: " #96D4D4",
             }}
           >
+            No Of Days Worked
+          </th>
+          <td
+            style={{
+              border: "2px solid ",
+              borderColor: " #96D4D4",
+            }}
+          >
+            {details.noOfDaysPresent}
+          </td>
+        </tr>
+        <tr>
+          <th
+            scope="col"
+            style={{
+              border: "2px solid ",
+              borderColor: " #96D4D4",
+            }}
+          >
+            No Of Leave Taken
+          </th>
+          <td
+            style={{
+              border: "2px solid ",
+              borderColor: " #96D4D4",
+            }}
+          >
+            {details.noOfLeave}
+          </td>
+        </tr>
+        <tr>
+          <th
+            scope="col"
+            style={{
+              border: "2px solid ",
+              borderColor: " #96D4D4",
+            }}
+          >
             NIC
           </th>
           <td
@@ -263,15 +328,6 @@ export default function EmployeeDetails() {
           </td>
         </tr>
       </table>
-      <button className="btn btn-primary">
-        <a
-          href="/Manager/employees"
-          style={{ textDecoration: "none", color: "white" }}
-        >
-          <i class="fa-solid fa-chevron-left"></i>&nbsp; Back
-        </a>
-      </button>
-      <br></br>
       <br></br>
     </div>
   );

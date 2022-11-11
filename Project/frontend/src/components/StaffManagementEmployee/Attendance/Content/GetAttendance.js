@@ -30,13 +30,23 @@ export default function GetAttendance() {
 
   const [newAtten, setnewAtten] = useState({
     // attenID: "",
-    // empID: "",
+    empID: JSON.parse(localStorage.getItem("currentUser")).empID,
     date: dateString,
     checkIn: time,
   });
 
   let attenIdString = "1";
+
+  const emp = JSON.parse(localStorage.getItem("currentUser")).empID;
   var attendanceList = GetAttendanceDetails();
+  var x = 0;
+  var details = [];
+  for (x = 0; x < attendanceList.length; x++) {
+    if (attendanceList[x].empID == emp) {
+      details.push(attendanceList[x]);
+    }
+  }
+
   var employee = GetEmployeeDetails();
 
   const [show, setShow] = useState(false);
@@ -96,12 +106,6 @@ export default function GetAttendance() {
 
     newAtten.attenID = attenIdString;
 
-    var empIDHardCoded;
-    if (document.getElementById("empID") != null)
-      empIDHardCoded = document.getElementById("empID").value;
-
-    newAtten.empID = empIDHardCoded;
-
     axios
       .post("http://localhost:8070/attendance/create", newAtten)
       .then(() => {
@@ -144,7 +148,6 @@ export default function GetAttendance() {
     <GetOneAttendance id={id} />;
 
     setEditAtten(GetOneAttendance);
-    console.log(editAtten);
     editAtten.checkOut = time;
 
     //Start time and End Time
@@ -197,15 +200,16 @@ export default function GetAttendance() {
   }
 
   function validateAttendance() {
-    var empIdhard;
+    // var empId;
 
-    if (document.getElementById("empID") != null)
-      empIdhard = document.getElementById("empID").value;
+    // if (document.getElementById("empID") != null)
+    //   empId = document.getElementById("empID").value;
 
     for (var z = 0; z < attendanceList.length; z++) {
       if (
         attendanceList[z].date === dateString &&
-        attendanceList[z].empID === empIdhard
+        attendanceList[z].empID ===
+          JSON.parse(localStorage.getItem("currentUser")).empID
       )
         if (document.getElementById("startShift") != null)
           document.getElementById("startShift").disabled = true;
@@ -245,9 +249,10 @@ export default function GetAttendance() {
               id="empID"
               name="empID"
               className="form-control"
-              required
-              value="12341114"
-              placeholder="Enter employee id"
+              value={JSON.parse(localStorage.getItem("currentUser")).empID}
+              readOnly
+              //required
+              //placeholder="Enter employee id"
               // onChange={(e) => {
               //   setnewAtten({
               //     ...newAtten,
@@ -345,8 +350,8 @@ export default function GetAttendance() {
               </tr>
             </thead>
             <tbody>
-              {attendanceList
-                ? attendanceList
+              {details
+                ? details
                     .filter((val) => {
                       if (search === "") return val;
                       else if (
@@ -564,7 +569,7 @@ export default function GetAttendance() {
                         </td>
                       </tr>
                     ))
-                : attendanceList}
+                : details}
             </tbody>
           </table>
         </div>

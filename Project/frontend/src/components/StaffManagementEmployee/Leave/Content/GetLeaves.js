@@ -38,9 +38,18 @@ export default function GetLeaves() {
     setShow(true);
   }
 
+  const emp = JSON.parse(localStorage.getItem("currentUser")).empID;
+  var leaveDetails = GetLeaveDetails();
+  var x = 0;
+  var details = [];
+  for (x = 0; x < leaveDetails.length; x++) {
+    if (leaveDetails[x].empID == emp) {
+      details.push(leaveDetails[x]);
+    }
+  }
+
   //For the status field in the table
   var color = "black";
-  var leaveDetails = GetLeaveDetails();
 
   //For the search button
   const [search, setSearch] = useState("");
@@ -48,7 +57,6 @@ export default function GetLeaves() {
   const [leaveReqCancel, setLeaveReqCancel] = useState({});
   const [editLeave, setEditLeave] = useState({});
   let i = 0;
-  var leaveID;
 
   // const [type, setType] = useState("");
   const [startDate, setStartDate] = useState("");
@@ -58,12 +66,6 @@ export default function GetLeaves() {
 
   //To edit a pending request
   function EditRequest(id) {
-    for (i = 0; i < leaveDetails.length; i++) {
-      if (leaveDetails[i]._id == id) {
-        break;
-      }
-    }
-
     <GetOneLeave id={id} />;
     setEditLeave(GetOneLeave);
 
@@ -86,14 +88,6 @@ export default function GetLeaves() {
 
   //To cancel a pending request
   function CancelRequest(id) {
-    for (i = 0; i < leaveDetails.length; i++) {
-      if (leaveDetails[i]._id == id) {
-        break;
-      }
-    }
-
-    leaveID = leaveDetails[i].leaveID;
-
     <GetOneLeave id={id} />;
     setLeaveReqCancel(GetOneLeave);
 
@@ -197,8 +191,8 @@ export default function GetLeaves() {
             </tr>
           </thead>
           <tbody>
-            {leaveDetails
-              ? leaveDetails
+            {details
+              ? details
                   .filter((val) => {
                     if (search === "") return val;
                     else if (
@@ -353,7 +347,7 @@ export default function GetLeaves() {
                       </td>
                     </tr>
                   ))
-              : leaveDetails}
+              : details}
           </tbody>
         </table>
         <br></br>

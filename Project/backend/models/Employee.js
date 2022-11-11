@@ -14,8 +14,8 @@ const employeeSchema = new Schema({
     required: true,
   },
   DOB: {
-    type: String, 
-    required: true, 
+    type: String,
+    required: true,
   },
   gender: {
     type: String,
@@ -27,6 +27,10 @@ const employeeSchema = new Schema({
     unique: true,
   },
   designation: {
+    type: String,
+    required: true,
+  },
+  deptName: {
     type: String,
     required: true,
   },
