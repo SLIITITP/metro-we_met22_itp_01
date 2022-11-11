@@ -95,7 +95,7 @@ export default function GetInvoice() {
                           data-placement="top"
                           title="View"
                           className="btn btn-sm btn-primary"
-                          href={`/staffManagementEmployee/invoice/getInvoice/${val._id}`}
+                          href={`/Staff/staffManagementEmployee/invoice/getInvoice/${val._id}`}
                           style={{ textDecoration: "none" }}
                         >
                           <i className="fa-regular fa-eye"></i>
