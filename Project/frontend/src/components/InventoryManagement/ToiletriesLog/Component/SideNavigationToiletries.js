@@ -51,7 +51,7 @@ function SideNavigationToiletries() {
           </Link> */}
 
           <Link
-            to="/Manager/inventoryManagement/ingredientsLog"
+            to="/Manager/inventoryManagement/"
             style={{
               textDecoration: "none",
               color: "black",

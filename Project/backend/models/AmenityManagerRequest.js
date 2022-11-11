@@ -6,6 +6,7 @@ const Schema = mongoose.Schema;
 const AmenityManagerRequestSchema = new Schema({
   reqID: {
     type: String,
+    
   },
 
   date: {
@@ -19,6 +20,7 @@ const AmenityManagerRequestSchema = new Schema({
 
   invenID: {
     type: String,
+    
   },
   //accepted/rejected/pending status
   status: {

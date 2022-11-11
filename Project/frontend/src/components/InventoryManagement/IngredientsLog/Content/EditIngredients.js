@@ -49,7 +49,7 @@ export default function EditIngredient() {
       .then(() => {
         alert("Updated Successfully!");
         window.location.replace(
-          `http://localhost:${port}/Manager/inventoryManagement/ingredientsLog`
+          `http://localhost:${port}/Manager/inventoryManagement/`
         );
       })
       .catch((err) => {

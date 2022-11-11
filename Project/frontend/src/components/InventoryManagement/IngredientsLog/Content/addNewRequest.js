@@ -1,10 +1,20 @@
 import React, { useState } from "react";
 import axios from "axios";
-
+import GetIngredientRequestDetails from "./getAllRequests";
 export default function CreateNewRequest() {
-  // const [managerID, setManagerID] = useState("");
-  const [reqID, setReqID] = useState("");
-  const [invenID, setInventoryID] = useState("");
+  const[newRequest, setNewRequest] = useState({
+    reqID: " ",
+    invenID: " ",
+    reqType: " ",
+    name: " ",
+    quantity:0,
+    date: " ",
+    description: " ",
+    status: " ",
+  });
+  
+  const [reqID, setReqID] = useState("1");
+  const [invenID, setInventoryID] = useState("1");
   const [reqType, setReqType] = useState("");
   const [name, setName] = useState("");
   const [quantity, setQuantity] = useState("");
@@ -12,11 +22,39 @@ export default function CreateNewRequest() {
   const [description, setDescription] = useState("");
   const [status, setStatus] = useState("");
 
+  const requestList = GetIngredientRequestDetails();
+  let j = requestList.length;
+  let RequestIDString;
+  //let ID;
+  console.log(requestList);
+  j--;
+  if (j >= 0) {
+    let RequestID = parseInt(requestList[j].reqID);
+    RequestID++;
+    RequestIDString = RequestID.toString();
+  } else {
+  RequestIDString = "1";
+  }
+
+  const reqList = GetIngredientRequestDetails();
+  let s = reqList.length;
+  let reqIDString;
+  //let ID;
+  console.log(reqList);
+  s--;
+  if (s >= 0) {
+    let RequestID = parseInt(reqList[j].invenID);
+    RequestID++;
+    reqIDString = RequestID.toString();
+  } else {
+    reqIDString = "1";
+  }
+
   function addNewRequests(e) {
     e.preventDefault();
 
-    const newRequest = {
-      //managerID,
+    var newRequest = {
+      
       reqID,
       invenID,
       reqType,
@@ -26,13 +64,15 @@ export default function CreateNewRequest() {
       description,
       status,
     };
+    newRequest.reqID = RequestIDString;
+    newRequest.invenID = reqIDString;
     console.log(newRequest);
     axios
       .post("http://localhost:8070/inventory/managerRequest/add", newRequest)
       .then(() => {
         alert("request made successfully");
         window.location.replace(
-          "http://localhost:3000/inventoryManagement/requestLog"
+          "http://localhost:3000/Manager/inventoryManagement/requestLog"
         );
         // window.location.reload(false);
       })
@@ -60,51 +100,8 @@ export default function CreateNewRequest() {
         <h1 className="display-6" style={{ marginBottom: "20px" }}>
           Request Ingredient
         </h1>
-        {/* <div className="mb-3">
-          <label htmlFor="requestFormanagerID" className="form-label">
-            Manager ID
-          </label>
-          <input
-            type="text"
-            id="managerID"
-            name="managerID"
-            className="form-control"
-            placeholder="Enter Manager ID"
-            onChange={(e) => {
-              setManagerID(e.target.value);
-            }}
-          />
-        </div> */}
-        <div className="mb-3">
-          <label htmlFor="requestForRequestID" className="form-label">
-            Request ID
-          </label>
-          <input
-            type="text"
-            id="reqID"
-            name="reqID"
-            className="form-control"
-            placeholder="Enter Request ID"
-            onChange={(e) => {
-              setReqID(e.target.value);
-            }}
-          />
-        </div>
-        <div className="mb-3">
-          <label htmlFor="requestForinventoryID" className="form-label">
-            Inventory ID
-          </label>
-          <input
-            type="text"
-            id="invenID"
-            name="invenID"
-            className="form-control"
-            placeholder="Enter inventory ID"
-            onChange={(e) => {
-              setInventoryID(e.target.value);
-            }}
-          />
-        </div>
+      
+      
         <div className="mb-3">
           <label htmlFor="requestForCategory" className="form-label">
             Choose Category
@@ -196,7 +193,7 @@ export default function CreateNewRequest() {
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <button type="submit" className="btn btn-danger">
           <a
-            href="/inventoryManagement/requestLog"
+            href="/Manager/inventoryManagement/requestLog"
             style={{ textDecoration: "none", color: "white", padding: "40px" }}
           >
             Cancel

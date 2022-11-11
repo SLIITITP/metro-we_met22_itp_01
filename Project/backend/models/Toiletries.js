@@ -5,8 +5,8 @@ const Schema = mongoose.Schema;
 const ToiletriesSchema = new Schema({
   invenID: {
     type: String,
-    required: true,
-    unique: true,
+    //required: true,
+    //unique: true,
   },
 
   quantity: {

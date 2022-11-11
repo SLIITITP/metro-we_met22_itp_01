@@ -176,7 +176,7 @@ export default function CreateIngredients() {
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <button type="submit" className="btn btn-danger">
           <a
-            href="/Manager/inventoryManagement/ingredientsLog"
+            href="/Manager/inventoryManagement/"
             style={{ textDecoration: "none", color: "white" }}
           >
             Cancel

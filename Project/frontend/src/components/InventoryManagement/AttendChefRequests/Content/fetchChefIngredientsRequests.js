@@ -107,9 +107,9 @@ export default function FetchChefIngredientRequests() {
   }
 
   function changeColor(data) {
-    if (data === "Cancelled") color = "red";
+    if (data === "Rejected") color = "red";
     else if (data === "Approved") color = "green";
-    else if (data === "Rejected") color = "red";
+    else if (data === "Cancelled") color = "red";
     else if (data === "Pending") color = "#0d6efd";
   }
 

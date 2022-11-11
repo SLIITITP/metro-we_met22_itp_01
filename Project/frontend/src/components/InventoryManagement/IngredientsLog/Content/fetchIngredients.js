@@ -127,7 +127,7 @@ export default function FetchIngredients() {
                       <td>
                         <a
                           className="btn btn-warning"
-                          href={`ingredientsLog/editIngredient/${val._id}`}
+                          href={`/Manager/inventoryManagement/ingredientsLog/editIngredient/${val._id}`}
                         >
                           <i className="fas fa-edit"></i>&nbsp;Edit
                         </a>

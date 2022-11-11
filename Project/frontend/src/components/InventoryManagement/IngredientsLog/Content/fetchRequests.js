@@ -131,7 +131,7 @@ export default function FetchRequests() {
                   .filter((val) => {
                     if (search === "") return val;
                     else if (
-                      val.name.toLowerCase().includes(search.toLowerCase())
+                      val.status.toLowerCase().includes(search.toLowerCase())
                     ) {
                       return val;
                     }

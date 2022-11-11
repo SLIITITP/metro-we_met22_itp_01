@@ -4,7 +4,7 @@ import GetToiletryDetails from "./getAllToiletries";
 import { useParams } from "react-router-dom";
 
 export default function CreateAmenityRequest() {
-  // const [managerID, setManagerID] = useState("");
+  const [invenID, setinvenID] = useState("");
   const [reqID, setReqID] = useState("");
   const [quantity, setQuantity] = useState("");
   const [date, setRequestedDate] = useState("");
@@ -32,7 +32,7 @@ export default function CreateAmenityRequest() {
   }
   // let name = details.name;
   let reqType = details.category;
-  let invenID = details.invenID;
+  //let invenID = details.invenID;
 
   function addRequests(e) {
     e.preventDefault();
@@ -123,7 +123,8 @@ export default function CreateAmenityRequest() {
             name="invenID"
             className="form-control"
             placeholder="Enter inventory ID"
-            value={details.invenID}
+            onChange={(e) => setinvenID(e.target.value)}
+           // value={details.invenID}
           />
         </div>
         <div className="mb-3">

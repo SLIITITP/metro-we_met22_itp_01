@@ -27,12 +27,12 @@ export default function EditAsset() {
   console.log(z);
   // const [invenID, setInventoryID] = useState("");
   // const [category, setCategory] = useState("");
-  // const [name, setName] = useState("");
+   const [name, setName] = useState("");
   const [roomID, setRoomID] = useState("");
   const [purchaseDate, setPurchaseDate] = useState("");
   const [description, setDescription] = useState("");
   // const [availibilityStatus, setAvailibilityStatus] = useState("");
-  let name = details.name;
+  //let name = details.name;
   let category = details.category;
   let invenID = details.invenID;
 
@@ -117,6 +117,22 @@ export default function EditAsset() {
             value={details.category}
           />
          
+        </div>
+        <div className="mb-3">
+          <label htmlFor="requestForName" className="form-label">
+            Name
+          </label>
+          <input
+            type="text"
+            id="name"
+            name="name"
+           // readOnly
+            className="form-control"
+            placeholder={details.name}
+            onChange={(e) => {
+              setName(e.target.value);
+            }}
+          />
         </div>
        
         <div className="mb-3">

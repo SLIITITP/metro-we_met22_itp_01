@@ -1,31 +1,70 @@
 import React, { useState } from "react";
 import axios from "axios";
-
+import GetAmenityRequestDetails from "./getAmenityRequestDetails";
 export default function CreateNewAmenityRequest() {
-  // const [managerID, setManagerID] = useState("");
+ const[amenityReq,setAmenityReq] = useState({
+  reqID: " ",
+  invenID: " ",
+  reqType: " ",
+  quantity:0,
+  date: " ",
+  description: " ",
+  status: " ",
+ });
   const [reqID, setReqID] = useState("");
   const [invenID, setInventoryID] = useState("");
   const [reqType, setReqType] = useState("");
-  //const [name, setName] = useState("");
+ 
   const [quantity, setQuantity] = useState("");
   const [date, setRequestedDate] = useState("");
   const [description, setDescription] = useState("");
   const [status, setStatus] = useState("");
 
+  const requestList = GetAmenityRequestDetails();
+  let j = requestList.length;
+  let RequestIDString;
+  //let ID;
+  console.log(requestList);
+  j--;
+  if (j >= 0) {
+    let RequestID = parseInt(requestList[j].reqID);
+    RequestID++;
+    RequestIDString = RequestID.toString();
+  } else {
+  RequestIDString = "1";
+  }
+
+  const reqList = GetAmenityRequestDetails();
+  let s = reqList.length;
+  let reqIDString;
+  //let ID;
+  console.log(reqList);
+  s--;
+  if (s >= 0) {
+    let RequestID = parseInt(reqList[j].invenID);
+    RequestID++;
+    reqIDString = RequestID.toString();
+  } else {
+    reqIDString = "1";
+  }
+
+
   function addNewAmenityRequests(e) {
     e.preventDefault();
 
-    const newRequest = {
-      //managerID,
+    var newRequest = {
+     
       reqID,
       invenID,
       reqType,
-      //name,
+     
       quantity,
       date,
       description,
       status,
     };
+    newRequest.reqID = RequestIDString;
+    newRequest.invenID = reqIDString;
     console.log(newRequest);
     axios
       .post(
@@ -63,21 +102,7 @@ export default function CreateNewAmenityRequest() {
         <h1 className="display-6" style={{ marginBottom: "20px" }}>
           Request Amenity
         </h1>
-        {/* <div className="mb-3">
-          <label htmlFor="requestFormanagerID" className="form-label">
-            Manager ID
-          </label>
-          <input
-            type="text"
-            id="managerID"
-            name="managerID"
-            className="form-control"
-            placeholder="Enter Manager ID"
-            onChange={(e) => {
-              setManagerID(e.target.value);
-            }}
-          />
-        </div> */}
+{/*        
         <div className="mb-3">
           <label htmlFor="requestForRequestID" className="form-label">
             Request ID
@@ -107,7 +132,7 @@ export default function CreateNewAmenityRequest() {
               setInventoryID(e.target.value);
             }}
           />
-        </div>
+        </div> */}
         <div className="mb-3">
           <label htmlFor="category" className="form-label">
             Choose Category

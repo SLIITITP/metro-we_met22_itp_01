@@ -41,7 +41,7 @@ import { SideNavigationAttendRequest } from "../components/InventoryManagement/A
 //import SideNavigationReports from "../components/StaffManagement/Reports/Component/SideNavigationReports";
 import { SideNavigationRequestForSupplies } from "../components/InventoryManagement/RequestForSupplies/Component/SideNavigationRequestForSupplies";
 import FetchIngredients from "../components/InventoryManagement/IngredientsLog/Content/fetchIngredients";
-import EditIngredients from "../components/InventoryManagement/IngredientsLog/Content/EditIngredients";
+//import EditIngredients from "../components/InventoryManagement/IngredientsLog/Content/EditIngredients";
 import IngredientsDetails from "../components/InventoryManagement/IngredientsLog/Content/IngredientsDetails";
 import CreateToiletry from "../components/InventoryManagement/ToiletriesLog/Content/createToiletry";
 import FetchToiletries from "../components/InventoryManagement/ToiletriesLog/Content/getToiletries";
@@ -67,6 +67,7 @@ import ChefRequestDetails from "../components/KitchenManagement/ChefRequests/Con
 
 import { SideNavigationAttendChefRequests } from "../components/InventoryManagement/AttendChefRequests/Component/SideNavigationAttendChefRequests";
 import FetchChefIngredientRequests from "../components/InventoryManagement/AttendChefRequests/Content/fetchChefIngredientsRequests";
+import EditIngredient from "../components/InventoryManagement/IngredientsLog/Content/EditIngredients";
 
 export default function Manager() {
   return (
@@ -313,7 +314,7 @@ export default function Manager() {
             path="/Manager/inventoryManagement/ingredientsLog/editIngredient/:id"
             element={
               <>
-                <EditIngredients />
+                <EditIngredient/>
               </>
             }
           ></Route>
