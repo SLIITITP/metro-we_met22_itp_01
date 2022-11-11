@@ -61,7 +61,7 @@ export default function CreateAsset() {
         //window.location.reload(false);
         alert("Property added successfully");
         window.location.replace(
-          "http://localhost:3000/inventoryManagement/assetsLog"
+          "http://localhost:3000/Manager/inventoryManagement/assetsLog"
         );
       })
       .catch((err) => {
@@ -147,21 +147,7 @@ export default function CreateAsset() {
         <h1 className="display-6" style={{ marginBottom: "20px" }}>
           Add New Property
         </h1>
-        {/* <div className="mb-3">
-          <label htmlFor="requestForinventoryID" className="form-label">
-            Inventory ID
-          </label>
-          <input
-            type="text"
-            id="invenID"
-            name="invenID"
-            className="form-control"
-            placeholder="Enter inventory ID"
-            onChange={(e) => {
-              setInventoryID(e.target.value);
-            }}
-          />
-        </div> */}
+       
         <div className="mb-3">
           <label htmlFor="requestForCategory" className="form-label">
             Choose Category
@@ -175,12 +161,9 @@ export default function CreateAsset() {
               changeDropdown(e.target.value);
               setCategory(e.target.value);
               setOptions(e.target.value);
-              // changeAvailibility(e.target.value);
-              // setAvailibilityStatus(e.target.value);
+              
             }}
-            // onChange={(e) => {
-            //
-            // }}
+           
           >
             <option value="">Choose Property Type </option>
             <option value="Case Goods">Case Goods</option>
@@ -264,7 +247,7 @@ export default function CreateAsset() {
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <button type="button" className="btn btn-danger">
           <a
-            href="/inventoryManagement/assetsLog"
+            href="/Manager/inventoryManagement/assetsLog"
             style={{ textDecoration: "none", color: "white" }}
           >
             Cancel

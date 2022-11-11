@@ -56,7 +56,7 @@ export default function CreateToiletry() {
         //window.location.reload(false);
         alert("Amenity and Inventory added successfully");
         window.location.replace(
-          "http://localhost:3000/inventoryManagement/toiletriesLog"
+          "http://localhost:3000/Manager/inventoryManagement/toiletriesLog"
         );
       })
       .catch((err) => {
@@ -246,7 +246,7 @@ export default function CreateToiletry() {
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <button className="btn btn-danger">
           <a
-            href="/inventoryManagement/toiletriesLog"
+            href="/Manager/inventoryManagement/toiletriesLog"
             style={{ textDecoration: "none", color: "white" }}
           >
             Cancel

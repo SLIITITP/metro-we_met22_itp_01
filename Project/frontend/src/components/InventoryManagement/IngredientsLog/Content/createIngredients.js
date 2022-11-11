@@ -61,19 +61,7 @@ export default function CreateIngredients() {
         alert(err);
       });
 
-    // axios
-    //   .post("http://localhost:8070/inventory/add", newInventory)
-    //   .then(() => {
-    //     alert("Ingredient and Inventory added successfully");
-    //     window.location.replace(
-    //       "http://localhost:3000/inventoryManagement/ingredientsLog"
-    //     );
-    //   })
-    //   .catch((err) => {
-    //     alert(err);
-    //   });
-    // To clear out the form fields
-    // document.getElementById("invenID").value = "";
+   //to clear out the form fields
     document.getElementById("name").value = "";
     document.getElementById("quantity").value = "";
     document.getElementById("purchaseDate").value = "";
@@ -98,21 +86,7 @@ export default function CreateIngredients() {
         <h1 className="display-6" style={{ marginBottom: "20px" }}>
           Add New Ingredient
         </h1>
-        {/* <div className="mb-3">
-          <label htmlFor="requestForinventoryID" className="form-label">
-            Inventory ID
-          </label>
-          <input
-            type="text"
-            id="invenID"
-            name="invenID"
-            className="form-control"
-            placeholder="Enter inventory ID"
-            onChange={(e) => {
-              setInventoryID(e.target.value);
-            }}
-          />
-        </div> */}
+      
         <div className="mb-3">
           <label htmlFor="requestForCategory" className="form-label">
             Choose Category
@@ -202,7 +176,7 @@ export default function CreateIngredients() {
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <button type="submit" className="btn btn-danger">
           <a
-            href="/inventoryManagement/ingredientsLog"
+            href="/Manager/inventoryManagement/ingredientsLog"
             style={{ textDecoration: "none", color: "white" }}
           >
             Cancel

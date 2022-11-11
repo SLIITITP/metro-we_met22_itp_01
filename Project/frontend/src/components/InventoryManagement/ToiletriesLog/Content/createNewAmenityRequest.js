@@ -35,7 +35,7 @@ export default function CreateNewAmenityRequest() {
       .then(() => {
         alert("request made successfully");
         window.location.replace(
-          "http://localhost:3000/inventoryManagement/amenityRequestLog"
+          "http://localhost:3000/Manager/inventoryManagement/amenityRequestLog"
         );
         // window.location.reload(false);
       })
@@ -222,7 +222,7 @@ export default function CreateNewAmenityRequest() {
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <button type="submit" className="btn btn-danger">
           <a
-            href="/inventoryManagement/amenityRequestLog"
+            href="/Manager/inventoryManagement/amenityRequestLog"
             style={{ textDecoration: "none", color: "white", padding: "40px" }}
           >
             Cancel

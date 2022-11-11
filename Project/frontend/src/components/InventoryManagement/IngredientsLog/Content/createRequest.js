@@ -80,7 +80,7 @@ export default function CreateRequest() {
       .then(() => {
         alert("request made successfully");
         window.location.replace(
-          "http://localhost:3000/inventoryManagement/requestLog"
+          "http://localhost:3000/Manager/inventoryManagement/requestLog"
         );
         // window.location.reload(false);
       })
@@ -210,7 +210,7 @@ export default function CreateRequest() {
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <button type="submit" className="btn btn-danger">
           <a
-            href="/inventoryManagement/ingredientsLog"
+            href="/Manager/inventoryManagement/ingredientsLog"
             style={{ textDecoration: "none", color: "white", padding: "40px" }}
           >
             Cancel

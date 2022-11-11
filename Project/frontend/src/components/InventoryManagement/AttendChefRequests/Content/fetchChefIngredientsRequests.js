@@ -207,7 +207,7 @@ export default function FetchChefIngredientRequests() {
                           data-placement="top"
                           title="View"
                           className="btn btn-sm btn-primary"
-                          href={`/inventoryManagement/chefRequestLog/getRequest/${val._id}`}
+                          href={`/Manager/inventoryManagement/chefRequestLog/getRequest/${val._id}`}
                           style={{ textDecoration: "none" }}
                         >
                           <i className="fa-regular fa-eye"></i>

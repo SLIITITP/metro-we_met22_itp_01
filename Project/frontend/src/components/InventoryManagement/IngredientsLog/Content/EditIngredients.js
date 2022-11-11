@@ -49,7 +49,7 @@ export default function EditIngredient() {
       .then(() => {
         alert("Updated Successfully!");
         window.location.replace(
-          `http://localhost:${port}/inventoryManagement/ingredientsLog`
+          `http://localhost:${port}/Manager/inventoryManagement/ingredientsLog`
         );
       })
       .catch((err) => {
@@ -184,7 +184,7 @@ export default function EditIngredient() {
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <button type="submit" className="btn btn-danger">
           <a
-            href="/inventoryManagement/ingredientsLog"
+            href="/Manager/inventoryManagement/ingredientsLog"
             style={{ textDecoration: "none", color: "white" }}
           >
             Cancel

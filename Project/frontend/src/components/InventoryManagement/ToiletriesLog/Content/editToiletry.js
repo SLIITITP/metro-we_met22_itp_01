@@ -49,7 +49,7 @@ export default function EditToiletry() {
       .then(() => {
         alert("Updated Successfully!");
         window.location.replace(
-          `http://localhost:${port}/inventoryManagement/toiletriesLog`
+          `http://localhost:${port}/Manager/inventoryManagement/toiletriesLog`
         );
       })
       .catch((err) => {
@@ -222,7 +222,7 @@ export default function EditToiletry() {
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <button type="submit" className="btn btn-danger">
           <a
-            href="/inventoryManagement/toiletriesLog"
+            href="/Manager/inventoryManagement/toiletriesLog"
             style={{ textDecoration: "none", color: "white" }}
           >
             Cancel
