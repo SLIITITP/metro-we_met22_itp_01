@@ -35,6 +35,8 @@ import FetchChefRequests from "../components/KitchenManagement/ChefRequests/Cont
 import IngredientFetchChefRequests from "../components/KitchenManagement/ChefIngredientsLog/Content/fetchChefIngredientRequests";
 import ChefRequestDetails from "../components/KitchenManagement/ChefRequests/Content/chefRequestDetails";
 import EditChefRequest from "../components/KitchenManagement/ChefRequests/Content/editChefRequest";
+import HomeScreen from "../components/BookingManagement/CloseBookings/Screens/HomeScreen";
+import BookingScreen from "../components/BookingManagement/CloseBookings/Screens/BookingScreen";
 
 
 
@@ -207,6 +209,7 @@ export default function Staff() {
           path="/Staff"
           element={
             <>
+              <HomeScreen />
               <SideNavigationCloseBookings />
             </>
           }
@@ -230,7 +233,8 @@ export default function Staff() {
             </>
           }
         />
-      </Routes><Routes>
+      </Routes>
+      <Routes>
         <Route
           path="/Staff/viewCustomers"
           element={
@@ -240,6 +244,18 @@ export default function Staff() {
           }
         />
       </Routes>
+      <Routes>
+        <Route
+          path="/Staff/book/:roomid/:fromdate/:todate"
+          element={
+            <>
+            <BookingScreen />
+              <SideNavigationViewUsers />
+            </>
+          }
+        />
+      </Routes>
+      
       
 
     </div>
