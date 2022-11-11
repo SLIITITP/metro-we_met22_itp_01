@@ -80,6 +80,7 @@ import SuggestSupplier from "../components/Supplier/Supplier/content/SuggestSupp
 import AddSupplier from "../components/Supplier/Supplier/content/AddSupplier";
 import { SideNavigationSupplier } from "../components/Supplier/Supplier/component/SideNavigationSupplier";
 import { SideNavigationReview } from "../components/Supplier/Review/component/SideNavigationReview";
+import SupFetchChefRequests from "../components/Supplier/Order/content/supfetchChefRequests";
 
 // parking
 import Dashboard from "../components/ParkingManagement/pages/dashboard";
@@ -93,7 +94,6 @@ export default function Manager() {
       <Routes>
         <Route path="/Manager/*" element={<MainNavigationManager />} />
       </Routes>
-
       <Routes>
         <Route
           path="/Manager"
@@ -104,7 +104,6 @@ export default function Manager() {
           }
         />
       </Routes>
-
       <Routes>
         <Route
           path="/Manager/attendance"
@@ -116,7 +115,6 @@ export default function Manager() {
           }
         />
       </Routes>
-
       <Routes>
         <Route
           path="/Manager/leave"
@@ -155,7 +153,6 @@ export default function Manager() {
           }
         ></Route>
       </Routes>
-
       <Routes>
         <Route
           path="/Manager/invoice"
@@ -176,7 +173,6 @@ export default function Manager() {
           }
         ></Route>
       </Routes>
-
       <Routes>
         <Route
           path="/Manager/employees"
@@ -215,7 +211,6 @@ export default function Manager() {
           }
         ></Route>
       </Routes>
-
       <Routes>
         <Route
           path="/Manager/manageLeaves"
@@ -236,7 +231,6 @@ export default function Manager() {
           }
         ></Route>
       </Routes>
-
       <Routes>
         <Route
           path="/Manager/reports"
@@ -247,7 +241,6 @@ export default function Manager() {
           }
         />
       </Routes>
-
       <Routes>
         <Route
           path="/Manager/inventoryManagement"
@@ -336,7 +329,6 @@ export default function Manager() {
           }
         ></Route>
       </Routes>
-
       <Routes>
         <Route
           path="/Manager/inventoryManagement/toiletriesLog"
@@ -408,7 +400,6 @@ export default function Manager() {
           }
         ></Route>
       </Routes>
-
       <Routes>
         <Route
           path="/Manager/inventoryManagement/assetsLog"
@@ -457,7 +448,6 @@ export default function Manager() {
           }
         />
       </Routes>
-
       <Routes>
         <Route
           path="/Manager/inventoryManagement/chefRequestLog"
@@ -488,7 +478,6 @@ export default function Manager() {
             }
           /> */}
       </Routes>
-
       {/* Supplier */}
       <Routes>
         <Route
@@ -501,7 +490,6 @@ export default function Manager() {
           }
         />
       </Routes>
-
       <Routes>
         <Route
           path="/Manager/Supplier/addsupplier"
@@ -513,7 +501,6 @@ export default function Manager() {
           }
         />
       </Routes>
-
       <Routes>
         <Route
           path="/Manager/Supplier/avgstar/:id"
@@ -525,7 +512,6 @@ export default function Manager() {
           }
         />
       </Routes>
-
       <Routes>
         <Route
           path="/Manager/Review"
@@ -537,7 +523,6 @@ export default function Manager() {
           }
         />
       </Routes>
-
       <Routes>
         <Route
           path="/Manager/Supplier/Review/:id"
@@ -549,26 +534,34 @@ export default function Manager() {
           }
         />
       </Routes>
-
+      SupFetchChefRequests
       <Routes>
         <Route
-          path="/Manager/Order/:id"
+          path="/Manager/Order/fetch"
           element={
             <>
-              <AddOrder />
+              <SupFetchChefRequests />
               <SideNavigationOrder />
-              <ShowallOrder />
             </>
           }
         />
       </Routes>
-
+      <Routes>
+        <Route
+          path="/Manager/Order/add/:id"
+          element={
+            <>
+              <AddOrder />
+              <SideNavigationOrder />
+            </>
+          }
+        />
+      </Routes>
       <Routes>
         <Route
           path="/Manager/Order"
           element={
             <>
-              <AddOrder />
               <SideNavigationOrder />
               <ShowallOrder />
             </>
@@ -597,7 +590,6 @@ export default function Manager() {
           }
         />
       </Routes>
-
       <Routes>
         <Route
           path="/park"
@@ -609,7 +601,6 @@ export default function Manager() {
           }
         />
       </Routes>
-
       <Routes>
         <Route
           path="/addPark"
@@ -621,7 +612,6 @@ export default function Manager() {
           }
         />
       </Routes>
-
       <Routes>
         <Route
           path="/parkreport"

@@ -3,7 +3,7 @@ import axios from "axios";
 
 import GetChefRequestDetails from "./getAllChefRequests";
 import GetOneChefRequest from "./oneChefRequest";
-export default function FetchChefRequests() {
+export default function SupFetchChefRequests() {
   var color = "black";
   var reqDetails = GetChefRequestDetails();
 
@@ -12,7 +12,7 @@ export default function FetchChefRequests() {
   const [requestCancel, setRequestCancel] = useState({});
   const [editRequest, setEditRequest] = useState({});
   let i = 0;
-  var currDate = new Date().toISOString().slice(0, 10);
+
   var requestID;
   const OnSubmit = (event, id) => {
     for (i = 0; i < reqDetails.length; i++) {
@@ -21,46 +21,6 @@ export default function FetchChefRequests() {
       }
     }
   };
-  //to edit a pending request
-  function EditRequest(id) {
-    for (i = 0; i < reqDetails.length; i++) {
-      if (reqDetails[i]._id == id) {
-        break;
-      }
-    }
-    <GetOneChefRequest id={id} />;
-    setEditRequest(GetOneChefRequest);
-  }
-
-  // to cancel a pending request
-  function CancelRequest(id) {
-    for (i = 0; i < reqDetails.length; i++) {
-      if (reqDetails[i]._id == id) {
-        break;
-      }
-    }
-
-    requestID = reqDetails[i].requestID;
-
-    <GetOneChefRequest id={id} />;
-    setRequestCancel(GetOneChefRequest);
-    requestCancel.status = "Cancelled";
-    axios
-      .put(
-        "http://localhost:8070/inventory/chefRequest/update/" + id,
-        requestCancel
-      )
-      .then((Info) => {
-        alert("Request for ingredients cancelled!");
-        console.log(Info);
-        // window.location.replace(
-        //   `http://localhost:${port}/inventoryManagement/requestLog`
-        // );
-      })
-      .catch((err) => {
-        console.log(err.message);
-      });
-  }
 
   function changeColor(data) {
     if (data === "Cancelled") color = "red";
@@ -75,7 +35,7 @@ export default function FetchChefRequests() {
         className="container"
         style={{ float: "right", marginRight: "-700px" }}
       >
-        {/* <form
+        <form
           class="form-inline my-2 my-lg-0"
           onSubmit={(e) => {
             setSearch(e.target.search.value);
@@ -94,19 +54,6 @@ export default function FetchChefRequests() {
           <button class="btn btn-primary my-2 my-sm-0" type="submit">
             <i class="bi bi-search"></i>
           </button>
-        </form> */}
-        <form className="form-inline my-2 my-lg-0">
-          <input
-            type="date"
-            id="search"
-            name="search"
-            className="form-control"
-            defaultValue={currDate}
-            onChange={(e) => {
-              setSearch(e.target.value);
-              e.preventDefault();
-            }}
-          />
         </form>
       </div>
       <div
@@ -136,7 +83,9 @@ export default function FetchChefRequests() {
               <th scope="col">Requested On</th>
               <th scope="col">Description</th>
               <th scope="col">Status</th>
-              <th scope="col">Action</th>
+              <th></th>
+              <th></th>
+              <th></th>
             </tr>
           </thead>
           <tbody>
@@ -145,7 +94,7 @@ export default function FetchChefRequests() {
                   .filter((val) => {
                     if (search === "") return val;
                     else if (
-                      val.date.toLowerCase().includes(search.toLowerCase())
+                      val.name.toLowerCase().includes(search.toLowerCase())
                     ) {
                       return val;
                     }
@@ -169,55 +118,7 @@ export default function FetchChefRequests() {
                       <td>{val.date}</td>
                       <td>{val.description}</td>
                       <td style={{ color: color }}>{val.status}</td>
-                      <td>
-                        {/* To show the edit button only if val.status==="Pending" */}
-                        {val.status === "Pending" && (
-                          <a
-                            title="Edit Ingredient Request"
-                            className="btn btn-sm btn-warning"
-                            href={`/Staff/kitchenStaff/chefRequests/requestLog/editRequest${val._id}`}
-                            onClick={(e) => {
-                              EditRequest(val._id);
-                              window.location.reload(false);
-                            }}
-                          >
-                            <i className="fas fa-edit"></i>
-                            &nbsp;
-                          </a>
-                        )}
-                        {/* <a
-                          className="btn btn-sm btn-warning"
-                          href={`requestLog/editRequest/${val._id}`}
-                        >
-                          <i className="fas fa-edit"></i>
-                          &nbsp;
-                        </a> */}
-                        &nbsp;&nbsp;
-                        {/* To show the cancel button only if val.status==="Pending */}
-                        {val.status === "Pending" && (
-                          <a
-                            style={{ color: "white" }}
-                            title="Cancel Ingredient Request"
-                            className="btn btn-sm btn-danger"
-                            onClick={(e) => {
-                              CancelRequest(val._id);
-                              window.location.reload(false);
-                            }}
-                          >
-                            <i className="fa-regular fa-rectangle-xmark"></i>
-                          </a>
-                        )}
-                        {/* <a
-                          className="btn btn-cancel"
-                          style={{
-                            backgroundColor: " #e60000",
-                          }}
-                        >
-                          <i class="fa-sharp fa-solid fa-xmark"></i>&nbsp;Cancel
-                        </a> */}
-                        &nbsp;
-                      </td>
-
+                      <td>&nbsp;</td>
                       {val.status === "Pending" && (
                         <td>
                           <a
