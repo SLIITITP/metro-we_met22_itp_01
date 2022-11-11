@@ -39,7 +39,7 @@ export default function Room({ room ,fromdate, todate}) {
         <div style={{ float: "right" }}>
 
            {(fromdate && todate) && (
-            <Link to={`/book/${room._id}/${fromdate}/${todate}`}>
+            <Link to={`/Staff/book/${room._id}/${fromdate}/${todate}`}>
            <button className="btn btn-primary"
             style={{
               backgroundColor: "black",

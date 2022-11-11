@@ -23,7 +23,7 @@ router.post("/bookroom", async (req, res) => {
       bookingid: booking._id,
       fromdate: moment(fromdate).format("DD-MM-YYYY"),
       todate: moment(todate).format("DD-MM-YYYY"),
-      userid: userid,
+      userid: booking.userid,
       status: booking.status,
     });
 
