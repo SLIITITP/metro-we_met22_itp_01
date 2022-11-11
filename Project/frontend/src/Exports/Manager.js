@@ -330,7 +330,7 @@ export default function Manager() {
             path="/Manager/inventoryManagement/ingredientsLog/editIngredient/:id"
             element={
               <>
-                <EditIngredients />
+                <EditIngredient/>
               </>
             }
           ></Route>
