@@ -20,7 +20,7 @@ export default function MainNavigationStaff() {
         style={{ backgroundColor: "white" }}
       >
         <li className="nav-item" role="presentation">
-          <Link to="" style={{ textDecoration: "none" }}>
+          <Link to="/Staff" style={{ textDecoration: "none" }}>
             <button
               className="nav-link active"
               id="home-tab"

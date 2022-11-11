@@ -20,6 +20,10 @@ import LeaveDetails from "../components/StaffManagementEmployee/Leave/Content/Le
 import EditLeave from "../components/StaffManagementEmployee/Leave/Content/EditLeave";
 
 import SideNavigationInvoiceEmployee from "../components/StaffManagementEmployee/Invoice/Component/SideNavigationInvoiceEmployee";
+import { SideNavigationCloseBookings } from "../components/BookingManagement/CloseBookings/Components/SideNavigationCloseBookings";
+import { SideNavigationReport } from "../components/BookingManagement/Report/Components/SideNavigationReport";
+import { SideNavigationViewBookings } from "../components/BookingManagement/ViewBookings/Components/SideNavigationViewBookings";
+import { SideNavigationViewUsers } from "../components/BookingManagement/ViewUsers/Components/SideNavigationViewUsers";
 
 export default function Staff() {
   return (
@@ -85,7 +89,7 @@ export default function Staff() {
           }
         ></Route>
         <Route
-          path="Staff/staffManagementEmployee/leave/createLeave"
+          path="/Staff/staffManagementEmployee/leave/createLeave"
           element={
             <>
               <CreateLeave />
@@ -94,7 +98,7 @@ export default function Staff() {
           }
         ></Route>
         <Route
-          path="Staff/staffManagementEmployee/leave/getLeave/:id"
+          path="/Staff/staffManagementEmployee/leave/getLeave/:id"
           element={
             <>
               <LeaveDetails />
@@ -103,7 +107,7 @@ export default function Staff() {
           }
         ></Route>
         <Route
-          path="Staff/staffManagementEmployee/leave/editLeave/:id"
+          path="/Staff/staffManagementEmployee/leave/editLeave/:id"
           element={
             <>
               <EditLeave />
@@ -123,6 +127,48 @@ export default function Staff() {
           }
         />
       </Routes>
+
+      {/* Nuha's Routes */}
+      <Routes>
+        <Route
+          path="/Staff"
+          element={
+            <>
+              <SideNavigationCloseBookings />
+            </>
+          }
+        />
+      </Routes>
+      <Routes>
+        <Route
+          path="/Staff/report"
+          element={
+            <>
+              <SideNavigationReport />
+            </>
+          }
+        />
+      </Routes><Routes>
+        <Route
+          path="/Staff/viewBookings"
+          element={
+            <>
+              <SideNavigationViewBookings />
+            </>
+          }
+        />
+      </Routes><Routes>
+        <Route
+          path="/Staff/viewCustomers"
+          element={
+            <>
+              <SideNavigationViewUsers />
+            </>
+          }
+        />
+      </Routes>
+      
+
     </div>
   );
 }
