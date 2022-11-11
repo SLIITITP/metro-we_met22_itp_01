@@ -145,7 +145,7 @@ export default function FetchChefRequests() {
                   .filter((val) => {
                     if (search === "") return val;
                     else if (
-                      val.name.toLowerCase().includes(search.toLowerCase())
+                      val.date.toLowerCase().includes(search.toLowerCase())
                     ) {
                       return val;
                     }
