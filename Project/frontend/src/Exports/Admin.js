@@ -18,6 +18,20 @@ import SideNavAttendance from "../components/StaffManagementAdmin/attendance/Sid
 import SideNavEmployee from "../components/StaffManagementAdmin/employees/SideNavEmployee";
 import SideNavInvoice from "../components/StaffManagementAdmin/invoice/SideNavInvoice";
 import SideNavLeave from "../components/StaffManagementAdmin/leave/SideNavLeave";
+import DisplayAttendance from "../components/StaffManagementAdmin/attendance/displayAttendance";
+import DisplayEmployees from "../components/StaffManagementAdmin/employees/displayEmployees";
+import DisplayInvoice from "../components/StaffManagementAdmin/invoice/displayInvoice";
+import DisplayLeave from "../components/StaffManagementAdmin/leave/displayLeave";
+
+
+//Inventory
+
+import { SideNavIngredientLog } from "../components/InventoryManagementAdmin/ingredientsLog/sideNavIngredients";
+import { SideNavAmenityLog } from "../components/InventoryManagementAdmin/amenityLog/sideNavAmenity";
+import { SideNavAssetsLog } from "../components/InventoryManagementAdmin/assetsLog/sideNavAssets";
+import DisplayIngredients from "../components/InventoryManagementAdmin/ingredientsLog/displayIngredients";
+import DisplayAssets from "../components/InventoryManagementAdmin/assetsLog/displayAssets";
+import DisplayToiletries from "../components/InventoryManagementAdmin/amenityLog/displayAmenities";
 
 export default function CustServ() {
   return (
@@ -86,6 +100,7 @@ export default function CustServ() {
           path="/admin/staffManagement"
           element={
             <>
+              <DisplayAttendance />
               <SideNavAttendance />
             </>
           }
@@ -96,6 +111,7 @@ export default function CustServ() {
           path="/admin/staffManagement/employees"
           element={
             <>
+              <DisplayEmployees />
               <SideNavEmployee />
             </>
           }
@@ -106,6 +122,7 @@ export default function CustServ() {
           path="/admin/staffManagement/invoice"
           element={
             <>
+              <DisplayInvoice />
               <SideNavInvoice />
             </>
           }
@@ -116,7 +133,44 @@ export default function CustServ() {
           path="/admin/staffManagement/leave"
           element={
             <>
+              <DisplayLeave />
               <SideNavLeave />
+            </>
+          }
+        />
+      </Routes>
+
+      <Routes>
+        <Route
+          path="/admin/inventory"
+          element={
+            <>
+              <SideNavIngredientLog/>
+              <DisplayIngredients/>
+            </>
+          }
+        />
+      </Routes>
+
+      <Routes>
+        <Route
+          path="/admin/inventory/amenityLog"
+          element={
+            <>
+              <SideNavAmenityLog/>
+              <DisplayToiletries/>
+            </>
+          }
+        />
+      </Routes>
+
+      <Routes>
+        <Route
+          path="/admin/inventory/assetsLog"
+          element={
+            <>
+              <SideNavAssetsLog/>
+              <DisplayAssets/>
             </>
           }
         />
