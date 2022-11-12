@@ -11,7 +11,7 @@ export default function InvoiceDetails() {
     const pdf = new jsPDF("landscape", "px", "a1", false);
     const data = await document.querySelector("#invoice");
     pdf.html(data).then(() => {
-      pdf.save("Invoice" + date + ".pdf");
+      pdf.save("Invoice " + date + ".pdf");
     });
   };
   const id = useParams();

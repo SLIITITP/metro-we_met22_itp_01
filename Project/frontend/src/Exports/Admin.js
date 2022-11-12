@@ -18,6 +18,10 @@ import SideNavAttendance from "../components/StaffManagementAdmin/attendance/Sid
 import SideNavEmployee from "../components/StaffManagementAdmin/employees/SideNavEmployee";
 import SideNavInvoice from "../components/StaffManagementAdmin/invoice/SideNavInvoice";
 import SideNavLeave from "../components/StaffManagementAdmin/leave/SideNavLeave";
+import DisplayAttendance from "../components/StaffManagementAdmin/attendance/displayAttendance";
+import DisplayEmployees from "../components/StaffManagementAdmin/employees/displayEmployees";
+import DisplayInvoice from "../components/StaffManagementAdmin/invoice/displayInvoice";
+import DisplayLeave from "../components/StaffManagementAdmin/leave/displayLeave";
 
 
 //Inventory
@@ -96,6 +100,7 @@ export default function CustServ() {
           path="/admin/staffManagement"
           element={
             <>
+              <DisplayAttendance />
               <SideNavAttendance />
             </>
           }
@@ -106,6 +111,7 @@ export default function CustServ() {
           path="/admin/staffManagement/employees"
           element={
             <>
+              <DisplayEmployees />
               <SideNavEmployee />
             </>
           }
@@ -116,6 +122,7 @@ export default function CustServ() {
           path="/admin/staffManagement/invoice"
           element={
             <>
+              <DisplayInvoice />
               <SideNavInvoice />
             </>
           }
@@ -126,6 +133,7 @@ export default function CustServ() {
           path="/admin/staffManagement/leave"
           element={
             <>
+              <DisplayLeave />
               <SideNavLeave />
             </>
           }
