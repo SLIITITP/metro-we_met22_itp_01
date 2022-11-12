@@ -19,6 +19,16 @@ import SideNavEmployee from "../components/StaffManagementAdmin/employees/SideNa
 import SideNavInvoice from "../components/StaffManagementAdmin/invoice/SideNavInvoice";
 import SideNavLeave from "../components/StaffManagementAdmin/leave/SideNavLeave";
 
+
+//Inventory
+
+import { SideNavIngredientLog } from "../components/InventoryManagementAdmin/ingredientsLog/sideNavIngredients";
+import { SideNavAmenityLog } from "../components/InventoryManagementAdmin/amenityLog/sideNavAmenity";
+import { SideNavAssetsLog } from "../components/InventoryManagementAdmin/assetsLog/sideNavAssets";
+import DisplayIngredients from "../components/InventoryManagementAdmin/ingredientsLog/displayIngredients";
+import DisplayAssets from "../components/InventoryManagementAdmin/assetsLog/displayAssets";
+import DisplayToiletries from "../components/InventoryManagementAdmin/amenityLog/displayAmenities";
+
 export default function CustServ() {
   return (
     <div className="App">
@@ -117,6 +127,42 @@ export default function CustServ() {
           element={
             <>
               <SideNavLeave />
+            </>
+          }
+        />
+      </Routes>
+
+      <Routes>
+        <Route
+          path="/admin/inventory"
+          element={
+            <>
+              <SideNavIngredientLog/>
+              <DisplayIngredients/>
+            </>
+          }
+        />
+      </Routes>
+
+      <Routes>
+        <Route
+          path="/admin/inventory/amenityLog"
+          element={
+            <>
+              <SideNavAmenityLog/>
+              <DisplayToiletries/>
+            </>
+          }
+        />
+      </Routes>
+
+      <Routes>
+        <Route
+          path="/admin/inventory/assetsLog"
+          element={
+            <>
+              <SideNavAssetsLog/>
+              <DisplayAssets/>
             </>
           }
         />
