@@ -14,7 +14,8 @@ function App() {
         <Route path="/*" element={<Customer />}></Route> //add as star after
       </Routes>
       <Routes>
-        <Route path="/login" element={<LoginPage />}></Route> //add as star after
+        <Route path="/login" element={<LoginPage />}></Route> //add as star
+        after
       </Routes>
       <Routes>
         <Route path="/*" element={<CustServ />}></Route>
