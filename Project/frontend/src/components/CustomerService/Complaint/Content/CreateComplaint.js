@@ -67,13 +67,9 @@ export default function CreateComplaintCustomer() {
 
   //To create a record in the table
   function Create(e) {
-    e.preventDefault();
-
     axios
       .post("http://localhost:8070/customerService/complaint", ComplaintRequest)
-      .then(() => {
-        window.location.reload(false);
-      })
+      .then(() => {})
       .catch((err) => {
         alert(err.message);
         console.log(err);
