@@ -4,7 +4,6 @@ import { renderMatches } from "react-router-dom";
 import GetLeaveDetails from "./GetAllLeaves";
 import GetOneLeave from "./GetOneLeave";
 import GetEmployeeDetails from "../../Employee/Content/GetAllEmployees";
-//import { Link } from "react-router-dom";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import Modal from "react-bootstrap/Modal";
@@ -256,8 +255,7 @@ export default function GetLeavesManager() {
                       </td>
                       <td>
                         {/* To show the reject button only if val.status==="Pending" or  val.status==="Approved"*/}
-                        {(val.status === "Pending" ||
-                          val.status === "Approved") && (
+                        {val.status === "Pending" && (
                           <a
                             style={{ color: "white" }}
                             data-toggle="tooltip"

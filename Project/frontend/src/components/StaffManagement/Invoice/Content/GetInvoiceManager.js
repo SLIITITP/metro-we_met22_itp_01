@@ -13,6 +13,7 @@ import GetOneInvoice from "./GetOneInvoice";
 export default function GetInvoiceManager() {
   //For the search button
   const [search, setSearch] = useState("");
+  var currDate = new Date().toISOString().slice(0, 10);
 
   let invoiceIdString = "1";
   var attendanceList = GetAttendanceDetails();
@@ -238,25 +239,18 @@ export default function GetInvoiceManager() {
           className="container"
           style={{ float: "right", marginRight: "-1100px" }}
         >
-          <form
-            class="form-inline my-2 my-lg-0"
-            onSubmit={(e) => {
-              setSearch(e.target.search.value);
-              e.preventDefault();
-              e.window.location.reload(false);
-            }}
-          >
+          <form className="form-inline my-2 my-lg-0">
             <input
-              class="form-control mr-sm-2"
-              type="search"
+              type="date"
               id="search"
-              placeholder="Search employee ID"
-              aria-label="Search"
+              name="search"
+              className="form-control"
+              defaultValue={currDate}
+              onChange={(e) => {
+                setSearch(e.target.value);
+                e.preventDefault();
+              }}
             />
-
-            <button class="btn btn-primary my-2 my-sm-0" type="submit">
-              <i class="bi bi-search"></i>
-            </button>
           </form>
         </div>
 
@@ -284,6 +278,7 @@ export default function GetInvoiceManager() {
                 <th scope="col">Shift Hours</th>
                 <th scope="col">Ot Hours</th>
                 <th scope="col">Amount</th>
+                <th scope="col">Net Salary</th>
                 <th scope="col">Action</th>
               </tr>
             </thead>
@@ -293,7 +288,7 @@ export default function GetInvoiceManager() {
                     .filter((val) => {
                       if (search === "") return val;
                       else if (
-                        val.empID.toLowerCase().includes(search.toLowerCase())
+                        val.date.toLowerCase().includes(search.toLowerCase())
                       ) {
                         return val;
                       }
@@ -307,6 +302,7 @@ export default function GetInvoiceManager() {
                         <td>{val.shiftHours}</td>
                         <td>{val.otHours}</td>
                         <td>{val.amount}</td>
+                        <td>{val.netSalary}</td>
                         <td>
                           <a
                             data-toggle="tooltip"
