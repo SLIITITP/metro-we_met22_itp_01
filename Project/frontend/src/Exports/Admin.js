@@ -23,7 +23,6 @@ import DisplayEmployees from "../components/StaffManagementAdmin/employees/displ
 import DisplayInvoice from "../components/StaffManagementAdmin/invoice/displayInvoice";
 import DisplayLeave from "../components/StaffManagementAdmin/leave/displayLeave";
 
-
 //Inventory
 
 import { SideNavIngredientLog } from "../components/InventoryManagementAdmin/ingredientsLog/sideNavIngredients";
@@ -32,6 +31,15 @@ import { SideNavAssetsLog } from "../components/InventoryManagementAdmin/assetsL
 import DisplayIngredients from "../components/InventoryManagementAdmin/ingredientsLog/displayIngredients";
 import DisplayAssets from "../components/InventoryManagementAdmin/assetsLog/displayAssets";
 import DisplayToiletries from "../components/InventoryManagementAdmin/amenityLog/displayAmenities";
+
+//Supplier
+import { SideNavOrder } from "../components/SupplierAdmin/Order/SideNavOrder";
+import { SideNavOreq } from "../components/SupplierAdmin/Order/SideNavOreq";
+import { SideNavSupplier } from "../components/SupplierAdmin/Supplier/SideNavSupplier";
+import { SideNaviReview } from "../components/SupplierAdmin/Review/SideNaviReview";
+import DisplayOrder from "../components/SupplierAdmin/Order/displayOrder";
+import DisplayReview from "../components/SupplierAdmin/Review/displayReview";
+import DisplaySupplier from "../components/SupplierAdmin/Supplier/displaySupplier";
 
 export default function CustServ() {
   return (
@@ -145,8 +153,8 @@ export default function CustServ() {
           path="/admin/inventory"
           element={
             <>
-              <SideNavIngredientLog/>
-              <DisplayIngredients/>
+              <SideNavIngredientLog />
+              <DisplayIngredients />
             </>
           }
         />
@@ -157,8 +165,8 @@ export default function CustServ() {
           path="/admin/inventory/amenityLog"
           element={
             <>
-              <SideNavAmenityLog/>
-              <DisplayToiletries/>
+              <SideNavAmenityLog />
+              <DisplayToiletries />
             </>
           }
         />
@@ -169,8 +177,56 @@ export default function CustServ() {
           path="/admin/inventory/assetsLog"
           element={
             <>
-              <SideNavAssetsLog/>
-              <DisplayAssets/>
+              <SideNavAssetsLog />
+              <DisplayAssets />
+            </>
+          }
+        />
+      </Routes>
+
+      <Routes>
+        <Route
+          path="/admin/supplier/review"
+          element={
+            <>
+              <SideNaviReview />
+              <DisplayReview />
+            </>
+          }
+        />
+      </Routes>
+
+      <Routes>
+        <Route
+          path="/admin/supplier"
+          element={
+            <>
+              <SideNavSupplier />
+              <DisplaySupplier />
+            </>
+          }
+        />
+      </Routes>
+
+      <Routes>
+        <Route
+          path="/admin/Order/fetch"
+          element={
+            <>
+              <SideNavOreq />
+              <DisplayOrder />
+            </>
+          }
+        />
+      </Routes>
+
+      <Routes>
+        <Route
+          path="/admin/supplier/order"
+          element={
+            <>
+              <SideNavOrder />
+              <DisplayOrder />
             </>
           }
         />
