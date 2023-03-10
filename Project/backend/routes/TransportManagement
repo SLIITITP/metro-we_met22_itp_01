@@ -1,0 +1,17 @@
+const express = require("express");
+const getRequests = require("../controller/TransportManagement");
+const createRequest = require("../controller/TransportManagement");
+const deleteRequest = require("../controller/TransportManagement");
+const updateRequest = require("../controller/TransportManagement");
+const getOneRequest = require("../controller/TransportManagement");
+
+//To create an instance of express.router
+const router = express.Router();
+
+router.get("/", getRequests.getRequests);
+router.post("/", createRequest.createRequest);
+router.delete("/:id", deleteRequest.deleteRequest);
+router.post("/update/:id", updateRequest.updateRequest);
+router.get("/get/:id", getOneRequest.getOneRequest);
+
+module.exports = router;
